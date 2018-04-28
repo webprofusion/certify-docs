@@ -8,16 +8,6 @@
 // See https://docusaurus.io/docs/site-config.html for all the possible
 // site configuration options.
 
-/* List of projects/orgs using your project for the users page */
-const users = [
-  {
-    caption: 'User1',
-    image: '/test-site/img/docusaurus.svg',
-    infoLink: 'https://www.facebook.com',
-    pinned: true,
-  },
-];
-
 const siteConfig = {
   title: 'Certify The Web - Docs' /* title for your website */,
   tagline: 'Documentation for Certify SSL Manager and related Certify THe Web services.',
@@ -30,6 +20,7 @@ const siteConfig = {
   // Used for publishing and more
   projectName: 'certify-docs',
   organizationName: 'webprofusion',
+  cname:'docs.certifytheweb.com',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -41,9 +32,8 @@ const siteConfig = {
     /*{page: 'help', label: 'Help'},*/
     /*{blog: true, label: 'Blog'},*/
   ],
-
+  disableHeaderTitle: true,
   // If you have users set above, you add it here:
-  users,
 
   /* path to images for header/footer */
   headerIcon: 'img/icon.svg',

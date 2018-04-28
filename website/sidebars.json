@@ -1,5 +1,8 @@
 {
   "docs-sidebar": {
-    "Getting Started": ["intro", "faq"]
+    "Getting Started": [
+      "intro", 
+      "faq"
+    ]
   }
 }

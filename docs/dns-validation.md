@@ -19,4 +19,5 @@ The following DNS providers are supported:
 - [Azure DNS](dns-azuredns.md)
 - [AWS Route53](dns-awsroute53.md)
 - Cloudflare DNS *Note: Free plans are available*
+- Go Daddy
 - DNS Made Easy

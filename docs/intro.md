@@ -1,24 +1,24 @@
 ---
 id: intro
 title: Getting Started
-sidebar_label: Getting Started
 ---
 
-# Getting Started Guide
+*Certify The Web* (a.k.a Certify) is a Let's Encrypt GUI for Windows, allowing you to request, deploy and auto-renew free SSL/TLS certificates from the letsencrypt.org Certificate Authority. This guide will help you get started and detail some of the more advanced options available in the app.
 
-- [What is Let's Encrypt?](#letsencrypt)
-- [The Certificate Request Process](#process)
-- [HTTP Validation (http-01)](http-validation.md)
-- [DNS Validation (dns-01)](dns-validation.md)
-- Deployment
-- Auto Renewal
+Note: this documentation is a work-in-progress and applies to v4.0 and higher.
+
+- [What is Let's Encrypt?](letsencrypt.md)
+- [The Certificate Request Process](certificate-process.md)
+- [UI Options Explained](ui-options.md)
+    - [DNS Validation (dns-01)](dns-validation.md)
+    - [HTTP Validation (http-01)](http-validation.md)
+    - [Deployment](deployment.md)
+- [Certificate Renewal](renewals.md)
 - Limitations
+    - [SSL on Windows](ssl-windows)
+    - [Let's Encrypt Rate Limits](https://letsencrypt.org/docs/rate-limits/)
 
 # Frequently Asked Questions
 Having trouble? See our [FAQs](faq.md) to check if it's a common problem.
 
-# What is Let's Encrypt?
 
-Let's Encrypt is a free Certificate Authority (CA), and you can find out more details about them at https://letsencrypt.org
-
-The *Certify SSL Manager* app and related *Certify The Web* related services use the Let's Encrypt service to acquire free certificates. There are many tools available on many operating systems. We focus on providing a UI for Windows to make the process easier and to take care of auto-renewal for you.
