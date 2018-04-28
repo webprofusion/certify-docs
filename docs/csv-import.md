@@ -2,7 +2,6 @@
 id: csv-import
 title: CSV Bulk Import via Command Line
 ---
-# Bulk Import of Managed Sites
 
 You can perform a bulk import of managed sites (requires the registered version) from a CSV file using the following method:
 

@@ -1,8 +1,21 @@
 {
-  "docs-sidebar": {
+  "docs": {
     "Getting Started": [
-      "intro", 
+      "intro",
+      "letsencrypt",
+      "certificate-process",
+      "ui-options",
+      "renewals",
       "faq"
+    ],
+    "Guides": [
+      "dns-validation",
+      "http-validation",
+      "script-hooks"
+    ],
+    "Useful Info": [
+      "ssl-windows",
+      "csv-import"
     ]
   }
 }
