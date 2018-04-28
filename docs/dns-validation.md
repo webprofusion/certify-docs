@@ -1,4 +1,4 @@
-﻿---
+---
 id: dns-validation
 title: About DNS Validation (dns-01)
 ---
