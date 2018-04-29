@@ -18,6 +18,8 @@ If your DNS provider (or custom DNS setup) does not have an API we can talk to, 
 The following DNS providers are supported:
 - [Azure DNS](dns-azuredns.md)
 - [AWS Route53](dns-awsroute53.md)
-- Cloudflare DNS *Note: Free plans are available*
-- Go Daddy
+- [Cloudflare](dns-cloudflare.md) DNS *Note: Free plans are available*
+- [GoDaddy](dns-godaddy.md)
 - DNS Made Easy
+
+**If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they work.**

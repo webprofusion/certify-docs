@@ -1,11 +1,11 @@
 ---
 id: dns-azuredns
-title: Azure DNS
+title: Using Azure DNS
 ---
 
-# Guide to using Azure DNS
+*Azure DNS documentation originally written by: Tony Johncock @Tony1044*
 
-Created by: Tony Johncock @Tony1044
+*Note: If you have not yet selected a DNS API provider to host your domain with be aware that Azure DNS is currently amongst the most complex to configure for API access.*
 
 ## Step 1 – Install and configure Azure PowerShell
 
@@ -13,7 +13,10 @@ Follow the instructions here: https://docs.microsoft.com/en-us/powershell/azure/
 
 ## Step 2 – Connect to Azure PS and create the Azure Service Principal and Enterprise Application
 From PowerShell:
+
+```powershell
 PS C:\Users\Tony> Connect-AzureRmAccount
+```
 
 This will launch a web dialog to log into your Azure tenant. Ensure you connect with an account with the relevant administrative credentials in the portal.
 
@@ -94,7 +97,7 @@ Id        : xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb
 Directory : somedomain.com
 ```
  
-6 – Configure Credentials in Certify SSL Manager
+## 6 – Configure Credentials in Certify SSL Manager
 
 You now have all the information you require to configure Azure settings in the app. 
 
