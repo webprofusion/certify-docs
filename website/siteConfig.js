@@ -10,7 +10,7 @@
 
 const siteConfig = {
   title: 'Certify The Web - Docs' /* title for your website */,
-  tagline: 'Documentation for Certify SSL Manager and related Certify THe Web services.',
+  tagline: 'Documentation for Certify SSL Manager and related Certify The Web services.',
   url: 'https://certifytheweb.com' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -32,7 +32,7 @@ const siteConfig = {
     /*{page: 'help', label: 'Help'},*/
     /*{blog: true, label: 'Blog'},*/
   ],
-  disableHeaderTitle: true,
+  disableHeaderTitle: false,
   // If you have users set above, you add it here:
 
   /* path to images for header/footer */

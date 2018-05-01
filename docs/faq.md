@@ -9,11 +9,13 @@ title: Frequently Asked Questions
 
 
 ## Getting Help
-
+### Community Discussion Forum
 If you'd just like to ask general questions or help others get started, check out our community forum: <a href="https://communitycertifytheweb.com" target="_blank">community.certifytheweb.com</a>
 
+### GitHub Issues
 If there is a general bug or feature request you'd like to discuss in public, you can create a new issue against our <a href="https://github.com/webprofusion/certify/issues" target="_blank">GitHub project</a>
 
+### Email Support
 Registered users can create a new support request for help. Email *apps at webprofusion.com*, including your license key, describing the problem in detail. Please including how to recreate the problem and any special configuration you may have.
 
 ## Getting Started

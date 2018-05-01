@@ -2,10 +2,10 @@
 id: http-validation
 title: About HTTP Validation (http-01)
 ---
-
+## Why use HTTP Validation?
 To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, http-01 (validation over HTTP) and dns-01 (validation via DNS). Wildcard domain certificates (those covering *.yourdomain.com) can only be requested using DNS validation.
 
-## HTTP Validation
+## How to use HTTP Validation (on Windows)
 When Let's Encrypt performs domain validation over http (known as an http-01 challenge) they ask for a randomly named text file to be created in the /.well-known/acme-challenge path of your website. So they should be able to retrieve it at *http://<yourdomain>/.well-known/acme-challenge/<filename>*
 
 On *IIS* this presents a few challenges:
@@ -13,7 +13,7 @@ On *IIS* this presents a few challenges:
 * The file does not have an extension (like .txt etc), so a static file handler usually needs to be configured to handle extension-less files
 * Existing handlers for extension-less content may intercept the request and prevent access to the file
 * If authentication (basic, forms etc) is enabled the access to the file will be restricted so this needs to be disabled
-* Due to the above, ASP.net (and an app-pool) is generally required so that web.config can be supplied to override the configuration.
+* Due to the above, Asp.Net (and an app-pool) is generally required so that web.config can be supplied to override the configuration.
 * Other customizations or app requirements for the parent website may affect configuration
 
 For *Certify The Web*, we attempt to auto-configure the required configuration without modifying the configuration of the parent web application, 

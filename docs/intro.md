@@ -15,7 +15,7 @@ Note: this documentation is a work-in-progress and applies to v4.0 and higher.
     - [Deployment](deployment.md)
 - [Certificate Renewal](renewals.md)
 - Limitations
-    - [SSL on Windows](ssl-windows)
+    - [SSL on Windows](ssl-window.mds)
     - [Let's Encrypt Rate Limits](https://letsencrypt.org/docs/rate-limits/)
 
 # Frequently Asked Questions
