@@ -1,4 +1,4 @@
-﻿---
+---
 id: csv-import
 title: CSV Bulk Import via Command Line
 ---
