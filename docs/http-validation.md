@@ -25,3 +25,19 @@ the https://api.certifytheweb.com server if it can access the resource instead (
 
 If this step succeeds, you're all set to automatically complete HTTP validation of your domain. Once completed, Let's Encrypt marks your domain (associated with your account) as 'valid' and we can then proceed with requesting the final certificate.
 
+## Common Issues
+
+### Error 500, 404 or 403 (or other http error code)
+The most common problem is that auto configuration has failed to determine the best config for your system. Different editions/distributions of windows have different defaults.
+
+1 - Check the challenge folder exists
+Check that test test configcheck file has been created at *wwwwroot*\inetpub\*yourwebsite*\.well-known\acme-challenge
+
+if not, check your folder permissions allow this folder/files to be created. If necessary, check the website root path is correctly mapped.
+
+2 - Check you can access http://*yourdomain*/.well-known/acme-challenge/configcheck
+
+If the file exists on disk but you get a 404 error accessing the file then you have a problem with mapping extensionless files to static content.
+
+If you get an error 500, the web.config  probably has a directive your server can't support. If the web.config has a ```<clear/>``` directive, try removing it.
+
