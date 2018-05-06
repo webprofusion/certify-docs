@@ -5,6 +5,7 @@
     "previous": "Previous",
     "tagline": "Documentation for Certify SSL Manager and related Certify The Web services.",
     "certificate-process": "Certificate Request Process",
+    "commandline": "Command Line (CLI) Options",
     "csv-import": "CSV Bulk Import via Command Line",
     "deployment": "Certificate Deployment",
     "dns-awsroute53": "AWS Route53 DNS",
