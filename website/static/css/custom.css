@@ -15,21 +15,7 @@
 @media only screen and (min-width: 1500px) {
 }
 
-.fixedHeaderContainer{
-    background-color: black;
-}
-nav.toc .toggleNav .navGroup.navGroupActive h3{
-    background-color: #313131;
-}
 
-body {
-    font: initial;
-    font-family:  -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif;
-}
-
-.navigationSlider .slidingNav ul li{
-    flex: none;
-}
-img {
+img.screenshot {
     border:1px solid gainsboro;
 }
