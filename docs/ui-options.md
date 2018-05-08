@@ -25,7 +25,7 @@ If you don't choose an existing website or want to manually add domains, enter t
 To remove a domain from the list, select the domain and press the 'Delete' key.
 
 ### Wildcard Domains
-You can also manually add *Wildcard Domains* to a certificate request. A wildcard domain takes the form `*.yourdomain.com` and the resulting certificate would cover the `yourdomain.com` and `anything.yourdomain.com`, but it will not cover nested subdomains i.e.`www.anything.yourdomain.com`
+You can also manually add *Wildcard Domains* to a certificate request. A wildcard domain takes the form `*.yourdomain.com` and the resulting certificate would cover the `yourdomain.com` and `anything.yourdomain.com`, but it will not cover nested subdomains i.e. `www.anything.yourdomain.com`
 
 You cannot mix certificate requests for a Wildcard and a first-level subdomain (e.g. in a request for `*.yourdomain.com` and `www.yourdomain.com`, you should remove the `www.yourdomain.com` as it's already covered by the wildcard domain).
 
@@ -41,14 +41,24 @@ This view describes which actions will be performed based on your current settin
 
 ![Preview](assets/preview.png)
 
+## Test
+You can use the `Test` option to run basic configuration checks to see if your request is likely to succeed or if further configuration is required.
+
+## Request Certificate
+When you have configured the options for your certificate, choose `Request Certificate`. The app will then begin the certificate request process (as per the plan shown in 'Preview'). 
+
+If the request is successful your certificate will be created/renewed and deployed as per your settings. If there are problems requesting or deploying your certificate you can see more information under the `Status` tab and in the Log.
+
+Once successfully requested, by default your certificate will auto renew (based on the interval in Settings, and before the 90-day expiry).
+
 ## Advance Options
 Checking 'Show Advanced Options' in the Managed Certificate view enables a range of further options:
 
 ## Deployment
-By default, deployment is to a single IIS website, adding or updating https bindings as required to upgrade or maintain the website bindings as https.
+By default, deployment is set to 'Auto', which matches all IIS websites which have hostname bindings matching the certificate, adding or updating https bindings as required.
 
 Other options include:
-- Deploy to all websites
+- Deploy to a Single or All websites
 - Matching certificate to bindings based on various criteria.
 - Storage only (stored to Certificate store in the current machine)
 - No Deployment - the certificate file is downloaded but no other deployment action is performed.
