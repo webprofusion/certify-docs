@@ -13,6 +13,8 @@ The good news is that if you **do not specify a fixed IP for your binding**, Win
 
 If you use a binding of IP *All Unassigned* in IIS you can then share port 443 across multiple websites by also specifying the hostname to match against in your binding, and enabling SNI.
 
+You can learn more about SNI in IIS 8.0 and higher here: https://docs.microsoft.com/en-us/iis/get-started/whats-new-in-iis-8/iis-80-server-name-indication-sni-ssl-scalability
+
 ## Binding Conflicts
 Certify configures bindings with SNI enabled for you by default, but **if you already have fixed IP bindings for SSL certificates look out for issues**. Unless you have multiple IP addresses (which are not specifically bound to another SSL certificate) then creating any new certificate bindings will result in a conflict, and you could start seeing the wrong certificate being served by IIS for your website. 
 
