@@ -37,7 +37,34 @@ if not, check your folder permissions allow this folder/files to be created. If 
 
 2 - Check you can access http://*yourdomain*/.well-known/acme-challenge/configcheck
 
-If the file exists on disk but you get a 404 error accessing the file then you have a problem with mapping extensionless files to static content.
+If the file exists on disk but you get an error **404** (not found) accessing the file then you have a problem with mapping extensionless files to static content.
 
-If you get an error 500, the web.config  probably has a directive your server can't support. If the web.config has a ```<clear/>``` directive, try removing it.
+If you get an error **500** (server error), the web.config  probably has a directive your server can't support. If the web.config has a ```<clear/>``` directive, try removing it.
 
+If you get an error **403** (access denied), your web application is denying access to the challenge response file, probably because the parent web application requires authentication. Your web.config in the /acme-challenge/ folder should include the following directive:
+
+```xml 
+    <system.web>
+        <authorization>
+        <allow users="*" />
+        </authorization>
+    </system.web>
+  ```
+  In addition you may need to modify the web.config of the parent web application to allow access to the /.well-known/acme-challenge folder:
+
+  ```xml
+  <configuration>
+  ...
+  ...
+    <location path=".well-known/acme-challenge">
+      <system.web>
+         <authorization>
+            <allow users="*"/>
+         </authorization>
+      </system.web>
+    </location>
+   ...
+   ...
+</configuration>
+```
+The use of a web.config file to control web application configuration requires `Asp.Net` to be installed alongside IIS.
