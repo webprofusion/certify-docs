@@ -4,7 +4,9 @@ title: About DNS Validation (dns-01)
 ---
 
 ## Why use DNS Validation?
-To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, http-01 ([validation over HTTP](http-validation.md)) and dns-01 (validation via DNS). **Wildcard domain certificates (those covering *.yourdomain.com) can only be requested using DNS validation.** DNS Validation is also especially useful if the domains you are trying to get certification for are not public websites, or cannot serve http on port 80.
+To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, `http-01` ([validation over HTTP](http-validation.md)) and `dns-01` (validation via DNS). 
+
+**Wildcard domain certificates (those covering `*.yourdomain.com`) can only be requested using DNS validation.** DNS Validation is also especially useful if the domains you are trying to get certification for are not public websites, or cannot serve http requests on port 80.
 
 ## How to use DNS Validation
 

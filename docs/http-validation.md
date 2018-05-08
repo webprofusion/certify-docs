@@ -3,22 +3,22 @@ id: http-validation
 title: About HTTP Validation (http-01)
 ---
 ## Why use HTTP Validation?
-To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, http-01 (validation over HTTP) and dns-01 (validation via DNS). Wildcard domain certificates (those covering *.yourdomain.com) can only be requested using DNS validation.
+To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, `http-01` (validation over HTTP) and `dns-01` (validation via DNS). Wildcard domain certificates (those covering `*.yourdomain.com`) can only be requested using DNS validation.
 
 ## How to use HTTP Validation (on Windows)
-When Let's Encrypt performs domain validation over http (known as an http-01 challenge) they ask for a randomly named text file to be created in the /.well-known/acme-challenge path of your website. So they should be able to retrieve it at *http://<yourdomain>/.well-known/acme-challenge/<filename>*
+When Let's Encrypt performs domain validation over http (known as an `http-01` challenge) they ask for a randomly named text file to be created in the `/.well-known/acme-challenge` path of your website. So they should be able to retrieve it at `http://<yourdomain>/.well-known/acme-challenge/<filename>`
 
 On *IIS* this presents a few challenges:
 
 * The file does not have an extension (like .txt etc), so a static file handler usually needs to be configured to handle extension-less files
 * Existing handlers for extension-less content may intercept the request and prevent access to the file
 * If authentication (basic, forms etc) is enabled the access to the file will be restricted so this needs to be disabled
-* Due to the above, Asp.Net (and an app-pool) is generally required so that web.config can be supplied to override the configuration.
+* Due to the above, `Asp.Net` (and an app-pool) is generally required so that web.config can be supplied to override the configuration.
 * Other customizations or app requirements for the parent website may affect configuration
 
 For *Certify The Web*, we attempt to auto-configure the required configuration without modifying the configuration of the parent web application, 
-this avoids app restarts for the parent application. We create a file called **configcheck** in the /acme-challenge folder and
-we cycle through a number of alternative web.config options and test each one. The testing process then makes a local http request to your website at http://<yourdomain>/.well-known/acme-challenge/configcheck
+this avoids app restarts for the parent application. We create a file called **configcheck** in the `/.well-known/acme-challenge` folder and
+we cycle through a number of alternative web.config options and test each one. The testing process then makes a local http request to your website at `http://<yourdomain>/.well-known/acme-challenge/configcheck`
 
 If the local request fails (perhaps because the local server can't resolve itself via DNS etc) and if proxy API support is enabled, the app asks
 the https://api.certifytheweb.com server if it can access the resource instead (which also has the benefit of being external, just like the Let's Encrypt server is).
@@ -31,17 +31,20 @@ If this step succeeds, you're all set to automatically complete HTTP validation 
 The most common problem is that auto configuration has failed to determine the best config for your system. Different editions/distributions of windows have different defaults.
 
 1 - Check the challenge folder exists
-Check that test test configcheck file has been created at *wwwwroot*\inetpub\*yourwebsite*\.well-known\acme-challenge
 
-if not, check your folder permissions allow this folder/files to be created. If necessary, check the website root path is correctly mapped.
+Check that test test configcheck file has been created at: `wwwwroot\inetpub\*yourwebsite*\.well-known\acme-challenge`
 
-2 - Check you can access http://*yourdomain*/.well-known/acme-challenge/configcheck
+If not, check your folder permissions allow this folder/files to be created. If necessary, check the website root path is correctly mapped.
+
+2 - Check you can access 
+
+`http://*yourdomain*/.well-known/acme-challenge/configcheck`
 
 If the file exists on disk but you get an error **404** (not found) accessing the file then you have a problem with mapping extensionless files to static content.
 
 If you get an error **500** (server error), the web.config  probably has a directive your server can't support. If the web.config has a ```<clear/>``` directive, try removing it.
 
-If you get an error **403** (access denied), your web application is denying access to the challenge response file, probably because the parent web application requires authentication. Your web.config in the /acme-challenge/ folder should include the following directive:
+If you get an error **403** (access denied), your web application is denying access to the challenge response file, probably because the parent web application requires authentication. Your web.config in the `/acme-challenge/` folder should include the following directive:
 
 ```xml 
     <system.web>
@@ -50,7 +53,7 @@ If you get an error **403** (access denied), your web application is denying acc
         </authorization>
     </system.web>
   ```
-  In addition you may need to modify the web.config of the parent web application to allow access to the /.well-known/acme-challenge folder:
+  In addition you may need to modify the web.config of the parent web application to allow access to the `/.well-known/acme-challenge` folder:
 
   ```xml
   <configuration>
