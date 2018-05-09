@@ -19,7 +19,9 @@ class Footer extends React.Component {
   }
 
   render() {
+    
     const currentYear = new Date().getFullYear();
+
     return (
       <footer className="nav-footer" id="footer">
         <section className="sitemap">
@@ -33,16 +35,7 @@ class Footer extends React.Component {
               />
             )}
           </a>
-          <div>
-            <h5>Docs</h5>
-            <a href={this.docUrl('intro.html', this.props.language)}>
-              Getting Started (or other categories)
-            </a>
-            <a href={this.docUrl('FAQ.html', this.props.language)}>
-             FAQs
-            </a>
-           
-          </div>
+        
           <div>
             <h5>Community</h5>
            
@@ -59,12 +52,17 @@ class Footer extends React.Component {
               rel="noreferrer noopener">
               Twitter
             </a>
+
+             <a href="https://github.com/webprofusion/certify">GitHub</a>
+         
           </div>
           <div>
-            <h5>More</h5>
-        
-            <a href="https://github.com/webprofusion/certify">GitHub</a>
+            <h5>Help</h5>
+            <a href="https://certifytheweb.com/">Website</a>
          
+            <a href="https://certifytheweb.com/docs">Support</a>
+
+            <a href="https://github.com/webprofusion/certify/issues">Issues</a>
           </div>
         </section>
 
