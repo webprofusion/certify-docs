@@ -3,7 +3,7 @@ id: dns-ovh
 title: OVH DNS API
 ---
 
-## Setup your DNS API credentials
+## Setup your DNS API credentials for OVH
 To use the OVH DNS API, you need to create API keys on the OVH portal : 
 
 - Go to the page [https://api.ovh.com/createToken/index.cgi?GET=/domain/zone*&PUT=/domain/zone*&POST=/domain/zone*&DELETE=/domain/zone*](https://api.ovh.com/createToken/index.cgi?GET=/domain/zone*&PUT=/domain/zone*&POST=/domain/zone*&DELETE=/domain/zone*)
