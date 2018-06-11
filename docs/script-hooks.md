@@ -9,6 +9,10 @@ Certify is extendable via PowerShell scripts which can be configured to run befo
 
 A common use for script hooks is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
 
+**Note: Before v4, the app is 32-bit as is the PowerShell process. See the 64-bit wrapper example below to run 64-bit commands (a common issue if a command is not found). From v4 onwards the PowerShell process is 64-bit.**
+
+By default the background service runs as Local System, so your scripts will execute in that context, this can be important for issues regarding permissions, file system encryption etc.
+
 ## Script Basics
 
 Here is a sample script which demonstrates a few commonly accessed pieces of information:
@@ -130,7 +134,6 @@ ps64 -args $result -command {
 
 ## Troubleshooting
 
-<img src="images/testing request script hooks.png">
 
 * In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test. 
 * For a testing pre-request script, the `$result.IsSuccess` value will be `$false`, and for a post-request script the value will be `$true`. 

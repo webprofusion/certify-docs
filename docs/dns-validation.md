@@ -14,7 +14,7 @@ In order to validate your control of your domains to the certificate authority y
 
 To do this you needs to get the API credentials for the (hosted) DNS from your DNS providers control panel, store these credentials in the app then select them to be used for specific certificate requests.
 
-If your DNS provider (or custom DNS setup) does not have an API we can talk to, automated certificate requests and renewal will not be possible.
+If your DNS provider (or custom DNS setup) does not have an API we can talk to, you can write your own DNS update script or use the Manual DNS option (the request pauses while you manually update DNS).
 
 ## DNS Providers
 
@@ -22,8 +22,22 @@ The following DNS providers are supported:
 - [Azure DNS](dns-azuredns.md)
 - [AWS Route53](dns-awsroute53.md)
 - [Cloudflare](dns-cloudflare.md) DNS *Note: Free plans are available*
+- [DNS Made Easy](dns-dnsmadeeasy.md)
 - [GoDaddy](dns-godaddy.md)
-- [DNS Made Easy](dns-dnsmadeeasy.md)3
 - [OVH](dns-ovh.md)
+- Simple DNS Plus
 
-**If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they work.**
+**If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they still work.**
+
+## DNS Scripting
+To provide your own script to update DNS you need to create (or source) a Windows (CMD) batch file which expects the following sequence of arguments and creates a corresponding TXT record in your DNS zone:
+- Target Domain (e.g. example.com)
+- Record Name (e.g. _acme-challenge.example.com)
+- Record Value (e.g. ABCBD123456789)
+
+e.g. given a script at *C:\customscripts\UpdateDNS.bat*, this will be executed as:
+ ```
+C:\customscripts\UpdateDNS.bat example.com _acme-challenge.example.com ABCBD123456789
+```
+Note: you should assume the working directory of the process will not be the same as the script.
+

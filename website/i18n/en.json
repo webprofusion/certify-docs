@@ -13,6 +13,7 @@
     "dns-cloudflare": "Cloudflare DNS",
     "dns-dnsmadeeasy": "DnsMadeEasy DNS API",
     "dns-godaddy": "GoDaddy DNS",
+    "dns-ovh": "OVH DNS API",
     "dns-validation": "About DNS Validation (dns-01)",
     "faq": "Frequently Asked Questions",
     "http-validation": "About HTTP Validation (http-01)",
