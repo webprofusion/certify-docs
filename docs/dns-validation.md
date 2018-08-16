@@ -21,7 +21,7 @@ If your DNS provider (or custom DNS setup) does not have an API we can talk to, 
 The following DNS providers are supported:
 - [Azure DNS](dns-azuredns.md)
 - [AWS Route53](dns-awsroute53.md)
-- [Cloudflare](dns-cloudflare.md) DNS *Note: Free plans are available*
+- [Cloudflare](dns-cloudflare.md) DNS *(Note: Cloudflare offer a free tier for DNS services)*
 - [DNS Made Easy](dns-dnsmadeeasy.md)
 - [GoDaddy](dns-godaddy.md)
 - [OVH](dns-ovh.md)
@@ -30,7 +30,7 @@ The following DNS providers are supported:
 **If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they still work.**
 
 ## DNS Scripting
-To provide your own script to update DNS you need to create (or source) a Windows (CMD) batch file which expects the following sequence of arguments and creates a corresponding TXT record in your DNS zone:
+To provide your own script to update DNS you need to create (or source) a Windows (CMD) batch file which expects the following sequence of arguments and update a corresponding TXT record in your DNS zone:
 - Target Domain (e.g. example.com)
 - Record Name (e.g. _acme-challenge.example.com)
 - Record Value (e.g. ABCBD123456789)
@@ -39,5 +39,5 @@ e.g. given a script at *C:\customscripts\UpdateDNS.bat*, this will be executed a
  ```
 C:\customscripts\UpdateDNS.bat example.com _acme-challenge.example.com ABCBD123456789
 ```
-Note: you should assume the working directory of the process will not be the same as the script.
+Notes: you should assume the working directory of the process will not be the same as the script. When an 'apex domain' like `example.com` is included in the certificate request for a wildcard (e.g. `*.example.com`) both TXT records will have the same name but different values, so updates need to add to the TXT record values. For this reason it's also a good idea to provide a (well tested!) delete script to clean up the TXT record once the request has completed, otherwise your TXT record values will grow with every validation attempt.
 

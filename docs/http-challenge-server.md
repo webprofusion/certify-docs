@@ -1,4 +1,7 @@
-
+---
+id: http-challenge-server
+title: Http Challenge Server
+---
 # Http Challenge Server
 The app features an optional internal Http Challenge Server implemented as an http.sys aware http listener, sitting in front of IIS in the http.sys http request pipeline.
 
