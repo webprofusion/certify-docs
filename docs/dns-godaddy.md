@@ -14,7 +14,7 @@ To use the GoDaddy DNS API, you need to setup your API key and authentication se
 
 ## Add New Stored Credential
 
-Now add a new Stored Credential in Certify, choosing Cloudflare DNS as the provider type, enter:
+Now add a new Stored Credential in Certify, choosing GoDaddy DNS as the provider type, enter:
     - Your API Key
     - Your API Secret
     - Select Save.
