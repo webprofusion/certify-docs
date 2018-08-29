@@ -3,8 +3,14 @@ Documentation Site for the Certify SSL Manager app for windows
 
 This uses markdown syntax document files and the [Docusaurus](https://docusaurus.io) build system.
 
-## Build
+## Run
 
-> cd /website
+```> cd /website
 > npm install
 > npm start
+```
+
+## Build
+```
+> npm run build
+```
