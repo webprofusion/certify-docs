@@ -33,12 +33,12 @@ $result.ManagedItem.GroupId   # ex: 1, 2, 3, ...
 $result.ManagedItem.RequestConfig.WebsiteRootPath   # ex: "C:\inetpub\wwwroot"
 
 # the path to the created/renewed certificate PFX file
-$result.MangagedItem.CertificatePath   # ex: "C:\ProgramData\ACMESharp\sysVault\99-ASSET\cert_ident8cf8bd9c-all.pfx"
+$result.ManagedItem.CertificatePath   # ex: "C:\ProgramData\ACMESharp\sysVault\99-ASSET\cert_ident8cf8bd9c-all.pfx"
 
 # the certificate thumbprint
 $result.ManagedItem.CertificateThumbprintHash # ex: "78b1080a1bf5e7fc0bbb0c0614fc4a18932db5f9"
 
-# set to $true in a pre-request hook to prevent the certificate from 
+# set to $true in a pre-request hook to prevent the certificate from
 # being requested (has no effect in post-request hooks)
 $result.Abort = $false
 ```
@@ -47,7 +47,7 @@ $result.Abort = $false
 
 Notes: Pre-request scripts are executed immediately before the Certificate Request is about to be made (including the challenge file configuration checks).
 
-* The `$result.IsSuccess` value will always be `$false`. 
+* The `$result.IsSuccess` value will always be `$false`.
 * If for some reason your script would like to prevent the Certificate Request from being executed, you may set `$result.Abort` to `$true` and the site your script was executed for will be skipped.
 
 ### Example: Update IIS site root directory dynamically
@@ -73,13 +73,13 @@ Notes: Post-request scripts are executed immediately after the Certificate Reque
 param($result)
 if (!$result.IsSuccess) {
    $EmailFrom = "username@gmail.com"
-   $EmailTo = "username@gmail.com" 
+   $EmailTo = "username@gmail.com"
    $Subject = "Cert Request Failed: " + $result.ManagedItem.RequestConfig.PrimaryDomain
-   $Body = "Error: " + $result.Message 
-   $SMTPServer = "smtp.gmail.com" 
-   $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587) 
-   $SMTPClient.EnableSsl = $true 
-   $SMTPClient.Credentials = New-Object System.Net.NetworkCredential("username@gmail.com", "password"); 
+   $Body = "Error: " + $result.Message
+   $SMTPServer = "smtp.gmail.com"
+   $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
+   $SMTPClient.EnableSsl = $true
+   $SMTPClient.Credentials = New-Object System.Net.NetworkCredential("username@gmail.com", "password");
    $SMTPClient.Send($EmailFrom, $EmailTo, $Subject, $Body)
    write-output "Sent notification email"
 }
@@ -120,7 +120,7 @@ Enable-ExchangeCertificate -Thumbprint $result.ManagedItem.CertificateThumbprint
 (switches to 64-bit powershell to import the 64-bit RemoteDesktop module)
 ```PowerShell
 param($result)
-set-alias ps64 "$env:windir\sysnative\WindowsPowerShell\v1.0\powershell.exe" 
+set-alias ps64 "$env:windir\sysnative\WindowsPowerShell\v1.0\powershell.exe"
 ps64 -args $result -command {
    $result = $args[0]
    $pfxpath = $result.ManagedItem.CertificatePath
@@ -135,8 +135,8 @@ ps64 -args $result -command {
 ## Troubleshooting
 
 
-* In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test. 
-* For a testing pre-request script, the `$result.IsSuccess` value will be `$false`, and for a post-request script the value will be `$true`. 
+* In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test.
+* For a testing pre-request script, the `$result.IsSuccess` value will be `$false`, and for a post-request script the value will be `$true`.
 * The `$result.MangagedItem.CertificatePath` value be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
 
 ### Using 64-bit modules
@@ -144,7 +144,7 @@ ps64 -args $result -command {
 If you attempt to import a module with [`Import-Module`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/import-module?view=powershell-5.1) that does not run in 32-bit mode (i.e. RemoteDesktop), you may receive an error like `"Import-Module : The specified module 'RemoteDesktop' was not loaded because no valid module file was found in any module directory."`. To load a 64-bit module you can use this snippet to pass the `$result` object to a script running in 64-bit powershell:
 ```powershell
 param($result)
-set-alias ps64 "$env:windir\sysnative\WindowsPowerShell\v1.0\powershell.exe" 
+set-alias ps64 "$env:windir\sysnative\WindowsPowerShell\v1.0\powershell.exe"
 ps64 -args $result -command {
    $result = $args[0]
    write-output $result.IsSuccess
