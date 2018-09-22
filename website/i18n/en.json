@@ -4,32 +4,83 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "Documentation for Certify SSL Manager and related Certify The Web services.",
-    "backgroundservice": "Certify SSL Manager background service",
-    "certificate-process": "Certificate Request Process",
-    "commandline": "Command Line (CLI) Options",
-    "commonquestions": "Common Questions",
-    "csv-import": "CSV Bulk Import via Command Line",
-    "deployment": "Certificate Deployment",
-    "dns-awsroute53": "AWS Route53 DNS",
-    "dns-azuredns": "Using Azure DNS",
-    "dns-cloudflare": "Cloudflare DNS",
-    "dns-dnsmadeeasy": "DnsMadeEasy DNS API",
-    "dns-godaddy": "GoDaddy DNS",
-    "dns-ovh": "OVH DNS API",
-    "dns-validation": "About DNS Validation (dns-01)",
-    "faq": "Frequently Asked Questions",
-    "http-challenge-server": "Http Challenge Server",
-    "http-validation": "About HTTP Validation (http-01)",
-    "intro": "Getting Started",
-    "letsencrypt": "What is Let's Encrypt?",
-    "renewals": "Certificate Renewals",
-    "script-hooks": "Scripting Hooks",
-    "ssl-windows": "Using Certificates in Windows",
-    "ui-options": "Guide to UI Options",
-    "Getting Started": "Getting Started",
-    "FAQ": "FAQ",
-    "Guides": "Guides",
-    "Useful Info": "Useful Info"
+    "docs": {
+      "backgroundservice": {
+        "title": "Certify SSL Manager background service"
+      },
+      "certificate-process": {
+        "title": "Certificate Request Process"
+      },
+      "commandline": {
+        "title": "Command Line (CLI) Options"
+      },
+      "commonquestions": {
+        "title": "Common Questions"
+      },
+      "csv-import": {
+        "title": "CSV Bulk Import via Command Line"
+      },
+      "deployment": {
+        "title": "Certificate Deployment"
+      },
+      "dns-awsroute53": {
+        "title": "AWS Route53 DNS"
+      },
+      "dns-azuredns": {
+        "title": "Using Azure DNS"
+      },
+      "dns-cloudflare": {
+        "title": "Cloudflare DNS"
+      },
+      "dns-dnsmadeeasy": {
+        "title": "DnsMadeEasy DNS API"
+      },
+      "dns-godaddy": {
+        "title": "GoDaddy DNS"
+      },
+      "dns-ovh": {
+        "title": "OVH DNS API"
+      },
+      "dns-validation": {
+        "title": "About DNS Validation (dns-01)"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions"
+      },
+      "http-challenge-server": {
+        "title": "Http Challenge Server"
+      },
+      "http-validation": {
+        "title": "About HTTP Validation (http-01)"
+      },
+      "intro": {
+        "title": "Getting Started"
+      },
+      "letsencrypt": {
+        "title": "What is Let's Encrypt?"
+      },
+      "renewals": {
+        "title": "Certificate Renewals"
+      },
+      "script-hooks": {
+        "title": "Scripting Hooks"
+      },
+      "ssl-windows": {
+        "title": "Using Certificates in Windows"
+      },
+      "ui-options": {
+        "title": "Guide to UI Options"
+      }
+    },
+    "links": {
+      "Getting Started": "Getting Started",
+      "FAQ": "FAQ"
+    },
+    "categories": {
+      "Getting Started": "Getting Started",
+      "Guides": "Guides",
+      "Useful Info": "Useful Info"
+    }
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

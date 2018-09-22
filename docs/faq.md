@@ -50,7 +50,7 @@ Check the existing bindings you have on your sites. If you are binding to a spec
 If you are using a specific IP address in your SNI binding settings:
 This will currently create at least 2 bindings against the certificate which you can only see using 'netsh http show sslcert', one will be bound ip:port (e.g. 172.31.10.142:443) and the other will be hostname:port (e.g. example.certifytheweb.com:443).
 
-The IP:Port binding should be removed as IP specific bindings take precedence over SNI (hostname) bindings. The solution is to delete the IP specific binding (replace the IP address with the correct one for your website): 
+The IP:Port binding should be removed as IP specific bindings take precedence over SNI (hostname) bindings. The solution is to delete the IP specific binding (replace the IP address with the correct one for your website):
 netsh http delete sslcert ipport=172.31.10.142:443
 
 Then change the settings for the Managed Site in Certify SSL Manager, under 'Advanced', set IP address to All Unassigned. This is to avoid the same issue repeating.
@@ -58,3 +58,11 @@ Then change the settings for the Managed Site in Certify SSL Manager, under 'Adv
 > If you receive an error 'A specified login session does not exist'
 
 Use the 'Reapply Certificate to Bindings' button under Managed Site> Info. This is usually a problem with private key permissions. You may also find that sometimes a server restart is required to resolve this type of problem.
+
+## I have 2 servers running the app.  Can the contact email can be the same on both?
+*Yes, the contact email can be the same on all servers, or you can vary it as required.* There is only one contact per server. The contact email used at the time of requesting a certificate remains fixed until that certificate expires. The email address is generally used by Let's Encrypt to warn you of expiring certificates you have not yet renewed. If you get emails for a certificate you no longer need you can just ignore them and they will stop when the certificate has expired.
+
+
+## "Service Not Started" message
+By default the background service runs on port localhost:9696 and various conditions can cause conflicts. Read more to find out how to [configure the background service](backgroundservice.md).
+
