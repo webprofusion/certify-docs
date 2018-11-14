@@ -28,6 +28,13 @@ If you have the main Certify SSL Manager UI open you will see the sites being ad
 
 Performing the same import twice will create duplicates so you should backup your c:\programdata\certify\manageditems.db first in case you need to restore it.
 
+## Requesting Certificates after CSV Import
+The import will set up new managed certificates in the app but will not request or apply any certificates until the next automated renewal run (which is hourly).
+
+To initiate the certificate requests immediately use the command line 'renew' option as Administrator, which will perform requests and deployment for all pending certificate renewals (including certificates not yet requested):
+
+`C:\Program Files\CertifyTheWeb> certify renew`
+
 # Scripting to create a CSV file
 You may find a powershell command such as the following useful as a starting place (Note: help wanted on a better script):
 ```PS
@@ -37,6 +44,6 @@ Get-WebBinding | % {
         Name = $name
         Binding = $_.bindinginformation.Split(":")[-1]
     }
-} | Group-Object -Property Name | 
+} | Group-Object -Property Name |
 Format-Table Name, @{n="Bindings";e={$_.Group.Binding -join "`n"}} -Wrap
 ```
