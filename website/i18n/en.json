@@ -14,9 +14,6 @@
       "commandline": {
         "title": "Command Line (CLI) Options"
       },
-      "commonquestions": {
-        "title": "Common Questions"
-      },
       "csv-import": {
         "title": "CSV Bulk Import via Command Line"
       },

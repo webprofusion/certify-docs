@@ -20,3 +20,10 @@ The app should try to negotiate a different service port if it detects this prob
  port:9696
 }
 ```
+For example an alternative configuration might be:
+```json
+{
+ host:"127.0.0.1",
+ port:9600
+}
+```
