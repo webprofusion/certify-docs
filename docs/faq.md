@@ -20,7 +20,7 @@ Registered users can create a new support request for help. Email *support at ce
 
 ## Getting Started
 
-To get started using the Certify SSL Manager app for Windows, see the [Getting Started Guide](gettingstarted.md).
+To get started using the Certify SSL Manager app for Windows, see the [Getting Started Guide](intro.md).
 
 ## FAQs
 ### How do I create a SAN certificate?
@@ -30,6 +30,9 @@ Certify SSL Manager reads domain/hostname information from IIS bindings or you c
 ### I get an error when trying to make a new request
 
 Read the error carefully and check the log for your managed site. Assuming your server has direct access to the internet without a proxy (required), you can use the 'Test' option to see if there are any problems the app can diagnose. Alternatively you can also try using the awesome [Let's Debug](https://letsdebug.net) service.
+
+### I am completing the validation step correctly but I still get an error
+Depending on the app version you may be encountering a bug with your account (for Let's Encrypt). Go to Settings and update the email address (it can be the same address), internally this will update your account id and account private key. Then try your request again.
 
 ### "Service Not Started" message
 By default the background service runs on port localhost:9696 and various conditions can cause conflicts. Read more to find out how to [configure the background service](backgroundservice.md).
@@ -62,8 +65,11 @@ Check the 'Preview' tab in the app for your site to ensure the https binding of 
 
 Use the 'Re-apply Certificate to Bindings' button under *Managed Certificate> Show Advanced Options > Other Options*. This is usually a transient IIS issue and can be solved with a restart. If the problem persists you may have an issue with private key permissions. 
 
-## I have 2 servers running the app.  Can the contact email can be the same on both?
-*Yes, the contact email can be the same on all servers, or you can vary it as required.* There is only one contact per server. The contact email used at the time of requesting a certificate remains fixed until that certificate expires. The email address is generally used by Let's Encrypt to warn you of expiring certificates you have not yet renewed. If you get emails for a certificate you no longer need you can just ignore them and they will stop when the certificate has expired.
+### I have 2 servers running the app.  Can the contact email can be the same on both?
+*Yes, the contact email can be the same on all servers, or you can vary it as required.* There is only one contact per server. The contact email used at the time of requesting a certificate remains fixed until that certificate expires. The email address is generally used by Let's Encrypt to warn you of expiring certificates you have not yet renewed. 
+
+### I have an email from Let's Encrypt Expiry Bot saying my certificate is about to expire
+If Let's Encrypt think you haven't renewed a certificate they will let you know using the email address registered as a contact when you installed the app. If your receive an expiry warning, check your certificate is renewing OK. If it all looks good you probably changed the list of domains in your certificate at some point (perhaps adding www. or adding/removing domains) and LE is reminding you about the old version of your certificate, so you can ignore the notification.
 
 
 

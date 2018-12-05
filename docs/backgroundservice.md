@@ -16,14 +16,17 @@ The certify background service operates a local API for the app on port `9696` b
 The app should try to negotiate a different service port if it detects this problem however you can manually specify the settings if required by editing/adding the file `c:\programdata\certify\serviceconfig.json` with content as per the following (adjusted as required) then restarting both the service and UI:
 ```json
 {
- host:"localhost",
- port:9696
+ "host":"localhost",
+ "port":9696
 }
 ```
 For example an alternative configuration might be:
 ```json
 {
- host:"127.0.0.1",
- port:9600
+ "host":"127.0.0.1",
+ "port":9600
 }
 ```
+
+## Other Considerations
+To operate properly the background service needs to be able to register an http listener for it's API server via http.sys, in some versions of windows the Http device may not be enabled and you will need to enable it. In other cases, you may have restrictions on port bindings to localhost, so you may have to modify these https://docs.microsoft.com/en-us/windows/desktop/http/add-urlacl or change the service config as above.
