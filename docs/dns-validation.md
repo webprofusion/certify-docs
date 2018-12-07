@@ -31,13 +31,14 @@ The following DNS providers are supported:
 
 ## DNS Scripting
 To provide your own script to update DNS you need to create (or source) a Windows (CMD) batch file which expects the following sequence of arguments and update a corresponding TXT record in your DNS zone:
-- Target Domain (e.g. example.com)
-- Record Name (e.g. _acme-challenge.example.com)
-- Record Value (e.g. ABCBD123456789)
+- Target Domain (e.g. `example.com`)
+- Record Name (e.g. `_acme-challenge.example.com`)
+- Record Value (e.g. `ABCBD123456789`)
+- Zone Id (e.g. `OptionalZoneId`, this is often useful to match the specific zone to update)
 
 e.g. given a script at *C:\customscripts\UpdateDNS.bat*, this will be executed as:
  ```
-C:\customscripts\UpdateDNS.bat example.com _acme-challenge.example.com ABCBD123456789
+C:\customscripts\UpdateDNS.bat example.com _acme-challenge.example.com ABCBD123456789 OptionalZoneId
 ```
 Notes: you should assume the working directory of the process will not be the same as the script. When an 'apex domain' like `example.com` is included in the certificate request for a wildcard (e.g. `*.example.com`) both TXT records will have the same name but different values, so updates need to add to the TXT record values. For this reason it's also a good idea to provide a (well tested!) delete script to clean up the TXT record once the request has completed, otherwise your TXT record values will grow with every validation attempt.
 
