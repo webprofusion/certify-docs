@@ -1,6 +1,6 @@
 ---
 id: backgroundservice
-title: Certify SSL Manager background service
+title: Background Service
 ---
 
 In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" (Certify SSL Manager Service). This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information.
@@ -61,6 +61,6 @@ Then start the http service
  ```
  If the service remains at `STOPPING` or similar then a system reboot may be required.
 
- Once completed, restart the Certift SSL Manager background service from local services, then open the Certify The Web UI again to see if it can connect.
+ Once completed, restart the Certify SSL Manager background service from local services, then open the Certify The Web UI again to see if it can connect.
 
  In other cases, you may have permission restrictions on port bindings to localhost, so you may have to modify these https://docs.microsoft.com/en-us/windows/desktop/http/add-urlacl or change the service config as above.

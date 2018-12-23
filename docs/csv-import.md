@@ -7,7 +7,7 @@ You can perform a bulk import of managed sites (requires the registered version)
 
 ## Create a new CSV file
 
-Your file should be in the format IISSiteID, Name, Domain1;Domain2;Domain3
+Your file should be in the format IIS SiteID, Name, Domain1;Domain2;Domain3
 
 Such as:
 ```
@@ -35,15 +35,9 @@ To initiate the certificate requests immediately use the command line 'renew' op
 
 `C:\Program Files\CertifyTheWeb> certify renew`
 
-# Scripting to create a CSV file
-You may find a powershell command such as the following useful as a starting place (Note: help wanted on a better script):
-```PS
-Get-WebBinding | % {
-    $name = $_.ItemXPath -replace '(?:.*?)name=''([^'']*)(?:.*)', '$1'
-    New-Object psobject -Property @{
-        Name = $name
-        Binding = $_.bindinginformation.Split(":")[-1]
-    }
-} | Group-Object -Property Name |
-Format-Table Name, @{n="Bindings";e={$_.Group.Binding -join "`n"}} -Wrap
+# Advanced CSV options
+You can optionally specify the CSV columns to import and their order by specifying a header row including any of:
+
+```CSV 
+siteid, name, domains, primarydomain, includeinautorenew, performautoconfig,performchallengefilecopy, performextensionlessconfigchecks,performtlssnibindingconfigchecks,performautomatedcertbinding,enablefailurenotifications, prerequestpowershellscript, postrequestpowershellscript, webhooktrigger, webhookmethod, webhookurl,webhookcontenttype, webhookcontentbody
 ```

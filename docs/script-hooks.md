@@ -5,7 +5,7 @@ title: Scripting Hooks
 
 # Request Script Hooks
 
-Certify is extendable via PowerShell scripts which can be configured to run before or after the Certificate Request. The scripts are provided a parameter `$result` which contains the status and details of the site whose certificate is being requested. You may execute any commands that the user running the test script has access to, including creating new processes, or using other command line tools.
+Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request. The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
 
 A common use for script hooks is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
 
@@ -13,9 +13,9 @@ A common use for script hooks is to use your new certificate for services other 
 
 By default the background service runs as Local System, so your scripts will execute in that context, this can be important for issues regarding permissions, file system encryption etc.
 
-## Script Basics
+## Scripting Basics
 
-Here is a sample script which demonstrates a few commonly accessed pieces of information:
+Here is a sample PowerShell script which demonstrates a few commonly accessed pieces of information:
 
 ```PowerShell
 param($result)   # required to access the $result parameter
@@ -26,22 +26,27 @@ $result.IsSuccess
 # object containing all information Certify has about the saved Site
 $result.ManagedItem
 
-# the IIS site ID
-$result.ManagedItem.GroupId   # ex: 1, 2, 3, ...
+# the IIS (or other service) site ID
+$result.ManagedItem.ServerSiteId   # ex: 1, 2, 3, ...
 
-# the IIS site directory
+# the website root directory (if applicable)
 $result.ManagedItem.RequestConfig.WebsiteRootPath   # ex: "C:\inetpub\wwwroot"
 
 # the path to the created/renewed certificate PFX file
-$result.ManagedItem.CertificatePath   # ex: "C:\ProgramData\ACMESharp\sysVault\99-ASSET\cert_ident8cf8bd9c-all.pfx"
+$result.ManagedItem.CertificatePath   # ex: "C:\ProgramData\Certify\certes\assets\pfx\00f9e07e-83ca-4029-a173-4b704ee78996.pfx"
 
 # the certificate thumbprint
 $result.ManagedItem.CertificateThumbprintHash # ex: "78b1080a1bf5e7fc0bbb0c0614fc4a18932db5f9"
 
-# set to $true in a pre-request hook to prevent the certificate from
+# the previous certificate thumbprint
+$result.ManagedItem.CertificatePreviousThumbprintHash  # ex: "18c1060a1be5e6fc0bbb0c0614fc4a18932db5fa"
+
+# You can set $result.Abort to $true in a pre-request hook to prevent the certificate from
 # being requested (has no effect in post-request hooks)
 $result.Abort = $false
 ```
+
+The `$result.ManageItem` object is an instance of the <a href="https://github.com/webprofusion/certify/blob/development/src/Certify.Models/Config/ManagedCertificate.cs" target="_blank">ManagedCertificate</a> class, so all of the properties it has will be available in your script:
 
 ## Pre-Request Script Hooks
 
@@ -117,7 +122,7 @@ Enable-ExchangeCertificate -Thumbprint $result.ManagedItem.CertificateThumbprint
 ```
 
 ### Example: update Remote Desktop Role Certificates
-(switches to 64-bit powershell to import the 64-bit RemoteDesktop module)
+This example assumes it's starting in a 32-bit instance and switches to the 64-bit powershell to import the 64-bit RemoteDesktop module. V4.x onwards of the app is 64-bit only.
 ```PowerShell
 param($result)
 set-alias ps64 "$env:windir\sysnative\WindowsPowerShell\v1.0\powershell.exe"
@@ -137,7 +142,7 @@ ps64 -args $result -command {
 
 * In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test.
 * For a testing pre-request script, the `$result.IsSuccess` value will be `$false`, and for a post-request script the value will be `$true`.
-* The `$result.MangagedItem.CertificatePath` value be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
+* The `$result.MangagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
 
 ### Using 64-bit modules
 

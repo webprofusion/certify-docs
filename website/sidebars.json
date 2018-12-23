@@ -16,7 +16,8 @@
     "Useful Info": [
       "ssl-windows",
       "commandline",
-      "csv-import"
+      "csv-import",
+      "backgroundservice"
     ]
   }
 }

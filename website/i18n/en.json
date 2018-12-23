@@ -6,7 +6,7 @@
     "tagline": "Documentation for Certify SSL Manager and related Certify The Web services.",
     "docs": {
       "backgroundservice": {
-        "title": "Certify SSL Manager background service"
+        "title": "Background Service"
       },
       "certificate-process": {
         "title": "Certificate Request Process"
@@ -19,6 +19,9 @@
       },
       "deployment": {
         "title": "Certificate Deployment"
+      },
+      "dns-acmedns": {
+        "title": "Acme Dns (DNS challenge CNAME redirection)"
       },
       "dns-awsroute53": {
         "title": "AWS Route53 DNS"
