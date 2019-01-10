@@ -3,7 +3,7 @@ id: intro
 title: Getting Started
 ---
 
-*Certify The Web* (a.k.a Certify) is a Let's Encrypt GUI for Windows, allowing you to request, deploy and auto-renew free SSL/TLS certificates from the letsencrypt.org Certificate Authority. This guide will help you get started and detail some of the more advanced options available in the app.
+[*Certify The Web* (a.k.a Certify)](https://certifytheweb.com) is a GUI for  Let's Encrypt on Windows, allowing you to request, deploy and auto-renew free SSL/TLS certificates from the letsencrypt.org Certificate Authority. This guide will help you get started and detail some of the more advanced options available in the app.
 
 ![Basic Certificate Request UI](assets/ui.png)
 

@@ -46,7 +46,7 @@ $result.ManagedItem.CertificatePreviousThumbprintHash  # ex: "18c1060a1be5e6fc0b
 $result.Abort = $false
 ```
 
-The `$result.ManageItem` object is an instance of the <a href="https://github.com/webprofusion/certify/blob/development/src/Certify.Models/Config/ManagedCertificate.cs" target="_blank">ManagedCertificate</a> class, so all of the properties it has will be available in your script:
+The `$result.ManagedItem` object is an instance of the <a href="https://github.com/webprofusion/certify/blob/development/src/Certify.Models/Config/ManagedCertificate.cs" target="_blank">ManagedCertificate</a> class, so all of the properties it has will be available in your script:
 
 ## Pre-Request Script Hooks
 
