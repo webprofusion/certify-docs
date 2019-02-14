@@ -37,12 +37,9 @@ Once connected, create the Application and Service Principal
 Run the following script:
 
 ```powershell
-$azureAccountName ="user@domain.com"
 $azurePassword = ConvertTo-SecureString "your secure password" -AsPlainText -Force
 
-$psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword) 
-
-New-AzureRmADServicePrincipal -DisplayName LetsEncrypt -Password $psCred
+New-AzureRmADServicePrincipal -DisplayName LetsEncrypt -Password $azurePassword
 ```
 
 Once this has successfully run, you need to retrieve the ApplicationID:
