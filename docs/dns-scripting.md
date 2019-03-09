@@ -31,7 +31,7 @@ REM this example then calls a custom python script forwarding all the arguments
 c:\python27\python.exe create_dns_txt_example.py %*
 ```
 
-In the following Pythong example the args are available in the `sys.argv` list. This example passes that list to a function called `main` and logs some example stuff (`create_dns_txt_example.py` logging to `dns_create_test.log`).
+In the following Python example the args are available in the `sys.argv` list. This example passes that list to a function called `main` and logs some example stuff (`create_dns_txt_example.py` logging to `dns_create_test.log`).
 
 Your real script would use your DNS providers API or a library such as Apache libcloud.
 
