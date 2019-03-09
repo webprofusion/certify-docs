@@ -41,6 +41,9 @@
       "dns-ovh": {
         "title": "OVH DNS API"
       },
+      "dns-scripting": {
+        "title": "DNS Scripting"
+      },
       "dns-validation": {
         "title": "About DNS Validation (dns-01)"
       },
