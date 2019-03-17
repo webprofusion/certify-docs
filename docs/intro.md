@@ -15,6 +15,7 @@ Note: this documentation is a work-in-progress and applies to v4.0 and higher.
     - [DNS Validation (dns-01)](dns-validation.md)
     - [HTTP Validation (http-01)](http-validation.md)
     - [Deployment](deployment.md)
+- [Scripting](script-hooks.md) e.g. custom deployment for Exchange, RDP Gateway or other services
 - [Certificate Renewal](renewals.md)
 - Limitations
     - [SSL on Windows](ssl-windows.md)

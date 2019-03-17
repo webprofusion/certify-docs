@@ -3,9 +3,9 @@ id: script-hooks
 title: Scripting Hooks
 ---
 
-# Request Script Hooks
+# Scripting
 
-Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request. The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
+Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request (check `Show Advanced Options` and open the `Scripting` tab). The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
 
 A common use for script hooks is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
 
@@ -137,6 +137,47 @@ ps64 -args $result -command {
 }
 ```
 
+
+### Example: Update VMWare Horizon certificate
+This example removes any previous certificate with the same FriendlyName (`vdm`) then renames the Friendly Name property of the new certificate to `vmd`. It then restarts the `wstunnel` service.
+
+```PowerShell
+param($result)
+
+if ($result.IsSuccess) {
+
+   $thumbprint = $result.ManagedItem.CertificateThumbprintHash # e.g. 2c127d49b4f63d947dd7b91750c9e57751eced0c
+
+   # remove the old cert (by Friendly Name 'vdm') to avoid duplication, if it exists
+   Get-ChildItem -Path cert:\LocalMachine\My | Where {$_.FriendlyName.Equals("vdm")} | Remove-Item
+
+   # rename our new certificate
+   $cert = Get-ChildItem -Path cert:\LocalMachine\My\$thumbprint
+
+   $cert.FriendlyName ="vdm"
+
+   # restart the wstunnel service to apply certificate
+   Restart-Service wstunnel -Force -ErrorAction Stop
+}
+
+```
+
+
+#### Example: Update certificate for SSTP VPN
+```PowerShell
+
+
+param($result)
+
+# Store certificate in variable
+$cert = Get-ChildItem -Path Cert:\LocalMachine\My | Where-Object {$_.Thumbprint -match $result.ManagedItem.CertificateThumbprintHash}
+
+# Stop RRAS, set cert, start RRAS
+Import-Module RemoteAccess
+Stop-Service RemoteAccess
+Set-RemoteAccess -SslCertificate $cert
+Start-Service RemoteAccess
+```
 ## Troubleshooting
 
 
