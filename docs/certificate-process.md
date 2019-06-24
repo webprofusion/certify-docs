@@ -8,7 +8,7 @@ When you install Certify you will be prompted to register with the Let's Encrypt
 ## Requesting a Certificate
 
 ### 1. Choose the domains to include
-The first step of requesting a certificate if to decide which domain (and subdomains) need to be included in your certificate. You can manually specify these or you can load the configured hostname bindings from an existing IIS site on your server. If you choose an existing IIS site this will also be your default target for the final https bindings to be created/updated.
+The first step of requesting a certificate is to decide which domain (and subdomains) need to be included in your certificate. You can manually specify these or you can load the configured hostname bindings from an existing IIS site on your server. If you choose an existing IIS site this will also be your default target for the final https bindings to be created/updated.
 
 ### 2. Decide how to validate domains
 You will need to prove you control the domains you have added to your certificate. Only public domains can be validated using Let's Encrypt so intranet sites (hostname only with no domain etc e.g. SRVDEVAPP01) are not supported, however public domain names (like srvdevapp01.dev.domain.com) are fine.
