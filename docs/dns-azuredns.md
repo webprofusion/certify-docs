@@ -15,23 +15,14 @@ Follow the instructions here: https://docs.microsoft.com/en-us/powershell/azure/
 From PowerShell:
 
 ```powershell
-PS C:\Users\Tony> Connect-AzureRmAccount
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# Import-Module Az.Accounts
+PS C:\Users\Tony> Connect-AzAccount
 ```
 
 This will launch a web dialog to log into your Azure tenant. Ensure you connect with an account with the relevant administrative credentials in the portal.
 
 Pop your password and MFA requirements in as required when prompted.
-
-Note: I found that this wouldn’t authenticate via the ageing proxy server on one site, with the rather esoteric error as below:
-
-```
-Connect-AzureRmAccount : An error occurred while sending the request.
-At line:1 char:1
-+ Connect-AzureRmAccount
-+ ~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], HttpRequestException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
-```
 
 Once connected, create the Application and Service Principal
 Run the following script:
@@ -39,13 +30,15 @@ Run the following script:
 ```powershell
 $azurePassword = ConvertTo-SecureString "your secure password" -AsPlainText -Force
 
-New-AzureRmADServicePrincipal -DisplayName LetsEncrypt -Password $azurePassword
+# Import-Module Az.Resources
+$credentials = New-Object Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property @{ StartDate=Get-Date; EndDate=Get-Date -Year 2024; Password=$azurePassword}
+$MyServicePrincipal = New-AzADServicePrincipal -DisplayName "LetsEncrypt" -PasswordCredential $credentials
 ```
 
 Once this has successfully run, you need to retrieve the ApplicationID:
 
 ```powershell
-Get-AzureRmADApplication | Select-Object displayname, objectid, applicationid
+Get-AzADApplication | Select-Object displayname, objectid, applicationid
 ```
 
 It returns something like the following:
@@ -76,22 +69,23 @@ This will have created a service principal and an underlying Azure application.
 From the Azure portal, click Azure Active Directory:
 
 - Click App Registrations
-- Click Show all Applications
 - Click LetsEncrypt
-- Click Settings
-- Click Keys
+- Click Certificates & secrets
+- Click Client secrets
+- Click New client secret
 - Type a key description, choose when it will expire (or never – your choice) and click save.
 
 *IMPORTANT: The secret is only shown at this point. Copy it as once it’s hidden there is NO way to retrieve it*
 
-## 5 – Retrieve Tenant ID
+## 5 – Retrieve Tenant ID and Subscription ID
 There are any number of ways to get the tenant ID, but since we’re already in PowerShell:
 
 ```powershell
-Get-AzureRmTenant
+Get-AzSubscription
 
-Id        : xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb
-Directory : somedomain.com
+Name                     Id                                   TenantId                             State  
+----                     --                                   --------                             -----  
+Subscription Name        xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb zzzzzzzz-wwww-yyyy-aaaa-bbbbbbbbbbbb Enabled
 ```
  
 ## 6 – Configure Credentials in Certify SSL Manager
