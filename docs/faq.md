@@ -34,6 +34,11 @@ Read the error carefully and check the log for your managed site. Assuming your 
 ### I am completing the validation step correctly but I still get an error
 Depending on the app version you may be encountering a bug with your account (for Let's Encrypt). Go to Settings and update the email address (it can be the same address), internally this will update your account id and account private key. Then try your request again.
 
+### My certificate is renewing OK but the IIS site bindings are not updated
+Check the *Preview* tab for your managed certificate and ensure that the *Deployment* section will specifically update the expected https bindings. If they are not shown here your https binding will *not* be updated. 
+
+The most common reason for this is when the Deployment mode is set to *Single Site* and you have re-deployed your IIS Site resulting in it having a new internal SiteID within IIS. Change your Deployment mode to 'Auto' and review the *Preview* tab to ensure your bindings are being properly targeted.
+
 ### "Service Not Started" message
 By default the background service runs on port localhost:9696 and various conditions can cause conflicts. Read more to find out how to [configure the background service](backgroundservice.md).
 
