@@ -18,17 +18,20 @@ If your DNS provider (or custom DNS setup) does not have an API we can talk to, 
 
 ### DNS API Providers
 
-Currently supported DNS API providers include:
-- Aliyun
+Current DNS API providers include:
+- ACME DNS (See below)
+- Aliyun &ast;
 - [AWS Route53](dns-awsroute53.md)
 - [Azure DNS](dns-azuredns.md)
 - [Cloudflare](dns-cloudflare.md) DNS *(Note: Cloudflare offer a free tier for DNS services)*
-- [DNS Made Easy](dns-dnsmadeeasy.md)
+- [DNS Made Easy](dns-dnsmadeeasy.md) 
 - [GoDaddy](dns-godaddy.md)
-- Microsoft DNS
-- NameCheap
-- [OVH](dns-ovh.md)
-- Simple DNS Plus
+- Microsoft DNS &ast;
+- NameCheap &ast;
+- [OVH](dns-ovh.md) &ast;
+- Simple DNS Plus &ast;
+
+*&ast; marked providers are contributed and tested by users. They are not fully supported so your results may vary.*
 
 **If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they still work.**
 
