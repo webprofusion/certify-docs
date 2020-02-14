@@ -23,6 +23,9 @@ Registered users can create a new support request for help. Email *support at ce
 To get started using the Certify SSL Manager app for Windows, see the [Getting Started Guide](intro.md).
 
 ## FAQs
+### I can't register my contact email with Let's Encrypt
+Check your server allows outgoing https requests. This is essential for talking to the Let's Encrypt API.
+
 ### How do I create a SAN certificate?
 
 Certify SSL Manager reads domain/hostname information from IIS bindings or you can manually add them to the certificate. 
