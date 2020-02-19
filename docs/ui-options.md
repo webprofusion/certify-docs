@@ -51,9 +51,6 @@ If the request is successful your certificate will be created/renewed and deploy
 
 Once successfully requested, by default your certificate will auto renew (based on the interval in Settings, and before the 90-day expiry).
 
-### Advance Options
-Checking 'Show Advanced Options' in the Managed Certificate view enables a range of further options:
-
 ### Deployment
 By default, deployment is set to 'Auto', which matches all IIS websites which have hostname bindings matching the certificate, adding or updating https bindings as required.
 
@@ -63,15 +60,18 @@ Other options include:
 - Storage only (stored to Certificate store in the current machine)
 - No Deployment - the certificate file is downloaded but no other deployment action is performed.
 
-### Scripting
-#### Pre/Post Request Scripting
-You can opt to perform [pre and post-request PowerShell scripting](script-hooks.md). This is especially useful for custom deployment tasks which need to be notified of the new certificate thumbprint, or for distributing your new certificate to other services in your organisation.
+### Advance Options
+Checking 'Show Advanced Options' in the Managed Certificate view enables a range of further options:
 
-#### Web Hooks
+#### Scripting
+##### Pre/Post Request Scripting
+You can opt to perform [pre and post-request PowerShell scripting](script-hooks.md). This is especially useful for custom deployment tasks which need to be notified of the new certificate thumbprint, or for distributing your new certificate to other services in your organisation. Note that during certificate renewal your script will run as the account used for the [Background Service](backgroundservice.md), by default this is Local System.
+
+##### Web Hooks
 You can also choose to make requests (GET or POST) to custom http based web hooks.
 
 ## In Progress
-The *In Progress* view shows any currenty running request/renewals.
+The *In Progress* view shows any currently running request/renewals.
 
 ## Settings
 Commonly used settings you can specify include:
@@ -79,7 +79,7 @@ Commonly used settings you can specify include:
 #### Auto Renewal Interval (Days) 
 This is how many days the app will wait after your certificate was last renewed, before attempting another renewal. This is generally a number well in advance of the default 90 days expiry, to allow time to account for any renewal issues that arise.
 
-### Stored Credentials
+#### Stored Credentials
 Stored Credentials are protected API keys/passwords which are required in order to automate certificate renewal. This is generally used to managed API credentials for DNS API providers.
 
 ## About
