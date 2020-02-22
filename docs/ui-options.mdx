@@ -3,6 +3,8 @@ id: ui-options
 title: Guide to UI Options
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
+
 ## Managed Certificates
 The left side of the main window shows the list of Managed Certificates the app is currently looking after.
 
@@ -16,7 +18,7 @@ You can also open the Log file for this Managed Certificate to see any recently 
 ### Certificate Domains
 This view lets you manage the domains you will include in your certificate request:
 
-![Choosing Domains](assets/choose_domains.png)
+<img alt="Choosing Domains" src={useBaseUrl('assets/choose_domains.png')} />
 
 You can optionally select an existing website hosted on this server, this will auto populate the list of domains to include in the certificate based on the existing hostname bindings of the website. This website will also become the preferred 'target' for the final deployed certificate.
 
@@ -34,12 +36,12 @@ Wildcard domains require DNS validation, HTTP validation is not supported.
 ### Authorization (Validation)
 This view lets you decide how you will prove current control of the domains being requested on your certificate. The options cover [HTTP Validation](http-validation.md) and [DNS Validation](dns-validation.md).
 
-![Control Authorization](assets/choose_auth.png)
+<img alt="Control Authorization" src={useBaseUrl('assets/choose_auth.png')} />
 
 ### Preview
 This view describes which actions will be performed based on your current settings. This view is especially useful if you have complex deployment requirements or if you just want to understand exactly what will happen when the certificate is requested and applied.
 
-![Preview](assets/preview.png)
+<img alt="Preview" src={useBaseUrl('assets/preview.png')} />
 
 ### Test
 You can use the `Test` option to run basic configuration checks to see if your request is likely to succeed or if further configuration is required.
@@ -51,9 +53,6 @@ If the request is successful your certificate will be created/renewed and deploy
 
 Once successfully requested, by default your certificate will auto renew (based on the interval in Settings, and before the 90-day expiry).
 
-### Advance Options
-Checking 'Show Advanced Options' in the Managed Certificate view enables a range of further options:
-
 ### Deployment
 By default, deployment is set to 'Auto', which matches all IIS websites which have hostname bindings matching the certificate, adding or updating https bindings as required.
 
@@ -63,15 +62,18 @@ Other options include:
 - Storage only (stored to Certificate store in the current machine)
 - No Deployment - the certificate file is downloaded but no other deployment action is performed.
 
-### Scripting
-#### Pre/Post Request Scripting
-You can opt to perform [pre and post-request PowerShell scripting](script-hooks.md). This is especially useful for custom deployment tasks which need to be notified of the new certificate thumbprint, or for distributing your new certificate to other services in your organisation.
+### Advance Options
+Checking 'Show Advanced Options' in the Managed Certificate view enables a range of further options:
 
-#### Web Hooks
+#### Scripting
+##### Pre/Post Request Scripting
+You can opt to perform [pre and post-request PowerShell scripting](script-hooks.md). This is especially useful for custom deployment tasks which need to be notified of the new certificate thumbprint, or for distributing your new certificate to other services in your organisation. Note that during certificate renewal your script will run as the account used for the [Background Service](backgroundservice.md), by default this is Local System.
+
+##### Web Hooks
 You can also choose to make requests (GET or POST) to custom http based web hooks.
 
 ## In Progress
-The *In Progress* view shows any currenty running request/renewals.
+The *In Progress* view shows any currently running request/renewals.
 
 ## Settings
 Commonly used settings you can specify include:
@@ -79,7 +81,7 @@ Commonly used settings you can specify include:
 #### Auto Renewal Interval (Days) 
 This is how many days the app will wait after your certificate was last renewed, before attempting another renewal. This is generally a number well in advance of the default 90 days expiry, to allow time to account for any renewal issues that arise.
 
-### Stored Credentials
+#### Stored Credentials
 Stored Credentials are protected API keys/passwords which are required in order to automate certificate renewal. This is generally used to managed API credentials for DNS API providers.
 
 ## About

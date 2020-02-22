@@ -28,7 +28,7 @@ Current DNS API providers include:
 - [GoDaddy](dns-godaddy.md)
 - Microsoft DNS &ast;
 - NameCheap &ast;
-- [OVH](dns-ovh.md) &ast;
+- [OVH](dns-ovh) &ast;
 - Simple DNS Plus &ast;
 
 *&ast; marked providers are contributed and tested by users. They are not fully supported so your results may vary.*

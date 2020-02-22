@@ -24,18 +24,22 @@ To get started using the Certify SSL Manager app for Windows, see the [Getting S
 
 ## FAQs
 ### I can't register my contact email with Let's Encrypt
-Check your server allows outgoing https requests. This is essential for talking to the Let's Encrypt API.
+Check your server allows outgoing https requests. This is essential for talking to the API of the Certificate Authority being used (e.g. Let's Encrypt).
 
 ### How do I create a SAN certificate?
-
-Certify SSL Manager reads domain/hostname information from IIS bindings or you can manually add them to the certificate. 
+Certify SSL Manager can read domain/hostname information from IIS bindings or you can manually add them to the certificate. 
 
 ### I get an error when trying to make a new request
-
 Read the error carefully and check the log for your managed site. Assuming your server has direct access to the internet without a proxy (required), you can use the 'Test' option to see if there are any problems the app can diagnose. Alternatively you can also try using the awesome [Let's Debug](https://letsdebug.net) service.
 
+### Where are log files kept?
+Each Managed Certificate has it's own log file which you can openusing the View Log File option when viewing the details. By default, log files are kept at `%ProgramData%\Certify\logs`.
+
+### If I upgrade will I lose my settings and certificates?
+No, your settings are kept under `%ProgramData%\Certify` and you should consider backing up this location regularly. Settings are preserved and upgraded when new versions are installed. Settings are *not* removed if you Uninstall the app.
+
 ### I am completing the validation step correctly but I still get an error
-Depending on the app version you may be encountering a bug with your account (for Let's Encrypt). Go to Settings and update the email address (it can be the same address), internally this will update your account id and account private key. Then try your request again.
+Depending on the app version you may be encountering a bug with your account (with the Certificate Authority). Go to Settings and update the email address (it can be the same address), internally this will update your account id and account private key, then try your request again.
 
 ### My certificate is renewing OK but the IIS site bindings are not updated
 Check the *Preview* tab for your managed certificate and ensure that the *Deployment* section will specifically update the expected https bindings. If they are not shown here your https binding will *not* be updated. 
@@ -58,19 +62,21 @@ The default setting for bindings created by the app is to use IP 'All Unassigned
 If you require IP specific bindings (to support legacy non-SNI capable clients etc) the recommended approach is to run your first certificate request with Deployment set to 'Certificate Store'. You can then manually setup the https binding in IIS against the website, then set Deployment back to Auto and look at the Preview tab to ensure the next update will apply the binding update you expect. 
 
 ### My existing wildcard certificate is showing up instead of a Let's Encrypt certificate
-
 Check the existing bindings you have on your sites. If you are binding to a specific (shared) IP address with a wildcard cert as your default fallback for https requests it will take precedence over other bindings on the same server on the same IP address (even if they are using SNI etc).
 
 ### The wrong SSL certificate is suddenly being served, making my site inaccessible
-
 As above, one or more of your sites likely has an IP specific https binding.
 
-### The certificate is renewing automatically but the browser is seeing an expired certificate
+### The browser says my certificate is OK but my site has some insecure content
+Your site is still referencing some content as `http` instead of `https` - you can view these requests in the browser developer tools. You need to update your website or content management system to use https urls.
 
+### The browser says `This site can’t provide a secure connection`
+Your server is not configured to support current TLS Cipher suites by default. This requires registry changes on your server. A great tool to apply best practise configuration on Windows is IISCrypto by Nartac <a href="https://www.nartac.com/Products/IISCrypto">https://www.nartac.com/Products/IISCrypto</a>
+
+### The certificate is renewing automatically but the browser is seeing an expired certificate
 Check the 'Preview' tab in the app for your site to ensure the https binding of your site is targeted for updates. Ensure you only have one https binding in IIS which will respond to https requests. Also investigate if you have any IP specific bindings (as above).
 
 ### If you receive an error 'A specified login session does not exist'
-
 Use the 'Re-apply Certificate to Bindings' button under *Managed Certificate> Show Advanced Options > Other Options*. This is usually a transient IIS issue and can be solved with a restart. If the problem persists you may have an issue with private key permissions. 
 
 ### I have 2 servers running the app.  Can the contact email can be the same on both?
