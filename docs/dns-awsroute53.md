@@ -16,7 +16,7 @@ To use the AWS Route53 DNS API, you need to setup your API key and authenticatio
     - Or restrict permission to the following actions:
         - route53:ListHostedZones, route53:GetHostedZone, route53:ListResourceRecordSets, route53:ChangeResourceRecordSets, route53:GetChange 
 
-Here is example JSON policy:
+Here is an example JSON policy:
 ```json
 {
     "Version": "2012-10-17",
