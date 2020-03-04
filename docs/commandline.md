@@ -8,6 +8,7 @@ A handful of options are available using the command line tool *certify.exe*. Th
 Usage: ```certify <command>```
 
 - ```certify renew``` : renew certificates for all auto renewed managed sites, if they are due or have not yet been requested.
+- ```certify renew --force-renewal``` : As above but perform renewal for all auto renewed certificates even if they are not yet due.
 - ```certify list``` : list managed certificates and current running/not running status in IIS
 - ```certify diag``` : check existing ssl bindings and managed certificate integrity
 - ```certify importcsv``` : import managed certificates from a CSV file. See [CSV Import](csv-import.md) for more details

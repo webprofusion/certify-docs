@@ -31,7 +31,20 @@ To test that the reconfigured service is communicating OK, you can try opening t
 `http://localhost:9695/api/system/appversion` where 'localhost' is your configured service `host` value and `9695` is an example configured port.
 
 ## Other Considerations for 'Service Not Started..'
-To operate properly the background service needs to be able to register an http listener for it's API server via http.sys, in some versions of windows the Http kernel service may not be enabled and you will need to enable it. 
+To operate properly the background service needs to be able to register an http listener for it's API server via http.sys, for that to work the IP address the service tries to use must be enabled as an http listen address and  in some versions of windows the Http kernel service may not be enabled and you will need to enable it. 
+
+### Enable http listener IP address
+
+As per https://docs.microsoft.com/en-us/windows/win32/http/add-iplisten enable any IP address to listen for http: 
+```bat
+netsh http add iplisten ipaddress=0.0.0.0
+```
+
+Or to target a specific IP address such as 127.0.0.1 (localhost):
+```bat
+netsh http add iplisten ipaddress=127.0.0.1
+```
+
 
 By default the windows http service is typically enabled but if you receive the error 'Operation is not supported on this platform' in `service.exceptions.log` then try checking the status of the windows http service. To do so, run the following from an elevated command prompt (using Run As Administrator):
 
