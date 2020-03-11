@@ -3,7 +3,7 @@ id: script-hooks
 title: Scripting
 ---
 
-# Scripting
+# About Scripting
 
 Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request (check `Show Advanced Options` and open the `Scripting` tab). The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
 
@@ -99,7 +99,7 @@ $CcsServer="myserver"
 if ($result.IsSuccess -eq $true) {
 
     # connect network share with credentials
-    net use $CcsPath /USER:wbp-desktop06\testuser password1
+    net use $CcsPath /USER:myserver\ccsuser password1
 
     # example file copy where cert contains webmail.example.com and autodiscover.example.com domains
     Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $CcsPath\webmail.example.com.pfx -Force
