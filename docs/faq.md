@@ -34,7 +34,7 @@ Blocking outgoing https connections is not compatible with this application, or 
 ### There is an update available, if I upgrade or re-install do I lose my settings?
 No, the program data is kept under %PROGRAMDATA\Certify and is kept even if you uninstall or upgrade. You should backup this location as you would other settings. This is also a good location to store a custom Scripts
 
-### I upgraded and lost the custom scripts under C:\Program Files\CertifyTheWeb\
+### I upgraded and lost my custom scripts
 All content under the applications program files folder is removed on upgrade, *do not store scripts there*.
 
 ### How do I create a SAN certificate?
