@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -28,3 +28,16 @@ jobs:
     - run: yarn build
       env:
         CI: true
+    - name: GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v1.3.0
+      with:    
+        # Git branch where assets will be deployed
+        target_branch: gh-pages
+        # Create incremental commit instead of doing push force
+        keep_history: false
+        # Allow an empty commit to be created
+        allow_empty_commit: false
+        # Build directory to deploy
+        build_dir: build
+        # Write the given domain name to the CNAME file
+        fqdn: docs.certifytheweb.com
