@@ -26,10 +26,10 @@ To get started using the Certify SSL Manager app for Windows, see the [Getting S
 ### I can't register my contact email with Let's Encrypt
 Check your server allows outgoing https requests. This is essential for talking to the API of the Certificate Authority being used (e.g. Let's Encrypt).
 
-### What outgoing https connections does the app require?
+### Which outgoing https connections/IPs does the app connect to?
 If you block outgoing https connections from the machine running the app you will block access to the APIs it requires. These include Let's Encrypt (the Certificate Authoryt) and may include api.certifytheweb.com if auto config diagnostics or status reporting is enabled.
 
-Blocking outgoing https connections is not compatible with this application, or with Let's Encrypts API.
+Blocking outgoing https connections is not compatible with this application, or with Let's Encrypts API - they do not publish a list of IPs.
 
 ### There is an update available, if I upgrade or re-install do I lose my settings?
 No, the program data is kept under %PROGRAMDATA\Certify and is kept even if you uninstall or upgrade. You should backup this location as you would other settings. This is also a good location to store a custom Scripts
