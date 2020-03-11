@@ -13,6 +13,8 @@ A common use for scripting is to use your new certificate for services other tha
 
 *By default the background service runs as Local System, so your scripts will execute in that context*, this can be important for issues regarding permissions, file system encryption etc. 
 
+**Do not store scripts under the C:\Program Files\CertifyTheWeb\* folder. File stored there will be deleted next time you update the app**
+
 ## Scripting Basics
 
 Here is a sample PowerShell script which demonstrates a few commonly accessed pieces of information:
@@ -93,20 +95,19 @@ Add-Content $logpath ($result | ConvertTo-Json)
 # Enabling CCS: https://techcommunity.microsoft.com/t5/iis-support-blog/central-certificate-store-ccs-with-iis/ba-p/377274
 $result = Get-Content -Raw -Path C:\temp\ps-test.json | ConvertFrom-Json
 
-$CcsPath="\\myserver\ccs"
-$CcsServer="myserver"
+$ccsPath="\\myserver\ccs"
 
 if ($result.IsSuccess -eq $true) {
 
     # connect network share with credentials
-    net use $CcsPath /USER:myserver\ccsuser password1
+    net use $ccsPath /USER:myserver\ccsuser password1
 
     # example file copy where cert contains webmail.example.com and autodiscover.example.com domains
-    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $CcsPath\webmail.example.com.pfx -Force
-    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $CcsPath\autodiscover.example.com.pfx -Force
+    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $ccsPath\webmail.example.com.pfx -Force
+    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $ccsPath\autodiscover.example.com.pfx -Force
 
     # disconnect network share
-    net use $CcsPath /delete
+    net use $ccsPath /delete
 }
 ```
 ### Example: Export certificate using OpenSSL to pem,crt,key etc for Apache (and other services)
