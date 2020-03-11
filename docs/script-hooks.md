@@ -1,17 +1,17 @@
 ---
 id: script-hooks
-title: Scripting Hooks
+title: Scripting
 ---
 
 # Scripting
 
 Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request (check `Show Advanced Options` and open the `Scripting` tab). The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
 
-A common use for script hooks is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
+A common use for scripting is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
 
 **Note: Before v4, the app is 32-bit as is the PowerShell process. See the 64-bit wrapper example below to run 64-bit commands (a common issue if a command is not found). From v4 onwards the PowerShell process is 64-bit.**
 
-By default the background service runs as Local System, so your scripts will execute in that context, this can be important for issues regarding permissions, file system encryption etc.
+*By default the background service runs as Local System, so your scripts will execute in that context*, this can be important for issues regarding permissions, file system encryption etc. 
 
 ## Scripting Basics
 
@@ -72,7 +72,76 @@ Notes: Post-request scripts are executed immediately after the Certificate Reque
 * The `$result.IsSuccess` value indicates whether or not the Certificate Request was successfully completed.
 * The `$result.Message` value provides a message describing the reason for failure, or a message indicating success
 
-### Example: Send email via Gmail after unsuccessful renewal
+### Example: Output the result properties to a text file
+```PowerShell
+# Logs results to the given path (modify as required)
+
+param($result)  
+$logpath = "c:\temp\ps-test.txt"
+
+$date = Get-Date
+
+Add-Content $logpath ("-------------------------------------------------");
+Add-Content $logpath ("Script Run Date: " + $date)
+Add-Content $logpath ($result | ConvertTo-Json)
+```
+
+### Example: Copy the PFX file to a Central Certificate Store (CCS) as a given user, for multiple domains
+
+```PowerShell
+# example script to copy the output PFX to a UNC path for Central Certificate Store
+# Enabling CCS: https://techcommunity.microsoft.com/t5/iis-support-blog/central-certificate-store-ccs-with-iis/ba-p/377274
+$result = Get-Content -Raw -Path C:\temp\ps-test.json | ConvertFrom-Json
+
+$CcsPath="\\myserver\ccs"
+$CcsServer="myserver"
+
+if ($result.IsSuccess -eq $true) {
+
+    # connect network share with credentials
+    net use $CcsPath /USER:wbp-desktop06\testuser password1
+
+    # example file copy where cert contains webmail.example.com and autodiscover.example.com domains
+    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $CcsPath\webmail.example.com.pfx -Force
+    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $CcsPath\autodiscover.example.com.pfx -Force
+
+    # disconnect network share
+    net use $CcsPath /delete
+}
+```
+### Example: Export certificate using OpenSSL to pem,crt,key etc for Apache (and other services)
+Many services such as Apache, nginx and some mail servers etc work with certificates as pem or other formats. These generally need you to export the certificate and related public and private keys. The easiest way to do this is to install OpenSSL then use that to convert your PFX format certificate.
+
+```PowerShell
+param($result)
+
+# script example adapted from https://community.certifytheweb.com/t/filezilla-server-ps-script/141/8
+
+# Alias to your OpenSSL install
+set-alias opensslcmd "C:\Tools\OpenSSL\openssl.exe" 
+
+# Set paths to where keys will be saved. 
+# This will vary depending on your required configuration. File name are not that important but your config must point to the same filenames.
+
+$keypath = "C:\apache\conf\mydomain.com\"
+$key = $keypath + "cert.key"
+$rsakey = $keypath + "cert_rsa.key"
+$pem = $keypath + "cert.pem"
+
+# Get the latest PFX file path
+$sourcepfx = $result.ManagedItem.CertificatePath
+
+# Create the Key, RSA Key, and PEM file. Use the RSA Key & PEM for FileZilla
+opensslcmd pkcs12 -in $sourcepfx -out $key -nocerts -nodes -passin pass:
+opensslcmd rsa -in $key -out $rsakey
+opensslcmd pkcs12 -in $sourcepfx -out $pem -nokeys -clcerts -passin pass:
+
+# optional: restart the Apache service (example)
+Restart-Service -Name Apache2.4 -Force
+```
+
+### Example: Send email via Gmail after unsuccessful renewal 
+*Note: this is an example only, by default the app will use the certifytheweb.com API to notify you of repeated failures.*
 
 ```PowerShell
 param($result)
@@ -114,11 +183,11 @@ certutil -p Certify -csp "Microsoft RSA SChannel Cryptographic Provider" -import
 remove-item $tempfile
 ```
 
-### Example: Enable certificate for Exchange 2013 / 2016 services on same server
+### Example: Enable certificate for Exchange 2013 / 2016 services on local server
 
 ```PowerShell
 param($result)
-Enable-ExchangeCertificate -Thumbprint $result.ManagedItem.CertificateThumbprintHash -Services POP,IMAP,SMTP,IIS
+Enable-ExchangeCertificate -Thumbprint $result.ManagedItem.CertificateThumbprintHash -Services POP,IMAP,SMTP,IIS -Force
 ```
 
 ### Example: update Remote Desktop Role Certificates
@@ -181,7 +250,7 @@ Start-Service RemoteAccess
 ## Troubleshooting
 
 
-* In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test.
+* In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test. This currently runs as your user account whereas the real renewal script will happen as Local System.
 * For a testing pre-request script, the `$result.IsSuccess` value will be `$false`, and for a post-request script the value will be `$true`.
 * The `$result.MangagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
 
