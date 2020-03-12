@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Certify The Web Docs',
-  tagline: 'Getting started with Certify',
+  tagline: "The GUI for Let's Encrypt on Windows!",
   url: 'https://docs.certifytheweb.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -20,11 +20,7 @@ module.exports = {
           to: 'docs/certificate-process',
         },
         {to: 'docs/faq', label: 'FAQ', position: 'left'},
-        {
-          href: 'https://certifytheweb.com',
-          label: 'Home',
-          position: 'right',
-        },
+        {to: 'docs/support', label: 'Support', position: 'left'},
         {
           href: 'https://community.certifytheweb.com',
           label: 'Community',
@@ -49,6 +45,10 @@ module.exports = {
             {
               label: 'FAQ',
               to: 'docs/faq',
+            },
+            {
+              label: 'Support',
+              to: 'docs/support',
             },
           ],
         },

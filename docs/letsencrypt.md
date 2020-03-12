@@ -3,7 +3,9 @@ id: letsencrypt
 title: What is Let's Encrypt?
 ---
 
-Let's Encrypt is a free Certificate Authority (CA), and you can find out more details about them at https://letsencrypt.org
+Let's Encrypt is a free Certificate Authority (CA), and you can find out more details about them at https://letsencrypt.org 
+
+The API Let's Encrypt offers for certificate requests is known as ACME (Automatic Certificate Management Environment). Certify The Web is an ACME V2 client, which means it can talk to ACME Certificate Authority services which support the ACME V2 API.
 
 Using Certify to request a certificate also means you accept the current Let's Encrypt service privacy policy, and their terms and conditions.
 

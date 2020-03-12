@@ -253,7 +253,7 @@ Start-Service RemoteAccess
 
 * In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test. This currently runs as your user account whereas the real renewal script will happen as Local System.
 * For a testing pre-request script, the `$result.IsSuccess` value will be `$false`, and for a post-request script the value will be `$true`.
-* The `$result.MangagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
+* The `$result.ManagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
 
 ### Using 64-bit modules
 

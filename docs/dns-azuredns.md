@@ -61,7 +61,7 @@ This will have created a service principal and an underlying Azure application.
 - Select:
     - Role: DNS Zone Contributor
     - Assign access to: Azure AD user, group or application
-    - Select: Type in LetsEcnrypt
+    - Select: Type in LetsEncrypt
     - Click Save
 
 ## 4 - Create Service Principal Secret

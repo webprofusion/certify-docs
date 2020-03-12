@@ -12,8 +12,7 @@ module.exports = {
       "letsencrypt",
       "certificate-process",
       "ui-options",
-      "renewals",
-      "faq"
+      "renewals"
     ],
     "Guides": [
       "dns-validation",
@@ -25,6 +24,10 @@ module.exports = {
       "commandline",
       "csv-import",
       "backgroundservice"
+    ],
+    "Support":[
+      "faq",
+      "support"
     ]
   }
 };
