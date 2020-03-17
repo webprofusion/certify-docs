@@ -5,7 +5,7 @@ title: Using Azure DNS
 
 *Azure DNS documentation originally written by: Tony Johncock @Tony1044*
 
-*Note: If you have not yet selected a DNS API provider to host your domain with be aware that Azure DNS is currently amongst the most complex to configure for API access.*
+*Note: If you have not yet selected a DNS API provider to host your domain with be aware that Azure DNS is currently amongst the most complex to configure for API access. You should also note that **Azure Client Secrets can expire, causing your renewals to fail until you replace the key.***
 
 ## Step 1 – Install and configure Azure PowerShell
 
