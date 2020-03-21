@@ -8,6 +8,8 @@ To request a certificate from Let's Encrypt (or any Certificate Authority), you 
 ## How to use HTTP Validation (on Windows)
 When Let's Encrypt performs domain validation over http (known as an `http-01` challenge) they ask for a randomly named text file to be presented in the `/.well-known/acme-challenge` path of your website. So they should be able to retrieve it at `http://<yourdomain>/.well-known/acme-challenge/<filename>`
 
+**Your server must be able to respond on tcp port 80 in order to perform any HTTP validation. If your firewall blocks port 80, unblock it to proceed. You don't need IIS http bindings as by default the app wil use it's own http challenge response server.**
+
 If this step succeeds, you're all set to automatically complete HTTP validation of your domain. Once completed, Let's Encrypt marks your domain (associated with your account) as 'valid' and we can then proceed with requesting the final certificate.
 
 ### How Http Validation works
@@ -32,6 +34,9 @@ If the local request fails (perhaps because the local server can't resolve itsel
 the https://api.certifytheweb.com server if it can access the resource instead (which also has the benefit of being external, just like the Let's Encrypt server is).
 
 ## Common Issues
+
+### Timeout during http validation
+Your firewall is blocking port 80. Open port TCP 80 in Windows Firewall and on any cloud hosting firewall rules you have.
 
 ### Error 500, 404 or 403 (or other http error code)
 The most common problem is that auto configuration has failed to determine the best config for your system. Different editions/distributions of windows have different defaults.
