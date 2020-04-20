@@ -1,5 +1,5 @@
 ---
-id: dns-godaddy
+id: godaddy
 title: GoDaddy DNS
 ---
 

@@ -1,5 +1,5 @@
 ---
-id: dns-azuredns
+id: azuredns
 title: Using Azure DNS
 ---
 

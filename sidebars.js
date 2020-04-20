@@ -15,9 +15,11 @@ module.exports = {
       "renewals"
     ],
     "Guides": [
-      "dns-validation",
+      "dns/validation",
       "http-validation",
+      "deployment/intro",
       "script-hooks"
+      
     ],
     "Useful Info": [
       "ssl-windows",

@@ -5,7 +5,9 @@ title: Scripting
 
 # About Scripting
 
-Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request (check `Show Advanced Options` and open the `Scripting` tab). The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
+Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request. From v5 onwards these are found under Deployment > Deployment Tasks and can be added as Pre-Request Tasks or Deployment Tasks. In older versions (v4.x), Scripting can be used by checking `Show Advanced Options` and open the `Scripting` tab. 
+
+The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
 
 A common use for scripting is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
 

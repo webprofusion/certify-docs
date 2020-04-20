@@ -1,5 +1,5 @@
 ---
-id: dns-dnsmadeeasy
+id: dnsmadeeasy
 title: DnsMadeEasy DNS API
 ---
 

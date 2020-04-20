@@ -1,5 +1,5 @@
 ---
-id: dns-scripting
+id: scripting
 title: DNS Scripting
 ---
 
