@@ -23,7 +23,6 @@ Supported Tasks types, each with UI to configure the task parameters etc, includ
 - Run a remote script via SSH
 - Call a custom Webhook
 
-
 # Deployment Tasks
 Deployment Tasks are custom steps which can run either before you request your certificate or after (or both). 
 
