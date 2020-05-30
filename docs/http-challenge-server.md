@@ -15,6 +15,6 @@ To run the challenge server on an alternative port e.g. 81:
 create/update `c:\programdata\certify\serviceconfig.json` (`serviceconfig.debug.json` if running in debug mode):
 ```json
 {
- httpChallengeServerPort:81
+ "httpChallengeServerPort":81
 }
 ```

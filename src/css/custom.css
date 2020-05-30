@@ -32,3 +32,7 @@
   font-size: 1.4rem ! important;
   font-weight: 400;
 }
+
+.markdown img{
+  box-shadow: #2b7d3252 0px 1px 6px 2px;
+}
