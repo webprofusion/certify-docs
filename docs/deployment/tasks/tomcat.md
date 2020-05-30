@@ -3,7 +3,7 @@ id: tomcat
 title: Apache Tomcat
 ---
 
-Specific configuration of Apache Tomcat for your requirements is outside of the scope of this documentation however the following is a suggested (working) configuration process for a default install of Tomcat 9.0:
+Specific configuration of Apache Tomcat for individual requirements is outside of the scope of this documentation however the following is a suggested (working) configuration process for a default install of Tomcat 9.0:
 
 ## Enable SSL on your Tomcat connector
 
@@ -26,7 +26,7 @@ Example:
 ```
     
 ## Add a 'Deploy to Tomcat' Deployment Task
-In your Managed Certifcaite, under Deployment, add a new `Deploy to Tomcat` deployment task, providing the destination path for your PFX file. 
+In your Managed Certificate, under Deployment, add a new `Deploy to Tomcat` deployment task, providing the destination path for your PFX file. 
 
 When the deployment task is next executed the certificate will be exported as a PFX file to this location.
 
