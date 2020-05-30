@@ -1,5 +1,5 @@
 ---
-id: dns-validation
+id: validation
 title: About DNS Validation (dns-01)
 ---
 
@@ -21,14 +21,14 @@ If your DNS provider (or custom DNS setup) does not have an API we can talk to, 
 Current DNS API providers include:
 - ACME DNS (See below)
 - Aliyun &ast;
-- [AWS Route53](dns-awsroute53.md)
-- [Azure DNS](dns-azuredns.md)
-- [Cloudflare](dns-cloudflare.md) DNS *(Note: Cloudflare offer a free tier for DNS services)*
-- [DNS Made Easy](dns-dnsmadeeasy.md) 
-- [GoDaddy](dns-godaddy.md)
+- [AWS Route53](providers/awsroute53)
+- [Azure DNS](providers/azuredns)
+- [Cloudflare](providers/cloudflare) DNS *(Note: Cloudflare offer a free tier for DNS services)*
+- [DNS Made Easy](providers/dnsmadeeasy) 
+- [GoDaddy](providers/godaddy)
 - Microsoft DNS &ast;
 - NameCheap &ast;
-- [OVH](dns-ovh) &ast;
+- [OVH](providers/ovh) &ast;
 - Simple DNS Plus &ast;
 
 *&ast; marked providers are contributed and tested by users. They are not fully supported so your results may vary.*
@@ -39,16 +39,11 @@ Current DNS API providers include:
 You can alternatively use the following methods to manage your DNS TXT records:
 
 ### ACME DNS 
-[acme-dns](https://github.com/joohoi/acme-dns) is a system to automatically manage TXT record values on behalf of your domain **just for challenge validation**. This is probably the easiest method if you have a  trusted acme-dns server you can use, this also avoids storing powerful DNS admin credentials on your server.
+[acme-dns](https://github.com/joohoi/acme-dns) is a system to automatically manage TXT record values on behalf of your domain **just for challenge validation**. This is probably the easiest method if you have a trusted acme-dns server you can use, this also avoids storing powerful DNS admin credentials on your server. Find out more on [how to use acme-dns](providers/acme-dns).
 
-- Select acme-dns as the DNS update method
-- Point to a trusted acme-dns server
-- Request certificate, the first time you do so you will be prompted to create a CNAME pointing to the acme-dns server. 
-- Resume the request using Request Certificate, the acme-dns server will provide the required TXT record responses on your behalf.
-- Automatic renewals will then perform this process again without manual intervention.
 
 ### DNS Scripting
-[DNS Scripting](dns-scripting.md) involves providing your own custom script to update/delete TXT records in your DNS using a .bat file which can then optionally call python, node scripts etc.
+[DNS Scripting](providers/scripting) involves providing your own custom script to update/delete TXT records in your DNS using a .bat file which can then optionally call python, node scripts etc.
 
 ### Manual DNS 
 If you are just experimenting with wildcard domains you may opt to use manual DNS updates (editing manually via your DNS control panel). 

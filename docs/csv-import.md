@@ -5,6 +5,8 @@ title: CSV Bulk Import via Command Line
 
 You can perform a bulk import of managed sites (requires the registered version) from a CSV file using the following method:
 
+**Note: Bulk import of more than 200 domains/managed certificates in one batch is not recommended. The app can handle thousands of new items but the ACME CA (Let's Encrypt) API will rate limit requests. If your domains fail to renew (DNS issues etc), it's easier to troubleshoot a smaller number of domains. Large bulk imports are not recommended for mass migration from one server to another.**
+
 ## Create a new CSV file
 
 Your file should be in the format IIS SiteID, Name, Domain1;Domain2;Domain3

@@ -3,7 +3,7 @@ id: renewals
 title: Certificate Renewals
 ---
 
-Let's Encrypt certificates expire after 90 days, for that reason renewals need to happen often, and if there's going to be a problem with validation that will prevent the renewal, you need to know in advance of the certificate expiry.
+All certificates have an expiry date, after which they cannot be used to secure communication. Certificates from Let's Encrypt expire after 90 days, so for that reason renewals need to happen often, and if there's going to be a problem with validation that will prevent the renewal, you need to know in advance of the certificate expiry.
 
 **By default, Certify will attempt to auto-renew your certificates.**
 

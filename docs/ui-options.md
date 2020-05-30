@@ -3,8 +3,6 @@ id: ui-options
 title: Guide to UI Options
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl'; 
-
 ## Managed Certificates
 The left side of the main window shows the list of Managed Certificates the app is currently looking after.
 
@@ -18,7 +16,7 @@ You can also open the Log file for this Managed Certificate to see any recently 
 ### Certificate Domains
 This view lets you manage the domains you will include in your certificate request:
 
-<img alt="Choosing Domains" src={useBaseUrl('assets/choose_domains.png')} />
+![Choosing Domains](/assets/choose_domains.png)
 
 You can optionally select an existing website hosted on this server, this will auto populate the list of domains to include in the certificate based on the existing hostname bindings of the website. This website will also become the preferred 'target' for the final deployed certificate.
 
@@ -34,14 +32,13 @@ You cannot mix certificate requests for a Wildcard and a first-level subdomain (
 Wildcard domains require DNS validation, HTTP validation is not supported.
 
 ### Authorization (Validation)
-This view lets you decide how you will prove current control of the domains being requested on your certificate. The options cover [HTTP Validation](http-validation.md) and [DNS Validation](dns-validation.md).
+This view lets you decide how you will prove current control of the domains being requested on your certificate. The options cover [HTTP Validation](http-validation) and [DNS Validation](dns-validation).
 
-<img alt="Control Authorization" src={useBaseUrl('assets/choose_auth.png')} />
-
+![Authorization](/assets/choose_auth.png)
 ### Preview
 This view describes which actions will be performed based on your current settings. This view is especially useful if you have complex deployment requirements or if you just want to understand exactly what will happen when the certificate is requested and applied.
 
-<img alt="Preview" src={useBaseUrl('assets/preview.png')} />
+![Preview](/assets/preview.png)
 
 ### Test
 You can use the `Test` option to run basic configuration checks to see if your request is likely to succeed or if further configuration is required.

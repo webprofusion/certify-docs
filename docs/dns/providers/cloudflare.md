@@ -1,5 +1,5 @@
 ---
-id: dns-cloudflare
+id: cloudflare
 title: Cloudflare DNS
 ---
 

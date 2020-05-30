@@ -1,5 +1,5 @@
 ---
-id: dns-awsroute53
+id: awsroute53
 title: AWS Route53 DNS
 ---
 

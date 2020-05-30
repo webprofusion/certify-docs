@@ -33,3 +33,10 @@
   height: 200px;
   width: 200px;
 }
+
+
+h1 {
+  font-weight: 400;
+  font-size: 2rem ! important;
+}
+
