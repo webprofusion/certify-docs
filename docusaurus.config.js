@@ -87,11 +87,14 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          path: './docs',
+          // Sidebars file relative to website dir.
+          sidebarPath: require.resolve('./sidebars.json'),
           editUrl:
             'https://github.com/webprofusion/certify-docs/edit/master/',
         },
         theme: {
+          defaultDarkMode: false,
           customCss: require.resolve('./src/css/custom.css'),
         },
       },

@@ -22,3 +22,13 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+.markdown h2 {
+  font-size: 1.6rem ! important;
+  font-weight: 400;
+}
+
+.markdown h3 {
+  font-size: 1.4rem ! important;
+  font-weight: 400;
+}

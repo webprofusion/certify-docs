@@ -39,13 +39,8 @@ Current DNS API providers include:
 You can alternatively use the following methods to manage your DNS TXT records:
 
 ### ACME DNS 
-[acme-dns](https://github.com/joohoi/acme-dns) is a system to automatically manage TXT record values on behalf of your domain **just for challenge validation**. This is probably the easiest method if you have a  trusted acme-dns server you can use, this also avoids storing powerful DNS admin credentials on your server.
+[acme-dns](https://github.com/joohoi/acme-dns) is a system to automatically manage TXT record values on behalf of your domain **just for challenge validation**. This is probably the easiest method if you have a trusted acme-dns server you can use, this also avoids storing powerful DNS admin credentials on your server. Find out more on [how to use acme-dns](providers/acme-dns).
 
-- Select acme-dns as the DNS update method
-- Point to a trusted acme-dns server
-- Request certificate, the first time you do so you will be prompted to create a CNAME pointing to the acme-dns server. 
-- Resume the request using Request Certificate, the acme-dns server will provide the required TXT record responses on your behalf.
-- Automatic renewals will then perform this process again without manual intervention.
 
 ### DNS Scripting
 [DNS Scripting](providers/scripting) involves providing your own custom script to update/delete TXT records in your DNS using a .bat file which can then optionally call python, node scripts etc.
