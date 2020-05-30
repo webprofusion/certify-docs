@@ -56,7 +56,7 @@ Finally, you can request your certificate which will automatically:
 - Perform the required validation
 - Fetch the new certificate 
 - Deploy it for you (if selected).
-- Run applicable Deployment Tasks (if any).
+- Run applicable [Deployment Tasks](deployment/tasks_intro) (if any).
 
 ### 6. Automatic Renewal
 
