@@ -193,23 +193,6 @@ param($result)
 Enable-ExchangeCertificate -Thumbprint $result.ManagedItem.CertificateThumbprintHash -Services POP,IMAP,SMTP,IIS -Force
 ```
 
-### Example: update Remote Desktop Role Certificates
-This example assumes it's starting in a 32-bit instance and switches to the 64-bit powershell to import the 64-bit RemoteDesktop module. V4.x onwards of the app is 64-bit only.
-```PowerShell
-param($result)
-set-alias ps64 "$env:windir\sysnative\WindowsPowerShell\v1.0\powershell.exe"
-ps64 -args $result -command {
-   $result = $args[0]
-   $pfxpath = $result.ManagedItem.CertificatePath
-   Import-Module RemoteDesktop
-   Set-RDCertificate -Role RDPublishing -ImportPath $pfxpath -Force
-   Set-RDCertificate -Role RDWebAcces -ImportPath $pfxpath -Force
-   Set-RDCertificate -Role RDGateway -ImportPath $pfxpath -Force
-   Set-RDCertificate -Role RDRedirector -ImportPath $pfxpath -Force
-}
-```
-
-
 ### Example: Update VMWare Horizon certificate
 This example removes any previous certificate with the same FriendlyName (`vdm`) then renames the Friendly Name property of the new certificate to `vmd`. It then restarts the `wstunnel` service.
 
