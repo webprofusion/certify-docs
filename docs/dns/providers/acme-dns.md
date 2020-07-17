@@ -11,8 +11,9 @@ acme-dns is a method for domain validation via DNS CNAME redirection to a truste
 
 - Select acme-dns as the DNS update method.
 - Point to a trusted acme-dns server
-- Click `Test` to perform a one-time registration with the acme-dns server (per domain).
-- You will be prompted to create a CNAME pointing to the acme-dns server. 
+- Click `Test` or `Request Certificate` to perform a one-time registration with the acme-dns server (per domain).
+- You will be prompted to create a CNAME pointing to the acme-dns server. If you miss this prompt check back in the log file for your managed certificate (see the Status tab).
+- Once you have created your CNAME record, delete any existing _acme-challenge TXT record in the same zone to avoid confusion.
 - Resume the request using `Request Certificate`, the acme-dns server will automatically provide the required TXT record responses on your behalf.
 - Automatic renewals will then perform this process again without manual intervention.
 
