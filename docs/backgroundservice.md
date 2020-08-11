@@ -70,7 +70,7 @@ sc config http start= demand
 ```
 Then start the http service
  ``` bat
- net start http`
+ net start http
  ```
  If the service remains at `STOPPING` or similar then a system reboot may be required.
 
