@@ -91,4 +91,7 @@ Use the 'Re-apply Certificate to Bindings' button under *Managed Certificate> Sh
 If Let's Encrypt think you haven't renewed a certificate they will let you know using the email address registered as a contact when you installed the app. If your receive an expiry warning, check your certificate is renewing OK. If it all looks good you probably changed the list of domains in your certificate at some point (perhaps adding www. or adding/removing domains) and LE is reminding you about the old version of your certificate, so you can ignore the notification.
 
 
+### When trying to use BuyPass Go I get the error "Can not find issuer 'C=NO,O=Buypass..."
+Normally Certificate Authority root certificates are installed into Windows as part of windows updates but in some cases you may need to import the root certificate for a CA yourself. You should ensure that your servers are all receiving updates normally. See general instructions here:  http://woshub.com/updating-trusted-root-certificates-in-windows-10/
 
+You can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (import it into the Trusted Root Certification Authorities store).
