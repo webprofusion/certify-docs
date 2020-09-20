@@ -13,7 +13,7 @@ module.exports = {
         alt: 'Certify The Web Logo',
         src: 'img/logo.svg',
       },
-      links: [
+      items: [
         {to: 'docs/intro', label: 'Getting Started', position: 'left'},
         {
           label: 'Requesting a Certificate',

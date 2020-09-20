@@ -30,8 +30,41 @@ Current DNS API providers include:
 - NameCheap &ast;
 - [OVH](providers/ovh) &ast;
 - Simple DNS Plus &ast;
+- TransIP *&ast;
 
 *&ast; marked providers are contributed and tested by users. They are not fully supported so your results may vary.*
+
+In addition we implement a number of DNS providers courtesy of the Posh-ACME: https://github.com/rmbolger/Posh-ACME project. If you encounter any issues with these you should verify they works normally within Posh-ACME and raise issues on our [github page](https://github.com/webprofusion/certify) :
+
+[Akamai](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Akamai-Readme.md),
+[AutoDNS](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/AutoDNS-Readme.md),
+[ClouDNS](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/ClouDNS-Readme.md),
+[DNSPod](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/DNSPod-Readme.md),
+[DNSimple](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/DNSimple-Readme.md),
+[DomainOffensive](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/DomainOffensive-Readme.md),
+[deSEC](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/DeSEC-Readme.md),
+[DigitalOcean](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/DOcean-Readme.md),
+[Dreamhost](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Dreamhost-Readme.md),
+[Dynu](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Dynu-Readme.md),
+[EasyDNS](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/EasyDNS-Readme.md),
+[Gandi](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Gandi-Readme.md),
+[Google Cloud](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/GCloud-Readme.md),
+[Hetzner](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Hetzner-Readme.md),
+[Hurricane Electric](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/HurricaneElectric-Readme.md),
+[Infoblox](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Infoblox-Readme.md),
+[IBM Cloud/SoftLayer](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/IBMSoftLayer-Readme.md),
+[Linode](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Linode-Readme.md),
+[Loopia](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Loopia-Readme.md),
+[LuaDns](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/LuaDns-Readme.md),
+[name.com](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/NameCom-Readme.md),
+[NS1](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/NS1-Readme.md),
+[PointDNS](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/PointDNS-Readme.md),
+[Rackspace](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Rackspace-Readme.md),
+[RFC2136](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/RFC2136-Readme.md),
+[Selectel](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Selectel-Readme.md),
+[UnoEuro](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/UnoEuro-Readme.md),
+[Yandex](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Yandex-Readme.md),
+[Zonomi](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/DnsPlugins/Zonomi-Readme.md)
 
 **If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they still work.**
 
