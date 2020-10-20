@@ -5,15 +5,13 @@ title: Scripting
 
 # About Scripting
 
-Certify is extensible via PowerShell scripts which can be configured to run before or after the Certificate Request. From v5 onwards these are found under Deployment > Deployment Tasks and can be added as Pre-Request Tasks or Deployment Tasks. In older versions (v4.x), Scripting can be used by checking `Show Advanced Options` and open the `Scripting` tab. 
+Certify is extensible via PowerShell scripts tasks which can be configured to run before or after the Certificate Request. From v5 onwards these are found under the Tasks tab for your managed certificate. See [Tasks](deployment/tasks_intro) for more information.
 
-The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
+The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools. 
 
-A common use for scripting is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
+A common use for scripting is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services. The app also has a range of built-in deployment tasks which also use scripting internally.
 
-**Note: Before v4, the app is 32-bit as is the PowerShell process. See the 64-bit wrapper example below to run 64-bit commands (a common issue if a command is not found). From v4 onwards the PowerShell process is 64-bit.**
-
-*By default the background service runs as Local System, so your scripts will execute in that context*, this can be important for issues regarding permissions, file system encryption etc. 
+*By default the background service runs as Local System, so your scripts will execute in that context*, this can be important for issues regarding permissions, file system encryption etc. You can optionally configure your task to run as a specific user if network access or special permissions are required.
 
 **Do not store scripts under the C:\Program Files\CertifyTheWeb\* folder. File stored there will be deleted next time you update the app**
 
@@ -52,29 +50,23 @@ $result.Abort = $false
 
 The `$result.ManagedItem` object is an instance of the <a href="https://github.com/webprofusion/certify/blob/development/src/Certify.Models/Config/ManagedCertificate.cs" target="_blank">ManagedCertificate</a> class, so all of the properties it has will be available in your script:
 
-## Pre-Request Script Hooks
+## Pre-Request Tasks
 
-Notes: Pre-request scripts are executed immediately before the Certificate Request is about to be made (including the challenge file configuration checks).
+Notes: Pre-request scripts/tasks are executed immediately before the Certificate Request is about to be made (including the challenge file configuration checks).
 
 * The `$result.IsSuccess` value will always be `$false`.
 * If for some reason your script would like to prevent the Certificate Request from being executed, you may set `$result.Abort` to `$true` and the site your script was executed for will be skipped.
 
-### Example: Update IIS site root directory dynamically
-```PowerShell
-param($result)
-$id = $result.ManagedItem.GroupId
-$domain = $result.ManagedItem.RequestConfig.PrimaryDomain
-[xml]$xml = . "$env:windir\system32\inetsrv\appcmd" list config /section:system.applicationHost/sites
-$path = $xml.SelectSingleNode("//site[@id=$id]/application[@path='/']/virtualDirectory/@physicalPath").Value
-$result.ManagedItem.RequestConfig.WebsiteRootPath = $path
-write-output "Updated Path [$domain]: $path"
-```
+## Deployment Tasks (Post-Request)
 
-## Post-Request Script Hooks
+Deployment task (post-request) scripts are executed immediately after the Certificate Request was completed, and the certificate was automatically installed and configured according to the site configuration within Certify.
 
-Notes: Post-request scripts are executed immediately after the Certificate Request was completed, whether or not the request was successful and the certificate was automatically installed and configured according to the site configuration within Certify.
+By default these run if the request was successful but you can change the task trigger (On Success, On Fail, etc). You can also configure them for manual execution only, so that you can perform them during a maintenance window, or via a windows scheduled task using the command line.
+
 * The `$result.IsSuccess` value indicates whether or not the Certificate Request was successfully completed.
-* The `$result.Message` value provides a message describing the reason for failure, or a message indicating success
+* The `$result.Message` value provides a message describing the reason for failure, or a message indicating success.
+
+Legacy uses for scripting (v4.x and lower) may have previously included CCS Export, PEM file creation etc however these functions are provided by built-in Deployment Tasks which you should use instead unless the built-in functionality does not meet your requirements.
 
 ### Example: Output the result properties to a text file
 ```PowerShell
@@ -88,59 +80,6 @@ $date = Get-Date
 Add-Content $logpath ("-------------------------------------------------");
 Add-Content $logpath ("Script Run Date: " + $date)
 Add-Content $logpath ($result | ConvertTo-Json)
-```
-
-### Example: Copy the PFX file to a Central Certificate Store (CCS) as a given user, for multiple domains
-
-```PowerShell
-# example script to copy the output PFX to a UNC path for Central Certificate Store
-# Enabling CCS: https://techcommunity.microsoft.com/t5/iis-support-blog/central-certificate-store-ccs-with-iis/ba-p/377274
-param($result)
-
-$ccsPath="\\myserver\ccs"
-
-if ($result.IsSuccess -eq $true) {
-
-    # connect network share with credentials
-    net use $ccsPath /USER:myserver\ccsuser password1
-
-    # example file copy where cert contains webmail.example.com and autodiscover.example.com domains
-    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $ccsPath\webmail.example.com.pfx -Force
-    Copy-Item -Path $result.ManagedItem.CertificatePath -Destination $ccsPath\autodiscover.example.com.pfx -Force
-
-    # disconnect network share
-    net use $ccsPath /delete
-}
-```
-### Example: Export certificate using OpenSSL to pem,crt,key etc for Apache (and other services)
-Many services such as Apache, nginx and some mail servers etc work with certificates as pem or other formats. These generally need you to export the certificate and related public and private keys. The easiest way to do this is to install OpenSSL then use that to convert your PFX format certificate.
-
-```PowerShell
-param($result)
-
-# script example adapted from https://community.certifytheweb.com/t/filezilla-server-ps-script/141/8
-
-# Alias to your OpenSSL install
-set-alias opensslcmd "C:\Tools\OpenSSL\openssl.exe" 
-
-# Set paths to where keys will be saved. 
-# This will vary depending on your required configuration. File name are not that important but your config must point to the same filenames.
-
-$keypath = "C:\apache\conf\mydomain.com\"
-$key = $keypath + "cert.key"
-$rsakey = $keypath + "cert_rsa.key"
-$pem = $keypath + "cert.pem"
-
-# Get the latest PFX file path
-$sourcepfx = $result.ManagedItem.CertificatePath
-
-# Create the Key, RSA Key, and PEM file. Use the RSA Key & PEM for FileZilla
-opensslcmd pkcs12 -in $sourcepfx -out $key -nocerts -nodes -passin pass:
-opensslcmd rsa -in $key -out $rsakey
-opensslcmd pkcs12 -in $sourcepfx -out $pem -nokeys -clcerts -passin pass:
-
-# optional: restart the Apache service (example)
-Restart-Service -Name Apache2.4 -Force
 ```
 
 ### Example: Send email via Gmail after unsuccessful renewal 
@@ -233,23 +172,13 @@ Stop-Service RemoteAccess
 Set-RemoteAccess -SslCertificate $cert
 Start-Service RemoteAccess
 ```
+
 ## Troubleshooting
 
+* In the Certify UI, you may test scripts by clicking the ▶ button. You should ideally test scripts after you have completed a successful certificate request so that you have real results and a certificate to work with.
 
-* In the Certify UI, you may test scripts by clicking the "Test" button after entering the script filename for the hook you would like to test. This currently runs as your user account whereas the real renewal script will happen as Local System.
-* For a testing pre-request script, the `$result.IsSuccess` value will be `$false`, and for a post-request script the value will be `$true`.
 * The `$result.ManagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
 
-### Using 64-bit modules
-
-If you attempt to import a module with [`Import-Module`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/import-module?view=powershell-5.1) that does not run in 32-bit mode (i.e. RemoteDesktop), you may receive an error like `"Import-Module : The specified module 'RemoteDesktop' was not loaded because no valid module file was found in any module directory."`. To load a 64-bit module you can use this snippet to pass the `$result` object to a script running in 64-bit powershell:
-```powershell
-param($result)
-set-alias ps64 "$env:windir\sysnative\WindowsPowerShell\v1.0\powershell.exe"
-ps64 -args $result -command {
-   $result = $args[0]
-   write-output $result.IsSuccess
-   import-module -name RemoteDesktop
-   Set-RDCertificate ...
-}
-```
+* PowerShell Execution Policies may be set by your administrator which affect script execution. You can set the default script execution policy in the server settings file `%PROGRAMDATA%\Certify\serviceconfig.json`
+   * `"PowershellExecutionPolicy":"Unrestricted"` or
+   * `"PowershellExecutionPolicy":"Bypass"` etc

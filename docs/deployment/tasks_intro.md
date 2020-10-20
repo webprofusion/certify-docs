@@ -23,6 +23,7 @@ You may want to run any number of tasks after you have renewed your certificate 
 You can configure a task to run either when a certificate request was successful or on error, or you can opt to run the task manually. 
 
 Manually running a task is useful when you want to avoid restarting a service outside of maintenance hours, or if you wish to run the tasks from the command line, a script or a scheduled task. Example command line arguments are shown in the UI to help with scripting.
+
 ## Task Types
 Supported task types, each with UI to configure the task parameters etc, include:
 

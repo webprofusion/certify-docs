@@ -9,7 +9,7 @@ You can read a summary of high-level features the software offers here: https://
 
 This guide will help you get started and detail some of the more advanced options available in the software. **Documentation applies to v5.x of the software.**
 
-![Startup UI](/assets/screens/Startup_Light.png)
+![Startup UI](/assets/screens/landing_page.png)
 
 # Frequently Asked Questions
 Having trouble? See our [FAQs](faq.md) to check if it's a common problem. If you encounter a problem you can't fix yourself check out our [support](support.md) options.

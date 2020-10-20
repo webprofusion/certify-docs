@@ -7,6 +7,7 @@ module.exports = {
   organizationName: 'webprofusion', // Usually your GitHub org/user name.
   projectName: 'certify-docs', // Usually your repo name.
   themeConfig: {
+    sidebarCollapsible: false,
     navbar: {
       title: 'Certify The Web - Docs',
       logo: {

@@ -42,6 +42,7 @@ function Home() {
               to={useBaseUrl('docs/intro')}>
               Get Started
             </Link>
+            <p>Note: You should use a modern web browser to read this documentation. Internet Explorer is not supported.</p>
           </div>
         </div>
       </header>

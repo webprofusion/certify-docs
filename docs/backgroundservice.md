@@ -32,6 +32,11 @@ For example an alternative configuration might be:
 To test that the reconfigured service is communicating OK, you can try opening the following URL in your browser:
 `http://localhost:9695/api/system/appversion` where 'localhost' is your configured service `host` value and `9695` is an example configured port.
 
+You can also try the same using PowerShell:
+```ps
+Invoke-RestMethod -Uri http://localhost:9696/api/system/appversion -UseDefaultCredentials
+```
+
 ## Other Considerations for 'Service Not Started..'
 To operate properly the background service needs to be able to register an http listener for it's API server via http.sys, for that to work the IP address the service tries to use must be enabled as an http listen address and  in some versions of windows the Http kernel service may not be enabled and you will need to enable it. 
 
