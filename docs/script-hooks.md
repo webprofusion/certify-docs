@@ -179,6 +179,7 @@ Start-Service RemoteAccess
 
 * The `$result.ManagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
 
-* PowerShell Execution Policies may be set by your administrator which affect script execution. You can set the default script execution policy in the server settings file `%PROGRAMDATA%\Certify\serviceconfig.json`
+* PowerShell Execution Policies may be set by your administrator which affect script execution. The app will try to set the policy to "Unrestricted" by default which may conflict with higher level policy settings. You can set the default script execution policy in the server settings file (then restart the Certify background service) `%PROGRAMDATA%\Certify\serviceconfig.json`
    * `"PowershellExecutionPolicy":"Unrestricted"` or
-   * `"PowershellExecutionPolicy":"Bypass"` etc
+   * `"PowershellExecutionPolicy":"Bypass"` or
+   * `"PowershellExecutionPolicy":""` (blank string) to use the default policy set by your administrator.
