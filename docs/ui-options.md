@@ -62,7 +62,9 @@ Other options include:
 ### Advance Options
 Checking 'Show Advanced Options' in the Managed Certificate view enables a range of further options:
 
-#### Scripting
+#### Tasks
+The app supports a wide range of pre-built deployment task and your own scripting, this enables you to perform all kinds of different custom steps with your new or updated certificate.
+
 ##### Pre/Post Request Scripting
 You can opt to perform [pre and post-request PowerShell scripting](script-hooks.md). This is especially useful for custom deployment tasks which need to be notified of the new certificate thumbprint, or for distributing your new certificate to other services in your organisation. Note that during certificate renewal your script will run as the account used for the [Background Service](backgroundservice.md), by default this is Local System.
 

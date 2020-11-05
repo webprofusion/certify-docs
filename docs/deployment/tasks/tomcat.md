@@ -26,7 +26,7 @@ Example:
 ```
     
 ## Add a 'Deploy to Tomcat' Deployment Task
-In your Managed Certificate, under Deployment, add a new `Deploy to Tomcat` deployment task, providing the destination path for your PFX file. 
+In your Managed Certificate, under Tasks, add a new `Deploy to Tomcat` deployment task, providing the destination path for your PFX file. 
 
 When the deployment task is next executed the certificate will be exported as a PFX file to this location.
 
