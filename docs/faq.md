@@ -12,7 +12,7 @@ Yes, full time [email support](support) is available for registered users who ha
 *You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported.*
 
 ### What do I need to know about the certificates this app provides?
-Certificates are issued by the Certificate Authority (Let's Encrypt) and various limitations apply including:
+Certificates are issued by the Certificate Authority (the default is Let's Encrypt) and various limitations apply including:
 - Let's Encrypt certificates are limited to a 90 day expiry (which is why auto-renewal is very important). 
 - Let's Encrypt support up to 100 domains per certificate.
 - Rate Limits apply when talking to the ACME/Let's Encrypt ACME API (number of certificates issued per week etc) https://letsencrypt.org/docs/rate-limits/
@@ -38,13 +38,13 @@ By default the background service runs an internal API bound to localhost and va
 Read the error carefully and check the log for your managed site. Assuming your server has direct access to the internet without a proxy (required), you can use the 'Test' option to see if there are any problems the app can diagnose. Alternatively you can also try using the awesome [Let's Debug](https://letsdebug.net) service.
 
 ### How do I know which bindings will be updated when my certificate next auto-renews?
-Check the *Preview* tab of your managed certificate, scroll down to the Deployment section and review the bindings which will be updated when the next renewal occurs.
+Check the *Preview* tab of your managed certificate, scroll down to the bottom Deployment section and review the bindings which will be updated when the next renewal occurs.
 
 ### I have one or more IP specific bindings on the same IIS server, how do I manage these?
 
 **Do not use IP specific bindings unless you have a specific requirement for them.** 
 
-If someone else configured existing IP specific bindings *determine if they are really necessary for your requirements*. 
+If someone else configured existing IP specific bindings *determine if they are absolutely necessary for your requirements*. 
 
 On Windows, if you specify a certificate binding to an IP address then that IP is bound only to that certificate (per port, usually 443 for https) and this binding will take precedence over any other less specific bindings. 
 
@@ -83,15 +83,11 @@ The most common reason for this is when the Deployment mode is set to *Single Si
 ### The certificate is renewing automatically but the browser is seeing an expired certificate
 Check the 'Preview' tab in the app for your site to ensure the https binding of your site is targeted for updates. Ensure you only have one https binding in IIS which will respond to https requests. Also investigate if you have any IP specific bindings (as above).
 
-### If you receive an error 'A specified login session does not exist'
-Use the 'Re-apply Certificate to Bindings' button under *Managed Certificate> Show Advanced Options > Other Options*. This is usually a transient IIS issue and can be solved with a restart. If the problem persists you may have an issue with private key permissions. 
-
 ### I have 2 servers running the app.  Can the contact email can be the same on both?
 *Yes, the contact email can be the same on all servers, or you can vary it as required.* There is only one contact per server. The contact email used at the time of requesting a certificate remains fixed until that certificate expires. The email address is generally used by Let's Encrypt to warn you of expiring certificates you have not yet renewed. 
 
 ### I have an email from Let's Encrypt Expiry Bot saying my certificate is about to expire
 If Let's Encrypt think you haven't renewed a certificate they will let you know using the email address registered as a contact when you installed the app. If your receive an expiry warning, check your certificate is renewing OK. If it all looks good you probably changed the list of domains in your certificate at some point (perhaps adding www. or adding/removing domains) and LE is reminding you about the old version of your certificate, so you can ignore the notification.
-
 
 ### When trying to use BuyPass Go I get the error "Can not find issuer 'C=NO,O=Buypass..."
 Normally Certificate Authority root certificates are installed into Windows as part of windows updates but in some cases you may need to import the root certificate for a CA yourself. You should ensure that your servers are all receiving updates normally. See general instructions here:  http://woshub.com/updating-trusted-root-certificates-in-windows-10/
