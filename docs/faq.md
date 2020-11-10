@@ -29,6 +29,8 @@ If you block outgoing https connections from the machine running the app you wil
 
 Blocking outgoing https connections is not compatible with this application, or with Let's Encrypts API - they do not publish a list of IPs.
 
+The app does not officially support proxied internet connections. Users have managed to use proxies successfully but it's the responsibility of the user to diagnose issues with outgoing https API calls when a proxy or firewall is in use.
+
 ### "Service Not Started" message
 By default the background service runs an internal API bound to localhost and various conditions can cause conflicts or failures. Read more to find out how to [configure or troubleshoot the background service](backgroundservice.md). The service will auto-negotiate an available port to listen on.
 
