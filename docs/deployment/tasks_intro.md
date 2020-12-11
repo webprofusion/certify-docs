@@ -52,7 +52,16 @@ Execute a custom [PowerShell script](../script-hooks)
 Execute an environment specific script (such as as a windows batch file or a linux bash script).
 
 ### Call a custom Webhook
-Call a webhook with details of the latest certificate request status.
+Call a webhook with details of the latest certificate request status. Your custom Body template can use variables, e.g.:
+```
+{
+  "Success": "$Success",
+  "PrimaryDomain": "$PrimaryDomain",
+  "SANs": "$SubjectAlternativeNames"
+}
+```
+
+For advanced webhook scenarios, a custom script is recommended (see Powershell script above).
 
 ### Stop, Start or Restart a Service
 Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to new applied.
