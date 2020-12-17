@@ -9,7 +9,7 @@ title: Using Azure DNS
 
 ## Step 1 – Install and configure Azure PowerShell
 
-Follow the instructions here: https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0
+Follow the instructions here: https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps
 
 ## Step 2 – Connect to Azure PS and create the Azure Service Principal and Enterprise Application
 From PowerShell:
