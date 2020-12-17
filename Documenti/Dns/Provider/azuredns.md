@@ -7,6 +7,16 @@ title: Using Azure DNS
 
 *Note: If you have not yet selected a DNS API provider to host your domain with be aware that Azure DNS is currently amongst the most complex to configure for API access. You should also note that **Azure Client Secrets can expire, causing your renewals to fail until you replace the key.***
 
+# To Configure using Azure Portal
+
+## Create an Azure AD Service Principle
+- In Azure Active Directory, create a user who will then be assigned permissions to update your DNS zone, this can be an App registration. 
+- You will also need to add a Client Secret for use by this user (User > Certificates and Secrets).
+- In your DNS Zone, use the Access Control (IAM) option to Add a Role Assignment (DNS Zone Contributor). 
+
+
+# To Configure using Powershell
+
 ## Step 1 – Install and configure Azure PowerShell
 
 Follow the instructions here: https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps
