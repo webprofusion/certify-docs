@@ -28,6 +28,7 @@ For example an alternative configuration might be:
  "port":9695
 }
 ```
+You may also need to update corresponding configuration in the `servers.json` file (which the UI refers to in order to locate the service).
 
 To test that the reconfigured service is communicating OK, you can try opening the following URL in your browser:
 `http://localhost:9695/api/system/appversion` where 'localhost' is your configured service `host` value and `9695` is an example configured port.
