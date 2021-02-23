@@ -80,7 +80,7 @@ Each Managed Certificate has it's own log file which you can open using the View
 Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro). For normal deployments the certificates are installed into the local machine certificate store under the My/Personal store.
 
 ### What is the PFX password?
-The default PFX password is blank ("") but is configurable under Certificate> 
+The default PFX password is blank ("") but is configurable under Certificate > Advanced > Signing and Security. You can centrally manage this password so if many certs use the same password you don't have to edit each one individually.
 
 ### If I upgrade or re-install will I lose my settings and certificates?
 Your settings are kept under `%ProgramData%\Certify` and you should consider backing up this location regularly. Settings are preserved and upgraded when new versions are installed. Settings are *not* removed if you Uninstall the app. **Do not store custom scripts under the %ProgramFiles%\CertifyTheWeb folder as these will deleted on upgrade.**
