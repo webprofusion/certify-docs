@@ -3,16 +3,23 @@ id: faq
 title: Frequently Asked Questions
 ---
 
-> Certify SSL Manager aims to be easy to use and to get you setup with your TLS/SSL certificates as quickly as possible. Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve check out our [support options](support).
-
 ## Introduction
+
+### What is Certify The Web?
+> Certify The Web is a GUI to manage, request and renew certificates from Let's Encrypt and other popular (or custom) certificate authorities who support the ACME (Automated Certificate Management Environment) standard. Automatic certificate management means that you no longer have to worry about certificates because they are being automatically managed in a reliable way. Deployment of certificates to the services that require them can also be extensively automated.
+
+Our aim is to ensure that the app is easy to use and that you get setup with your TLS/SSL certificates as quickly as possible. Unlike other more basic tools, if a problem develops that prevents your certificate renewing Certify The Web will let you know by sending you a notification via our API (with no additional configuration).
+
+Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve, check out our [support options](support).
+
+
 ### Is this application commercially supported?
 Yes, full time [email support](support) is available for registered users who have purchased a license key (or those who are evaluating the software) for the Professional or Enterprise editions https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support).
 
 *You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported.*
 
 ### What do I need to know about the certificates this app provides?
-Certificates are issued by the Certificate Authority (the default is Let's Encrypt) and various limitations apply including:
+We are not a Certificate Authority and this app makes managing certificates easier. The actual certificates are issued by the Certificate Authority of your choice (the default is Let's Encrypt) and various limitations apply including:
 - Let's Encrypt certificates are limited to a 90 day expiry (which is why auto-renewal is very important). 
 - Let's Encrypt support up to 100 domains per certificate.
 - Rate Limits apply when talking to the ACME/Let's Encrypt ACME API (number of certificates issued per week etc) https://letsencrypt.org/docs/rate-limits/
@@ -70,7 +77,10 @@ Your server is not configured to support current TLS Cipher suites by default. T
 Each Managed Certificate has it's own log file which you can open using the View Log File option when viewing the details. By default, log files are kept at `%ProgramData%\Certify\logs`.
 
 ### Where does Certify The Web store certificates?
-Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro).
+Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro). For normal deployments the certificates are installed into the local machine certificate store under the My/Personal store.
+
+### What is the PFX password?
+The default PFX password is blank ("") but is configurable under Certificate> 
 
 ### If I upgrade or re-install will I lose my settings and certificates?
 Your settings are kept under `%ProgramData%\Certify` and you should consider backing up this location regularly. Settings are preserved and upgraded when new versions are installed. Settings are *not* removed if you Uninstall the app. **Do not store custom scripts under the %ProgramFiles%\CertifyTheWeb folder as these will deleted on upgrade.**
