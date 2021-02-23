@@ -5,7 +5,7 @@ title: Frequently Asked Questions
 
 > Certify SSL Manager aims to be easy to use and to get you setup with your TLS/SSL certificates as quickly as possible. Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve check out our [support options](support).
 
-## Getting Started
+## Introduction
 ### Is this application commercially supported?
 Yes, full time [email support](support) is available for registered users who have purchased a license key (or those who are evaluating the software) for the Professional or Enterprise editions https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support).
 
@@ -19,7 +19,7 @@ Certificates are issued by the Certificate Authority (the default is Let's Encry
 - Usage of the app to acquire certificates from Let's Encrypt requires agreement to the current Let's Encrypt service terms and conditions
 - Certificates must be for public domains. Local intranet hostnames are not supported.
 
-## Getting Started
+## Help Getting Started
 
 ### I can't register my email with Let's Encrypt
 Check your server allows outgoing https requests. This is essential for talking to the API of the Certificate Authority being used (e.g. Let's Encrypt).
@@ -68,6 +68,9 @@ Your server is not configured to support current TLS Cipher suites by default. T
 
 ### Where are log files kept?
 Each Managed Certificate has it's own log file which you can open using the View Log File option when viewing the details. By default, log files are kept at `%ProgramData%\Certify\logs`.
+
+### Where does Certify The Web store certificates?
+Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro).
 
 ### If I upgrade or re-install will I lose my settings and certificates?
 Your settings are kept under `%ProgramData%\Certify` and you should consider backing up this location regularly. Settings are preserved and upgraded when new versions are installed. Settings are *not* removed if you Uninstall the app. **Do not store custom scripts under the %ProgramFiles%\CertifyTheWeb folder as these will deleted on upgrade.**
