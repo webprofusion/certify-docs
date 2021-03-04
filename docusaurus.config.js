@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Certify The Web Docs',
-  tagline: "The GUI for Let's Encrypt on Windows!",
+  tagline: "The GUI for Let's Encrypt and ACME Certificate Management on Windows!",
   url: 'https://docs.certifytheweb.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -8,6 +8,18 @@ module.exports = {
   projectName: 'certify-docs', // Usually your repo name.
   themeConfig: {
     sidebarCollapsible: false,
+    algolia: {
+      apiKey: 'f16916b939048732aa7ef42649a7e6ea',
+      indexName: 'certifytheweb',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      //... other Algolia params
+    },
     navbar: {
       title: 'Certify The Web - Docs',
       logo: {
