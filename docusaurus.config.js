@@ -10,13 +10,7 @@ module.exports = {
     sidebarCollapsible: false,
     algolia: {
       apiKey: 'f16916b939048732aa7ef42649a7e6ea',
-      indexName: 'certifytheweb',
-
-      // Optional: see doc section below
-      contextualSearch: true,
-
-      // Optional: Algolia search parameters
-      searchParameters: {},
+      indexName: 'certifytheweb'
 
       //... other Algolia params
     },
