@@ -8,7 +8,7 @@ To request a certificate from Let's Encrypt (or any Certificate Authority), you 
 ## How to use HTTP Validation (on Windows)
 When Let's Encrypt performs domain validation over http (known as an `http-01` challenge) they ask for a randomly named text file to be presented in the `/.well-known/acme-challenge` path of your website. So they should be able to retrieve it at `http://<yourdomain>/.well-known/acme-challenge/<filename>`
 
-**Your server must be able to respond on tcp port 80 in order to perform any HTTP validation. If your firewall blocks port 80, unblock it to proceed. You don't need IIS http bindings as by default the app wil use it's own http challenge response server.**
+**Your server must be able to respond on tcp port 80 in order to perform any HTTP validation. If your firewall blocks port 80, unblock it to proceed. You don't need IIS http bindings as by default the app will use it's own http challenge response server.**
 
 If this step succeeds, you're all set to automatically complete HTTP validation of your domain. Once completed, Let's Encrypt marks your domain (associated with your account) as 'valid' and we can then proceed with requesting the final certificate.
 
@@ -43,7 +43,7 @@ The most common problem is that auto configuration has failed to determine the b
 
 1 - Check the challenge folder exists
 
-Check that test test configcheck file has been created at: `wwwwroot\inetpub\*yourwebsite*\.well-known\acme-challenge`
+Check that configcheck file has been created at: `wwwwroot\inetpub\*yourwebsite*\.well-known\acme-challenge`
 
 If not, check your folder permissions allow this folder/files to be created. If necessary, check the website root path is correctly mapped.
 
