@@ -35,7 +35,7 @@ Current DNS API providers include:
 
 *&ast; marked providers are contributed and tested by users.*
 
-In addition we implement a number of DNS providers courtesy of the Posh-ACME: https://github.com/rmbolger/Posh-ACME project. If you encounter any issues with these you should verify they works normally within Posh-ACME and raise issues on our [github page](https://github.com/webprofusion/certify) :
+In addition we implement a number of DNS providers courtesy of the Posh-ACME: https://github.com/rmbolger/Posh-ACME project. If you encounter any issues with these you should verify they work normally within Posh-ACME and then raise an issue on our [github page](https://github.com/webprofusion/certify) :
 
 [Akamai](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/Plugins/Akamai-Readme.md),
 [AutoDNS](https://github.com/rmbolger/Posh-ACME/blob/master/Posh-ACME/Plugins/AutoDNS-Readme.md),
