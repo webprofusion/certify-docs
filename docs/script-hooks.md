@@ -217,6 +217,18 @@ $rsConfig.CreateSSLCertificateBinding($ssrsReportManagerName, $newthumb, $ipAddr
 $rsConfig.CreateSSLCertificateBinding($ssrsReportWebServiceName, $newthumb, $ipAddress, $httpsport, 1033) 
 ```
 
+### Example: Update the certificate on a local WinRM https listener (Windows Admin Center etc)
+```
+param($result)  
+
+# update the local winrm https listener cert, assumes the cert is already installed to local computer certificate store using Certify
+# based on https://serverfault.com/questions/589607/automatically-reconfigure-winrm-https-listener-with-new-certificate
+ 
+Set-Location -Path WSMan:\localhost\Service
+
+Set-Item -Path .\CertificateThumbprint -Value $result.ManagedItem.CertificateThumbprintHash
+```
+
 ## Troubleshooting
 
 * In the Certify UI, you may test scripts by clicking the ▶ button. You should ideally test scripts after you have completed a successful certificate request so that you have real results and a certificate to work with.
