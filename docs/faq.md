@@ -106,3 +106,7 @@ If Let's Encrypt think you haven't renewed a certificate they will let you know 
 Normally Certificate Authority root certificates are installed into Windows as part of windows updates but in some cases you may need to import the root certificate for a CA yourself. You should ensure that your servers are all receiving updates normally. See general instructions here:  http://woshub.com/updating-trusted-root-certificates-in-windows-10/
 
 You can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (import it into the Trusted Root Certification Authorities store).
+
+## License Registration
+
+Certify The Web has a free Community Edition which is limited to 5 managed certificates. This limit may vary across updates and is designed to provide a free way for individuals and hobbiest to use the app and for commercial evaluation and testing. you can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
