@@ -43,7 +43,7 @@ Export the certificate to Azure Key Vault for distribution to other application 
 Export the certificate to local or remote locations (including SSH/SFTP) as PEM format with Key file and optional chain file.
 
 ### Deploy to Tomcat
-Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](tasks/tomcat).
+Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](./tasks/tomcat).
 
 ### Run a Powershell script
 Execute a custom [PowerShell script](../script-hooks)
