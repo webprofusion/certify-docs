@@ -3,7 +3,7 @@ id: intro
 title: Getting Started
 ---
 
-[*Certify The Web* (a.k.a Certify)](https://certifytheweb.com) is the most popular GUI for professional ACME certificate management on Windows, allowing you to easily request, deploy, auto-renew and manage free SSL/TLS [certificates](guides/certificates) from Certificate Authorities such as **[Let's Encrypt, BuyPass Go SSL, ZeroSSL and custom CAs](certificate-authorities/intro)**.
+[*Certify The Web* (a.k.a Certify)](https://certifytheweb.com) is the most popular GUI for professional ACME certificate management on Windows, allowing you to easily request, deploy, auto-renew and manage free SSL/TLS [certificates](guides/certificates) from Certificate Authorities such as **[Let's Encrypt, BuyPass Go SSL, ZeroSSL and custom CAs](guides/certificate-authorities)**.
 
 You can read a summary of high-level features the software offers here: https://certifytheweb.com/home/features
 

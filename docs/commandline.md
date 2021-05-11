@@ -1,6 +1,6 @@
 ---
 id: commandline
-title: Command Line (CLI) Options
+title: Command Line (CLI)
 ---
 
 A handful of options are available using the command line tool *certify.exe*. This can be found in the installation directory. 

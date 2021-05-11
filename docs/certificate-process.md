@@ -38,7 +38,7 @@ You can validate using [HTTP validation (http-01)](http-validation) or [DNS Vali
 ### 3. Decide how to deploy
 By default Certify will auto update/add https bindings on all sites with hostnames which match the certificate. You can also choose to customise how deployment occurs. The *Preview* feature (below) is especially important as this will show you which bindings will be created and updated.
 
-You can customise this behaviour or even opt to have no deployment at all, however if you do customise binding behaviour (in Windows Server) you should have a clear understanding of the limitations of [SSL binding on Windows](ssl-windows)
+You can customise this behaviour or even opt to have no deployment at all, however if you do customise binding behaviour (on a Windows Server) you should have a clear understanding of the limitations of [SSL binding on Windows](guides/ssl-windows)
 
 ![Deployment](/assets/screens/Deployment_Auto.png)
 
