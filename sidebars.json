@@ -2,16 +2,16 @@
   "docs": {
     "Introduction": [
       "intro",
-      "letsencrypt",
       "certificate-process",
       "renewals"
     ],
     "Guides": [
-      "dns/validation",
+      "guides/certificate-authorities",
+      "guides/certificates",
       "http-validation",
+      "dns/validation",
       "deployment/tasks_intro",
       "script-hooks"
-      
     ],
     "Useful Info": [
       "ssl-windows",

@@ -5,6 +5,8 @@ title: Using Certificates in Windows
 
 Using SSL/TLS certificates in Windows has a few aspects that can prevent your site working properly if don't know about them. This guide outlines some key points. **See the special mention below for limitations regarding Windows Server 2008 R2 (IIS 7.5) and lower.**
 
+If you are new to managing certificates or want to know more, you can read more about [Certificates](guides/certificates) themselves.
+
 ## There Can Be Only One (SSL Binding Per Port/IP)
 Windows only allows one SSL binding per specific IP, per Port (so typically port 443 for https). So if you use a fixed IP for your http website you probably don't want to do that for your SSL binding as well, unless you have lots of spare IP addresses on the server (you probably don't). This applies to all current versions of Windows.
 

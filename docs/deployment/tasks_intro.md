@@ -34,13 +34,15 @@ Apply the certificate to a local MS Exchange services and apply it to an optiona
 Pre-built PowerShell tasks to apply the latest certificate to common windows services. Includes Active Directory Federation Services (ADFS), Web Deploy/Web Management Service.
 
 ### Deploy to Certificate Store (Local)
-Import the certificate into the local certificate store with your choice of store type (Personal, Web Hosting) and choice of Friendly Name
+Import the certificate into the local certificate store with your choice of store type (Personal, Web Hosting) and choice of Friendly Name. Note that the default auto deployment system in Certify will already store certificates in the My/Personal certificate store.
 
 ### Deploy to Microsoft Azure Key Vault
 Export the certificate to Azure Key Vault for distribution to other application and services.
 
 ### Deploy to Apache, nginx, Generic Server, Certificate Export
-Export the certificate to local or remote locations (including SSH/SFTP) as PEM format with Key file and optional chain file.
+Export the certificate to local or remote locations (including SSH/SFTP) as PEM format with Key file and optional chain file. 
+
+For a general introduction to certificates and their file types see [Certificates](../guides/certificates).
 
 ### Deploy to Tomcat
 Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](./tasks/tomcat).

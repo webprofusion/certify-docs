@@ -1,6 +1,6 @@
 ---
 id: validation
-title: About DNS Validation (dns-01)
+title: DNS Validation (dns-01)
 ---
 
 ## Why use DNS Validation?

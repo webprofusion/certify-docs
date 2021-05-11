@@ -3,7 +3,7 @@ id: script-hooks
 title: Scripting
 ---
 
-# About Scripting
+# Scripting
 
 Certify is extensible via PowerShell scripts tasks which can be configured to run before or after the Certificate Request. From v5 onwards these are found under the Tasks tab for your managed certificate. See [Tasks](deployment/tasks_intro) for more information.
 

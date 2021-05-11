@@ -3,7 +3,7 @@ id: certificate-process
 title: Requesting a Certificate
 ---
 
-When you install Certify you will be prompted to register with the the Certificate Authority who will validate and issue your certificates (e.g. Let's Encrypt). You should provide a real email address, otherwise they can't contact you if there is a problem with your certificate. 
+When you install Certify you will be prompted to register with the [Certificate Authority](guides/certificate-authorities) who will validate and issue your [certificates](guides/certificates) (e.g. Let's Encrypt). You should provide a real email address, otherwise they can't contact you if there is a problem with your certificate. 
 
 **Quick Start: ** If you are requesting a certificate for an IIS website with existing http/https domain bindings it's possible to just install the app on the web server, click **New Certificate**, selected your IIS Website and confirm your domains, then click **Request Certificate** to automatically validate your domain(s), fetch the certificate and auto-apply it. You can then access your website via https. Your certificate will automatically renew using the same process.
 
@@ -27,7 +27,7 @@ You cannot mix certificate requests for a Wildcard and a first-level subdomain (
 ### 2. Decide how to validate domains
 You will need to prove you control the domains you have added to your certificate. Only public domains can be validated automatically so intranet sites (hostname only with no domain etc e.g. SRVDEVAPP01) are not supported, however public domain names (like srvdevapp01.dev.domain.com) are fine.
 
-You can validate using [HTTP validation (http-01)](http-validation) or [DNS Validation (dns-01)](dns-validation). 
+You can validate using [HTTP validation (http-01)](http-validation) or [DNS Validation (dns-01)](dns/validation). 
 
 **HTTP validation** requires that your domain be a publicly accessible website with an http service on port 80 (even if that's only for http validation purposes). <em>You cannot use http validation if you need a wildcard certificate.</em>
 ![HTTP Validation](/assets/screens/Auth_http.png)
