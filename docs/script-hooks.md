@@ -228,6 +228,17 @@ Set-Location -Path WSMan:\localhost\Service
 
 Set-Item -Path .\CertificateThumbprint -Value $result.ManagedItem.CertificateThumbprintHash
 ```
+### Example: Convert PFX to Java Key Store using keytool
+```
+param($result)  
+
+# adapt paths and passwords as required
+
+$dest_password ="ajkspassword"
+$dest_jks_file="C:\temp\mykeystore.jks"
+
+C:\path\to\keytool -importkeystore -srckeystore $result.ManagedItem.CertificatePath -srcstoretype pkcs12 -destkeystore $dest_jks_file -deststoretype JKS -deststorepass $dest_password -srcstorepass "" 
+```
 
 ## Troubleshooting
 
