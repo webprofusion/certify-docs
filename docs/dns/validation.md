@@ -16,6 +16,8 @@ To do this you may need to get the API credentials for the (hosted) DNS from you
 
 If your DNS provider (or custom DNS setup) does not have an API we can talk to, you can write your own DNS update script or use the Manual DNS option (the request pauses while you manually update DNS).
 
+### Certify DNS
+Certify DNS is a cloud hosted version of the acme-dns standard (CNAME delegation of acme challenge TXT records to a dedicated challenge response service). This service can be enabled Certify The Web users through the https://certifytheweb.com License Keys tab when signed in. The service is compatible with most existing *acme-dns* clients so it can be used with other ACME clients on all operating systems. Reade more about [Certify DNS](providers/certifydns).
 ### DNS API Providers
 
 Current DNS API providers include:
