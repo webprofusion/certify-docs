@@ -11,7 +11,8 @@
       "http-validation",
       "dns/validation",
       "deployment/tasks_intro",
-      "script-hooks"
+      "script-hooks",
+      "guides/csr"
     ],
     "Useful Info": [
       "guides/ssl-windows",
