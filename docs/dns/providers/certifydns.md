@@ -8,6 +8,8 @@ Certify DNS is a cloud hosted version of the acme-dns standard (CNAME delegation
 
 **With Certify DNS, you create a special CNAME record in your domain DNS, instead of a TXT record. This CNAME record points to the Certify DNS cloud service and handles ACME challenge responses for your domain.**
 
+## Using Certify DNS in Certify The Web
+
 - Enable Certify DNS in your https://certifytheweb.com profile (under License Keys). While the service is in beta testing you will need to request access via `support {at} certifytheweb.com`
 - Select Certify DNS as the DNS update method.
 - Create your Certify DNS credentials using your account email address and license key. You only need to do this once.
@@ -17,7 +19,9 @@ Certify DNS is a cloud hosted version of the acme-dns standard (CNAME delegation
 - Resume the request using `Request Certificate`, the Certify DNS service will automatically provide the required TXT record responses on your behalf.
 - Automatic renewals will then perform this process again without manual intervention.
 
-
+## Using Certify DNS with other acme-dns compatible clients
+- Once activated on your https://certifytheweb.com account as special URL will be shown under the License Keys tab. This passes your license key info as basic credentials to the Certify DNS service.
+- Follow the normal instructions for your acme-dns client, using the provided URL as the base URL for the acme-dns service.
 ## Troubleshooting
 
 If the error in the app is `NXDOMAIN for _acme-challenge...` , the Certificate Authority has been unable to find or follow the CNAME you have configured in your DNS.
