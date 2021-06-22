@@ -14,7 +14,7 @@ Certify DNS is a cloud hosted version of the [acme-dns](https://github.com/jooho
 - Select Certify DNS as the DNS update method.
 - Create your Certify DNS credentials using your account email address and license key. You only need to do this once.
 - Click `Request Certificate` to perform a one-time registration with the Certify DNS service (per domain).
-- You will be prompted to create a CNAME pointing to the TXT record hsoted by the Certify DNS service. If you miss this prompt check back in the log file for your managed certificate (see the Status tab).
+- You will be prompted to create a CNAME pointing to the TXT record hosted by the Certify DNS service. If you miss this prompt check back in the log file for your managed certificate (see the Status tab).
 - Once you have created your CNAME record, delete any existing _acme-challenge TXT record in the same zone to avoid confusion.
 - Resume the request using `Request Certificate`, the Certify DNS service will automatically provide the required TXT record responses on your behalf.
 - Automatic renewals will then perform this process again without manual intervention.
@@ -34,4 +34,4 @@ Advantages:
 - Least privileged updates to DNS. Your existing DNS zone only needs initial CNAME records created and thereafter no further updates are required to your DNS.
 
 Disadvantages:
-- Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. **This is a security risk and you must trust the service provider.**
+- Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. **This is a security risk and you must trust the service provider.** An alternative is to host your own internet facing acme-dns server. You should review the requirements for doing that and assess whether it's the best choice for your organisation.
