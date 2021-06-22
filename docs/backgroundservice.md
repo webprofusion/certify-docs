@@ -3,7 +3,7 @@ id: backgroundservice
 title: Background Service
 ---
 
-In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" (Certify SSL Manager Service). This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information.
+In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" (Certify SSL Manager Service). This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](./guides/security)
 
 To check the log for this service, review `C:\ProgramData\Certify\logs\service.exceptions.log`.
 
