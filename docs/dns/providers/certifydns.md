@@ -22,6 +22,14 @@ Certify DNS is a cloud hosted version of the [acme-dns](https://github.com/jooho
 ## Using Certify DNS with other acme-dns compatible clients
 - Once activated on your https://certifytheweb.com account as special URL will be shown under the License Keys tab. This passes your license key info as basic credentials to the Certify DNS service.
 - Follow the normal instructions for your acme-dns client, using the provided URL as the base URL for the acme-dns service.
+
+### Example: Certbot with acme-dns-auth.py (linux)
+- Install Certbot and download acme-dns-auth.py (https://github.com/joohoi/acme-dns-certbot-joohoi)
+- Update acme-dns-auth.py to set `ACMEDNS_URL = "https://<your key credentials>@certify-dns.certifytheweb.com"`. Your url with credentials if found on your certifytheweb.com License Keys tab when Certify DNS is enabled.
+- Run certbot with the required auth hook, e.g.:
+`sudo certbot certonly --manual --manual-auth-hook /etc/letsencrypt/acme-dns-auth.py --preferred-challenges dns --debug-challenges  -d www.example.com`
+- On first run you will be prompted to create a specific CNAME in your domains DNS after registration completes. 
+
 ## Troubleshooting
 
 If the error in the app is `NXDOMAIN for _acme-challenge...` , the Certificate Authority has been unable to find or follow the CNAME you have configured in your DNS.
@@ -34,4 +42,4 @@ Advantages:
 - Least privileged updates to DNS. Your existing DNS zone only needs initial CNAME records created and thereafter no further updates are required to your DNS.
 
 Disadvantages:
-- Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. **This is a security risk and you must trust the service provider.** An alternative is to host your own internet facing acme-dns server. You should review the requirements for doing that and assess whether it's the best choice for your organisation.
+- Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. **This is a security risk and you must trust the service provider.** An alternative is to host your own internet facing acme-dns server. You should review the requirements for doing that and assess whether it's the best choice for your organisation. Future updates to the CAA record standard for CA issuance will likely add a way to limit updates to specific CA accounts.
