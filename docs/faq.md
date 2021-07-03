@@ -14,9 +14,11 @@ Web hosting configurations vary and sometimes securing your site can be harder t
 
 
 ### Is this application commercially supported?
-Yes, full time [email support](support) is available for registered users who have purchased a license key (or those who are evaluating the software) for the Professional or Enterprise editions https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support).
+Yes, full time [email support](support) is available for registered users who have purchased a license key (or those who are evaluating the software) for the Professional or Enterprise editions https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support). 
 
-*You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported.*
+*You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported.* 
+
+**If you use this application within a business, you should purchase a license key once you have completed your evaluation of the software.**
 
 ### What do I need to know about the certificates this app provides?
 We are not a Certificate Authority and this app makes managing certificates easier. The actual certificates are issued by the Certificate Authority of your choice (the default is Let's Encrypt) and various limitations apply including:
