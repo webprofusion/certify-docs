@@ -31,3 +31,21 @@ If using scripting, script files must be permissioned so that they can only be m
 The contents of `%ProgramData%\Certify` should generally be considered sensitive and especially `%ProgramData%\Certify\assets` which contains PFX files which could be used by an attacker to successfully impersonate a legitimate service (e.g. tricking a users machine to think they are accessing a genuine system in order to steal credentials).
 
 Some app feature use Stored Credentials. These are encrypted using the Windows Data Protection APIs and the private keys of the background service account. If you change (or reset) accounts these credentials may become unreadable. Anyone with the ability to use the same account as the background service will be theoretically able to decrypt stored credentials.
+
+## Risk Mitigation Strategies
+
+For PowerShell scripting, scripts can be limited to those which have been signed using a code signing certificate (either a publicly trusted one issued by a public CA, or an internally trusted one using your own CA). If you then set your machine and user execution policy to AllSigned the script will not be able to run unless trusted. This is especially useful to stop script tampering, however it doesn't stop a script being replaced by another one which is also signed by a trusted authority.
+
+### Example
+```ps
+
+# Lock down script execution to signed only (may affect other normal operation of the machine) 
+Set-ExecutionPolicy AllSigned -Scope CurrentUser
+Set-ExecutionPolicy AllSigned -Scope Machine
+
+# Load a valid signing cert
+$cert= Get-PfxCertificate -FilePath MyCodeSigningCert.pfx 
+
+# Sign a script (appends a signature as comments to the end of the file)
+Set-AuthenticodeSignature -FilePath .\test-signed.ps1 -Certificate $cert
+```
