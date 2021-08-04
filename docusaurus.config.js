@@ -7,7 +7,6 @@ module.exports = {
   organizationName: 'webprofusion', // Usually your GitHub org/user name.
   projectName: 'certify-docs', // Usually your repo name.
   themeConfig: {
-    sidebarCollapsible: false,
     algolia: {
       apiKey: 'f16916b939048732aa7ef42649a7e6ea',
       indexName: 'certifytheweb'
@@ -97,6 +96,7 @@ module.exports = {
           path: './docs',
           // Sidebars file relative to website dir.
           sidebarPath: require.resolve('./sidebars.json'),
+          sidebarCollapsible: false,
           editUrl:
             'https://github.com/webprofusion/certify-docs/edit/master/',
         },

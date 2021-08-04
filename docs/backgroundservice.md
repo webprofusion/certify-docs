@@ -85,3 +85,37 @@ Then start the http service
  Once completed, restart the Certify SSL Manager background service from local services, then open the Certify The Web UI again to see if it can connect.
 
  In other cases, you may have permission restrictions on port bindings to localhost, so you may have to modify these https://docs.microsoft.com/en-us/windows/desktop/http/add-urlacl or change the service config as above.
+
+## Managed Items Database
+
+The data store for the managed certificates database is the C:\ProgramData\Certify\manageditems.db SQLite database. This stores your renewal configuration data (not certificates). This is an sqlite3 format database files.
+
+You should include C:\ProgramData\Certify\ in your normal backup procedures, otherwise if you lose this configuration or it is corrupted you may need to add all of your managed certificates again. You may consider adding an exclusion to your anti-virus software to avoid sharing conflicts.
+
+On service startup and on a daily schedule the system will make a copy of manageditems.db called manageditems.db.bak.
+
+### Data Recovery
+Storage write errors or sudden unexpected system shutdowns can (in rare occasions) cause database corruption. In the event that your database (and backup) become corrupted the sqlite tools may be used to recover some or all of the information.
+
+### Attempt an export
+The following will copy the contents of manageditems.db to a new db file. You can try this in place of your original:
+```
+sqlite3.exe manageditems.db
+sqlite> .backup output.db
+```
+Then copy new.db to manageditems.db and start the Certify service.
+
+### Attempt a recovery using SQL dump
+Based on the example from https://ronnieroller.com/Repair-an-SQLite-database we can export the database 
+```
+sqlite3 manageditems-corrupted.db
+sqlite> .mode insert
+sqlite> .output dump.sql
+sqlite> .dump
+sqlite3.exe new.db < dump.sql
+```
+```
+sqlite3 new.db "PRAGMA integrity_check"
+```
+
+Then copy new.db to manageditems.db and start the Certify service.
