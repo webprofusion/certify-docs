@@ -45,6 +45,14 @@ BuyPass are a Scandinavian certificate authority who also offer free certificate
 - Important rate limits apply: https://community.buypass.com/t/m2r5cj/rate-limits
 - Certificates can contain up to 5 domains. Wildcard certificates are not supported.
 
+### SSL .com
+SSL .com are an established certificate Certificate Authority who now offer basic free certificates via their own ACME enabled service. https://www.ssl.com/how-to/order-free-90-day-ssl-tls-certificates-with-acme/
+
+- Trusted by all major operating systems and browsers
+- Certificates expire after 90 days.
+- Certificates can contain 1 domain plus an optional www subdomain. Wildcard certificates are not supported.
+
+
 ## Managing CA accounts
 
 Before you can use a different Certificate Authority in Certify you first need to create a new ACME account for that service under `Settings` > `Certicate Authorities`. If your provider requires External Account Binding (EAB) credentials you supply these in the Advanced tab.
