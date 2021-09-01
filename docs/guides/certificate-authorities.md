@@ -62,3 +62,14 @@ In some situations it's useful to test the certificate request process against t
 ## Custom CAs (public or self-hosted)
 You can add configuration for any certificate authority system which supports the ACME V2 (RFC8555) standard. There is a basic CA editor included in the app (enabled under `Settings` > `UI Settings` > `Certificate Authority Editor`) which can be accessed under `Settings` > `Certificate Authorities` > `Edit Certificate Authorities`. If you are confident editing JSON text files you can also manually edit `C:\ProgramData\Certify\ca.json` to add custom CAs.
 
+## Migrating from one CA to another
+
+In the event that you want to change from one Certificate Authority to another (e.g. from Let's Encrypt to BuyPass Go), you should follow this general procedure:
+* Add an account for the new CA if you don't have one already.
+* Perform a certificate request with a typical managed certificate
+    * Edit your managed certificate, choose Certificate > Advanced > Certificate Authority, choose the new CA.
+    * Click 'Request Certificate' to perform the new certificate request.
+* Evaluate that the resulting certificate works for you and your users.
+* Optionally, change the default CA (under Settings) to the new CA and either let each certificate renew individually or force the renewal, as required.
+
+Note that if bulk migrating from one CA to another you will be subject to API rate limits with the new CA, so it may not be possible to migrate large numbers of certificates in a short period of time, unless you can contact the CA to have your rate limit increased.
