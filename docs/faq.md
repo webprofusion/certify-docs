@@ -117,7 +117,7 @@ To use Let's Encrypt's alternate unexpired chain you would set this to *ISRG Roo
 ### My Let's Encrypt certificate chain is invalid after the "DST Root CA X3" expiry.
 When Let's Encrypts `DST Root CA X3` expires on the 30th Sept 2021, so will one version of it's `R3` intermediate. If you experience problems with Windows changing over to the correct newer version of R3 (chained `R3 > ISRG Root X1 > DST Root CA X3`) first try rebooting your Windows server. 
 
-You may also need to delete the old R3 (after expiry) in the windows certificate manager: `Manage Computer Certificates > Intermediate Certification Authorities`, again a reboot may be required.
+You may also need to disable or delete the old R3 (after expiry) in the windows certificate manager: `Manage Computer Certificates > Intermediate Certification Authorities`. To disable the certificate right-click > properties, Disable all purposes for this certificate. To just delete the certificate, choose Delete. A reboot may be required for the change to take effect.
 
 ## License Registration
 
