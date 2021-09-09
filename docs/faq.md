@@ -114,6 +114,10 @@ From May 2021 Let's Encrypt are introducing a new default certificate 'chain' de
 
 To use Let's Encrypt's alternate unexpired chain you would set this to *ISRG Root X1*  then re-request your certificate. See also https://community.letsencrypt.org/t/production-chain-changes/150739
 
+You may find that some servers do not serve the default `R3 > ISRG X1 > DST Root CA X3` chain (only serving `R3 > ISRG X1`), resulting in incompatibility with old versions of Android. To resolve this, manually install the ISRG Root X1 cross signed to DST Root from (Chain of Trust - Let's Encrypt) https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der
+
+Download the .der file, open certlm.msc, browse to intermediate certification authorities, right-click > `All Tasks > Import..`, select .der file types and browse to your downloaded file, then complete the import. The updated (default) chain will now be used.
+
 ### My Let's Encrypt certificate chain is invalid after the "DST Root CA X3" expiry.
 When Let's Encrypts `DST Root CA X3` expires on the 30th Sept 2021, so will one version of it's `R3` intermediate. If you experience problems with Windows changing over to the correct newer version of R3 (chained `R3 > ISRG Root X1 > DST Root CA X3`) first try rebooting your Windows server. 
 
