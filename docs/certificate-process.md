@@ -13,7 +13,7 @@ The basic process of requesting a certificate for your domain involves either pr
 This process can be handled automatically by Certify The Web, either by running the app on the web server for your domain, or by talking to your DNS service provider's API. Once a certificate has been issued it can be deployed automatically in a number of ways, the most common being to apply it to your web server *https bindings*
 
 ### 1. Choose the domains to include
-The first step of requesting a certificate is to decide which domain (and subdomains) need to be included in your certificate. You can manually specify these or you can load the configured hostname bindings from an existing IIS site on your server. If you choose an existing IIS site this will also be your default target for the final https bindings to be created/updated.
+The first step of requesting a certificate is to decide which domain (and subdomains) need to be included in your certificate. You can manually specify these or you can load the configured hostname bindings from an existing IIS site on your server. If you choose an existing IIS site this will also be your default target for the final https bindings to be created/updated. Using existing hostname bindings in IIS is by far the easiest and quickest way to work, as working with blank hostname bindings requires more configuration (see Deployment).
 
 ![Choosing Domains](/assets/screens/ChooseDomains.png)
 
@@ -36,11 +36,13 @@ You can validate using [HTTP validation (http-01)](http-validation) or [DNS Vali
 ![DNS Validation](/assets/screens/Auth_DNS.png)
 
 ### 3. Decide how to deploy
-By default Certify will auto update/add https bindings on all sites with hostnames which match the certificate. You can also choose to customise how deployment occurs. The *Preview* feature (below) is especially important as this will show you which bindings will be created and updated.
+By default Certify will auto update/add https bindings on all sites with hostname bindings which match the certificate. You can also choose to customise how deployment occurs. The *Preview* feature (below) is especially important as this will show you which bindings will be created and updated.
 
 You can customise this behaviour or even opt to have no deployment at all, however if you do customise binding behaviour (on a Windows Server) you should have a clear understanding of the limitations of [SSL binding on Windows](guides/ssl-windows)
 
 ![Deployment](/assets/screens/Deployment_Auto.png)
+
+The default Auto deployment mode will match your certificate to all IIS sites with matching hostname bindings, to work with blank hostname bindings etc., change the deployment mode and configure the available options.
 
 ##### Deployment Tasks and Advanced Usage
 In addition to the Auto Deployment options, you can also make use of a variety of pre-built [Deployment Tasks](deployment/tasks_intro) for local or remote deployment. You can also use scripting tasks to work with your certificate using your own custom scripting.
