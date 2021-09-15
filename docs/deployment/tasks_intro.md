@@ -48,7 +48,10 @@ For a general introduction to certificates and their file types see [Certificate
 Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](./tasks/tomcat).
 
 ### Run a Powershell script
-Execute a custom [PowerShell script](../script-hooks)
+Execute a custom [PowerShell script](../script-hooks). 
+
+#### Passing custom arguments
+Note if passing additional arguments to your script these should be in the format arg=value;arg2=value and `;` characters required as parameter values need to be escaped with `\`, like `key=abc\;123h;othervalue=test`. The `\` character can be escaped as `\\` e.g. to pass an couple of arguments and the first is `path` with value `c:\temp\folder` you could use `path=c:\temp\folder\\;other=test`
 
 ### Run a Script
 Execute an environment specific script (such as as a windows batch file or a linux bash script).
