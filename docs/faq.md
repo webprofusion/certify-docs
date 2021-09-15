@@ -104,10 +104,10 @@ Check the 'Preview' tab in the app for your site to ensure the https binding of 
 ### I have an email from Let's Encrypt Expiry Bot saying my certificate is about to expire
 If Let's Encrypt think you haven't renewed a certificate they will let you know using the email address registered as a contact when you installed the app. If your receive an expiry warning, check your certificate is renewing OK. If it all looks good you probably changed the list of domains in your certificate at some point (perhaps adding www. or adding/removing domains) and LE is reminding you about the old version of your certificate, so you can ignore the notification.
 
-### When trying to use BuyPass Go I get the error "Can not find issuer 'C=NO,O=Buypass..."
+### When trying to use BuyPass Go (or other CA) I get the error "Failed to build certificate as PFX."
 Normally Certificate Authority root certificates are installed into Windows as part of windows updates but in some cases you may need to import the root certificate for a CA yourself. You should ensure that your servers are all receiving updates normally. See general instructions here:  http://woshub.com/updating-trusted-root-certificates-in-windows-10/
 
-You can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (import it into the Trusted Root Certification Authorities store).
+For example, you can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (import it into the Trusted Root Certification Authorities store).
 
 ### I need to use an alternate chain (preferred chain) for my Certificate
 From May 2021 Let's Encrypt are introducing a new default certificate 'chain' designed to support older Android devices. This chain has the root issuer *DST Root CA X3* (which expires 30th Sept 2021), for most users this will be compatible but in some cases you will require a chain with an unexpired root. To specify a preference for an alternate chain, edit your managed certificate Certificate > Advanced > Certificate Authority > Preferred Chain. 
