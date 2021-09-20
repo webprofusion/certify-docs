@@ -107,7 +107,7 @@ If Let's Encrypt think you haven't renewed a certificate they will let you know 
 ### When trying to use BuyPass Go (or other CA) I get the error "Failed to build certificate as PFX."
 Normally Certificate Authority root certificates are installed into Windows as part of windows updates but in some cases you may need to import the root certificate for a CA yourself. You should ensure that your servers are all receiving updates normally. See general instructions here:  http://woshub.com/updating-trusted-root-certificates-in-windows-10/
 
-For example, you can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (import it into the Trusted Root Certification Authorities store).
+For example, you can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (certlm.msc, import it into the Trusted Root Certification Authorities store).
 
 ### I need to use an alternate chain (preferred chain) for my Certificate
 From May 2021 Let's Encrypt are introducing a new default certificate 'chain' designed to support older Android devices. This chain has the root issuer *DST Root CA X3* (which expires 30th Sept 2021), for most users this will be compatible but in some cases you will require a chain with an unexpired root. To specify a preference for an alternate chain, edit your managed certificate Certificate > Advanced > Certificate Authority > Preferred Chain. 
