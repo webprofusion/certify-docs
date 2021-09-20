@@ -46,7 +46,12 @@ Cloud subscription pricing varies by provider. The *number of licensed installs*
 
 Note: If you license (for example) 10 installs but only actually install 9 you will be billed for 10. You can review your currently activated installs on your certifytheweb.com profile under License Keys. You cannot have a greater number of active installs than licensed installs.
 
-To get started with cloud managed licensing:
-- Certify The Web cloud licensing via the Microsoft Azure SaaS Marketplace.
+To get started with cloud managed licensing using Microsoft Azure you can use any of the following links to create your subscription: 
+
+- [Microsoft Azure SaaS Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/webprofusionptyltd1588924351007.certifytheweb-standard-cloudlicense?tab=Overview)
+- [Microsoft App Source](https://appsource.microsoft.com/en-us/product/web-apps/webprofusionptyltd1588924351007.certifytheweb-standard-cloudlicense)
+- [Azure Portal](https://portal.azure.com/#create/webprofusionptyltd1588924351007.certifytheweb-standard-cloudlicense/preview)
+
+Cloud Managed License Pricing via Azure is **$4.99 USD per install per month**.
 
 
