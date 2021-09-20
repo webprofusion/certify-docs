@@ -52,6 +52,6 @@ To get started with cloud managed licensing using Microsoft Azure you can use an
 - [Microsoft App Source](https://appsource.microsoft.com/en-us/product/web-apps/webprofusionptyltd1588924351007.certifytheweb-standard-cloudlicense)
 - [Azure Portal](https://portal.azure.com/#create/webprofusionptyltd1588924351007.certifytheweb-standard-cloudlicense/preview)
 
-Cloud Managed License Pricing via Azure is **$4.99 USD per install per month**.
+Cloud Managed License pricing via Azure is **$4.99 USD per install per month**.
 
 
