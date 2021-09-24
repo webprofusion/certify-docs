@@ -12,7 +12,7 @@ The root certificate issues an Intermediate certificate which in turn is used to
 **In most cases, your systems will automatically switch over to the next trusted chain they can find.**
 
 # Problem
-In some cases, the expiry of the root may causes certificates to be considered untrusted or invalid. To fix this you need to make your server uses (serves) the correct chain.
+In some cases, the expiry of the root may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
 
 In other cases, the issue may be with the client computer.
 
