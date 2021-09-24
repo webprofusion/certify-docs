@@ -32,7 +32,7 @@ The default chain served by Windows will be either:
 
 Either chain is fine for most purposes. The old (expired) chain is Leaf (your cert) > R3 > DST Root CA X3 - so if you still see the old chain then you need to review further steps to resolve.
 
-If you require (for compatibility reasons, such as old Android and other devices that don't know about *ISRG Root X1*) the chain to be *Leaf (your cert) > R3 > ISRG Root X1 > DST Root CA X3*, you need to install the version of the *ISRG Root X1* cert which is cross signed (issued) by *DST Root CA X3*. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der
+If you require (for compatibility reasons, such as old Android and other devices that don't know about *ISRG Root X1*) the chain to be *Leaf (your cert) > R3 > ISRG Root X1 > DST Root CA X3*, you need to install the version of the *ISRG Root X1* cert which is cross signed (issued) by *DST Root CA X3*. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der into the *Trusted Certification Authorities* machine store using certlm.msc.
 
 If no other solution works or for any other reason you cannot update client trusts stores etc, you may consider moving your certificate to a new Certificate Authority.
 
@@ -40,3 +40,8 @@ If no other solution works or for any other reason you cannot update client trus
 If your site is working for most devices but not for some, the problem is with the trust store (list of trusted certificate).
 
 On windows PCs, simply browsing to a website using Chrome, Edge etc with updated the client trust store with the required certificates. Browsing to https://valid-isrgrootx1.letsencrypt.org/ will prompt Windows to include *ISRG Root X1* in it trust store.
+
+## Further Troubleshooting
+Further information and troubleshooting steps are here: https://community.certifytheweb.com/t/upcoming-expiry-of-dst-root-ca-x3-and-r3-intermediate-for-lets-encrypt/1480
+
+While the problem itself relates to and is controlled by Windows and Let's Encrypt, licensed users can contact Certify The Web support if have further related questions and issues they need advice with.
