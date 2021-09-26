@@ -22,17 +22,23 @@ In other cases, the issue may be with the client computer.
 
 We recommend the following steps to resolve a chain trust issue:
 
-1. Install the latest version of Certify The Web. Even if you are not using the app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
+1. Install the latest version of *Certify The Web* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
 2. Reboot server (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
 3. Check your certificate chain with Qualsys SSL Checker: https://www.ssllabs.com/ssltest/
 
-The default chain served by Windows will be either:
-- Leaf (your cert) > R3 > ISRG Root X1
-- Leaf (your cert) > R3 > ISRG Root X1 > DST Root CA X3
+The default chain served by Windows (depending on the state of your server trust store) will be either:
+- **Chain 1 (modern)** Leaf (your cert) > R3 > ISRG Root X1
+- **Chain 2 (legacy)** Leaf (your cert) > R3 > ISRG Root X1 > DST Root CA X3
 
-Either chain is fine for most purposes. The old (expired) chain is Leaf (your cert) > R3 > DST Root CA X3 - so if you still see the old chain then you need to review further steps to resolve.
+For IIS etc, you can only serve one of these chains per windows server (machine), not a combination per site etc.
 
-If you require (for compatibility reasons, such as old Android and other devices that don't know about *ISRG Root X1*) the chain to be *Leaf (your cert) > R3 > ISRG Root X1 > DST Root CA X3*, you need to install the version of the *ISRG Root X1* cert which is cross signed (issued) by *DST Root CA X3*. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der into the *Trusted Certification Authorities* machine store using certlm.msc.
+Either chain is fine for most purposes. **The old (expired) chain is *Leaf (your cert) > R3 > DST Root CA X3*.** If you still see this old chain after the DST Root CA X3 expiry (after updating Certify The Web), then you need to review further steps to resolve. At a minimum you must ensure ISRG Root X1 (Self signed) is installed under your machine Trusted Certification Authorities using certlm.msc.
+
+### Using Chain 1 (modern)
+If you are serving the *ISRG Root X1 > DST Root CA X3 (self signed)* chain and want to switch to just the *ISRG Root X1* chain, you need to remove the cross signed version of the ISRG Root X1 (issued by DST Root CA X3) from your machine trust store. You may need to reboot to see the effect.
+
+### Using Chain 2 (legacy)
+If you require compatibility with old versions of Android and other devices that don't know about *ISRG Root X1*, you need to serve **Chain 2**. To do so, install the version of the *ISRG Root X1* cert which is **cross signed (issued) by *DST Root CA X3***. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der into the *Trusted Certification Authorities* (or Intermediate Certification Authorities) machine store using certlm.msc. You may need to reboot to see the effect.
 
 If no other solution works or for any other reason you cannot update client trusts stores etc, you may consider moving your certificate to a new Certificate Authority.
 
@@ -41,7 +47,11 @@ If your site is working for most devices but not for some, the problem is with t
 
 On windows PCs, simply browsing to a website using Chrome, Edge etc with updated the client trust store with the required certificates. Browsing to https://valid-isrgrootx1.letsencrypt.org/ will prompt Windows to include *ISRG Root X1* in it trust store.
 
+## Other considerations
+### Export Tasks
+If you use Certify The Web to export certificates to pem files etc (for Apache or other servers), the chain you get in the export will correspond which the chain your server is currently building. The "Preferred Issuer" setting for the certificate authority will have *no effect*, because Windows is overriding the chain.
+
 ## Further Troubleshooting
 Further information and troubleshooting steps are here: https://community.certifytheweb.com/t/upcoming-expiry-of-dst-root-ca-x3-and-r3-intermediate-for-lets-encrypt/1480
 
-While the problem itself relates to and is controlled by Windows and Let's Encrypt, licensed users can contact Certify The Web support if have further related questions and issues they need advice with.
+While the problem itself relates to and is controlled by Windows and Let's Encrypt, licensed users can contact Certify The Web support if they have further related questions and issues they need advice with.
