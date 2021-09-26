@@ -11,16 +11,20 @@ The root certificate issues an Intermediate certificate which in turn is used to
 
 **In most cases, your systems will automatically switch over to the next trusted chain they can find.**
 
-# Problem
+# Possible issues
 In some cases, the expiry of the root (and its related expiring R3 intermediate certificate) may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
 
 In other cases, the issue may be with the client computer.
 
-## Problem Resolution
+The version of the *R3* intermediate signing certificate which chains to *DST Root CA X3* expires *September 29 19:21:40 2021 GMT.*
+
+The *DST Root CA X3* root certificate expires *September 30 14:01:15 2021 GMT*.
+
+# Solutions
 
 ### Servers
 
-We recommend the following steps to resolve a chain trust issue:
+We recommend the following steps to resolve a chain of trust issue:
 
 1. Install the latest version of *Certify The Web* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
 2. Reboot your server (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
