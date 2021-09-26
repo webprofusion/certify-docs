@@ -5,14 +5,14 @@ title: Let's Encrypt DST Root CA X3 expiry Sept 30th 2021
 
 # Summary
 
-Certificate trusts relies on the "root" issuing certificate being trusted by your computer. From Sept 30th 2021 Let's Encrypts previous root certificate *DST Root CA X3* will expire. It is being replaced by their *ISRG Root X1* certificate.
+Certificate trust relies on the "root" issuing certificate being trusted by your computer. From Sept 30th 2021 Let's Encrypts previous root certificate *DST Root CA X3* will expire. It is being replaced by their *ISRG Root X1* certificate.
 
-The root certificate issues an Intermediate certificate which in turn is used to issue general certificates such as the ones for your website. This is called a "Chain" of trust. Your certificate (called a Leaf or end-entity certificate) will be validated by following this chain 
+The root certificate issues an Intermediate certificate which in turn is used to issue general certificates such as the ones for your website. This is called a "Chain" of trust. Your certificate (called a Leaf or end-entity certificate) will be validated by following this chain.
 
 **In most cases, your systems will automatically switch over to the next trusted chain they can find.**
 
 # Problem
-In some cases, the expiry of the root may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
+In some cases, the expiry of the root (and its related expiring R3 intermediate certificate) may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
 
 In other cases, the issue may be with the client computer.
 
@@ -23,7 +23,7 @@ In other cases, the issue may be with the client computer.
 We recommend the following steps to resolve a chain trust issue:
 
 1. Install the latest version of *Certify The Web* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
-2. Reboot server (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
+2. Reboot your server (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
 3. Check your certificate chain with Qualsys SSL Checker: https://www.ssllabs.com/ssltest/
 
 The default chain served by Windows (depending on the state of your server trust store) will be either:
@@ -43,7 +43,7 @@ If you require compatibility with old versions of Android and other devices that
 If no other solution works or for any other reason you cannot update client trusts stores etc, you may consider moving your certificate to a new Certificate Authority.
 
 ### Clients (browsers etc)
-If your site is working for most devices but not for some, the problem is with the trust store (list of trusted certificate).
+If your site is working for most devices but not for some, the problem is with their trust store (their list of trusted root certificate).
 
 On windows PCs, simply browsing to a website using Chrome, Edge etc with updated the client trust store with the required certificates. Browsing to https://valid-isrgrootx1.letsencrypt.org/ will prompt Windows to include *ISRG Root X1* in it trust store.
 
