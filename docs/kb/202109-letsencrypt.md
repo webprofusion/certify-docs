@@ -28,7 +28,9 @@ We recommend the following steps to resolve a chain of trust issue:
 
 1. Install the latest version of *Certify The Web* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
 2. Reboot your server (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
-3. Check your certificate chain with Qualsys SSL Checker: https://www.ssllabs.com/ssltest/
+3. Check your certificate chain with Qualsys SSL Checker: https://www.ssllabs.com/ssltest/ - expand the Certification Paths information and review the chain presented.
+
+You may also find https://chainchecker.certifytheweb.com/ useful for basic diagnostics of your certificate chain.
 
 The default chain served by Windows (depending on the state of your server trust store) will be either:
 - **Chain 1 (modern)** Leaf (your cert) > R3 > ISRG Root X1
