@@ -55,7 +55,7 @@ This chain is supported by current operating systems
 This chain is ideal if you need broader compatibility with older operating systems, including Android 7.0 and lower.
 :::
 
-For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc.
+For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
 
 Either chain is fine for most purposes. 
 

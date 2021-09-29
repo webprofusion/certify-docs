@@ -31,7 +31,7 @@ They offer a free, automated, and open certificate authority brought to you by t
 - See information on the [Sept 2021 root expiry](../kb/202109-letsencrypt.md)
 
 ### ZeroSSL
-ZeroSSL (https://zerossl.com/) are an ACME service operated by apilayer (https://apilayer.com/).
+ZeroSSL (https://zerossl.com/) is an ACME service operated by apilayer (https://apilayer.com/).
 
 - Trusted by all major operating systems and browsers
 - Certificates expire after 90 days.
