@@ -110,7 +110,7 @@ Normally Certificate Authority root certificates are installed into Windows as p
 For example, you can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (certlm.msc, import it into the Trusted Root Certification Authorities store).
 
 ### I need to use an alternate chain (preferred chain) for my Certificate
-From May 2021 Let's Encrypt are introducing a new default certificate 'chain' designed to support older Android devices. This chain has the root issuer *DST Root CA X3* (which expires 30th Sept 2021), for most users this will be compatible but in some cases you will require a chain with an unexpired root. To specify a preference for an alternate chain, edit your managed certificate Certificate > Advanced > Certificate Authority > Preferred Chain. 
+From May 2021 Let's Encrypt are introducing a new default certificate 'chain' designed to support older Android devices. This chain has the root issuer *DST Root CA X3* (which expires [30th Sept 2021](kb/202109-letsencrypt.md)), for most users this will be compatible but in some cases you will require a chain with an unexpired root. To specify a preference for an alternate chain, edit your managed certificate Certificate > Advanced > Certificate Authority > Preferred Chain. 
 
 To use Let's Encrypt's alternate unexpired chain you would set this to *ISRG Root X1*  then re-request your certificate. See also https://community.letsencrypt.org/t/production-chain-changes/150739
 
