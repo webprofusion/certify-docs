@@ -89,6 +89,9 @@ If your site is working for most devices but not for some, the problem is with t
 ### Windows PCs
 On windows PCs, simply browsing to a website using Chrome, Edge etc with updated the client trust store with the required certificates. Browsing to https://valid-isrgrootx1.letsencrypt.org/ will prompt Windows to include *ISRG Root X1* in its trust store automatically.
 
+### macOS, iOS etc
+Some operating systems hold onto the expired `R3 > DST Root CA X3` chain even if your server is no longer using it. Try a restart of the affected client device.
+
 ## Other considerations
 ### Export Tasks
 If you use Certify The Web to export certificates to pem files etc (for Apache or other servers), the chain you get in the export will correspond which the chain your server is currently building. The "Preferred Issuer" setting for the certificate authority will have *no effect*, because Windows is overriding the chain.
