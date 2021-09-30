@@ -11,7 +11,7 @@ module.exports = {
       apiKey: 'f16916b939048732aa7ef42649a7e6ea',
       indexName: 'certifytheweb'
     },
-    googleAnalytics: {
+    gtag: {
       trackingID: 'G-RLGYG5TYY5',
       anonymizeIP: true
     },
