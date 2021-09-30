@@ -36,7 +36,7 @@ ZeroSSL (https://zerossl.com/) is an ACME service operated by apilayer (https://
 - Trusted by all major operating systems and browsers
 - Certificates expire after 90 days.
 - Certificates can contain up to 100 domain per certificates. Wildcard certificates (*.domain.com) are supported when using DNS validation. 
-- To use ZeroSSL you first need to sign up for a free account in order to get External Account Binding (EAB) credentials. 
+- To use ZeroSSL you first need to sign up for a free account in order to get External Account Binding (EAB) credentials from the *Developer* section of their dashboard. 
 
 ### BuyPass Go
 BuyPass are a Scandinavian certificate authority who also offer free certificates via their own ACME enabled service. https://www.buypass.com/ssl/products/acme 

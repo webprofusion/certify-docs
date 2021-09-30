@@ -34,7 +34,7 @@ The following solutions mainly apply to Windows servers running IIS or other win
 
 ### Servers with problems after expiry
 :::tip Check Your Chain
-1 - To diagnose a chain issue for your server, scan one of your webservers domains: https://chainchecker.certifytheweb.com/
+1 - To diagnose a chain issue for your server, scan one of your webservers domains with a [chain checker](#chain-checking)
 
 2 - If your chain contains the expired R3 after it's expiry, reboot your server to clear cached chains.
 
@@ -47,7 +47,7 @@ We recommend the following steps to initially correct your servers certificate c
 
 1. Install the latest version of *Certify The Web* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
 2. **Reboot your server** (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
-3. Check your certificate chain with our [chain checker](https://chainchecker.certifytheweb.com/)
+3. Check your certificate chain with a [chain checker](#chain-checking)
 4. In some cases you may need to refresh your IIS bindings, the easiest method is to click 'Request Certificate' to change certificate and update bindings.
 
 :::tip Valid Chains
@@ -120,6 +120,6 @@ Visit the Let's Encrypt support community for more information about the root ex
 ### Chain Checking
 Other ways to check and diagnose chain issues:
 - Qualsys SSL Server Test: https://www.ssllabs.com/ssltest/ is useful for full diagnostics of your certificate chain.
-- Namechap SSL Checker: https://decoder.link/sslchecker/
+- Namecheap SSL Checker: https://decoder.link/sslchecker/
 - OpenSSL: `openssl s_client -connectyour.domain.com:443 -servername  your.domain.com`
 
