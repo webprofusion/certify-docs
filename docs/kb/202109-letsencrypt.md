@@ -35,6 +35,8 @@ The following solutions mainly apply to Windows servers running IIS or other win
 1 - To diagnose a chain issue for your server, scan one of your webservers domains: https://chainchecker.certifytheweb.com/
 
 2 - If your chain contains the expired R3 after it's expiry, reboot your server to clear cached chains.
+
+3 - If the chain issue persists, re-request your certificate in Certify The Web to force a binding refresh or choose `Certificate > Advanced > Actions > Re-apply Certificate To Bindings`.
 :::
 
 ### Server fixes and how to switch chain before (or after) expiry
@@ -44,6 +46,7 @@ We recommend the following steps to initially correct your servers certificate c
 1. Install the latest version of *Certify The Web* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
 2. **Reboot your server** (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
 3. Check your certificate chain with our [chain checker](https://chainchecker.certifytheweb.com/)
+4. In some cases you may need to refresh your IIS bindings, the easiest method is to click 'Request Certificate' to change certificate and update bindings.
 
 :::tip Valid Chains
 The default chain served by Windows (depending on the state of your server trust store) will be either:
@@ -55,9 +58,14 @@ This chain is supported by current operating systems
 This chain is ideal if you need broader compatibility with older operating systems, including Android 7.0 and lower.
 :::
 
+:::warning Legacy Chain Warning 2021/09/30
+We have an unconfirmed report that when `DST Root CA X3` expires, although Windows will initially serve the legacy chain it may revert to the modern chain automatically when it notices `DST Root CA X3` has expired. This would impact serving content to old versions of Android and some other older operating systems which don't trust `ISRG Root X1`.
+
+:::
+
 For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
 
-Either chain is fine for most purposes. 
+Either chain is fine for most purposes (see above warning). 
 
 :::danger If your chain is still: (your cert) > R3 > DST Root CA X3
 If you still see this old chain after the DST Root CA X3 expiry (after updating Certify The Web and after rebooting), then you need to resolve this urgently. At a minimum you must ensure ISRG Root X1 (Self signed) is installed under your machine Trusted Certification Authorities using certlm.msc and remove the R3 issued by DST Root CA X3 from Intermediate Certification Authorities. See the [further troubleshooting](#further-troubleshooting) section below.
@@ -73,7 +81,7 @@ If you require compatibility with old versions of Android and other devices that
 - install the version of the *ISRG Root X1* cert which is **cross signed (issued) by *DST Root CA X3***. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der into the *Trusted Certification Authorities* (or Intermediate Certification Authorities) machine store using certlm.msc. 
 - You may need to reboot to see the effect.
 
-If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](../guides/certificate-authorities).
+If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](../guides/certificate-authorities). You could also alternatively use a front-end proxy service such as Caddy, nginx, Apache, or a hosted DNS proxy service like Cloudflare, but these require significant changes to implement.
 
 ## Clients (browsers etc)
 If your site is working for most devices but not for some, the problem is with their trust store (their list of trusted root certificate).
@@ -87,7 +95,8 @@ If you use Certify The Web to export certificates to pem files etc (for Apache o
 
 ## Further Troubleshooting
 
-- A registry method to disable the old R3 is [documented here](https://gist.github.com/skusiak/83db2ba2fc1804b89151db01e97bbbec)
+- A registry method to delete the old R3 is [documented here](https://gist.github.com/skusiak/83db2ba2fc1804b89151db01e97bbbec)
+- If your expired chain keeps coming back, moved (or install) the expired `R3 issued by DST Root CA X3` into the Untrusted store using `certlm.msc` (Manage Computer Certificates).
 - Further information and troubleshooting steps are here: https://community.certifytheweb.com/t/upcoming-expiry-of-dst-root-ca-x3-and-r3-intermediate-for-lets-encrypt/1480
 
 :::tip Licensed Users can contact Certify The Web support
