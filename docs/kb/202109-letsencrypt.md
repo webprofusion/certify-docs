@@ -61,7 +61,7 @@ This chain is ideal if you need broader compatibility with older operating syste
 :::
 
 :::warning Legacy Chain Warning 2021/09/30
-In our recent testing we have found that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired. This will impact serving content to old versions of Android and some other older operating systems which don't trust `ISRG Root X1`. If you require legacy support consider changing [Certificate Authority](../guides/certificate-authorities).
+In our recent testing we have found that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired. This will impact serving content to old versions of Android and some other older operating systems which don't trust `ISRG Root X1`. If you require legacy support consider changing [Certificate Authority](/docs/guides/certificate-authorities).
 :::
 
 For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
@@ -82,7 +82,7 @@ If you require compatibility with old versions of Android and other devices that
 - install the version of the *ISRG Root X1* cert which is **cross signed (issued) by *DST Root CA X3***. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der into the *Trusted Certification Authorities* (or Intermediate Certification Authorities) machine store using certlm.msc. 
 - You may need to reboot to see the effect.
 
-If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](../guides/certificate-authorities). You could also alternatively use a front-end proxy service such as Caddy, nginx, Apache, or a hosted DNS proxy service like Cloudflare, but these require significant changes to implement.
+If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](/docs/guides/certificate-authorities). You could also alternatively use a front-end proxy service such as Caddy, nginx, Apache, or a hosted DNS proxy service like Cloudflare, but these require significant changes to implement.
 
 ## Non-IIS servers (Apache, nginx etc on Windows or Linux)
 Verify that your service is configured to use your certificate, with it's private key *and* it's **chain**. These services will work without pointing to a chain file but in the case of the expired R3 your clients will try to resolve the R3 themselves (because you haven't given it to them) and they may then resolve it to the old (expired) one.
@@ -121,5 +121,5 @@ Visit the Let's Encrypt support community for more information about the root ex
 Other ways to check and diagnose chain issues:
 - Qualsys SSL Server Test: https://www.ssllabs.com/ssltest/ is useful for full diagnostics of your certificate chain.
 - Namechap SSL Checker: https://decoder.link/sslchecker/
-- OpenSSL: `openssl s_client -showcerts -connectyour.domain.com:443 -servername  your.domain.com`
+- OpenSSL: `openssl s_client -connectyour.domain.com:443 -servername  your.domain.com`
 
