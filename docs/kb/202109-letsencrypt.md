@@ -61,8 +61,7 @@ This chain is ideal if you need broader compatibility with older operating syste
 :::
 
 :::warning Legacy Chain Warning 2021/09/30
-We have an unconfirmed report that when `DST Root CA X3` expires, although Windows will initially serve the legacy chain it may revert to the modern chain automatically when it notices `DST Root CA X3` has expired. This would impact serving content to old versions of Android and some other older operating systems which don't trust `ISRG Root X1`.
-
+In our recent testing we have found that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired. This will impact serving content to old versions of Android and some other older operating systems which don't trust `ISRG Root X1`. If you require legacy support consider changing [Certificate Authority](../guides/certificate-authorities).
 :::
 
 For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
