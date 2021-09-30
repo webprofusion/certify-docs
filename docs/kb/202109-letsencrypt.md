@@ -23,9 +23,15 @@ In some cases, the expiry of the root (and its related expiring R3 intermediate 
 
 In other cases, the issue may be with the client computer.
 
-The version of the *R3* intermediate signing certificate which chains to *DST Root CA X3* expires **September 29 19:21:40 2021 GMT.**
+The version of the *R3* intermediate signing certificate which chains to *DST Root CA X3* expired **September 29 19:21:40 2021 GMT.**
 
-The *DST Root CA X3* root certificate expires **September 30 14:01:15 2021 GMT**.
+The *DST Root CA X3* root certificate expired **September 30 14:01:15 2021 GMT**.
+
+:::warning CA Migration Recommended On Windows if you need to support old devices
+In testing we have found that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain intended for Android compatibility, it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired. 
+
+This means Windows services like IIS cannot serve content to older operating systems which don't trust `ISRG Root X1`. If you require legacy support you should change [Certificate Authority](/docs/guides/certificate-authorities).
+:::
 
 # Solutions
 
@@ -58,10 +64,6 @@ This chain is supported by current operating systems
 
 #### **Chain 2 (legacy)** : (your cert) > R3 > ISRG Root X1 > DST Root CA X3
 This chain is ideal if you need broader compatibility with older operating systems, including Android 7.0 and lower.
-:::
-
-:::warning Legacy Chain Warning 2021/09/30
-In our recent testing we have found that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired. This will impact serving content to old versions of Android and some other older operating systems which don't trust `ISRG Root X1`. If you require legacy support consider changing [Certificate Authority](/docs/guides/certificate-authorities).
 :::
 
 For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
