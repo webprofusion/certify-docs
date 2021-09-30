@@ -5,9 +5,11 @@ title: Let's Encrypt DST Root CA X3 expiry Sept 30th 2021
 
 # Summary
 
-Certificate trust relies on the "root" issuing certificate being trusted by your computer. From Sept 30th 2021 Let's Encrypts previous root certificate *DST Root CA X3* will expire. It has been replaced by their *ISRG Root X1* certificate.
+Certificate trust relies on the "root" issuing certificate being trusted by your computer. 
 
 The root certificate issues an Intermediate certificate which in turn is used to issue general certificates such as the ones for your website. This is called a "Chain" of trust. Your certificate (called a Leaf or end-entity certificate) will be validated by following this chain.
+
+*From Sept 30th 2021 Let's Encrypts previous root certificate *DST Root CA X3* (and it's R3 intermediate) will expire. It has been replaced by their *ISRG Root X1* certificate (and replacement R3 intermediate).*
 
 :::note
 
@@ -83,6 +85,9 @@ If you require compatibility with old versions of Android and other devices that
 
 If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](../guides/certificate-authorities). You could also alternatively use a front-end proxy service such as Caddy, nginx, Apache, or a hosted DNS proxy service like Cloudflare, but these require significant changes to implement.
 
+## Non-IIS servers (Apache, nginx etc on Windows or Linux)
+Verify that your service is configured to use your certificate, with it's private key *and* it's **chain**. These services will work without pointing to a chain file but in the case of the expired R3 your clients will try to resolve the R3 themselves (because you haven't given it to them) and they may then resolve it to the old (expired) one.
+
 ## Clients (browsers etc)
 If your site is working for most devices but not for some, the problem is with their trust store (their list of trusted root certificate).
 
@@ -91,6 +96,11 @@ On windows PCs, simply browsing to a website using Chrome, Edge etc with updated
 
 ### macOS, iOS etc
 Some operating systems hold onto the expired `R3 > DST Root CA X3` chain even if your server is no longer using it. Try a restart of the affected client device.
+
+## Java based systems etc
+Some applications maintain their own trust store. You may need to add the newer ISRG Root X1 certificate into your systems trusts store. Any system that can't be updated needs to see the legacy chain or you need to switch CA.
+
+e.g. for Java you might use: `keytool -import -alias isrgrootx1 -keystore $JAVA_HOME/jre/lib/security/cacerts -trustcacerts -file isrgrootx1.cer` ([credit](https://community.letsencrypt.org/t/help-thread-for-dst-root-ca-x3-expiration-september-2021/149190/258))
 
 ## Other considerations
 ### Export Tasks
