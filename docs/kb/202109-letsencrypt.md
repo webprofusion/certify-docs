@@ -101,6 +101,9 @@ Some applications maintain their own trust store. You may need to add the newer 
 
 e.g. for Java you might use: `keytool -import -alias isrgrootx1 -keystore $JAVA_HOME/jre/lib/security/cacerts -trustcacerts -file isrgrootx1.cer` ([credit](https://community.letsencrypt.org/t/help-thread-for-dst-root-ca-x3-expiration-september-2021/149190/258))
 
+## Azure (Application Gateway)
+Ensure that the HTTP settings for back-end hosts are updated with the latest Trusted Root Certificate. This can be done by exporting a .CER from the root certificate and then importing via the Azure Portal or via PowerShell. See [Application Gateway Troubleshooting](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-backend-health-troubleshooting) for further details.
+
 ## Other considerations
 ### Export Tasks
 If you use Certify The Web to export certificates to pem files etc (for Apache or other servers), the chain you get in the export will correspond which the chain your server is currently building. The "Preferred Issuer" setting for the certificate authority will have *no effect*, because Windows is overriding the chain.
