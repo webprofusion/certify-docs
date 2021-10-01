@@ -28,7 +28,7 @@ They offer a free, automated, and open certificate authority brought to you by t
 - Certificates issued by Let's Encrypt expire after 90 days, which means you need automated renewals to keep them active.
 - Important rate limits apply: https://letsencrypt.org/docs/rate-limits/
 - Certificates can contain up to 100 domain per certificates. Wildcard certificates (*.domain.com) are supported when using DNS validation. 
-- See information on the [Sept 2021 root expiry](/docs/kb/202109-letsencrypt.md)
+- See information on the [Sept 2021 root expiry](../kb/202109-letsencrypt.md)
 
 ### ZeroSSL
 ZeroSSL (https://zerossl.com/) is an ACME service operated by apilayer (https://apilayer.com/).

@@ -112,7 +112,7 @@ For example, you can manually import the BuyPass root certificate by downloading
 V5.5.4 onwards of the Certify The Web app performs basic trust store maintenance for known ACME certificate authorities.
 
 ### My Let's Encrypt certificate chain is invalid after the "DST Root CA X3" expiry.
-See our [knowledge base article](/docs/kb/202109-letsencrypt.md) for more details and solutions.
+See our [knowledge base article](./kb/202109-letsencrypt.md) for more details and solutions.
 
 ## License Registration
 
