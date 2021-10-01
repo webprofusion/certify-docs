@@ -136,3 +136,6 @@ Other ways to check and diagnose chain issues:
 - Namecheap SSL Checker: https://decoder.link/sslchecker/
 - OpenSSL: `openssl s_client -connect your.domain.com:443 -servername  your.domain.com`
 
+### Further Reading
+The Windows certificate chaining engine: https://social.technet.microsoft.com/wiki/contents/articles/3147.pki-certificate-chaining-engine-cce.aspx
+
