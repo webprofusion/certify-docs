@@ -5,7 +5,7 @@ title: Let's Encrypt DST Root CA X3 expiry Sept 30th 2021
 
 # Summary
 
-Certificate trust relies on the "root" issuing certificate being trusted by your computer. 
+Certificate trust mainly relies on the "root" issuing certificate (and intermediate certificates) being trusted by your computer. 
 
 The root certificate issues an Intermediate certificate which in turn is used to issue general certificates such as the ones for your website. This is called a "Chain" of trust. Your certificate (called a Leaf or end-entity certificate) will be validated by following this chain.
 
@@ -28,15 +28,16 @@ The version of the *R3* intermediate signing certificate which chains to *DST Ro
 The *DST Root CA X3* root certificate expired **September 30 14:01:15 2021 GMT**.
 
 :::warning CA Migration Recommended On Windows if you need to support old devices
-In testing we have found that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain intended for Android compatibility, it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired. 
+In testing we have confirmed that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain intended for Android compatibility, it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired, if `ISRG Root X1 (self signed)` is also present in the trust store. A [workaround is available](#switching-to-chain-2-legacy)
 
-This means Windows services like IIS cannot serve content to older operating systems which don't trust `ISRG Root X1`. If you require legacy support you should change [Certificate Authority](/docs/guides/certificate-authorities).
+This means Windows services like IIS generally will not continue to serve content to older operating systems which don't trust `ISRG Root X1`. If you require legacy support without workarounds, you should change [Certificate Authority](/docs/guides/certificate-authorities).
+
 :::
 
 # Solutions
 
 ## Servers
-The following solutions mainly apply to Windows servers running IIS or other windows based services which use the windows trust store. Apache, nginx etc have their own trust mechanisms :
+The following solutions mainly apply to Windows servers running IIS or other windows based services which use the windows trust store. Unless otherwise noted they are not specific to using Certify The Web. Apache, nginx etc have their own trust mechanisms :
 
 ### Servers with problems after expiry
 :::tip Check Your Chain
@@ -63,7 +64,7 @@ The default chain served by Windows (depending on the state of your server trust
 This chain is supported by current operating systems
 
 #### **Chain 2 (legacy)** : (your cert) > R3 > ISRG Root X1 > DST Root CA X3
-This chain is ideal if you need broader compatibility with older operating systems, including Android 7.0 and lower.
+This chain is ideal if you need broader compatibility with older operating systems, including Android 7.1 and lower. Note the [important caution below](#switching-to-chain-2-legacy)
 :::
 
 For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
@@ -82,7 +83,14 @@ If you are serving the *ISRG Root X1 > DST Root CA X3 (self signed)* chain and w
 ### Switching to Chain 2 (legacy)
 If you require compatibility with old versions of Android and other devices that don't know about *ISRG Root X1*, you need to serve **Chain 2**. To do so:
 - install the version of the *ISRG Root X1* cert which is **cross signed (issued) by *DST Root CA X3***. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der into the *Trusted Certification Authorities* (or Intermediate Certification Authorities) machine store using certlm.msc. 
+
 - You may need to reboot to see the effect.
+
+:::warning Caution - Workaround
+You may need to move `ISRG Root X1 (self signed)` to the `Untrusted` store in order to serve the legacy `DST Root CA X3` chain. This may have unintended side effects and should be reverted when no longer required (and before Sept 2024).
+
+Servers which do not yet trust `ISRG Root X1 (self signed)` will be serving the legacy chain but will automatically switch when their trust store updates.
+:::
 
 If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](/docs/guides/certificate-authorities). You could also alternatively use a front-end proxy service such as Caddy, nginx, Apache, or a hosted DNS proxy service like Cloudflare, but these require significant changes to implement.
 
@@ -104,16 +112,16 @@ Some applications maintain their own trust store. You may need to add the newer 
 e.g. for Java you might use: `keytool -import -alias isrgrootx1 -keystore $JAVA_HOME/jre/lib/security/cacerts -trustcacerts -file isrgrootx1.cer` ([credit](https://community.letsencrypt.org/t/help-thread-for-dst-root-ca-x3-expiration-september-2021/149190/258))
 
 ## Azure (Application Gateway)
-Ensure that the HTTP settings for back-end hosts are updated with the latest Trusted Root Certificate. This can be done by exporting a .CER from the root certificate and then importing via the Azure Portal or via PowerShell. See [Application Gateway Troubleshooting](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-backend-health-troubleshooting) for further details.
+Ensure that the HTTP settings for back-end hosts are updated with the latest Trusted Root Certificate. Download https://letsencrypt.org/certs/isrgrootx1.pem (same as .cer file) and upload via the Azure Portal or via PowerShell. See [Application Gateway Troubleshooting](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-backend-health-troubleshooting) for further details.
 
 ## Other considerations
 ### Export Tasks
-If you use Certify The Web to export certificates to pem files etc (for Apache or other servers), the chain you get in the export will correspond which the chain your server is currently building. The "Preferred Issuer" setting for the certificate authority will have *no effect*, because Windows is overriding the chain.
+If you use Certify The Web to export certificates to pem files etc (for Apache or other servers), the chain you get in the export will correspond with the chain your server is currently building. The "Preferred Issuer" setting for the certificate authority will have *no effect*, because Windows is overriding the chain.
 
 ## Further Troubleshooting
 
 - A registry method to delete the old R3 is [documented here](https://gist.github.com/skusiak/83db2ba2fc1804b89151db01e97bbbec)
-- If your expired chain keeps coming back, moved (or install) the expired `R3 issued by DST Root CA X3` into the Untrusted store using `certlm.msc` (Manage Computer Certificates).
+- If your expired chain keeps coming back, move (or install) the expired `R3 issued by DST Root CA X3` into the Untrusted store using `certlm.msc` (Manage Computer Certificates).
 - Further information and troubleshooting steps are here: https://community.certifytheweb.com/t/upcoming-expiry-of-dst-root-ca-x3-and-r3-intermediate-for-lets-encrypt/1480
 
 :::tip Licensed Users can contact Certify The Web support
@@ -126,5 +134,5 @@ Visit the Let's Encrypt support community for more information about the root ex
 Other ways to check and diagnose chain issues:
 - Qualsys SSL Server Test: https://www.ssllabs.com/ssltest/ is useful for full diagnostics of your certificate chain.
 - Namecheap SSL Checker: https://decoder.link/sslchecker/
-- OpenSSL: `openssl s_client -connectyour.domain.com:443 -servername  your.domain.com`
+- OpenSSL: `openssl s_client -connect your.domain.com:443 -servername  your.domain.com`
 
