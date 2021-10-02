@@ -15,7 +15,7 @@ By default the background service runs a local http API server on port 9696 for 
 The certify background service operates a local API for the app on port `9696` by default. If this port is in use by another application/service (or for some other reason it cannot create a binding to `localhost:9696`, or a security product is preventing **local** port access) then you will see the message 'Service not started'.
 
 :::info
-If you are repeatedly seeing the "Service Not Started" error. First try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app. This can help if automatic port negotiation has gotten out of sync.
+If you are repeatedly seeing the "Service Not Started" error, first try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app. This can help if automatic port negotiation has gotten out of sync.
 :::
 
 The app should try to negotiate a different service port if it detects that the port is already in use, however you can manually specify the settings if required by editing/adding the file `c:\programdata\certify\serviceconfig.json` with content as per the following (adjusted as required) then restarting both the service and UI:
