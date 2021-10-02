@@ -3,7 +3,7 @@ id: backgroundservice
 title: Background Service
 ---
 
-In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" (Certify SSL Manager Service). This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](./guides/security)
+In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" (Certify SSL Manager Service). This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](/docs/guides/security)
 
 To check the log for this service, review `C:\ProgramData\Certify\logs\service.exceptions.log`.
 
@@ -13,6 +13,10 @@ By default the background service runs a local http API server on port 9696 for 
 
 ## Custom configuration and Troubleshooting "..service not started" error
 The certify background service operates a local API for the app on port `9696` by default. If this port is in use by another application/service (or for some other reason it cannot create a binding to `localhost:9696`, or a security product is preventing **local** port access) then you will see the message 'Service not started'.
+
+:::info
+If you are repeatedly seeing the "Service Not Started" error. First try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app. This can help if automatic port negotiation has gotten out of sync.
+:::
 
 The app should try to negotiate a different service port if it detects that the port is already in use, however you can manually specify the settings if required by editing/adding the file `c:\programdata\certify\serviceconfig.json` with content as per the following (adjusted as required) then restarting both the service and UI:
 ```json
