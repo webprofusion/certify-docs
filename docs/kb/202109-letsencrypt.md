@@ -64,8 +64,8 @@ The default chain served by Windows (depending on the state of your server trust
 This chain is supported by current operating systems
 
 #### **Chain 2 (legacy)** : (your cert) > R3 > ISRG Root X1 > DST Root CA X3
-This chain is ideal if you need broader compatibility with older operating systems, including Android 7.1 and lower. Note the [important caution below](#switching-to-chain-2-legacy)
-:::
+This chain is ideal if you need broader compatibility with older operating systems, including Android 7.1 and lower. This chain is [difficult to support on Windows](#switching-to-chain-2-legacy)
+
 
 For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
 
@@ -81,15 +81,14 @@ If you are serving the *ISRG Root X1 > DST Root CA X3 (self signed)* chain and w
 - You may need to reboot to see the effect.
 
 ### Switching to Chain 2 (legacy)
-If you require compatibility with old versions of Android and other devices that don't know about *ISRG Root X1*, you need to serve **Chain 2**. To do so:
-- install the version of the *ISRG Root X1* cert which is **cross signed (issued) by *DST Root CA X3***. https://letsencrypt.org/certs/isrg-root-x1-cross-signed.der into the *Trusted Certification Authorities* (or Intermediate Certification Authorities) machine store using certlm.msc. 
-
-- You may need to reboot to see the effect.
+If you require compatibility with old versions of Android and other devices that don't know about *ISRG Root X1*, you need to serve **Chain 2**. 
 
 :::warning Caution - Workaround
-You may need to move `ISRG Root X1 (self signed)` to the `Untrusted` store in order to serve the legacy `DST Root CA X3` chain. This may have unintended side effects and should be reverted when no longer required (and before Sept 2024).
+A previously proposed workaround was to move `ISRG Root X1 (self signed)` to the `Untrusted` store in order to serve the legacy `DST Root CA X3` chain. This has unintended side effects (your server cannot validate https connections against services such as the Let's Encrypt API).
 
 Servers which do not yet trust `ISRG Root X1 (self signed)` will be serving the legacy chain but will automatically switch when their trust store updates.
+
+Instead, if you require this chain for compatibility, either use a proxy (Caddy, nginx, Apache) in front of IIS and use the proxy to terminate TLS, or migrate to a different certificate authority.
 :::
 
 If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](/docs/guides/certificate-authorities). You could also alternatively use a front-end proxy service such as Caddy, nginx, Apache, or a hosted DNS proxy service like Cloudflare, but these require significant changes to implement.
@@ -105,6 +104,12 @@ On windows PCs, simply browsing to a website using Chrome, Edge etc with updated
 
 ### macOS, iOS etc
 Some operating systems hold onto the expired `R3 > DST Root CA X3` chain even if your server is no longer using it. Try a restart of the affected client device.
+
+For older macOS not updated by Apple:
+
+- Download http://x1.i.lencr.org/
+- Open the Keychain Access app and dragging that file into the System folder of that app.
+- then find the ISRG Root X1 certificate in System and double click on it, open the Trust menu and change "Use System Defaults" to "Always Trust", then close that and enter your password to confirm the change (if prompted).
 
 ## Java based systems etc
 Some applications maintain their own trust store. You may need to add the newer ISRG Root X1 certificate into your systems trusts store. Any system that can't be updated needs to see the legacy chain or you need to switch CA.
