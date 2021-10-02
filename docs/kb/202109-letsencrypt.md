@@ -65,11 +65,9 @@ This chain is supported by current operating systems
 
 #### **Chain 2 (legacy)** : (your cert) > R3 > ISRG Root X1 > DST Root CA X3
 This chain is ideal if you need broader compatibility with older operating systems, including Android 7.1 and lower. This chain is [difficult to support on Windows](#switching-to-chain-2-legacy)
-
+:::
 
 For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
-
-Either chain is fine for most purposes (see above warning). 
 
 :::danger If your chain is still: (your cert) > R3 > DST Root CA X3
 If you still see this old chain after the DST Root CA X3 expiry (after updating Certify The Web and after rebooting), then you need to resolve this urgently. At a minimum you must ensure ISRG Root X1 (Self signed) is installed under your machine Trusted Certification Authorities using certlm.msc and remove the R3 issued by DST Root CA X3 from Intermediate Certification Authorities. See the [further troubleshooting](#further-troubleshooting) section below.
@@ -88,10 +86,10 @@ A previously proposed workaround was to move `ISRG Root X1 (self signed)` to the
 
 Servers which do not yet trust `ISRG Root X1 (self signed)` will be serving the legacy chain but will automatically switch when their trust store updates.
 
-Instead, if you require this chain for compatibility, either use a proxy (Caddy, nginx, Apache) in front of IIS and use the proxy to terminate TLS, or migrate to a different certificate authority.
-:::
+Instead, if you require this chain for compatibility, either use a proxy (Caddy, nginx, Apache) in front of IIS and use the proxy to terminate TLS.
 
-If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority. Certify The Web supports a range of built-in [alternatives](/docs/guides/certificate-authorities). You could also alternatively use a front-end proxy service such as Caddy, nginx, Apache, or a hosted DNS proxy service like Cloudflare, but these require significant changes to implement.
+If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority.
+:::
 
 ## Non-IIS servers (Apache, nginx etc on Windows or Linux)
 Verify that your service is configured to use your certificate, with it's private key *and* it's **chain**. These services will work without pointing to a chain file but in the case of the expired R3 your clients will try to resolve the R3 themselves (because you haven't given it to them) and they may then resolve it to the old (expired) one.
@@ -107,7 +105,7 @@ Some operating systems hold onto the expired `R3 > DST Root CA X3` chain even if
 
 For older macOS not updated by Apple:
 
-- Download thr ISRG Root X1 certificate file from http://x1.i.lencr.org/
+- Download the ISRG Root X1 certificate file from http://x1.i.lencr.org/
 - Open the Keychain Access app and drag that file into the System folder of that app.
 - Find the ISRG Root X1 certificate in System and double click on it, open the Trust menu and change "Use System Defaults" to "Always Trust", then close that and enter your password to confirm the change (if prompted).
 
