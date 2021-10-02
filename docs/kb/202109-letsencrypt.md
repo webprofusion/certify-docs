@@ -107,9 +107,9 @@ Some operating systems hold onto the expired `R3 > DST Root CA X3` chain even if
 
 For older macOS not updated by Apple:
 
-- Download http://x1.i.lencr.org/
-- Open the Keychain Access app and dragging that file into the System folder of that app.
-- then find the ISRG Root X1 certificate in System and double click on it, open the Trust menu and change "Use System Defaults" to "Always Trust", then close that and enter your password to confirm the change (if prompted).
+- Download thr ISRG Root X1 certificate file from http://x1.i.lencr.org/
+- Open the Keychain Access app and drag that file into the System folder of that app.
+- Find the ISRG Root X1 certificate in System and double click on it, open the Trust menu and change "Use System Defaults" to "Always Trust", then close that and enter your password to confirm the change (if prompted).
 
 ## Java based systems etc
 Some applications maintain their own trust store. You may need to add the newer ISRG Root X1 certificate into your systems trusts store. Any system that can't be updated needs to see the legacy chain or you need to switch CA.
