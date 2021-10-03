@@ -140,6 +140,7 @@ While the problem itself relates to and is controlled by Windows and Let's Encry
 Visit the Let's Encrypt support community for more information about the root expiry and chain changes: https://community.letsencrypt.org/t/production-chain-changes/150739/4
 ### Chain Checking
 Other ways to check and diagnose chain issues:
+- Chain Checker by Certify The Web: https://chainchecker.certifytheweb.com/ provides useful diagnostics for Let's Encrypt chains.
 - Qualsys SSL Server Test: https://www.ssllabs.com/ssltest/ is useful for full diagnostics of your certificate chain.
 - Namecheap SSL Checker: https://decoder.link/sslchecker/
 - OpenSSL: `openssl s_client -connect your.domain.com:443 -servername  your.domain.com`
