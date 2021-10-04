@@ -129,6 +129,9 @@ Ensure that the HTTP settings for back-end hosts are updated with the latest Tru
 ### Export Tasks
 If you use Certify The Web to export certificates to pem files etc (for Apache or other servers), the chain you get in the export will correspond with the chain your server is currently building. The "Preferred Issuer" setting for the certificate authority will have *no effect*, because Windows is overriding the chain.
 
+### Renewals fail if ISRG Root X1 not installed
+If your server does not have ISRG Root X1 installed, Certify The Web will fail to build your certificate when it renews. The certificate order with Let's Encrypt will succeed but the actual build and install of the PFX file will fail. **You must update Certify The Web to the latest version** or at least install the ISRG Root X1 certificate if your renewals are failing for this reason. Otherwise, you will hit the Let's Encrypt rate limit for duplicate certificate orders and your certificate will not fully renew.
+
 ## Further Troubleshooting
 
 - A registry method to delete the old R3 is [documented here](https://gist.github.com/skusiak/83db2ba2fc1804b89151db01e97bbbec)
