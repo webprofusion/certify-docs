@@ -44,6 +44,13 @@ This means Windows services like IIS generally will not continue to serve conten
 ## Servers
 The following solutions mainly apply to Windows servers running IIS or other windows based services which use the windows trust store. Unless otherwise noted they are not specific to using Certify The Web. Apache, nginx etc have their own trust mechanisms :
 
+### Certify The Web renewal failures
+If you are using Certify The Web and see the error ** Error creating new order :: too many certificates (5) already issued for this exact set of domains in the last 168 hours** ensure you have installed the latest version of Certify The Web and wait 1 week for the error to clear. 
+
+As your server has repeatedly attempted to order a certificate and failed you will need to wait 1 week for the Let's Encrypt rate limit to reset for this certificate, then renewals will automatically resume as normal, as long as you now have the ISRG Root X1 certificate installed. Root certificate updates are a normal part of automatic windows updates, so you should ideally review why your server is not receiving these.
+
+Alternatively you could change Certificate Authority if this is an urgent renewal, Certify The Web supports several public certificate authorities: https://docs.certifytheweb.com/docs/guides/certificate-authorities
+
 ### Servers with problems after expiry
 :::tip Check Your Chain
 1 - To diagnose a chain issue for your server, scan one of your webservers domains with a [chain checker](#chain-checking)
