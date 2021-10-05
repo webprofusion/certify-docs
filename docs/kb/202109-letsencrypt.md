@@ -24,19 +24,20 @@ The guidance in this article is aimed at all Windows users with Let's Encrypt re
 :::
 
 # Possible issues
-In some cases, the expiry of the root (and its related expiring R3 intermediate certificate) may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
-
-In other cases, the issue may be with the client computer.
 
 The version of the *R3* intermediate signing certificate which chains to *DST Root CA X3* expired **September 29 19:21:40 2021 GMT.**
 
 The *DST Root CA X3* root certificate expired **September 30 14:01:15 2021 GMT**.
 
+- In some cases, the expiry of the root (and its related expiring R3 intermediate certificate) may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
+- In other cases, the issue may be with the client computer.
+- Some Certify The Web renewals will fail with *too many certificates (5) already issued for this exact set of domains in the last 168 hours*. See solution below.
+- If you have clients complaining about some android devices not working with their websites, you may need to migrate to a different Certificate Authority (see below).
+
 :::warning CA Migration Recommended On Windows if you need to support old devices
 In testing we have confirmed that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain intended for Android compatibility, it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired, if `ISRG Root X1 (self signed)` is also present in the trust store. A [workaround is available](#switching-to-chain-2-legacy)
 
 This means Windows services like IIS generally will not continue to serve content to older operating systems which don't trust `ISRG Root X1`. If you require legacy support without workarounds, you should change [Certificate Authority](/docs/guides/certificate-authorities).
-
 :::
 
 # Solutions
@@ -47,7 +48,7 @@ The following solutions mainly apply to Windows servers running IIS or other win
 ### Certify The Web renewal failures
 If you are using Certify The Web and see the error ** Error creating new order :: too many certificates (5) already issued for this exact set of domains in the last 168 hours** ensure you have installed the latest version of Certify The Web and wait 1 week for the error to clear. 
 
-As your server has repeatedly attempted to order a certificate and failed you will need to wait 1 week for the Let's Encrypt rate limit to reset for this certificate, then renewals will automatically resume as normal, as long as you now have the ISRG Root X1 certificate installed. Root certificate updates are a normal part of automatic windows updates, so you should ideally review why your server is not receiving these.
+**As your server has repeatedly attempted to order a certificate and failed you will need to wait 1 week for the Let's Encrypt rate limit to reset for this certificate**, then renewals will automatically resume as normal, as long as you now have the ISRG Root X1 certificate installed. Root certificate updates are a normal part of automatic windows updates, so you should ideally review why your server is not receiving these.
 
 Alternatively you could change Certificate Authority if this is an urgent renewal, Certify The Web supports several public certificate authorities: https://docs.certifytheweb.com/docs/guides/certificate-authorities
 
