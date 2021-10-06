@@ -113,8 +113,12 @@ If your site is working for most devices but not for some, the problem is with t
 ### Windows PCs
 On windows PCs, simply browsing to a website using Chrome, Edge etc with updated the client trust store with the required certificates. Browsing to https://valid-isrgrootx1.letsencrypt.org/ will prompt Windows to include *ISRG Root X1* in its trust store automatically.
 
-For Windows 7 (without outdated trust store) you should urgently replace the machine operating system with Windows 10 or higher. If this is not possible, manually install by browsing to http://x1.i.lencr.org/ in order to download the .cer file for ISRG Root X1, open file, click "Install Certificate..", Choose default option "automatically select..", Next, Finish. The ISRG Root X1 certificate will now be visible using certmgr.msc under Trusted Root Certification Authorities. Reboot machine.
+For Windows (with an outdated trust store) you can manually install ISRG Root X1:
+- Browse to http://x1.i.lencr.org/ in order to download the .cer file for ISRG Root X1 (your browser may warn about the file type and you may need to click "Keep" to save the file).
+- Open the file, click "Install Certificate..", Choose default option "automatically select..", Next, Finish
+- Reboot
 
+You should then find out why your Windows install is not updating certificate authorities automatically (the default behaviour).
 
 ### macOS, iOS etc
 Some operating systems hold onto the expired `R3 > DST Root CA X3` chain even if your server is no longer using it. Try a restart of the affected client device.
