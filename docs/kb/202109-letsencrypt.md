@@ -115,7 +115,7 @@ On windows PCs, simply browsing to a website using Chrome, Edge etc with updated
 
 For Windows (with an outdated trust store) you can manually install ISRG Root X1:
 - Browse to http://x1.i.lencr.org/ in order to download the .cer file for ISRG Root X1 (your browser may warn about the file type and you may need to click "Keep" to save the file).
-- Open the file, click "Install Certificate..", Choose default option "automatically select..", Next, Finish
+- Open the file, click "Install Certificate..", Choose "Install to Trusted Root Certificate Store" option, Next, Finish
 - Reboot
 
 You should then find out why your Windows install is not updating certificate authorities automatically (the default behaviour).
