@@ -25,6 +25,8 @@ Usage: `certify <command>`
 
 - `certify diag` : check existing ssl bindings and managed certificate integrity
 
+- `certify activate <email> <key>` : activate the license for this instance of Certify The Web. Useful for larger scale automated deployments.
+
 - `certify importcsv` : import managed certificates from a CSV file. See [CSV Import](csv-import.md) for more details
 
 In addition there are `certify add` and `certify remove` commands to add or remove domains from an existing managed certificate. You can find the correct managed certificate ID in the app under *Certificate > Advanced > Actions > Managed Certificate Reference Id* (e.g. `a02e3afe-49ba-470a-83e5-2e397aa946eb:1`). 
