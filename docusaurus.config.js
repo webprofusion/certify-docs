@@ -8,7 +8,7 @@ module.exports = {
   projectName: 'certify-docs', // Usually your repo name.
   themeConfig: {
     algolia: {
-      apiKey: 'f16916b939048732aa7ef42649a7e6ea',
+      apiKey: 'f5e4c73a747f79b0c6cc17b7d9699b80',
       indexName: 'certifytheweb'
     },
     gtag: {
