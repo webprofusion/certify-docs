@@ -14,7 +14,7 @@ There are two main methods of licensing:
 - Purchased License Keys
 - Cloud Managed Licenses
 
-# Purchased License Keys
+## Purchasing License Keys
 For the Certify The Web app you can currently purchase the following license key types:
 
 | Type          | Renewal Frequency | Number of Installs| Price         |
@@ -30,14 +30,11 @@ License tier names are an arbitrary label and are not related to the size of you
 
 Notifications are sent when your license key is about to expire. To stop receiving notifications about an expiring or expired license key, sign into your certifytheweb.com profile and choose `Cancel Now` from the License keys tab.
 
-If you currently have a license key and want to renew your license at a lower tier, you can choose the `Downgrade Now` option. To upgrade a license type please contact support.
-
-
-# Cloud Managed Licenses
+## Cloud Managed Licenses
 An alternative to purchasing a license key is to have a license that's managed via a cloud subscription. We currently support Microsoft Azure subscriptions.
 
 The benefits of a cloud managed license are:
-- Billing is entirely integrated into your organisations existing cloud provider subscription.
+- **Billing is entirely integrated into your organisations existing cloud provider subscription.**
 - You have one product license key which you can apply to multiple installs.
 - You can increase or decrease the number of installs required at any time. 
 - Your organisation is only billed (by the cloud provider) for the number of installs you have set in your cloud subscription (pro rata per month).
@@ -54,4 +51,10 @@ To get started with cloud managed licensing using Microsoft Azure you can use an
 
 Cloud Managed License pricing via Azure is **$4.99 USD per install per month**.
 
+If you would like us to support a different cloud provider marketplace for licensing, please contact `support at certifytheweb.com`.
 
+## Upgrading and Downgrading License Keys
+You can downgrade your license type through the License Keys tab of your certifytheweb.com account when your license is about to expire (or has already expired). 
+If you currently have a license key and want to renew your license at a lower tier, you can choose the `Downgrade Now` option. 
+
+To upgrade to a new license tier you can either purchase a new license key of the required type and move each install to the new key (About > Deactivate Install, then About > Enter Key..) or alternatively contact `support at certifytheweb.com` to discuss how to upgrade an existing license key.
