@@ -10,11 +10,11 @@ title: Frequently Asked Questions
 
 Our aim is to ensure that the app is easy to use and that you get setup with your TLS/SSL certificates as quickly as possible. Unlike other more basic tools, if a problem develops that prevents your certificate renewing Certify The Web will let you know by sending you a notification via our API (with no additional configuration).
 
-Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve, check out our [support options](support).
+Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve, check out our [support options](support.md).
 
 
 ### Is this application commercially supported?
-Yes, full time [email support](support) is available for registered users who have purchased a license key (or those who are evaluating the software) for the Professional or Enterprise editions https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support). 
+Yes, full time [email support](support.md) is available for registered users who have purchased a license key (or those who are evaluating the software) for the Professional or Enterprise editions https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support.md). 
 
 *You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported.* 
 
@@ -79,7 +79,7 @@ Your server is not configured to support current TLS Cipher suites by default. T
 Each Managed Certificate has it's own log file which you can open using the View Log File option when viewing the details. By default, log files are kept at `%ProgramData%\Certify\logs`.
 
 ### Where does Certify The Web store certificates?
-Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro). For normal deployments the certificates are installed into the local machine certificate store under the My/Personal store.
+Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro.md). For normal deployments the certificates are installed into the local machine certificate store under the My/Personal store.
 
 ### What is the PFX password?
 The default PFX password is blank ("") but is configurable under Certificate > Advanced > Signing and Security. You can centrally manage this password so if many certs use the same password you don't have to edit each one individually.
@@ -120,4 +120,4 @@ Certify The Web has a free Community Edition which is limited to 5 managed certi
 
 **If you are using this application within a business or funded organisation (beyond a temporary evaluation) you are required to purchase a license key.**
 
-For more information about licensing see our [licensing guide](./guides/licensing).
+For more information about licensing see our [licensing guide](./guides/licensing.md).

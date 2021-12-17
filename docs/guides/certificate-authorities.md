@@ -56,7 +56,7 @@ SSL .com are an established certificate Certificate Authority who now offer basi
 
 ## Managing CA accounts
 
-Before you can use a different Certificate Authority in Certify you first need to create a new ACME account for that service under `Settings` > `Certicate Authorities`. If your provider requires External Account Binding (EAB) credentials you supply these in the Advanced tab.
+Before you can use a different Certificate Authority in Certify you first need to create a new ACME account for that service under `Settings` > `Certificate Authorities`. If your provider requires External Account Binding (EAB) credentials you supply these in the Advanced tab.
 
 In some situations it's useful to test the certificate request process against the *Staging* (test) version of a Certificate Authority. To use the staging version of your CA, add a new Certificate Authority account and select Staging from the Advanced tab. You can then request staging certificates for a particular managed certificate under `Certificate` > `Advanced` > `Certificate Authority`. Staging certificates are not publicly trusted, so can't be used for real websites. Some CAs do not provide a Staging API.
 
@@ -74,3 +74,7 @@ In the event that you want to change from one Certificate Authority to another (
 * Optionally, change the default CA (under Settings) to the new CA and either let each certificate renew individually or force the renewal, as required.
 
 Note that if bulk migrating from one CA to another you will be subject to API rate limits with the new CA, so it may not be possible to migrate large numbers of certificates in a short period of time, unless you can contact the CA to have your rate limit increased.
+
+
+## Using untrusted root certificates (staging etc)
+When testing with 'staging' (test) accounts or other untrusted (or custom) certificate authority root certificates by default you will receive a `Failed to build certificate as PFX` error. Instead, will you need to download the CAs root certificate for their staging certificate chain. You can then store it under `%PROGRAMDATA%\Certify\custom_ca_certs\pem` or `%PROGRAMDATA%\Certify\custom_ca_certs\der` depending on the file format. If you then restart the Certify background service it will pick up this custom CA root certificate and it will be used if required to build your certificate PFX file. 

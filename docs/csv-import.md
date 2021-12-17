@@ -12,13 +12,15 @@ You can perform a bulk import of managed sites (requires the registered version)
 Your file should be in the format IIS SiteID, Name, Domain1;Domain2;Domain3
 
 Such as:
+
 ```
 0, Test, test.com;www.test.com
 3, TestSite2(Test again), example.com;subdomain.example.com
 
-````
+```
 
 ## Perform CSV import
+
 - Open a new Command Prompt (Run as Administrator).
 
 ```
@@ -26,11 +28,13 @@ cd C:\Program Files (x86)\Certify\
 
 certify importcsv c:\temp\sites.csv
 ```
+
 If you have the main Certify SSL Manager UI open you will see the sites being added as they are imported. Once added you can then modify any required settings.
 
 Performing the same import twice will create duplicates so you should backup your c:\programdata\certify\manageditems.db first in case you need to restore it.
 
 ## Requesting Certificates after CSV Import
+
 The import will set up new managed certificates in the app but will not request or apply any certificates until the next automated renewal run (which is hourly).
 
 To initiate the certificate requests immediately use the command line 'renew' option as Administrator, which will perform requests and deployment for all pending certificate renewals (including certificates not yet requested):
@@ -38,8 +42,9 @@ To initiate the certificate requests immediately use the command line 'renew' op
 `C:\Program Files\CertifyTheWeb> certify renew`
 
 # Advanced CSV options
+
 You can optionally specify the CSV columns to import and their order by specifying a header row including any of:
 
-```CSV 
+```CSV
 siteid, name, domains, primarydomain, includeinautorenew, performautoconfig,performchallengefilecopy, performextensionlessconfigchecks,performtlssnibindingconfigchecks,performautomatedcertbinding,enablefailurenotifications, prerequestpowershellscript, postrequestpowershellscript, webhooktrigger, webhookmethod, webhookurl,webhookcontenttype, webhookcontentbody
 ```

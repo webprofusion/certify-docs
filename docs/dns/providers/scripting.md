@@ -4,23 +4,26 @@ title: DNS Scripting
 ---
 
 To provide your own script to update DNS you need to create (or source) a Windows (CMD) batch file which expects the following sequence of arguments and update a corresponding TXT record in your DNS zone:
+
 - Target Domain (e.g. `example.com`)
 - Record Name (e.g. `_acme-challenge.example.com`)
 - Record Value (e.g. `ABCBD123456789`)
 - Zone Id (e.g. `OptionalZoneId`, this is often useful to match the specific zone to update)
 
-e.g. given a script at *C:\customscripts\UpdateDNS.bat*, this will be executed as:
- ```
+e.g. given a script at _C:\customscripts\UpdateDNS.bat_, this will be executed as:
+
+```
 C:\customscripts\UpdateDNS.bat example.com _acme-challenge.example.com ABCBD123456789 OptionalZoneId
 ```
-Important Notes: 
+
+Important Notes:
 
 - Your script will run as the background service user (local system), not as your account.
-- You should assume the working directory of the process will not be the same as the script. 
+- You should assume the working directory of the process will not be the same as the script.
 - When an 'apex domain' like `example.com` is included in the certificate request for a wildcard (e.g. `*.example.com`) both TXT records will have the same name but different values, so updates need to add to the TXT record values. For this reason it's also a good idea to provide a (well tested!) delete script to clean up the TXT record once the request has completed, otherwise your TXT record values will grow with every validation attempt.
 
-
 ## Calling a Python or node script
+
 To use a Python script (or similarly Node etc) start with a .bat file which can then forward all the arguments as required to your script using `%*` (or you could pass specific arguments if you needed). Note also the fully qualified path to the python exe (or node) as your script will run as local system (using the apps background service) and the path environment variable settings may be different:
 
 ```bat
@@ -72,11 +75,15 @@ if __name__ == "__main__":
     main(sys.argv)
 
 ```
+
 When the script runs that app will call the .bat file like:
+
 ```
 ExampleDNSCreatePython.bat mydomain.com _acme-challenge.mydomain.com ABCD1234 myoptionalZoneId
 ```
+
 Which in turn (based on the above example .bat) will call the python script as :
+
 ```
 python create_dns_txt_basic.py.bat mydomain.com _acme-challenge.mydomain.com ABCD1234 myoptionalZoneId
 ```

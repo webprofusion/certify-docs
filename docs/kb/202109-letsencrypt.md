@@ -37,7 +37,7 @@ The *DST Root CA X3* root certificate expired **September 30 14:01:15 2021 GMT**
 :::warning CA Migration Recommended On Windows if you need to support old devices
 In testing we have confirmed that when `DST Root CA X3` expires, although Windows can initially serve the legacy chain intended for Android compatibility, it will revert to the modern chain automatically when it notices `DST Root CA X3` has expired, if `ISRG Root X1 (self signed)` is also present in the trust store. A [workaround is available](#switching-to-chain-2-legacy)
 
-This means Windows services like IIS generally will not continue to serve content to older operating systems which don't trust `ISRG Root X1`. If you require legacy support without workarounds, you should change [Certificate Authority](/docs/guides/certificate-authorities).
+This means Windows services like IIS generally will not continue to serve content to older operating systems which don't trust `ISRG Root X1`. If you require legacy support without workarounds, you should change [Certificate Authority../guides/certificate-authorities.md).
 :::
 
 # Solutions

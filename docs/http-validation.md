@@ -3,7 +3,7 @@ id: http-validation
 title: HTTP Validation (http-01)
 ---
 ## Why use HTTP Validation?
-To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, `http-01` (validation over HTTP) and `dns-01` ([validation via DNS](dns/validation)). Wildcard domain certificates (those covering `*.yourdomain.com`) can only be requested using DNS validation.
+To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, `http-01` (validation over HTTP) and `dns-01` ([validation via DNS](dns/validation.md)). Wildcard domain certificates (those covering `*.yourdomain.com`) can only be requested using DNS validation.
 
 ## How to use HTTP Validation (on Windows)
 When Let's Encrypt performs domain validation over http (known as an `http-01` challenge) they ask for a randomly named text file to be presented in the `/.well-known/acme-challenge` path of your website. So they should be able to retrieve it at `http://<yourdomain>/.well-known/acme-challenge/<filename>`

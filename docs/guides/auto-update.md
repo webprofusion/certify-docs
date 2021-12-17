@@ -8,9 +8,11 @@ It is essential to regularly update the Certify The Web app as important changes
 Alternative methods include performing app updates using windows management tools (such as WSUS), using the [Chocolatey](https://community.chocolatey.org/packages/certifytheweb) command line update tool or manually updating.
 
 # Auto Updating (Beta)
+
 Certify The Web bundles a PowerShell script you can schedule using Windows Task Scheduler called `C:\Program Files\CertifyTheWeb\Scripts\AutoUpdate\AutoUpdate.ps1`. This script will attempt to download and install the latest stable version of the application, if a newer version is available.
 
 You can scheduled this task to run (as an Administrator or user in the Administrators group) using:
+
 - Windows Task Scheduler > Create Basic Task..
 - Name: `Certify The Web - Auto Update`, Next..
 - Daily (or weekly), Next, (optionally schedule for a regular maintenance window time)> Next..
@@ -19,9 +21,11 @@ You can scheduled this task to run (as an Administrator or user in the Administr
 - Choose "Open Properties dialog for this task when I click Finish", then select `Run whether user is logged on or not`, `Run with highest privileges`.
 
 # Known Issues
+
 By default the `AutoUpdate.ps1` script itself will be in-use when the update runs, preventing the script itself from being updated. To workaround this, the `AutoUpdate.ps1` script will be distributed as `_AutoUpdate.ps1`, and the Certify background service will then move this file when possible.
 
 # Auto Update Risks
+
 There are significant security risks associated with automatically running third party scripts, especially as an Administrator account. You should especially never install a version of Certify The Web which is not digitally signed by `Webprofusion Pty Ltd`. You should not allow any other processes to modify the AutoUpdate.ps1 script as this is a vector for privilege escalation.
 
-You should consider such risks before adopting this method for updating. 
+You should consider such risks before adopting this method for updating.

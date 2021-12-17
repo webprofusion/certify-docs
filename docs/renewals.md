@@ -12,6 +12,7 @@ If the process fails repeatedly, **it will try to notify you** (unless you have 
 In addition, as your certificate approaches expiration, Let's Encrypt will also email you. This can also happen if you have changed a certificate (for instance to add more domains to it) so you may get emails for expiring certificates you have since replaced.
 
 ## Certificate Cleanup
-By default the app will remove certificates it has created (which have `[Certify]` in the 'friendly name')  once they have been expired for over a month. This is to allow users who have manually allocated the certificate to other services to switch to the latest certificate before we delete the old one.
 
- If you are renewing certificates regularly this means you may notice your server stores several duplicate certificates with different expiration dates at any one time, but they will eventually be cleaned up automatically once the app is sure they have expired and are unlikely to be in continued use.
+By default the app will remove certificates it has created (which have `[Certify]` in the 'friendly name') once they have been expired for over a month. This is to allow users who have manually allocated the certificate to other services to switch to the latest certificate before we delete the old one.
+
+If you are renewing certificates regularly this means you may notice your server stores several duplicate certificates with different expiration dates at any one time, but they will eventually be cleaned up automatically once the app is sure they have expired and are unlikely to be in continued use.

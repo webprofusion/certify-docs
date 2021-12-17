@@ -15,8 +15,8 @@ To use the GoDaddy DNS API, you need to setup your API key and authentication se
 ## Add New Stored Credential
 
 Now add a new Stored Credential in Certify, choosing GoDaddy DNS as the provider type, enter:
-    - Your API Key
-    - Your API Secret
-    - Select Save.
+- Your API Key
+- Your API Secret
+- Select Save.
 
 When using the credential as part of DNS validation in the app you will be prompted for the "Zone Id", for this API use the DNS zone name, usually in the form of "yourdomain.com"

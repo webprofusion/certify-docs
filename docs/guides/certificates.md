@@ -5,7 +5,7 @@ title: Certificates
 
 # Certificates
 
-Certificates are a trust mechanism which state that a [Certificate Authority (CA)](certificate-authorities) has validated the identity of something. In our case, certificates are Domain Validated (DV) certificates, meaning they are (automatically) validated to ensure they have been issued to the organisation controlling the given domain.
+Certificates are a trust mechanism which state that a [Certificate Authority (CA)](certificate-authorities.md) has validated the identity of something. In our case, certificates are Domain Validated (DV) certificates, meaning they are (automatically) validated to ensure they have been issued to the organisation controlling the given domain.
 
 A digital certificate consists of a set of public information which has been signed by a Certificate Authority and issued to the holder of a secret *Private Key*. It asserts that the CA believes the holder (represented by their own public key, derived from their own private key) controls a particular domain (or set of domains). The public certificate itself is useless to anyone else except to verify the identity of the service presenting it. They can encrypt something with the public key and only the holder of the private key can decrypt it. This proves that the service you are communicating with also holds the private key that was used when the certificate was created.
 

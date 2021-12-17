@@ -5,7 +5,7 @@ title: Scripting
 
 # Scripting
 
-Certify is extensible via PowerShell scripts tasks which can be configured to run before or after the Certificate Request. From v5 onwards these are found under the Tasks tab for your managed certificate. See [Tasks](deployment/tasks_intro) for more information.
+Certify is extensible via PowerShell scripts tasks which can be configured to run before or after the Certificate Request. From v5 onwards these are found under the Tasks tab for your managed certificate. See [Tasks](deployment/tasks_intro.md) for more information.
 
 The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools. 
 
