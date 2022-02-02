@@ -2,6 +2,7 @@
   "docs": {
     "Introduction": [
       "intro",
+      "guides/installation",
       "certificate-process",
       "renewals"
     ],
