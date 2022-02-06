@@ -6,6 +6,9 @@ title: Security
 # Security Considerations
 The Certify The Web app is configured by default to be fully usable with minimal configuration. This is great for usability but this approach is not necessarily best practice for security. In general, security best practices require that services and users have the absolute minimum of permissions assigned that they require to perform their function.
 
+## Vulnerability Disclosure
+If you have found a specific security vulnerability you believe we need to be aware of, please notify `support at certifytheweb.com` via email. We do not currently operate a bug bounty program. Software bugs etc can also be reported in public at https://github.com/webprofusion/certify/issues
+
 ## Updates
 To ensure the best possible outcome always ensure that your operating system and the Certify The Web app components are fully up to date with vendor/os updates. Operating an internet facing server (web, email, ftp etc) without applying the latest security patches means your system will likely only continue to function due to luck (i.e. not yet being targeted by an attacker). This is doubly important if there is a network path from your internet facing server back to your corporate network. [Auto Updating](auto-update.md) is possible but comes with it's own security risks and caveats.
 
