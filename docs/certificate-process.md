@@ -42,7 +42,9 @@ You can customise this behaviour or even opt to have no deployment at all, howev
 
 ![Deployment](/assets/screens/Deployment_Auto.png)
 
-The default Auto deployment mode will match your certificate to all IIS sites with matching hostname bindings, to work with blank hostname bindings etc., change the deployment mode and configure the available options.
+The default Auto deployment mode will match your certificate to all IIS http(s) sites with matching hostname bindings, to work with blank hostname bindings etc., change the deployment mode and configure the available options. 
+
+Note that for FTP site bindings you need to select "Single Site" instead.
 
 ##### Deployment Tasks and Advanced Usage
 In addition to the Auto Deployment options, you can also make use of a variety of pre-built [Deployment Tasks](deployment/tasks_intro.md) for local or remote deployment. You can also use scripting tasks to work with your certificate using your own custom scripting.
