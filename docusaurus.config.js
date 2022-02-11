@@ -12,10 +12,7 @@ module.exports = {
       apiKey: '95033d5e9d8856ce3e628103f123b748',
       indexName: 'certifytheweb'
     },
-    gtag: {
-      trackingID: 'G-RLGYG5TYY5',
-      anonymizeIP: true
-    },
+   
     navbar: {
       title: 'Certify The Web - Docs',
       logo: {
@@ -106,6 +103,10 @@ module.exports = {
         theme: {
           defaultDarkMode: false,
           customCss: [require.resolve('./src/css/custom.css')],
+        },
+        gtag: {
+          trackingID: 'G-RLGYG5TYY5',
+          anonymizeIP: true
         },
       },
     ],
