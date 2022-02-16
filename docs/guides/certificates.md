@@ -5,13 +5,21 @@ title: Certificates
 
 # Certificates
 
-Certificates are a trust mechanism which state that a [Certificate Authority (CA)](certificate-authorities.md) has validated the identity of something. In our case, certificates are Domain Validated (DV) certificates, meaning they are (automatically) validated to ensure they have been issued to the organisation controlling the given domain.
+Certificates are part of a Public Key Infrastructure (PKI) trust mechanism which state that a [Certificate Authority (CA)](certificate-authorities.md) has validated the identity of something. In our case, certificates are Domain Validated (DV) certificates, meaning they are (automatically) validated to ensure they have been issued to the organisation controlling the given domain.
 
 A digital certificate consists of a set of public information which has been signed by a Certificate Authority and issued to the holder of a secret *Private Key*. It asserts that the CA believes the holder (represented by their own public key, derived from their own private key) controls a particular domain (or set of domains). The public certificate itself is useless to anyone else except to verify the identity of the service presenting it. They can encrypt something with the public key and only the holder of the private key can decrypt it. This proves that the service you are communicating with also holds the private key that was used when the certificate was created.
 
 The Certificate Authority signs the certificate it awards using it's own certificate(s). This consists of a Root certificate and any number of Intermediate certificates (they may delegate to these for signing so they don't have to use their root certificate all the time).
 
 The final 'domain' certificate you receive is sometimes also called the end-entity or leaf certificate.
+
+The resulting certificate can be used as part of the TLS (also called SSL) protocol conversation to help ensure encrypted and authenticated communication.
+
+:::tip Learn more about TLS and PKI
+
+If you are interested in reading more about how certificates work, what TLS is and why certificates are trusted, we recommend reading *Bulletproof TLS and PKI* published by Fiesty Duck: https://www.feistyduck.com/books/bulletproof-tls-and-pki/
+
+:::
 
 ## File Types
 
