@@ -17,7 +17,9 @@ The resulting certificate can be used as part of the TLS (also called SSL) proto
 
 :::tip Learn more about TLS and PKI
 
-If you are interested in reading more about how certificates work, what TLS is and why certificates are trusted, we recommend reading *Bulletproof TLS and PKI* published by Fiesty Duck: https://www.feistyduck.com/books/bulletproof-tls-and-pki/
+If you are interested in reading more about how certificates work, what TLS is and why certificates are trusted, we recommend reading *Bulletproof TLS and PKI* published by Feisty Duck: https://www.feistyduck.com/books/bulletproof-tls-and-pki/ 
+
+*Certify The Web users can get 15% off the price using the our discount code CTW15*
 
 :::
 
