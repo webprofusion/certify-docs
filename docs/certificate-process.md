@@ -29,25 +29,27 @@ You will need to prove you control the domains you have added to your certificat
 
 You can validate using [HTTP validation (http-01)](http-validation.md) or [DNS Validation (dns-01)](dns/validation.md). 
 
-**HTTP validation** requires that your domain be a publicly accessible website with an http service on port 80 (even if that's only for http validation purposes). <em>You cannot use http validation if you need a wildcard certificate.</em>
+**HTTP validation** requires that your domain be a publicly accessible website with an http service on TCP port 80 (even if that's only for http validation purposes). <em>You cannot use http validation if you need a wildcard certificate.</em>
 ![HTTP Validation](/assets/screens/Auth_http.png)
 
 **DNS validation** requires that you can automatically create a TXT record in your domain's DNS zone (usually using a DNS API from a cloud DNS provider). If neither of these options are viable for you, you may not be able to use an automated certificate service.
 ![DNS Validation](/assets/screens/Auth_DNS.png)
 
 ### 3. Decide how to deploy
-By default Certify will auto update/add https bindings on all sites with hostname bindings which match the certificate. You can also choose to customise how deployment occurs. The *Preview* feature (below) is especially important as this will show you which bindings will be created and updated.
+By default Certify will auto update/add https bindings on all sites with hostname bindings which match the certificate (if using IIS). You can also choose to customise how deployment occurs. The *Preview* feature (below) is especially important as this will show you which bindings will be created and updated.
 
 You can customise this behaviour or even opt to have no deployment at all, however if you do customise binding behaviour (on a Windows Server) you should have a clear understanding of the limitations of [SSL binding on Windows](guides/ssl-windows.md)
 
 ![Deployment](/assets/screens/Deployment_Auto.png)
 
-The default Auto deployment mode will match your certificate to all IIS http(s) sites with matching hostname bindings, to work with blank hostname bindings etc., change the deployment mode and configure the available options. 
+The default Auto deployment mode will (if applicable) match your certificate to all IIS http(s) sites with matching hostname bindings, to work with blank hostname bindings etc., change the deployment mode and configure the available options. 
 
 Note that for FTP site bindings you need to select "Single Site" instead.
 
 ##### Deployment Tasks and Advanced Usage
 In addition to the Auto Deployment options, you can also make use of a variety of pre-built [Deployment Tasks](deployment/tasks_intro.md) for local or remote deployment. You can also use scripting tasks to work with your certificate using your own custom scripting.
+
+Deployment Tasks can be used used for common certificate tasks such as deploying to Microsoft Exchange, updating a certificate in a secrets vault (such as Azure Key Vault), deploying to a CCS share or converting the certificate into different file types.
 
 ### 4. Preview
 Using the *Preview* tab you can see a detailed summary of how your Managed Certificate is configured and what actions the app will plan to take next, including how the new certificate will be deployed.
@@ -64,4 +66,7 @@ Finally, you can request your certificate which will automatically:
 
 ### 6. Automatic Renewal
 
-By default, [automatic renewal](renewals.md) will take place 30 days after your most recent successful request (per managed certificate). The frequency of renewals (in Days) is set under Settings.
+By default, [automatic renewal](renewals.md) will take place 30 days after your most recent successful request (per managed certificate). The frequency of renewals (in Days) is set under Settings. The *Certify* background service performs renewal maintenance tasks every 60 minutes and also performs daily tasks such as certificate store maintenance.
+
+By default, if a certificate fails to renew (because of a configuration change or a problem with the certificate authority etc) then the renewal will be attempted again later. If the certificate renewal continues to fail then a status report will be sent to the Certify The Web API and you will then receive an email notification alerting you to the failure. The app uses the email address specified under Settings > Certificate Authorities > Accounts for this.
+
