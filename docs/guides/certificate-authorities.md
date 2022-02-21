@@ -15,6 +15,7 @@ Certify The Web supports a number of built-in CAs but you can also configure you
 
 The certificate issuance service remains the responsibility of the Certificate Authority and we (Certify The Web operated by Webprofusion Pty Ltd) have no affiliation to their organisation or any control over their service. **Our software makes the process easier and automates how you acquire and use the certificates. We are not a Certificate Authority.** Using Certify to request a certificate from a CA also means you accept the CAs current service privacy policy, and their terms and conditions.
 
+
 ## Supported CAs
 
 Support for the following certificate authorities is included by default:
