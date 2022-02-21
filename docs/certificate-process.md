@@ -5,7 +5,12 @@ title: Requesting a Certificate
 
 When you install Certify you will be prompted to register with the [Certificate Authority](guides/certificate-authorities.md) who will validate and issue your [certificates](guides/certificates.md) (e.g. Let's Encrypt). You should provide a real email address, otherwise they can't contact you if there is a problem with your certificate. 
 
-**Quick Start: ** If you are requesting a certificate for an IIS website with existing http/https domain bindings it's possible to just install the app on the web server, click **New Certificate**, selected your IIS Website and confirm your domains, then click **Request Certificate** to automatically validate your domain(s), fetch the certificate and auto-apply it. You can then access your website via https. Your certificate will automatically renew using the same process.
+:::tip Quick Start
+If you are requesting a certificate for an IIS website with existing http/https domain bindings it's possible to just install the app on the web server, click **New Certificate**, selected your IIS Website and confirm your domains, then click **Request Certificate** to automatically validate your domain(s), fetch the certificate and auto-apply it. You can then access your website via https. Your certificate will automatically renew using the same process.
+:::
+
+## What is an ACME client?
+An ACME client is any software tool which can talk to an ACME (Automatic Certificate Management Environment) enabled Certificate Authority (such as Let's Encrypt). Certify The Web is the most fully featured ACME certificate management UI available on Windows.
 
 ## Requesting a Certificate
 The basic process of requesting a certificate for your domain involves either proving you control the server for that domain or proving you control DNS for that domain, then the Certificate Authority can issue you a certificate once it's satisfied that you have met the requirements. 
