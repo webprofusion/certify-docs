@@ -10,7 +10,7 @@ If you are requesting a certificate for an IIS website with existing http/https 
 :::
 
 ## What is an ACME client?
-An ACME client is any software tool which can talk to an ACME (Automatic Certificate Management Environment) enabled Certificate Authority (such as Let's Encrypt). Certify The Web is the most fully featured ACME certificate management UI available on Windows.
+An ACME client is any software tool which can talk to an ACME (Automatic Certificate Management Environment) enabled Certificate Authority (such as Let's Encrypt). Certify The Web is the most fully featured ACME certificate management UI available on Windows. You can see other available ACME clients here: https://acmeclients.com/
 
 ## Requesting a Certificate
 The basic process of requesting a certificate for your domain involves either proving you control the server for that domain or proving you control DNS for that domain, then the Certificate Authority can issue you a certificate once it's satisfied that you have met the requirements. 
