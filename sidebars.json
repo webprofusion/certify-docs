@@ -13,10 +13,10 @@
       "dns/validation",
       "deployment/tasks_intro",
       "script-hooks",
-      "guides/csr",
-      "guides/best-practices"
+      "guides/csr"
     ],
     "Useful Info": [
+      "guides/best-practices",
       "guides/ssl-windows",
       "commandline",
       "csv-import",
