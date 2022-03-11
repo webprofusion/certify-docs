@@ -13,7 +13,8 @@
       "dns/validation",
       "deployment/tasks_intro",
       "script-hooks",
-      "guides/csr"
+      "guides/csr",
+      "guides/best-practices"
     ],
     "Useful Info": [
       "guides/ssl-windows",
