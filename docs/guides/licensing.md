@@ -14,6 +14,8 @@ There are two main methods of licensing:
 - License Bundles
 - Cloud Managed Licenses
 
+*We do not offer special licensing terms for any type of organisation.*
+
 ## License Bundles
 For the Certify The Web app you can currently purchase the following license bundles:
 
@@ -33,7 +35,7 @@ License tier names are an arbitrary label and are not related to the size/nature
 
 :::
 
-These license bundles can be purchased using a credit card (via Stripe) or via PayPal. *Proforma Invoicing, reseller accounts etc are not supported.* You can also get a link to send to someone else in your organisation to complete payment on behalf of your account.
+These license bundles can be purchased using a credit card (via Stripe) or via PayPal. *Proforma Invoicing, reseller accounts etc are not supported. See Cloud Licensing instead.* You can also get a link to send to someone else in your organisation to complete payment on behalf of your account.
 
 Notifications are sent when your license key is about to expire. To stop receiving notifications about an expiring or expired license key, sign into your certifytheweb.com profile and choose `Cancel Now` from the License keys tab.
 
