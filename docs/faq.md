@@ -116,7 +116,7 @@ See our [knowledge base article](./kb/202109-letsencrypt.md) for more details an
 
 ## License Registration
 
-Certify The Web has a free Community Edition which is limited to 5 managed certificates and intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key to apply your license. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
+Certify The Web has a free Community Edition which is limited to 5 different managed certificates (with unlimited renewals) and is intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key to apply your license. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
 
 **If you are using this application within a business or funded organisation (beyond a temporary evaluation) you are required to purchase a license key.**
 
