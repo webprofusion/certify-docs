@@ -175,6 +175,37 @@ Set-RemoteAccess -SslCertificate $cert
 Start-Service RemoteAccess
 ```
 
+### Example: Update SQL Server connection certificate
+This example updates the registry key for the SQL Server certificate thumbprint. Note that the instance name will affect the name of the registry key, so you need to find that and change that in the script. Some SQL Server editions may also require the certificate key to be converted to the older RSA SChannel CSP.
+
+```
+param($result)
+
+# Example script to set SQL Server certificate 
+
+# Note that some instances of SQL server may require certificate key storage to use the "Microsoft RSA SChannel Cryptographic Provider" 
+# See an example conversion: https://docs.certifytheweb.com/docs/script-hooks#example-convert-cng-certificate-storage-to-csp-for-exchange-2013
+
+# See HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\ for the required instance key
+$instanceKey = 'MSSQL15.MSSQLSERVER'  # Change this as required
+
+# -------------------------------------------------------------------------
+
+$registryPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\$instanceKey\MSSQLServer\SuperSocketNetLib"
+$oldthumbprint = (Get-Itemproperty -Path $registryPath).Certificate
+$newthumbprint = $result.ManagedItem.CertificateThumbprintHash
+
+if ($oldthumb -ne $newthumb) { 
+
+  # apply the new certificate thumbprint to the registry key
+  Set-ItemProperty -Path $registryPath -Name 'Certificate' -Value $newthumb
+
+  # optionally restart the SQL service (uncomment if required in this step), correct service name may vary
+  # Restart-Service mssqlserver
+}
+```
+
+
 ### Example: Update SQL Server Reporting Services
 
 This is adapted from a community example: https://community.certifytheweb.com/t/sql-server-reporting-services-ssrs/332/7  
