@@ -47,6 +47,14 @@ BuyPass are a Scandinavian certificate authority who also offer free certificate
 - Important rate limits apply: https://community.buypass.com/t/m2r5cj/rate-limits
 - Certificates can contain up to 5 domains. Wildcard certificates are not supported.
 
+### Google Cloud
+The Google Cloud Certificate Manager is an ACME enabled public certificate service. While in beta this service requires a [sign up for preview](https://cloud.google.com/blog/products/identity-security/automate-public-certificate-lifecycle-management-via--acme-client-api). Certificates are valid for up-to 90 days and can contain multiple domains or wildcards.
+
+- Trusted by all major operating systems and browsers
+- Certificates expire after 90 days (but can be configured for shorter expiry).
+- Wildcard certificates (*.domain.com) are supported when using DNS validation. 
+- To use you first need to sign up for a Google Cloud account, create a project, register for the preview then enable the public-ca API and acquire External Account Binding (EAB) credentials. This EAB credential can only be used once and subsequent account registrations (on other servers etc) require a new EAB to be generated. For more details see https://cloud.google.com/public-certificate-authority/docs/quickstart (available if you have registered for the beta preview with Google).
+
 ### SSL .com
 SSL .com are an established certificate Certificate Authority who now offer basic free certificates via their own ACME enabled service. https://www.ssl.com/how-to/order-free-90-day-ssl-tls-certificates-with-acme/
 
