@@ -18,10 +18,16 @@ Yes, full time [email support](support.md) is available for registered users who
 
 *You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported.* 
 
-**If you use this application within a business, you should purchase a license key once you have completed your evaluation of the software.**
+## License Registration
+
+Certify The Web has a free Community Edition which is limited to 5 different managed certificates (with unlimited renewals) and is intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key to apply your license. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
+
+**If you are using this application within a business or funded organisation (beyond a temporary evaluation) you are required to purchase a license key.**
+
+For more information about licensing see our [licensing guide](./guides/licensing.md).
 
 ### What do I need to know about the certificates this app provides?
-We are not a Certificate Authority and this app makes managing certificates easier. The actual certificates are issued by the Certificate Authority of your choice (the default is Let's Encrypt) and various limitations apply including:
+We are not a Certificate Authority. This app primarily makes managing certificates easier. The actual certificates are issued by the Certificate Authority of your choice (the default is Let's Encrypt) and various limitations apply including:
 - Let's Encrypt certificates are limited to a 90 day expiry (which is why auto-renewal is very important). 
 - Let's Encrypt support up to 100 domains per certificate.
 - Rate Limits apply when talking to the ACME/Let's Encrypt ACME API (number of certificates issued per week etc) https://letsencrypt.org/docs/rate-limits/
@@ -113,11 +119,3 @@ V5.5.4 onwards of the Certify The Web app performs basic trust store maintenance
 
 ### My Let's Encrypt certificate chain is invalid after the "DST Root CA X3" expiry.
 See our [knowledge base article](./kb/202109-letsencrypt.md) for more details and solutions.
-
-## License Registration
-
-Certify The Web has a free Community Edition which is limited to 5 different managed certificates (with unlimited renewals) and is intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key to apply your license. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
-
-**If you are using this application within a business or funded organisation (beyond a temporary evaluation) you are required to purchase a license key.**
-
-For more information about licensing see our [licensing guide](./guides/licensing.md).

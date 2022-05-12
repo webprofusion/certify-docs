@@ -6,7 +6,7 @@ title: Requesting a Certificate
 When you install Certify you will be prompted to register with the [Certificate Authority](guides/certificate-authorities.md) who will validate and issue your [certificates](guides/certificates.md) (e.g. Let's Encrypt). You should provide a real email address, otherwise they can't contact you if there is a problem with your certificate. 
 
 :::tip Quick Start
-If you are requesting a certificate for an IIS website with existing http/https domain bindings it's possible to just install the app on the web server, click **New Certificate**, selected your IIS Website and confirm your domains, then click **Request Certificate** to automatically validate your domain(s), fetch the certificate and auto-apply it. You can then access your website via https. Your certificate will automatically renew using the same process.
+If you are requesting a certificate for an IIS website with existing http/https domain hostname bindings it's possible to just install the app on the web server, click **New Certificate**, selected your IIS Website and confirm your domains, then click **Request Certificate** to automatically validate your domain(s), fetch the certificate and auto-apply it. You can then access your website via https. Your certificate will automatically renew using the same process.
 :::
 
 ## What is an ACME client?
@@ -22,7 +22,7 @@ The first step of requesting a certificate is to decide which domain (and subdom
 
 ![Choosing Domains](/assets/screens/ChooseDomains.png)
 
-#### Using Wildcard Domains
+#### Using Wildcard Domains (optional)
 You can also manually add *Wildcard Domains* to a certificate request. A wildcard domain takes the form `*.yourdomain.com` and the resulting certificate would cover `anything.yourdomain.com`, but it will not cover nested subdomains i.e. `www.anything.yourdomain.com`. You will also need to add the top level `yourdomain.com` to the certificate if you wish to cover requests to that domain directly.
 
 You cannot mix certificate requests for a Wildcard and a first-level subdomain (e.g. in a request for `*.yourdomain.com` and `www.yourdomain.com`, you should remove the `www.yourdomain.com` as it's already covered by the wildcard domain).
@@ -30,7 +30,7 @@ You cannot mix certificate requests for a Wildcard and a first-level subdomain (
 **Wildcard certificates require DNS validation, this is a requirement imposed by the Certificate Authority.**
 
 ### 2. Decide how to validate domains
-You will need to prove you control the domains you have added to your certificate. Only public domains can be validated automatically so intranet sites (hostname only with no domain etc e.g. SRVDEVAPP01) are not supported, however public domain names (like srvdevapp01.dev.domain.com) are fine.
+You will need to prove you control the domains you have added to your certificate. Only public domains can be validated automatically so intranet sites (where you have a private hostname only with no domain etc e.g. SRVDEVAPP01) are not supported, however public domain names (like srvdevapp01.dev.domain.com) are fine.
 
 You can validate using [HTTP validation (http-01)](http-validation.md) or [DNS Validation (dns-01)](dns/validation.md). 
 
@@ -71,7 +71,7 @@ Finally, you can request your certificate which will automatically:
 
 ### 6. Automatic Renewal
 
-By default, [automatic renewal](renewals.md) will take place 30 days after your most recent successful request (per managed certificate). The frequency of renewals (in Days) is set under Settings. The *Certify* background service performs renewal maintenance tasks every 60 minutes and also performs daily tasks such as certificate store maintenance.
+By default, [automatic renewal](renewals.md) will take place 30 days after your most recent successful request (per managed certificate). The frequency of renewals (in Days) is set under Settings and once you are comfortable that renewals are happening automatically as expected you should raise to 60 days (for example) to reduce traffic against the certificate authority. The *Certify* background service performs renewal maintenance tasks every 60 minutes and also performs daily tasks such as certificate store maintenance.
 
 By default, if a certificate fails to renew (because of a configuration change or a problem with the certificate authority etc) then the renewal will be attempted again later. If the certificate renewal continues to fail then a status report will be sent to the Certify The Web API and you will then receive an email notification alerting you to the failure. The app uses the email address specified under Settings > Certificate Authorities > Accounts for this.
 

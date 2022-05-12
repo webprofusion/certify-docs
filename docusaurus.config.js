@@ -8,11 +8,11 @@ module.exports = {
   projectName: 'certify-docs', // Usually your repo name.
   themeConfig: {
     algolia: {
-      appId:'YX7T7PF7BX',
+      appId: 'YX7T7PF7BX',
       apiKey: '95033d5e9d8856ce3e628103f123b748',
       indexName: 'certifytheweb'
     },
-   
+
     navbar: {
       title: 'Certify The Web - Docs',
       logo: {
@@ -20,16 +20,17 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        {to: 'docs/intro', label: 'Getting Started', position: 'left'},
-        {
-          label: 'Requesting a Certificate',
-          to: 'docs/certificate-process',
-        },
-        {to: 'docs/faq', label: 'FAQ', position: 'left'},
-        {to: 'docs/support', label: 'Support', position: 'left'},
+        { to: 'docs/intro', label: 'Getting Started', position: 'left' },
+        { to: 'docs/faq', label: 'FAQ', position: 'left' },
+        { to: 'docs/support', label: 'Support', position: 'left' },
         {
           href: 'https://community.certifytheweb.com',
           label: 'Community',
+          position: 'right',
+        },
+        {
+          label: 'certifytheweb.com',
+          href: 'https://certifytheweb.com',
           position: 'right',
         },
       ],
@@ -69,6 +70,10 @@ module.exports = {
               label: 'GitHub',
               href: 'https://github.com/webprofusion/certify',
             },
+            {
+              label: 'certifytheweb.com',
+              href: 'https://certifytheweb.com',
+            },
           ],
         },
         {
@@ -95,7 +100,7 @@ module.exports = {
         docs: {
           path: './docs',
           // Sidebars file relative to website dir.
-          sidebarPath: require.resolve('./sidebars.json'),
+          sidebarPath: require.resolve('./sidebars.js'),
           sidebarCollapsible: false,
           editUrl:
             'https://github.com/webprofusion/certify-docs/edit/master/',
