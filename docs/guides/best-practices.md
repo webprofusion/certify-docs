@@ -14,7 +14,11 @@ Even if you have a great automated score for security, your choice of operating 
 A user could try to access your site by just typing the domain or perhaps they will even type the full domain with `https://` - whether the site loads as `http://` or `https://` will depend on the web browser or the link the user followed, so in some cases users will see a site as "insecure". To avoid this, you can automatically direct the users browser to the HTTPS version of your site.
 
 ### Redirect to HTTP using IIS
+
+
 If you are using IIS on Windows, there are a few way to redirect users from http to https. The most common method uses the *URL Rewrite* module https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module which is an extension to IIS which uses a web.config directive to rewrite http requests.
+
+In Windows Server 2022 you can select the `Configure > HSTS..` option in IIS Manager which includes Http to Https redirection. Ensure you have working https before using this option.
 
 #### Example rewrite rule to redirect http:// to https:// :
 ```
@@ -42,6 +46,10 @@ If you are using IIS on Windows, there are a few way to redirect users from http
 
 ## HTTP Strict Transport Security (HSTS)
 One technique to encourage users to only use the `https` version of your site is to add a special http header to your webserver responses, this tells their browser to remember that your site prefers to use https.
+
+As above, in Windows Server 2022 you can select the `Configure > HSTS..` option in IIS Manager which includes Http to Https redirection.
+
+For older versions of IIS and Windows Server you can configure the web application manually.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>

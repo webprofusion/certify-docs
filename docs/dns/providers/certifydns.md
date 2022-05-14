@@ -37,6 +37,12 @@ Certify DNS is a cloud hosted version of the [acme-dns](https://github.com/jooho
 
 If the error in the app is `NXDOMAIN for _acme-challenge...` , the Certificate Authority has been unable to find or follow the CNAME you have configured in your DNS.
 
+## Sharing CNAME registrations across multiple machines
+If you need to have multiple machines fetch certificates for the same domain (such as a wildcard cert) you will find that your CNAME record needs to be the same Certify DNS pointer, which in turn means you need to share the Certify DNS registration config across each machine. To do this, copy the respective config file from C:\ProgramData\certify\acmedns\ on one machine all of to the other machines. Thereafter their renewals will all use the same Certify DNS registration for that domain.
+
+## Migrating from acme-dns to Certify DNS or vice-versa
+To switch from acme-dns to Certify DNS, first delete the respective domain config from C:\ProgramData\certify\acmedns and switch the DNS provider to Certify DNS, then wait 1 month (or 30 days since the last renewal) to allow the previous domain validation to expire at the CA. Thereafter, perform a normal renewal (or let the app auto renew) - this will fail until the new CNAME registration has been completed, so check the log for this managed certificate and find the new CNAME value you need to populate, then renew normally.
+
 ## Advantages and Disadvantages
 
 There are a number of factors to consider before delegating validation to a service like Certify DNS (or any acme-dns style service).
