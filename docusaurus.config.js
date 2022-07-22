@@ -106,7 +106,6 @@ module.exports = {
             'https://github.com/webprofusion/certify-docs/edit/master/',
         },
         theme: {
-          defaultDarkMode: false,
           customCss: [require.resolve('./src/css/custom.css')],
         },
         gtag: {
