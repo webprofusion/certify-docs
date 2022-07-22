@@ -43,6 +43,17 @@ If you need to have multiple machines fetch certificates for the same domain (su
 ## Migrating from acme-dns to Certify DNS or vice-versa
 To switch from acme-dns to Certify DNS, first delete the respective domain config from C:\ProgramData\certify\acmedns and switch the DNS provider to Certify DNS, then wait 1 month (or 30 days since the last renewal) to allow the previous domain validation to expire at the CA. Thereafter, perform a normal renewal (or let the app auto renew) - this will fail until the new CNAME registration has been completed, so check the log for this managed certificate and find the new CNAME value you need to populate, then renew normally.
 
+## Securing Issuance
+Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. To guard against issuance by a different account some CAs implement the CAA extensions for RFC8657 https://datatracker.ietf.org/doc/html/rfc8657
+
+For example, to restrict specific-domain issuance (for non-wildcard certs) to letsencrypt.org only when using account 1234 and only using DNS validation (dns-01), add a CAA record with the account URI and validation method set :
+`CAA 0 issue "letsencrypt.org; accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/1234; validationmethods=dns-01"`
+
+To restrict wildcard issuance use `issuewild`:
+`CAA 0 issuewild "letsencrypt.org; accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/1234; validationmethods=dns-01"`
+
+This feature requires support from your chosen CA. Your CA account URI is available from the Certify command line using `certify acmeaccount list`.
+
 ## Advantages and Disadvantages
 
 There are a number of factors to consider before delegating validation to a service like Certify DNS (or any acme-dns style service).
@@ -54,7 +65,7 @@ Advantages:
 
 Disadvantages:
 
-- Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. **This is a security risk and you must trust the service provider.** An alternative is to host your own internet facing acme-dns server. You should review the requirements for doing that and assess whether it's the best choice for your organisation. Future updates to the CAA record standard for CA issuance will likely add a way to limit updates to specific CA accounts.
+- Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. **This is a security risk and you must trust the service provider.** An alternative is to host your own internet facing acme-dns server. You should review the requirements for doing that and assess whether it's the best choice for your organisation. Your CA can implement https://datatracker.ietf.org/doc/html/rfc8657 issuance features for the DNS CAA record standard adds a way to limit updates to only be performed by specific CA accounts.
 
 ## Planned Pricing
 
