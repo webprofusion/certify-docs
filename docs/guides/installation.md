@@ -15,7 +15,7 @@ This app requires outgoing https for API calls, proxies are not officially suppo
 
 To get started, download and run the latest version of the app from https://certifytheweb.com 
 
-You can install the Certify The Web - Certify SSL Manager app on any Windows machine or server. In general the app will be installed on the same server that requires the certificate and most commonly this will be web servers or mail/webmail servers. 
+You can install the Certify The Web - Certify Certificate Manager app on any Windows machine or server. In general the app will be installed on the same server that requires the certificate and most commonly this will be web servers or mail/webmail servers. 
 
 The app consists of a user interface (UI) and a background service for certificate management tasks.
 
