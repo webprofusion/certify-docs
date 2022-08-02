@@ -106,7 +106,7 @@ net start http
 
 If the service remains at `STOPPING` or similar then a system reboot may be required.
 
-Once completed, restart the Certify SSL Manager background service from local services, then open the Certify The Web UI again to see if it can connect.
+Once completed, restart the Certify background service from local services, then open the Certify The Web UI again to see if it can connect.
 
 ## Managed Items Database
 

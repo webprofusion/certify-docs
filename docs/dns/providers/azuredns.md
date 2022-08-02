@@ -101,7 +101,7 @@ Name                     Id                                   TenantId          
 Subscription Name        xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb zzzzzzzz-wwww-yyyy-aaaa-bbbbbbbbbbbb Enabled
 ```
 
-## 6 – Configure Credentials in Certify SSL Manager
+## 6 – Configure Credentials in Certify Certificate Manager
 
 You now have all the information you require to configure Azure settings in the app.
 

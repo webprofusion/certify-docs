@@ -4,7 +4,7 @@ title: Licensing
 ---
 
 # About Licensing
-Certify The Web and its related services are a commercial product. A free community edition is available for download and evaluation (limited to a few managed certificates). 
+Certify The Web *Certify Certificate Manager* is a commercial product. A free community edition is available for download and evaluation (limited to a few managed certificates). 
 
 You can purchase a license key which will then enable you to install the app on one or machines (depending on your license type). You can purchase multiple license keys to fit different sized installs and each install can manage an unlimited number of certificates through your choice of Certificate Authority.
 

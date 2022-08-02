@@ -18,13 +18,13 @@ If you use a binding of IP *All Unassigned* in IIS you can then share port 443 a
 You can learn more about SNI in IIS 8.0 and higher here: https://docs.microsoft.com/en-us/iis/get-started/whats-new-in-iis-8/iis-80-server-name-indication-sni-ssl-scalability
 
 ## Binding Conflicts
-Certify configures bindings with SNI enabled for you by default, but **if you already have fixed IP bindings for SSL certificates look out for issues**. Unless you have multiple IP addresses (which are not specifically bound to another SSL certificate) then creating any new certificate bindings will result in a conflict, and you could start seeing the wrong certificate being served by IIS for your website. 
+Certify configures bindings with SNI enabled for you by default, but **if you already have fixed IP bindings for SSL certificates look out for issues**. Unless you have multiple IP addresses (which are not specifically bound to another TLS/SSL certificate) then creating any new certificate bindings will result in a conflict, and you could start seeing the wrong certificate being served by IIS for your website. 
 
 **IP binding conflicts are the number one reason for certificate confusion in Windows/IIS.** 
 If your site is serving the wrong certificate this is probably the cause.
 
  ## Invalid Private Key Permissions
-If IIS cannot read or otherwise use the private key for your SSL certificate (either it's corrupted or it was created by a different user account) it will fallback to the next SSL Certificate it can find. This usually results in the website being presented with the wrong certificate (and results in various security errors in the Web Browsers). If IIS can't find another SSL certificate it will fail to serve any content at all. For this reason, be careful using non-standard accounts to create certificates. Changing the Certify SSL Manager background service to run under an alternative service account is not recommended or supported.
+If IIS cannot read or otherwise use the private key for your SSL certificate (either it's corrupted or it was created by a different user account) it will fallback to the next SSL Certificate it can find. This usually results in the website being presented with the wrong certificate (and results in various security errors in the Web Browsers). If IIS can't find another SSL certificate it will fail to serve any content at all. For this reason, be careful using non-standard accounts to create certificates. Changing the Certify Certificate Manager background service to run under an alternative service account is not recommended or supported.
 
 # Windows Server 2008 R2 (IIS 7.5) Limitations
 Windows Server 2008 R2 and lower versions do not support SNI, so when a certificate binding is created it is associated with the IP address of the machine (actually the IP and port, usually port 443 for https). For this reason it is often difficult to use Server 2008 R2 or lower to host more than one https site.

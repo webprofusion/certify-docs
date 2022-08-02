@@ -29,7 +29,7 @@ cd C:\Program Files (x86)\Certify\
 certify importcsv c:\temp\sites.csv
 ```
 
-If you have the main Certify SSL Manager UI open you will see the sites being added as they are imported. Once added you can then modify any required settings.
+If you have the main Certify Certificate Manager UI open you will see the sites being added as they are imported. Once added you can then modify any required settings.
 
 Performing the same import twice will create duplicates so you should backup your c:\programdata\certify\manageditems.db first in case you need to restore it.
 

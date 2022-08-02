@@ -1,5 +1,5 @@
 # Documentation system for Certify The Web
-Documentation Site for the Certify SSL Manager.
+Documentation Site for the Certify Certificate Manager.
 
 Contributions are welcome and all content can be found in the `docs` folder. Please submit a PR.
 
