@@ -35,7 +35,9 @@ Certify DNS is a cloud hosted version of the [acme-dns](https://github.com/jooho
 
 ## Troubleshooting
 
-If the error in the app is `NXDOMAIN for _acme-challenge...` , the Certificate Authority has been unable to find or follow the CNAME you have configured in your DNS.
+If the error in the app is `NXDOMAIN for _acme-challenge...` , the Certificate Authority has been unable to find or follow the CNAME you have configured in your DNS. You should review your DNS records to ensure you have created the required CNAME record.
+
+Cloudflare users: If you have Universal SSL configured for your domain in Cloudflare, this will result in *hidden* TXT records being created for your domain and subdomain (called _acme-challenge.yourdomain.com). This will directly conflict with the CNAME record you need to create for Certify DNS to work. You should either disable Universal SSL in Cloudflare or contact Cloudflare for other solutions.
 
 ## Sharing CNAME registrations across multiple machines
 If you need to have multiple machines fetch certificates for the same domain (such as a wildcard cert) you will find that your CNAME record needs to be the same Certify DNS pointer, which in turn means you need to share the Certify DNS registration config across each machine. To do this, copy the respective config file from C:\ProgramData\certify\acmedns\ on one machine all of to the other machines. Thereafter their renewals will all use the same Certify DNS registration for that domain.
