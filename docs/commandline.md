@@ -53,11 +53,24 @@ The `certify add` and `certify remove` commands can be used to add or remove dom
 
 These will not request/renew the actual certificate unless you append `--perform-request` to the end of the command. These commands assume the same domain validation settings are being used for all domains on the same managed certificate:
 
+- `certify remove <managed cert id> domain1.test.com;domain2.test.com` : remove one or more certificates from the configuration of a managed certificate. If removing a domain will mean there are zero domains remaining on the certificate then the managed certificate will be removed completely.
+
 - `certify add <managed cert id, or new> domain1.test.com;domain2.test.com` : add one or more additional domains to the configuration of a managed certificate. e.g. `certify add new example.com`
 
-- `certify add new domain1.test.com;domain2.test.com --template C:\Temp\managertcert-template.json` : add new managed cert with given domain, using a template (json exported from an existing managed cert).
+- `certify add new domain1.test.com;domain2.test.com --template C:\Temp\managedcert-template.json` : add new managed cert with given domain, using a template (json exported from an existing managed cert). 
 
-- `certify remove <managed cert id> domain1.test.com;domain2.test.com` : remove one or more certificates from the configuration of a managed certificate. If removing a domain will mean there are zero domains remaining on the certificate then the managed certificate will be removed completely.
+:::info using templates
+Templates are an advanced feature intended only for users who require managed certificate automation with non-default challenge configuration (e.g. DNS validation). 
+
+To generate a template:
+- Use `certify list --json output.json` to export your managed certificates as JSON
+- Edit the JSON file down to a single item, removing the array `[ ... ]`
+- Save the file as your new template. Domains etc will be discarded from the template and you still need to provide these arguments
+
+**Templates are not guaranteed to stay compatible between major version updates so you should test integrations which use them with each new release.**
+:::
+
+
 
 ### Diagnostics
 
