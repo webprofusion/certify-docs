@@ -89,7 +89,7 @@ From the Azure portal, click Azure Active Directory:
 
 _IMPORTANT: The secret is only shown at this point. Copy it as once it’s hidden there is NO way to retrieve it_
 
-## 5 – Retrieve Tenant ID and Subscription ID
+## 5 – Retrieve Tenant ID, Subscription ID and Resource Group Name
 
 There are any number of ways to get the tenant ID, but since we’re already in PowerShell:
 
@@ -100,6 +100,8 @@ Name                     Id                                   TenantId          
 ----                     --                                   --------                             -----
 Subscription Name        xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb zzzzzzzz-wwww-yyyy-aaaa-bbbbbbbbbbbb Enabled
 ```
+
+To find your Resource Group Name, browse to your DNS zone in Azure and note the resource group name shown.
 
 ## 6 – Configure Credentials in Certify Certificate Manager
 
