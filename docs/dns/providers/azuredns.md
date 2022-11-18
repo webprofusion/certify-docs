@@ -11,9 +11,11 @@ _Azure DNS documentation originally written by: Tony Johncock @Tony1044_
 
 ## Create an Azure AD Service Principle
 
-- In Azure Active Directory, create a user who will then be assigned permissions to update your DNS zone, this can be an App registration.
-- You will also need to add a Client Secret for use by this user (User > Certificates and Secrets).
-- In your DNS Zone, use the Access Control (IAM) option to Add a Role Assignment (DNS Zone Contributor).
+- In Azure Active Directory, create a user who will then be assigned permissions to update your DNS zone, this can be an App registration. **Take note of your Application (client) ID and Directory (tenant) ID.**
+- In your DNS Zone, use the Access Control (IAM) option to Add a Role Assignment (DNS Zone Contributor). **Take note of your DNS Zone resource-group name and Subscription ID**
+- In the app registration user properties, go to Certificates & secrets, Client Secrets > New Client secret. Set a meaningful description such as "Certify The Web DNS updates", and set the preferred expiry (.e.g. 24 Months). When the secret expires the app will fail to make DNS updates, so you need to actively manage this secret and it's expiry. **Copy the secret "value" for later (the secret "ID" is not used)**
+
+You can now add your Azure DNS credential in the app using the above noted values.
 
 # To Configure using Powershell
 
