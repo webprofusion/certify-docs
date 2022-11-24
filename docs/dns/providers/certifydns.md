@@ -69,12 +69,10 @@ Disadvantages:
 
 - Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. **This is a security risk and you must trust the service provider.** An alternative is to host your own internet facing acme-dns server. You should review the requirements for doing that and assess whether it's the best choice for your organisation. Your CA can implement https://datatracker.ietf.org/doc/html/rfc8657 issuance features for the DNS CAA record standard adds a way to limit updates to only be performed by specific CA accounts.
 
-## Planned Pricing
+## Pricing
 
-Certify DNS is a commercial service. Current planned pricing when the service leaves beta is:
+Certify DNS is a commercial service and the following pricing options are available. 
 
 | Type     | Renewal Frequency | Domains | Price     |
 | -------- | ----------------- | ------- | --------- |
-| Standard | Monthly           | 500     | $4.99 USD |
-
-Currently, this is planned as an Azure Marketplace SaaS subscription.
+| Standard | 12 Months           | 500     | $60 USD |
