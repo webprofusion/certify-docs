@@ -33,7 +33,8 @@ const sidebars = {
           items: [
             "deployment/tasks_intro",
             "script-hooks",
-            'guides/architecture/load-balancing'
+            'guides/architecture/load-balancing',
+            'guides/import-export'
           ],
         },
         {

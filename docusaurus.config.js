@@ -115,4 +115,8 @@ module.exports = {
       },
     ],
   ],
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 };
