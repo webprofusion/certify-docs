@@ -7,6 +7,7 @@ title: Troubleshooting
 In normal use the app must be able to talk to the ACME API for your chosen Certificate Authority (e.g. Let's Encrypt). If you see an error reported such as `The ACME service (directory) is unavailable.` this would indicate your machine is not able to establish communication with the CA service.
 
 Common reasons for connectivity issues include:
+- A service outage at the CA, check our [Certificate Authorities](certificate-authorities.md) list to see if your CA has a status info page.
 - Blocking outgoing https (TCP port 443, outgoing) in Windows Firewall or at the network level.
 - TLS 1.2 not enabled or an incompatible set of TLS ciphers is enabled. We recommend using the IIS Crypto tool from Nartac in Best Practises mode to configure general TLS settings.
 - Inability to communicate via common cloud based service providers such as Cloudflare (perhaps due to IPv6 routing issues or some kind of blocking).

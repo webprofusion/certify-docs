@@ -30,6 +30,7 @@ They offer a free, automated, and open certificate authority brought to you by t
 - Important rate limits apply: https://letsencrypt.org/docs/rate-limits/
 - Certificates can contain up to 100 domain per certificates. Wildcard certificates (*.domain.com) are supported when using DNS validation. 
 - See information on the [Sept 2021 root expiry](../kb/202109-letsencrypt.md)
+- You can check the Let's Encrypt service status at [https://letsencrypt.status.io/](https://letsencrypt.status.io/)
 
 ### ZeroSSL
 ZeroSSL (https://zerossl.com/) is an ACME service operated by apilayer (https://apilayer.com/).
@@ -38,6 +39,7 @@ ZeroSSL (https://zerossl.com/) is an ACME service operated by apilayer (https://
 - Certificates expire after 90 days.
 - Certificates can contain up to 100 domain per certificates. Wildcard certificates (*.domain.com) are supported when using DNS validation. 
 - To use ZeroSSL you first need to sign up for a free account in order to get External Account Binding (EAB) credentials from the *Developer* section of their dashboard. This EAB credential can only be used once and subsequent account registrations (on other servers etc) require a new EAB to be generated.
+- You can check the ZeroSSL service status at [https://status.zerossl.com/](https://status.zerossl.com/)
 
 ### BuyPass Go
 BuyPass are a Scandinavian certificate authority who also offer free certificates via their own ACME enabled service. https://www.buypass.com/ssl/products/acme 
