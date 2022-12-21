@@ -5,14 +5,14 @@ title: Certify DNS
 
 # Certify DNS
 
-Certify DNS is a cloud hosted version of the [acme-dns](https://github.com/joohoi/acme-dns) standard (CNAME delegation of acme challenge TXT records to a dedicated challenge response service). This service can be enabled through the https://certifytheweb.com License Keys tab when signed in. The service is compatible with most existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems.
+Certify DNS is a cloud hosted version of the [acme-dns](https://github.com/joohoi/acme-dns) standard (CNAME delegation of acme challenge TXT records to a dedicated challenge response service). This service can be enabled through the https://certifytheweb.com License Keys tab when signed in. The service is compatible with most existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems. Certify DNS is not required in order to use the Certify (SSL) Certificate Manager app, it's only required if you specifically want to use the service for DNS challenges.
 
 **With Certify DNS, you create a special CNAME record in your domain DNS, instead of a TXT record. This CNAME record points to the Certify DNS cloud service and handles ACME challenge responses for your domain.**
 
 ## Using Certify DNS in Certify The Web
 
-- Enable Certify DNS in your https://certifytheweb.com profile (under License Keys). While the service is in beta testing this can be enabled for free.
-- Select Certify DNS as the DNS update method.
+- Enable Certify DNS in your https://certifytheweb.com profile (under License Keys).
+- In the app, Select Certify DNS as the DNS update method under Authorization.
 - Create your Certify DNS credentials using your account email address (as `API Username`) and license key (as `API Key`). You only need to do this once.
 - Click `Request Certificate` to perform a one-time registration with the Certify DNS service (per domain).
 - You will be prompted to create a CNAME pointing to the TXT record hosted by the Certify DNS service. If you miss this prompt check back in the log file for your managed certificate (see the Status tab).
