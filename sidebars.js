@@ -53,7 +53,8 @@ const sidebars = {
         "guides/ssl-windows",
         "commandline",
         "csv-import",
-        "backgroundservice"
+        "backgroundservice",
+        'guides/troubleshooting'
 
       ]
     },
