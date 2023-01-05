@@ -35,8 +35,8 @@ Built-in deployment task types, each with UI to configure the task parameters et
 |---|---|
 | Deploy Certificate to ADFS |  |
 | Deploy to Apache Tomcat| Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](./tasks/tomcat.md). |
-| Deploy to Azure App Service|  |
-| Deploy to Azure Key Vault| Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment. If using Let's Encrypt you should ensure you have ISRG Root X1 as your preferred issuer as the default DST Root CA X3 chain root is expired. |
+| Deploy to Azure App Service| Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment.  |
+| Deploy to Azure Key Vault| |
 | Deploy to Centralized Certificate Store (CCS)|  |
 | Deploy to Microsoft Exchange| Apply the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
 | Deploy to Hashicorp Vault|  |
