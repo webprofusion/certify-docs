@@ -28,45 +28,32 @@ Manually running a task is useful when you want to avoid restarting a service ou
 
 ## Task Types
 
-Supported task types, each with UI to configure the task parameters etc, include:
+Built-in deployment task types, each with UI to configure the task parameters etc, include:
 
-### Deploy to Microsoft Exchange
 
-Apply the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc).
+| Name | Description |
+|---|---|
+| Deploy Certificate to ADFS |  |
+| Deploy to Apache Tomcat| Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](./tasks/tomcat.md). |
+| Deploy to Azure App Service|  |
+| Deploy to Azure Key Vault| Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment. If using Let's Encrypt you should ensure you have ISRG Root X1 as your preferred issuer as the default DST Root CA X3 chain root is expired. |
+| Deploy to Centralized Certificate Store (CCS)|  |
+| Deploy to Microsoft Exchange| Apply the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
+| Deploy to Hashicorp Vault|  |
+| Deploy to RAS (Direct Access, VNP, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
+| Run a Script | Execute an environment specific script (such as as a windows batch file or a linux bash script). |
+| Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to new applied. |
 
-### Deploy to ADFS, Remote Desktop (RDP) Gateway, RDP Listener service, Remote Access (RAS, SSTP VPN etc)
-
-Pre-built PowerShell tasks to apply the latest certificate to common windows services. Includes Active Directory Federation Services (ADFS), Web Deploy/Web Management Service.
-
-### Deploy to Certificate Store (Local)
-
-Import the certificate into the local certificate store with your choice of store type (Personal, Web Hosting) and choice of Friendly Name. Note that the default auto deployment system in Certify will already store certificates in the My/Personal certificate store.
-
-### Deploy to Microsoft Azure Key Vault
-
-Export the certificate to Azure Key Vault for distribution to other application and services.
-
-### Deploy to Apache, nginx, Generic Server, Certificate Export
-
-Export the certificate to local or remote locations (including SSH/SFTP) as PEM format with Key file and optional chain file.
-
-For a general introduction to certificates and their file types see [Certificates](../guides/certificates.md).
-
-### Deploy to Tomcat
-
-Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](./tasks/tomcat.md).
 
 ### Run a Powershell script
 
 Execute a custom [PowerShell script](../script-hooks.md).
 
+Some example scripts (e.g. for `Web Management Service`) are provided under `C:\Program Files\CertifyTheWeb\Scripts\Common`. If you use any of these you should copy the script to your own choice of folder outside of Program Files as any app updates will overwrite the files in this Program Files location and any edits you make will be lost.
+
 #### Passing custom arguments
 
 Note if passing additional arguments to your script these should be in the format arg=value;arg2=value and `;` characters required as parameter values need to be escaped with `\`, like `key=abc\;123h;othervalue=test`. The `\` character can be escaped as `\\` e.g. to pass an couple of arguments and the first is `path` with value `c:\temp\folder` you could use `path=c:\temp\folder\\;other=test`
-
-### Run a Script
-
-Execute an environment specific script (such as as a windows batch file or a linux bash script).
 
 ### Call a custom Webhook
 
@@ -80,8 +67,14 @@ Call a webhook with details of the latest certificate request status. Your custo
 }
 ```
 
-For advanced webhook scenarios, a custom script is recommended (see Powershell script above).
+For advanced webhook scenarios, a custom script is recommended (see *Run a Powershell Script* above).
 
-### Stop, Start or Restart a Service
+### Deploy to Apache, nginx, Generic Server, Certificate Export
 
-Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to new applied.
+Export the certificate to local or remote locations (including SSH/SFTP) as PEM format with Key file and optional chain file.
+
+For a general introduction to certificates and their file types see [Certificates](../guides/certificates.md).
+
+### Deploy to Certificate Store (Local)
+
+This task is deprecated and is not generally required. This imports the certificate into the local certificate store with your choice of store type (Personal, Web Hosting) and choice of Friendly Name. Note that the default auto deployment system in Certify will already store certificates in the My/Personal certificate store.
