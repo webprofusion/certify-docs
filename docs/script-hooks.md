@@ -270,6 +270,32 @@ $dest_jks_file="C:\temp\mykeystore.jks"
 
 C:\path\to\keytool -importkeystore -srckeystore $result.ManagedItem.CertificatePath -srcstoretype pkcs12 -destkeystore $dest_jks_file -deststoretype JKS -deststorepass $dest_password -srcstorepass "" 
 ```
+
+### Example: Deploy to Web Management Service (Web Deploy etc)
+This example uses netsh to update the certificate bound to port 8172 (Web Deploy etc), it then also sets the (binary) certificate hash in the registry so that the correct certificate is shown in the IIS user interface for the Web Management Service feature.
+```
+param($result)
+
+$thumb = $result.ManagedItem.CertificateThumbprintHash
+
+# get a new guid:
+$guid = [guid]::NewGuid()
+
+# remove the previous certificate:
+& netsh http delete sslcert ipport=0.0.0.0:8172
+
+# set the current certificate:
+& netsh http add sslcert ipport=0.0.0.0:8172 certhash=$thumb appid=`{$guid`}
+
+# Set registry key so Web Management Service UI in IIS matches the new certificate selection
+
+$registryPath ="HKLM:\Software\Microsoft\WebManagement\Server\"
+$name="SslCertificateHash"
+
+$hexValue= ($thumb -split '(.{2})' -ne '' -replace '^', '0X')
+$binaryHash = ([byte[]] $hexValue)
+New-ItemProperty -Path $registryPath -Name $name -Value $binaryHash -PropertyType BINARY -Force 
+```
 ## Running In-Process vs Launch New Process
 The Powershell deployment task can run in two modes on Windows: In-Process and as a New Process. This option mainly affects the process features when the background service is attempting to run the task as an impersonated user. In-Process has very limited user impersonation abilities, New Process has extended Impersonation capabilities but different limitations. 
 
