@@ -248,6 +248,46 @@ $rsConfig.CreateSSLCertificateBinding($ssrsReportManagerName, $newthumb, $ipAddr
 $rsConfig.CreateSSLCertificateBinding($ssrsReportWebServiceName, $newthumb, $ipAddress, $httpsport, 1033) 
 ```
 
+### Example: Setting private key read permission for a specific account
+
+Often you will need to allow a specific user account read permission on a certificate private key to allow a service to use the certificate properly:
+
+```
+param($result)
+
+## Update the read permission on the certificate private key to allow NT AUTHORITY\LOCAL_SERVICE (for example) to use the cert (and private key)
+
+# Specify the user, the permissions and the permission type
+$permission = "NT AUTHORITY\LOCAL SERVICE","Read","Allow"
+
+# get the stored certificate 
+$cert = Get-ChildItem -Path cert:\LocalMachine\My\$result.ManagedItem.CertificateThumbprintHash
+
+# configure file system access rule
+$accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission;
+
+# Location of the machine related keys
+$keyPath = $env:ProgramData + "\Microsoft\Crypto\RSA\MachineKeys\";
+$keyName = $cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName;
+$keyFullPath = $keyPath + $keyName;
+
+try
+{
+   # Get the current acl of the private key
+   $acl = (Get-Item $keyFullPath).GetAccessControl('Access');
+   # Add the new ace to the acl of the private key
+   $acl.AddAccessRule($accessRule);
+
+   # Write back the new acl
+   Set-Acl -Path $keyFullPath -AclObject $acl;
+}
+catch
+{
+   throw $_;
+}
+
+```
+
 ### Example: Update the certificate on a local WinRM https listener (Windows Admin Center etc)
 ```
 param($result)  
