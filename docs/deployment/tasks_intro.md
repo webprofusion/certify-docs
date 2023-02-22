@@ -75,6 +75,12 @@ Export the certificate to local or remote locations (including SSH/SFTP) as PEM 
 
 For a general introduction to certificates and their file types see [Certificates](../guides/certificates.md).
 
+:::note  SSH Private Keys
+
+We currently use the ssh.net library for .net to provide our SSH related features within Tasks. If using an ssh private key file for authentication please ensure the file is in PEM (text) format. Multiple key types are supported but only aes256-cbc key encryption is [supported by ssh.net](https://github.com/sshnet/SSH.NET/issues/742#issuecomment-1292945883). 
+
+:::
+
 ### Deploy to Certificate Store (Local)
 
 This task is deprecated and is not generally required. This imports the certificate into the local certificate store with your choice of store type (Personal, Web Hosting) and choice of Friendly Name. Note that the default auto deployment system in Certify will already store certificates in the My/Personal certificate store.
