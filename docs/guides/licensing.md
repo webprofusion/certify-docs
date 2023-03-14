@@ -28,12 +28,7 @@ For the Certify The Web app you can currently purchase the following license bun
 
 These give you 1 license key (per bundle purchased) which can be used up to the given number of installs.
 
-:::caution Notice
-
-In the future, licensing for new customers will move to monthly/annual automated subscriptions only. There is currently a pricing advantage if you purchase the above bundles as the same pricing will be honoured for future renewals (up to 3 renewal terms).
 License tier names are an arbitrary label and are not related to the size/nature of your organisation, they are just our name for the license bundle.
-
-:::
 
 These license bundles can be purchased using a credit card (via Stripe) or via PayPal. 
 
