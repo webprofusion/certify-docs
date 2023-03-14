@@ -9,7 +9,7 @@ Certify The Web *Certify Certificate Manager* is a commercial product. A free co
 
 :::note
 
- *This documentation covers the Certify (SSL/TLS) Certificate Manager app. We also have seperate licensing for our [Certify DNS](providers/certifydns.md) managed dns challenge service which is **not** covered by the licensing below.*
+ *This documentation covers the Certify (SSL/TLS) Certificate Manager app. We also have seperate licensing for our [Certify DNS](../dns/providers/certifydns.md) managed dns challenge service which is **not** covered by the licensing below.*
 
 :::
 
