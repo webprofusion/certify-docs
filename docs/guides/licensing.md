@@ -6,6 +6,13 @@ title: Licensing
 # About Licensing
 Certify The Web *Certify Certificate Manager* is a commercial product. A free community edition is available for download and evaluation (limited to a few managed certificates). 
 
+
+:::note
+
+ *This documentation covers the Certify (SSL/TLS) Certificate Manager app. We also have seperate licensing for our [Certify DNS](providers/certifydns.md) managed dns challenge service which is **not** covered by the licensing below.*
+
+:::
+
 You can purchase a license key which will then enable you to install the app on one or machines (depending on your license type). You can purchase multiple license keys to fit different sized installs and each install can manage an unlimited number of certificates through your choice of Certificate Authority.
 
 You can review and manage your license keys and active installs via your certifytheweb.com profile under License Keys. 
