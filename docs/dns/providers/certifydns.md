@@ -11,7 +11,7 @@ Certify DNS is a cloud hosted version of the [acme-dns](https://github.com/jooho
 
 ## Using Certify DNS in Certify The Web
 
-- Enable Certify DNS in your https://certifytheweb.com profile (under License Keys).
+- Purchase a Certify DNS license key under your https://certifytheweb.com profile (License Keys > Add a License Key).
 - In the app, Select Certify DNS as the DNS update method under Authorization.
 - Create your Certify DNS credentials using your account email address (as `API Username`) and license key (as `API Key`). You only need to do this once.
 - Click `Request Certificate` to perform a one-time registration with the Certify DNS service (per domain).
