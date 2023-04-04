@@ -75,4 +75,7 @@ Certify DNS is a commercial service and the following pricing options are availa
 
 | Type     | Renewal Frequency | Domains | Price     |
 | -------- | ----------------- | ------- | --------- |
-| Standard | 12 Months           | 500     | $60 USD |
+| Standard License | 12 Months           | 500     | $60 USD |
+| Cloud Licensed via [Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/webprofusionptyltd1588924351007.certifytheweb-certifydns?tab=Overview) | Monthly | 500 | $4.99 USD |
+
+The standard license can be purchased through your https://certifytheweb.com account on the License Keys tab. The Cloud License option is purchased via your normal Microsoft Azure billing.
