@@ -40,8 +40,12 @@ const sidebars = {
         {
           type: 'category',
           collapsible: true,
-          label: 'General',
-          items: ["guides/csr"],
+          label: 'Other Advanced Options',
+          items: [
+            "guides/csr",
+            "commandline",
+            "csv-import",
+        ]
         },
       ]
     },
@@ -51,8 +55,6 @@ const sidebars = {
       items: [
         "guides/best-practices",
         "guides/ssl-windows",
-        "commandline",
-        "csv-import",
         "backgroundservice",
         'guides/troubleshooting'
 

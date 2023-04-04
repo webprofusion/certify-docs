@@ -16,9 +16,9 @@ If you need to perform more custom steps using the certificate, or if you just w
 
 You may wish to run a custom task before you renew your certificate. For instance, you may wish to to make automated firewall changes or call a custom Web Hook/API. These are called 'Pre-Request Tasks'.
 
-## Post-Request (Deployment) Tasks
+## Deployment Tasks
 
-You may want to run any number of tasks after you have renewed your certificate or after it has been automatically deployed. For instance, running scripts, exporting for different server types (Apache, nginx), copying to remote servers etc. These are called 'Deployment Tasks'.
+You may want to run any number of tasks after you have renewed your certificate or after it has been automatically deployed. For instance, running scripts, exporting for different server types (Apache, nginx), copying to remote servers etc. These are called 'Deployment Tasks' or Post-Request Tasks.
 
 ### Task Triggers
 
@@ -26,7 +26,7 @@ You can configure a task to run either when a certificate request was successful
 
 Manually running a task is useful when you want to avoid restarting a service outside of maintenance hours, or if you wish to run the tasks from the command line, a script or a scheduled task. Example command line arguments are shown in the UI to help with scripting.
 
-## Task Types
+### Built-in Task Types
 
 Built-in deployment task types, each with UI to configure the task parameters etc, include:
 
@@ -34,8 +34,8 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | Name | Description |
 |---|---|
 | Deploy Certificate to ADFS |  |
-| Deploy to Apache Tomcat| Export the certificate as a pkcs12 key store for use with Apache Tomcat. See [more details](./tasks/tomcat.md). |
-| Deploy to Azure App Service| Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment.  |
+| [Deploy to Apache Tomcat](./tasks/tomcat.md)| Export the certificate as a pkcs12 key store for use with Apache Tomcat. |
+| [Deploy to Azure App Service](./tasks/azure-app-service.md)| Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment.  |
 | Deploy to Azure Key Vault| |
 | Deploy to Centralized Certificate Store (CCS)|  |
 | Deploy to Microsoft Exchange| Apply the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
