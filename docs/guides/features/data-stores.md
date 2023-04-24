@@ -24,7 +24,7 @@ High latency or potentially unreliable connections such as remotely hosted cloud
 ### Microsoft SQL Server
 Read more about how to use SQL Server as a data store: [SQL Server Data Store Getting Started](https://github.com/webprofusion/certify-plugins/tree/development/src/DataStores/SQLServer)
 
-A typical connection string to anev SQL Server database might look like this. Note that `TrustServerCertificate=true` is required for the default self-signed certificates used by SQL Server:
+A typical connection string to an SQL Server database might look like the following. Note that `TrustServerCertificate=true` is required for the default self-signed certificates used by SQL Server:
 `Server=(local)\SERVERNAME;Database=certify;User Id=certify_app;Password=certify_app_pwd;TrustServerCertificate=true;`
 
 Note that SQL Express is not recommended if the database instance is used by other processes such as another web application as artificial query governor constraints can cause connection or query errors. 
@@ -43,7 +43,5 @@ A typical connection string to a PostgreSQL database might look like this:
 - Click *Test Connection* to ensure the connection is working. You can find out how to specify .Net connection strings for your database server type by searching https://www.connectionstrings.com
 - If you are copying data from your existing database to your new data store, select the Migrate Data option and select the source data store (SQLite) and target (your new data store). Click *Copy Data to Target* to copy data from your existing data store to your new data store. This may take some time depending on the number of managed certificates you have.
 - Once completed, you can switch over to your new data store. To do so, click the database icon next to your new data store name in the list, the UI will then prompt you to confirm the switch.
-
-
 
 Note: stored credentials are encrypted to the machine account that created them. Copying them to a database does not make them readable by other machines.

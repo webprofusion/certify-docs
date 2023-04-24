@@ -42,4 +42,4 @@ These recommendations assume you are simply load balancing your DNS name across 
 If you are using any specific Azure functionality (azure web apps, web application gateway etc) the app has a Task which enables you to Deploy to Azure Key Vault (if you do use this you need to set a password on the PFX) - from there you can reference this certificate from multiple azure services.
 
 ## Apache (Windows or Linux)
-You can use the Deploy To Apache task to copy your certificate files to a remote machine using SSH/FTP.
+You can use the Deploy To Apache task to copy your certificate files to a remote machine using SSH/SFTP.
