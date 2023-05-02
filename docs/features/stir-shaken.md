@@ -30,4 +30,4 @@ In Certify The Web:
 	- Click Request Certificate to order the new certificate.
 
 
-Once you have your new certificate you can deploy it using a deployment task or custom script, or distribute it as required. See the [Tasks](../../deployment/tasks_intro.md) feature for more information. Certificates will automatically renew according to your preferences configured under Settings.
+Once you have your new certificate you can deploy it using a deployment task or custom script, or distribute it as required. See the [Tasks](../deployment/tasks_intro.md) feature for more information. Certificates will automatically renew according to your preferences configured under Settings.
