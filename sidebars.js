@@ -34,7 +34,8 @@ const sidebars = {
             "deployment/tasks_intro",
             "script-hooks",
             'guides/architecture/load-balancing',
-            'guides/import-export'
+            'guides/import-export',
+            'features/data-stores'
           ],
         },
         {
@@ -45,6 +46,7 @@ const sidebars = {
             "guides/csr",
             "commandline",
             "csv-import",
+            'features/stir-shaken'
         ]
         },
       ]
