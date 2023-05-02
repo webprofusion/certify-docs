@@ -3,7 +3,7 @@ id: data-stores
 title: Data Stores
 ---
 
-By default Certify The Web uses a set of SQLite file based databases to store configuration for managed certificates and stored credentials. SQLite is a good choice for most users as it is easy to setup and does not require any additional software to be installed. However, if you have a large number of managed certificates you may wish to use an alternative database such as Microsoft SQL Server or PostgreSQL.
+By default Certify The Web uses a set of SQLite file based databases to store configuration for managed certificates and stored credentials. SQLite is a good choice for most users as it is easy to setup and does not require any additional software to be installed. However, if you have a large number of managed certificates you may wish to use an alternative database such as Microsoft SQL Server or PostgreSQL in v6.0 onwards of the app.
 
 ## Supported databases
 For a database to be supported we need to supply a set of compatible data store providers and the choice of database server must support complex JSON data storage and querying. 
