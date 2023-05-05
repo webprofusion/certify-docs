@@ -43,7 +43,9 @@ Other topics to consider include selecting between different Certificate Authori
 Once you have your certificate you can automate deploying it to your Exchange services. 
 
 :::info
-To begin on a new Excahnge install, start by assigning the new certificate to services in Exchange, this enables https for web services and TLS for mail services. You can do this using the Exchange Admin Center or the Exchange Management Shell. For more information see [Assign a certificate to Exchange services](https://docs.microsoft.com/en-us/exchange/architecture/client-access/assign-certificates-to-services?view=exchserver-2019).
+To begin on a new Exchange install, start by assigning the new certificate to services in Exchange, this enables https for web services and TLS for mail services. You can do this using the Exchange Admin Center or the Exchange Management Shell. For more information see [Assign a certificate to Exchange services](https://docs.microsoft.com/en-us/exchange/architecture/client-access/assign-certificates-to-services?view=exchserver-2019).
+
+Open Exchange Admin Center (EAC). Select *servers* on the left pane and navigate to *certificates* to administer certificate for each service.
 :::
 
 The Certify The Web app provides a basic built in deployment task called "Deploy To Microsoft Exchange" which uses a small powershell script to apply the certificate. [The script used](https://github.com/webprofusion/certify-plugins/blob/development/src/DeploymentTasks/Core/Providers/Assets/Exchange.ps1) is also available in the Certify The Web source code repository.
