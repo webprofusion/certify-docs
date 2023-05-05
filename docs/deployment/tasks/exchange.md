@@ -106,3 +106,7 @@ https://learn.microsoft.com/en-us/exchange/architecture/client-access/assign-cer
 Details of the certificate requirements for Exchange services can be found here:
 
 https://learn.microsoft.com/en-us/exchange/architecture/client-access/certificates?view=exchserver-2019#certificate-requirements-for-exchange-services
+
+Check Exchange Remote Connectivity:
+
+https://testconnectivity.microsoft.com/tests/exchange
