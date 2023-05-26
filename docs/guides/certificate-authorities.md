@@ -15,6 +15,7 @@ Certify The Web supports a number of built-in CAs but you can also configure you
 
 The certificate issuance service remains the responsibility of the Certificate Authority and we (Certify The Web operated by Webprofusion Pty Ltd) have no affiliation to their organisation or any control over their service. **Our software makes the process easier and automates how you acquire and use the certificates. We are not a Certificate Authority.** Using Certify to request a certificate from a CA also means you accept the CAs current service privacy policy, and their terms and conditions.
 
+From v6.x onwards Certify The Web supports smart CA failover/fallback so if your preferred CA is unavailable for any reason (e.g. maintenance) it will automatically try to use another configured CA account. To use this feature ensure you have configured multiple CA accounts under Settings > Certificate Authorities, for instance you might already have a Let's Encrypt account configured as your default, but you could add a Google Trust account as a fallback (or vice-versa). 
 
 ## Supported CAs
 
