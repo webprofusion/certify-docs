@@ -17,8 +17,10 @@ The basic process of requesting a certificate for your domain involves either pr
 
 This process can be handled automatically by Certify The Web, either by running the app on the web server for your domain, or by talking to your DNS service provider's API. Once a certificate has been issued it can be deployed automatically in a number of ways, the most common being to apply it to your web server *https bindings*
 
-### 1. Choose the domains to include
-The first step of requesting a certificate is to decide which domain (and subdomains) need to be included in your certificate. You can manually specify these or you can load the configured hostname bindings from an existing IIS site on your server. If you choose an existing IIS site this will also be your default target for the final https bindings to be created/updated. Using existing hostname bindings in IIS is by far the easiest and quickest way to work, as working with blank hostname bindings requires more configuration (see Deployment).
+### 1. Choose the domains (identifiers) to include
+The first step of requesting a certificate is to decide which domain (and subdomains) need to be included in your certificate. You can manually specify these or you can load the configured hostname bindings from an existing IIS site on your server. 
+
+Using existing hostname bindings in IIS is by far the easiest and quickest way to work, as working with blank hostname bindings requires more configuration (see Deployment).
 
 ![Choosing Domains](/assets/screens/ChooseDomains.png)
 
@@ -28,6 +30,8 @@ You can also manually add *Wildcard Domains* to a certificate request. A wildcar
 You cannot mix certificate requests for a Wildcard and a first-level subdomain (e.g. in a request for `*.yourdomain.com` and `www.yourdomain.com`, you should remove the `www.yourdomain.com` as it's already covered by the wildcard domain).
 
 **Wildcard certificates require DNS validation, this is a requirement imposed by the Certificate Authority.**
+
+There are also a range of other [Advanced Options](./features/certificate-advanced.md) you can choose for your certificate, such as the preferred Certificate Authority to use, the CSR signing algorithm and the Private Key to use. Normally you can leave these as the defaults.
 
 ### 2. Decide how to validate domains
 You will need to prove you control the domains you have added to your certificate. Only public domains can be validated automatically so intranet sites (where you have a private hostname only with no domain etc e.g. SRVDEVAPP01) are not supported, however public domain names (like srvdevapp01.dev.domain.com) are fine.

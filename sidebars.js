@@ -43,7 +43,7 @@ const sidebars = {
           collapsible: true,
           label: 'Other Advanced Options',
           items: [
-            "guides/csr",
+            "features/certificate-advanced",
             "commandline",
             "csv-import",
             'features/stir-shaken'
