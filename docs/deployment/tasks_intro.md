@@ -34,8 +34,9 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | Name | Description |
 |---|---|
 | Deploy Certificate to ADFS |  |
-| [Deploy to Apache Tomcat](./tasks/tomcat.md)| Export the certificate as a pkcs12 key store for use with Apache Tomcat. |
-| [Deploy to Azure App Service](./tasks/azure-app-service.md)| Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment.  |
+| [Deploy to Apache](./tasks/apache.md) | Export the certificate components in PEM file format for use with the Apache webserver. |
+| [Deploy to Apache Tomcat](./tasks/tomcat.md) | Export the certificate as a pkcs12 key store for use with Apache Tomcat application server. |
+| [Deploy to Azure App Service](./tasks/azure-app-service.md) | Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment. |
 | Deploy to Azure Key Vault| |
 | Deploy to Centralized Certificate Store (CCS)|  |
 | [Deploy to Microsoft Exchange](./tasks/exchange.md)| Deploy the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
