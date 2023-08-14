@@ -46,6 +46,9 @@ Blocking outgoing https connections is not compatible with this application, or 
 
 The app does not officially support proxied internet connections. Users have managed to use proxies successfully but it's the responsibility of the user to diagnose issues with outgoing https API calls when a proxy or firewall is in use.
 
+### Do I Need to Keep the App Running?
+No, you can close then app UI when you don't need it. *Certify The Web* installs a background *Certify Certificate Manager* service which will run in the background and manage your certificates. **You can close the app and the service will continue to run.** The app is just used to manage and request new certificates. 
+
 ### "Service Not Started" message
 By default the background service runs an internal API bound to localhost and various conditions can cause conflicts or failures. Read more to find out how to [configure or troubleshoot the background service](backgroundservice.md). The service will auto-negotiate an available port to listen on.
 
@@ -92,6 +95,9 @@ The default PFX password is blank ("") but is configurable under Certificate > A
 
 ### If I upgrade or re-install will I lose my settings and certificates?
 Your settings are kept under `%ProgramData%\Certify` and you should consider backing up this location regularly. Settings are preserved and upgraded when new versions are installed. Settings are *not* removed if you Uninstall the app. **Do not store custom scripts under the %ProgramFiles%\CertifyTheWeb folder as these will deleted on upgrade.**
+
+### Is it ok to ignore File In Use warnings when updating?
+No, you should close the app before updating and if the installer cannot stop the service for you then you should manually stop the service before updating. If you ignore the warning and continue the update you may end up with a broken installation. You can however fix a broken installation by installing the app again (settings will be preserved).
 
 ### Oops, I upgraded and lost my custom scripts
 All content under the applications program files folder is removed on upgrade, *do not store scripts there*. Instead, store your scripts in a dedicated folder such as C:\Scripts or together with the other Certify The Web settings as C:\ProgramData\Certify\Scripts (for example).
