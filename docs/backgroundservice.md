@@ -17,9 +17,11 @@ The certify background service operates a local API for the app on port `9696` b
 
 :::info
 If you are repeatedly seeing the "Service Not Started" error, first try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app. This can help if automatic port negotiation has gotten out of sync.
+
+In some cases antivirus software with basic heuristics (such as ClamWin) have been known to prevent the Certify servicing installing properly.
 :::
 
-The app should try to negotiate a different service port if it detects that the port is already in use, however you can manually specify the settings if required by editing/adding the file `c:\programdata\certify\serviceconfig.json` with content as per the following (adjusted as required) then restarting both the service and UI:
+If the default port 9696 is already in use however you can manually specify the settings required by editing/adding the file `c:\programdata\certify\serviceconfig.json` with content as per the following (adjusted as required) then restarting both the service and UI:
 
 ```json
 {
@@ -37,7 +39,7 @@ For example an alternative configuration might be:
 }
 ```
 
-You may also need to update corresponding configuration in the `servers.json` file (which the UI refers to in order to locate the service).
+**You will also need to update corresponding configuration in the `servers.json` file (which the UI refers to in order to locate the service).**
 
 To test that the reconfigured service is communicating OK, you can try opening the following URL in your browser:
 `http://localhost:9695/api/system/appversion` where 'localhost' is your configured service `host` value and `9695` is an example configured port.
@@ -112,7 +114,7 @@ Once completed, restart the Certify background service from local services, then
 
 The data store for the managed certificates database is the C:\ProgramData\Certify\manageditems.db SQLite database. This stores your renewal configuration data (not certificates). This is an sqlite3 format database files.
 
-You should include C:\ProgramData\Certify\ in your normal backup procedures, otherwise if you lose this configuration or it is corrupted you may need to add all of your managed certificates again. You may consider adding an exclusion to your anti-virus software to avoid sharing conflicts.
+You should include C:\ProgramData\Certify\ in your normal backup procedures, otherwise if you lose this configuration or it is corrupted you may need to add all of your managed certificates again. **To guard against database corruption you should add an exclusion to your anti-virus software to avoid sharing conflicts.**
 
 On service startup and on a daily schedule the system will make a copy of manageditems.db called manageditems.db.bak.
 
