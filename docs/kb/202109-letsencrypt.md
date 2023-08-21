@@ -107,6 +107,9 @@ If no other solution works or for any other reason you cannot update client trus
 ## Non-IIS servers (Apache, nginx etc on Windows or Linux)
 Verify that your service is configured to use your certificate, with it's private key *and* it's **chain**. These services will work without pointing to a chain file but in the case of the expired R3 your clients will try to resolve the R3 themselves (because you haven't given it to them) and they may then resolve it to the old (expired) one.
 
+We have seen reports of issues with old iOS versions when using IIS as a front end reverse proxied to node (for NextJS etc). This is an unrelated issue to do with http headers: https://stackoverflow.com/questions/71037910/safari-10-fails-to-load-https-with-node-js-iisnode-spams-requests
+
+
 ## Clients (browsers etc)
 If your site is working for most devices but not for some, the problem is with their trust store (their list of trusted root certificate).
 

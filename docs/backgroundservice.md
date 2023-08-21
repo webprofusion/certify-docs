@@ -62,8 +62,13 @@ In some cases you need to explicitly allow the service to listen as an http serv
 
 ### Enable http listener IP address
 
-As per https://docs.microsoft.com/en-us/windows/win32/http/add-iplisten enable any IP address to listen for http:
+As per https://docs.microsoft.com/en-us/windows/win32/http/add-iplisten enable any IPv4 address to listen for http. :
 
+```bat
+netsh http add iplisten ipaddress=::
+```
+
+or Add IP listen on the local IPv6 address:
 ```bat
 netsh http add iplisten ipaddress=0.0.0.0
 ```
@@ -73,6 +78,7 @@ Or to target a specific IP address such as 127.0.0.1 (localhost):
 ```bat
 netsh http add iplisten ipaddress=127.0.0.1
 ```
+You should monitor other effects on other services when changing the IP listen configuration. We have seen one report of Exchange/Outlook slowing down when the 0.0.0.0 address iplisten is enabled.
 
 By default the windows http service is typically enabled but if you receive the error 'Operation is not supported on this platform' in `service.exceptions.log` then try checking the status of the windows http service. To do so, run the following from an elevated command prompt (using Run As Administrator):
 
