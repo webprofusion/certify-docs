@@ -12,7 +12,7 @@ The Certificate Authority settings determine which default CA will be used when 
 If you select a specific CA, be sure that you have setup an appropriate matching CA account under Settings > Certificate Authorities, otherwise your certificate request will fail.
 
 ### Staging Mode
-If your CA supports a *Staging* mode (test certificates which are not publicy trusted) you can opt to use that by checking the *Use Staging Mode (Test Certificates)* option. This is useful for testing your certificate request process before you request a real certificate.
+If your CA supports a *Staging* mode (test certificates which are not publicly trusted) you can opt to use that by checking the *Use Staging Mode (Test Certificates)* option. This is useful for testing your certificate request process before you request a real certificate.
 
 ### Preferred Chain
 If your CA supports multiple certificate chains you can specify which one you prefer to use. This is useful if you need to use a specific chain for compatibility with older devices.
@@ -23,7 +23,7 @@ This section covers options related to the Private Key and Certificate Signing R
 See [Certificate Signing Request](../guides/csr.md) for more information on CSR related options.
 
 ### Security (PFX Password)
-By default the app produce PFX file with a blank password. While this makes them more convenient to use in some situations, it is not secure if the file will be distributed to other locations etc. The password will be applied whn your certificate is next request/renewed. You can centrally manage the password (scu as updating the same password for many certificates) under *Settings > Stored Credentials*.
+By default the app produce PFX file with a blank password. While this makes them more convenient to use in some situations, it is not secure if the file will be distributed to other locations etc. The password will be applied when your certificate is next request/renewed. You can centrally manage the password (such as updating the same password for many certificates) under *Settings > Stored Credentials*.
 
 ## General Options
 
