@@ -65,13 +65,13 @@ In some cases you need to explicitly allow the service to listen as an http serv
 As per https://docs.microsoft.com/en-us/windows/win32/http/add-iplisten enable any IPv4 address to listen for http. :
 
 ```bat
+netsh http add iplisten ipaddress=0.0.0.0
+```
+or Add IP listen on the local IPv6 address:
+```bat
 netsh http add iplisten ipaddress=::
 ```
 
-or Add IP listen on the local IPv6 address:
-```bat
-netsh http add iplisten ipaddress=0.0.0.0
-```
 
 Or to target a specific IP address such as 127.0.0.1 (localhost):
 
