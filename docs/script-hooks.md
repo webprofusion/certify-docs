@@ -341,6 +341,21 @@ $hexValue= ($thumb -split '(.{2})' -ne '' -replace '^', '0X')
 $binaryHash = ([byte[]] $hexValue)
 New-ItemProperty -Path $registryPath -Name $name -Value $binaryHash -PropertyType BINARY -Force 
 ```
+
+### Example: Apply a certificate to the Default FTP SSL Settings in IIS
+While the app can update a specific FTP site SSL binding for you (select Single Site under Deployment and check in the Preview tab that the ftp binding will be updated) occasionally there may be a requirement to set the global default FTP certificate settings. The following script updates the assigned default FTP certificate in IIS:
+
+```
+param($result)
+
+# https://learn.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/ssl
+
+# Set the default FTP SSL certificate hash, this is a global settings and different to setting the certificate for a specific site.
+
+$thumb = $result.ManagedItem.CertificateThumbprintHash
+C:\Windows\System32\inetsrv\appcmd.exe set config -section:system.applicationHost/sites /siteDefaults.ftpServer.security.ssl.serverCertHash:$thumb /commit:apphost
+```
+
 ## Running In-Process vs Launch New Process
 The Powershell deployment task can run in two modes on Windows: In-Process and as a New Process. This option mainly affects the process features when the background service is attempting to run the task as an impersonated user. In-Process has very limited user impersonation abilities, New Process has extended Impersonation capabilities but different limitations. 
 
