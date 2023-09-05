@@ -350,7 +350,7 @@ param($result)
 
 # https://learn.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/ssl
 
-# Set the default FTP SSL certificate hash, this is a global settings and different to setting the certificate for a specific site.
+# Set the default FTP SSL certificate hash, this is a global setting and different to setting the certificate for a specific site.
 
 $thumb = $result.ManagedItem.CertificateThumbprintHash
 C:\Windows\System32\inetsrv\appcmd.exe set config -section:system.applicationHost/sites /siteDefaults.ftpServer.security.ssl.serverCertHash:$thumb /commit:apphost
