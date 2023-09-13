@@ -79,7 +79,9 @@ If you currently have a license key and want to renew your license at a lower ti
 To upgrade to a new license tier you can either purchase a new license key of the required type and move each install to the new key (About > Deactivate Install, then About > Enter Key..) or alternatively contact `support at certifytheweb.com` to discuss upgrade options for an existing license key.
 
 ## Company Information
-Certify The Web is a product of Webprofusion Pty Ltd (https://webprofusion.com), we are a small business based in Western Australia, established in Australia in 2017. If you need to add our vendor details to your system please use the following:
+Certify The Web is a suite of products including the *Certify Certificate Manager* application and the *Certify DNS* service provided by **Webprofusion Pty Ltd (https://webprofusion.com)**.
+
+We are a small business based in Western Australia, established in Australia in 2017. If you need to add our vendor details to your system please use the following:
 
 Name: Webprofusion Pty Ltd ATF The Webprofusion Trust 
 ABN: 44617880583
