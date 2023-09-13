@@ -81,12 +81,12 @@ To upgrade to a new license tier you can either purchase a new license key of th
 ## Company Information
 Certify The Web is a suite of products including the *Certify Certificate Manager* application and the *Certify DNS* service provided by **Webprofusion Pty Ltd (https://webprofusion.com)**.
 
-We are a small business based in Western Australia, established in Australia in 2017. If you need to add our vendor details to your system please use the following:
+We are a small business based in Western Australia, established in 2017. If you need to add our vendor details to your system please use the following:
 
-Name: Webprofusion Pty Ltd ATF The Webprofusion Trust 
-ABN: 44617880583
-DUNS Number: 744563927
-Address: Unit 9A, 151 Herdsman Parade, Wembley, WA 6014, Australia
+- Name: Webprofusion Pty Ltd ATF The Webprofusion Trust 
+- Address: Unit 9A, 151 Herdsman Parade, Wembley, WA 6014, Australia
+- ABN: 44617880583
+- DUNS Number: 744563927
 
 We are a small business with no tax presence outside of Australia. We do not currently provide:
 - International ISO accreditation numbers etc.
