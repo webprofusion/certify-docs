@@ -77,3 +77,15 @@ If you are using a license bundle, you can downgrade your license bundle through
 If you currently have a license key and want to renew your license at a lower tier, you can choose the `Downgrade Now` option. 
 
 To upgrade to a new license tier you can either purchase a new license key of the required type and move each install to the new key (About > Deactivate Install, then About > Enter Key..) or alternatively contact `support at certifytheweb.com` to discuss upgrade options for an existing license key.
+
+## Company Information
+Certify The Web is a product of Webprofusion Pty Ltd (https://webprofusion.com), we are a small business based in Western Australia, established in Australia in 2017. If you need to add our vendor details to your system please use the following:
+
+Name: Webprofusion Pty Ltd ATF The Webprofusion Trust 
+ABN: 44617880583
+DUNS Number: 744563927
+Address: Unit 9A, 151 Herdsman Parade, Wembley, WA 6014, Australia
+
+We are a small business and do not currently provide:
+- International ISO accreditation numbers etc.
+- US W9 forms and other international tax exemption forms
