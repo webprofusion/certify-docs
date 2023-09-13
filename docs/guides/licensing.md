@@ -91,3 +91,6 @@ Address: Unit 9A, 151 Herdsman Parade, Wembley, WA 6014, Australia
 We are a small business with no tax presence outside of Australia. We do not currently provide:
 - International ISO accreditation numbers etc.
 - US W9 forms and other international tax exemption forms
+- External audit reports
+
+The source code for our main product Certify Certificate Manager is available for review at https://github.com/webprofusion/certify
