@@ -86,6 +86,6 @@ ABN: 44617880583
 DUNS Number: 744563927
 Address: Unit 9A, 151 Herdsman Parade, Wembley, WA 6014, Australia
 
-We are a small business and do not currently provide:
+We are a small business with no tax presence outside of Australia. We do not currently provide:
 - International ISO accreditation numbers etc.
 - US W9 forms and other international tax exemption forms
