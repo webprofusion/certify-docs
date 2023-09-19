@@ -33,18 +33,22 @@ Built-in deployment task types, each with UI to configure the task parameters et
 
 | Name | Description |
 |---|---|
-| Deploy Certificate to ADFS |  |
+| Deploy Certificate to ADFS | Applies the certificate a local Active Directory Federation Services installation |
 | [Deploy to Apache](./tasks/apache.md) | Export the certificate components in PEM file format for use with the Apache webserver. |
 | [Deploy to Apache Tomcat](./tasks/tomcat.md) | Export the certificate as a pkcs12 key store for use with Apache Tomcat application server. |
 | [Deploy to Azure App Service](./tasks/azure-app-service.md) | Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment. |
-| Deploy to Azure Key Vault| |
-| Deploy to Centralized Certificate Store (CCS)|  |
-| [Deploy to Microsoft Exchange](./tasks/exchange.md)| Deploy the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
-| Deploy to Hashicorp Vault|  |
+| Deploy to Azure Key Vault| Export the certificate to your choice of Azure Key Vault for use with other Azure services or sharing with other systems. Supports service variations such as Azure Cloud, Azure US Government, Azure China etc.  |
+| Deploy to Centralized Certificate Store (CCS)| Copies to a chosen UNC share using the credentials you provide, automatically naming the files as required by IIS for each domain. You then configure the IIS CCS feature to pick up certs from the share. |
+| Deploy to Doppler| Deploys the chosen certificate components to the Doppler secrets storage service. |
+| [Deploy to Microsoft Exchange](./tasks/exchange.md)| Export the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
+| Deploy to Hashicorp Vault| Export the certificate to your Vault instance, with optional namespaces.  |
 | Deploy to RAS (Direct Access, VNP, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
+| Deploy to RDP Gateway Service| Provides a basic deployment for a local RDP Gateway. You may require your own script for more sophisticated deployments. |
+| Deploy to RDP Listener Service| Provides a basic deployment for a local RDP Listener (Terminal Services). |
 | Run a Script | Execute an environment specific script (such as as a windows batch file or a linux bash script). |
 | Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to new applied. |
-
+| Set Certificate Key Permissions | Although not usually required, some services may need read permission granted for the certificate private key. This task adds read permission for the nominated account. |
+| Update Port Binding | Provides a standard way to perform netsh IP:port bindings without custom scripting. |
 
 ### Run a Powershell script
 
@@ -58,7 +62,7 @@ Note if passing additional arguments to your script these should be in the forma
 
 ### Call a custom Webhook
 
-Call a webhook with details of the latest certificate request status. Your custom Body template can use variables, e.g.:
+The *Webhook* task can call a webhook with details of the latest certificate request status. Your custom Body template can use variables, e.g.:
 
 ```
 {
