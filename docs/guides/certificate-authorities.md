@@ -73,7 +73,7 @@ Before you can use a different Certificate Authority in Certify you first need t
 In some situations it's useful to test the certificate request process against the *Staging* (test) version of a Certificate Authority. To use the staging version of your CA, add a new Certificate Authority account and select Staging from the Advanced tab. You can then request staging certificates for a particular managed certificate under `Certificate` > `Advanced` > `Certificate Authority`. Staging certificates are not publicly trusted, so can't be used for real websites. Some CAs do not provide a Staging API.
 
 ## Custom CAs (public or self-hosted)
-You can add configuration for any certificate authority system which supports the ACME V2 (RFC8555) standard. There is a basic CA editor included in the app (enabled under `Settings` > `UI Settings` > `Certificate Authority Editor`) which can be accessed under `Settings` > `Certificate Authorities` > `Edit Certificate Authorities`. If you are confident editing JSON text files you can also manually edit `C:\ProgramData\Certify\ca.json` to add custom CAs.
+You can add configuration for any certificate authority system which supports the ACME V2 (RFC8555) standard. There is a basic CA editor included in the app (enabled under `Settings` > `UI Settings` > `Certificate Authority Editor`) which can be accessed under `Settings` > `Certificate Authorities` > `Edit Certificate Authorities`. If you are confident editing JSON text files you can also manually edit `C:\ProgramData\Certify\ca.json` to add custom CAs. A commonly edited option for internal CAs is `AllowInternalHostnames` which allows the UI to accept certificate requests for internal hostnames (e.g. `myserver.local`).
 
 ## Migrating from one CA to another
 
