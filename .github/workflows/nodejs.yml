@@ -39,4 +39,6 @@ jobs:
         # Write the given domain name to the CNAME file
         fqdn: docs.certifytheweb.com
       env:
-        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        
