@@ -11,7 +11,7 @@ To use a certificate with your web server, the service you are targeting needs t
 ### Authentication
 This option lets you specify credentials if you are deploying to a remote server. If you are just deploying to the local machine leave this option set to *Local*. 
 
-To deploy to a remote server via SSH you can select the SSH otpion and provide/select the credentials to use.
+To deploy to a remote server via SSH you can select the SSH option and provide/select the credentials to use.
 
 ### File Paths
 You can decide which output files you want and where they should be written to. The file paths should be *full filenames*, not just directories. Typically the actual filename doesn't matter and you can name them according your own preferences, the file extension is also not important and conventions can vary. The most important thing is for your Apache config to point to the correct files:
@@ -45,7 +45,7 @@ For older versions of Apache you may need to specify the **CA Chain** file separ
 - Point *SSLCertificateKeyFile* at your **Private Key** file
 - Point *SSLCertificateChainFile* at your **CA Chain** file, 
 - Point *SSLCertificateFile* at your **Leaf Certificate** file.
-I
+
 ### Restarting Apache
 For your changes to take effect you will need to restart Apache. You can do this by adding a *Stop, Start or Restart a Service" task after your *Deploy to Apache* task.
 

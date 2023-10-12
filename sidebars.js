@@ -33,6 +33,11 @@ const sidebars = {
           items: [
             "deployment/tasks_intro",
             "script-hooks",
+            {
+              type: 'doc',
+              id: 'guides/apache-nginx', 
+              label: 'Apache, nginx etc'
+            },
             'guides/architecture/load-balancing',
             'guides/import-export',
             'features/data-stores'

@@ -42,6 +42,7 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | Deploy to Doppler| Deploys the chosen certificate components to the Doppler secrets storage service. |
 | [Deploy to Microsoft Exchange](./tasks/exchange.md)| Export the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
 | Deploy to Hashicorp Vault| Export the certificate to your Vault instance, with optional namespaces.  |
+| [Deploy to nginx](./tasks/nginx.md) | Export the certificate components in PEM file format for use with the nginx webserver. |
 | Deploy to RAS (Direct Access, VNP, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
 | Deploy to RDP Gateway Service| Provides a basic deployment for a local RDP Gateway. You may require your own script for more sophisticated deployments. |
 | Deploy to RDP Listener Service| Provides a basic deployment for a local RDP Listener (Terminal Services). |
