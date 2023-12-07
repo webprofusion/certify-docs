@@ -7,9 +7,13 @@ title: Installation & Upgrades
 
 ## System Requirements
 
-**Supported OS: Windows Server 2012 R2 (or higher, includes Windows 10) with .Net 4.6.2 (or higher).**
+**Supported OS: Any currently Microsoft Supported Windows or Windows Server edition with .Net 4.6.2 (or higher).**
 
-This app requires outgoing https for API calls, proxies are not officially supported.
+This app requires outgoing https for API calls, proxies are not officially supported. 
+
+Some core app functionality can be affected by common anti-virus/protection products (including our background service, temporary http challenge listener, IIS fallback web.config writes etc). We recommend you test your configuration and ensure you have whitelisted the app and it's components and the `C:\ProgramData\certify` data store path.
+
+Note: The following OS versions **are no longer supported by Microsoft**: Windows Server 2008 R2, Windows 7, Windows 8.0, Windows 8.1, Windows Server 2012, Windows Server 2012 R2. If you are using one of these versions we recommend that you should upgrade to a currently supported version of Windows.
 
 ## Installing
 

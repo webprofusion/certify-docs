@@ -18,7 +18,7 @@ The certify background service operates a local API for the app on port `9696` b
 :::info
 If you are repeatedly seeing the "Service Not Started" error, first try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app. This can help if automatic port negotiation has gotten out of sync.
 
-In some cases antivirus software products (such as *ClamWin*, *Watchguard Advanced EPDR*) have been known to prevent the Certify servicing installing properly.
+In some cases antivirus software products (such as *ClamWin*, *Watchguard Advanced EPDR*, *ESET*) have been known to prevent the Certify servicing installing properly or prevent some core features working like our temporary http challenge service listener.
 :::
 
 If the default port 9696 is already in use however you can manually specify the settings required by editing/adding the file `c:\programdata\certify\serviceconfig.json` with content as per the following (adjusted as required) then restarting both the service and UI:
