@@ -71,6 +71,10 @@ In addition we implement a number of DNS providers courtesy of the Posh-ACME: ht
 
 **If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they still work.**
 
+### Propagation Delay Seconds
+
+When using DNS validation, the certificate authority will check your DNS TXT record using your authoritative nameserver to see if they agree on the expected value of the corresponding `_acme-challenge` record for each domain/subdomain identifier. When the TXT record is updated it can often take up to a minute or two for all your nameservers to agree, we refer to the time we wait to allow for this as *Propagation Delay*. The default propagation delay is 60 seconds, but you can increase this if you are having trouble with validation. If you are using a DNS provider which has a very long propagation delay you may need to increase this value e.g. to 300 seconds (5 minutes). 
+
 ### CNAME Delegation
 
 An optional advanced approach to DNS validation which removes the need to update your primary domain DNS is to use CNAME delegation, this is where you create an `_acme-challenge.yourdomain.com` CNAME record for each domain/subdomain and point it at a corresponding TXT record in another DNS zone. This allows you to have a dedicated domain or subdomain which specifically handles DNS challenge requests (because it can be automated).
@@ -86,6 +90,9 @@ So if for example your website `example.com` has names `example.com` and `www.ex
 - The app will create/update the target TXT record and values, using the DNS credentials/API selection you have specified for the target domain/DNS zone.
 
 It's also possible to redirect multiple sources to one destination subdomain using a non-wildcard target e.g. a rule definition of `*.example.com:auth.example.org` would translate `_acme-challenge.www.example.com` to `_acme-challenge.auth.example.org`, ignoring the subdomain. This means all of your TXT updates can use the same TXT record but support for this will vary by DNS provider.
+
+### Domain Match Rules
+For certificates that require multiple authorizations across different domain (e.g. different DNS providers/zones or a mix of HTTP and DNS validation) you can use the `Domain Match Rule` to specify which domains/subdomains should be matched for the given authorization configuration. These are optional and *only* used if you have multiple authorization configurations for the same certificate. To match all subdomains of a domain use a wildcard `*.example.com` or to match only a single specific domain/subdomain identifier use `subdomain.example.com`, multiple rules can be supplied as semicolon separated.
 
 ## Other DNS Validation Methods
 

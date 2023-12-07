@@ -76,6 +76,8 @@ To generate a template:
 
 - `certify diag` : check existing ssl bindings and managed certificate integrity
 
+- `certify httpchallenge keys=stop,configcheck` : run the temporary http challenge server on port 80 to test firewall and routing configuration. This uses http.sys to register a listener for ACME http challenges as `http:/*/well-known/acme-challenge/` and will not conflict with IIS. The server will run for 60 seconds after the last matching request is received or until stopped by calling the control key. With the example control key `stop` and config check key `configcheck` you can test your servers response using `http://<your domain or server ip>/well-known/acme-challenge/configcheck` and you can stop the service using `http://<your domain or server ip>/well-known/acme-challenge/stop`. The user agent returned should be `Certify/HttpChallengeServer`
+
 ### Managing license activation
 
 - `certify activate <email> <key>` : activate the license for this instance of Certify The Web. Useful for larger scale automated deployments.
