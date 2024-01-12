@@ -96,3 +96,6 @@ We are a small business with no tax presence outside of Australia. We do not cur
 - External audit reports
 
 The source code for our main product Certify Certificate Manager is available for review at https://github.com/webprofusion/certify
+
+## Terms of Service
+Our services, licenses and products are subject to our [Terms and Conditions](terms.md).
