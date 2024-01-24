@@ -3,7 +3,8 @@ id: licensing
 title: Licensing
 ---
 
-# About Licensing
+
+## About Licensing
 Certify The Web *Certify Certificate Manager* is a commercial product. A free community edition is available for download and evaluation (limited to a few managed certificates). 
 
 

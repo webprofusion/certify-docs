@@ -3,7 +3,7 @@ id: troubleshooting
 title: Troubleshooting
 ---
 
-# Issues communicating with the CA
+## Issues communicating with the CA
 In normal use the app must be able to talk to the ACME API for your chosen Certificate Authority (e.g. Let's Encrypt). If you see an error reported such as `The ACME service (directory) is unavailable.` this would indicate your machine is not able to establish communication with the CA service.
 
 Common reasons for connectivity issues include:

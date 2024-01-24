@@ -12,7 +12,7 @@ We are *Webprofusion Pty Ltd*, doing business as *Certify The Web* ('**Company**
   
 We operate the website and API hosted at certifytheweb.com (the '**Site**'), the desktop and server application Certify Certificate Manager (the '**App**'), as well as any other related products and services that refer or link to these legal terms (the '**Legal Terms**') (collectively, the '**Services**').
 
-You can contact us by email at support{at}certifytheweb.com or via https://community.certifytheweb.com/ (our '**contact details**').
+You can contact us by email at support at certifytheweb.com or via https://community.certifytheweb.com/ (our '**contact details**').
 
 These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ('**you**'), and Webprofusion Pty Ltd, concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.
 
@@ -256,4 +256,4 @@ These Legal Terms and any policies or operating rules posted by us on the Servic
 
 ## 27. CONTACT US
 
-In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us support{at} certifytheweb.com
+In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us support at certifytheweb.com
