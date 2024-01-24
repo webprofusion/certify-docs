@@ -19,52 +19,64 @@ You can now add your Azure DNS credential in the app using the above noted value
 
 # To Configure using Powershell
 
-## Step 1 – Install and configure Azure PowerShell
+## Step 1 – Install and configure Azure PowerShell and Microsoft Graph.
 
-Follow the instructions here: https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps
+Azure PowerShell instructions: https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps
 
-## Step 2 – Connect to Azure PS and create the Azure Service Principal and Enterprise Application
+Microsoft Graph instructions: https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation?view=graph-powershell-1.0
+
+## Step 2 – Connect to Azure PS and Microsoft Graph to create the Azure Service Principal and App Registration.
 
 From PowerShell:
 
 ```powershell
+$SubID = '<your subscription ID>'
+$TenantId = '<your tenant (directory) ID>'
+
+# optional commands to elevate and import the required modules
 # Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-# Import-Module Az.Accounts
-PS C:\Users\Tony> Connect-AzAccount
+# Import-Module Microsoft.Graph.Applications, Microsoft.Graph.Authentication, Az.Accounts
+
+# connect to Azure
+Connect-AzAccount -SubscriptionID $subID
+
+# connect to Graph - your account must have rights to grant consent for your organization
+# https://learn.microsoft.com/en-us/graph/security-authorization
+Connect-MgGraph -Scopes 'Application.ReadWrite.All' -NoWelcome -TenantID $TenantId
 ```
 
-This will launch a web dialog to log into your Azure tenant. Ensure you connect with an account with the relevant administrative credentials in the portal.
-
-Pop your password and MFA requirements in as required when prompted.
+This may launch a web dialog to log into your Azure tenant and Microsoft Graph. Ensure you connect with an account with the relevant administrative credentials in the portal and complete any multi-factor authentication required by your organization.
 
 Once connected, create the Application and Service Principal
-Run the following script:
+
+Run the following script, replacing variables with your information.
 
 ```powershell
-$azurePassword = ConvertTo-SecureString "your secure password" -AsPlainText -Force
+[array]$dnsZones = 'example.com', 'example.net'
 
-# Import-Module Az.Resources
-$credentials = New-Object Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property @{ StartDate=Get-Date; EndDate=Get-Date -Year 2024; Password=$azurePassword}
-$MyServicePrincipal = New-AzADServicePrincipal -DisplayName "LetsEncrypt" -PasswordCredential $credentials
+$dnsRG = '<your RG>'
+
+# application name
+$appName = "Certify The Web"
+
+
+# create the application
+$App = New-MgApplication -DisplayName $AppName
+
+# create a service principal for the application
+$MyServicePrincipal = New-MgServicePrincipal -DisplayName $AppName -AppId $App.AppId -AccountEnabled:$true
 ```
 
-Once this has successfully run, you need to retrieve the ApplicationID:
+Use $App and $MyServicePrincipal to view details about the App and SP.
 
 ```powershell
-Get-AzADApplication | Select-Object displayname, objectid, applicationid
+$app | format-list
+$MyServicePrincipal | format-list
 ```
 
-It returns something like the following:
 
-```
-DisplayName    ObjectId                             ApplicationId
------------    --------                             -------------
-LetsEncrypt    7f64adcf-xxxx-yyyy-zzzz-aabbccddeeff aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-```
+The App Registration and Service Principal should now be ready to use. 
 
-Make a note of the ApplicationID
-
-This will have created a service principal and an underlying Azure application.
 
 ## 3 - Grant the Application rights to update DNS
 
@@ -75,7 +87,9 @@ This will have created a service principal and an underlying Azure application.
 - Select:
   - Role: DNS Zone Contributor
   - Assign access to: Azure AD user, group or application
-  - Select: Type in LetsEncrypt
+  - Select: Certify The Web
+    - The SP name must be typed in, as it will not appear in the user list by default
+    - Use your SP name if you did not use the instruction default
   - Click Save
 
 ## 4 - Create Service Principal Secret
@@ -83,7 +97,7 @@ This will have created a service principal and an underlying Azure application.
 From the Azure portal, click Azure Active Directory:
 
 - Click App Registrations
-- Click LetsEncrypt
+- Click "Certify The Web", or whatever app name you used
 - Click Certificates & secrets
 - Click Client secrets
 - Click New client secret
