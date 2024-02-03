@@ -10,7 +10,7 @@ Certify The Web *Certify Certificate Manager* is a commercial product. A free co
 
 :::note
 
- *This documentation covers the Certify (SSL/TLS) Certificate Manager app. We also have seperate licensing for our [Certify DNS](../dns/providers/certifydns.md) managed dns challenge service which is **not** covered by the licensing below.*
+ *This documentation covers the Certify (SSL/TLS) Certificate Manager app. We also have separate licensing for our [Certify DNS](../dns/providers/certifydns.md) managed dns challenge service which is **not** covered by the licensing below.*
 
 :::
 
@@ -42,7 +42,9 @@ License tier names are an arbitrary label and are not related to the size/nature
 
 These license bundles can be purchased using a credit card (via Stripe) or via PayPal. 
 
-**Proforma Invoicing, reseller accounts etc are not supported due to the manual processing involved. See Cloud Licensing instead or you can also get a link to send to someone else to complete payment on behalf of your account.**
+**Proforma Invoicing, reseller accounts etc are not generally supported due to the manual processing involved. See Cloud Licensing instead or you can also get a link to send to someone else to complete payment on behalf of your account.**
+
+If you specifically need to purchase through a reseller please contact https://shi.com with your enquiry. This is generally only available for Power Pro and Enterprise tiers.
 
 Notifications are sent when your license key is about to expire. To stop receiving notifications about an expiring or expired license key, sign into your certifytheweb.com profile and choose `Cancel Now` from the License keys tab.
 
