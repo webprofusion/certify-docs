@@ -32,7 +32,7 @@ For the Certify The Web app you can currently purchase the following license bun
 | Starter       | 12 Months         | 1                 | $59 USD    | n/a|
 | Professional  | 12 Months         | 3                 | $149 USD    | 15%|
 | Power Pro     | 12 Months         | 25                | $899 USD   | 39%|
-| Enterprise    | 12 Months         | 100               | $5900 USD   | 57%|
+| Enterprise    | 12 Months         | 100               | $2499 USD   | 57%|
 
 From 1st November 2023 we have moved to a 12 month renewal cycle for all license tiers and revised pricing, this will apply to new licenses, **existing renewals will remain on the previous pricing/terms until after 1st Nov 2025**. Pricing for Power Pro and Enterprise tiers last revised 1st February 2024.
 
