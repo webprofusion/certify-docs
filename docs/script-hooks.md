@@ -5,18 +5,25 @@ title: Scripting
 
 # Scripting
 
-Certify is extensible via PowerShell scripts tasks which can be configured to run before or after the Certificate Request. From v5 onwards these are found under the Tasks tab for your managed certificate. See [Tasks](deployment/tasks_intro.md) for more information.
+Certify is extensible via PowerShell custom scripts tasks which can be configured to run before or after the Certificate Request. The app also has a number of built-in tasks for common scenarios, see [Tasks](deployment/tasks_intro.md) for more information.
 
-The scripts are provided a parameter `$result` which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools. 
+To run a custom PowerShell script when your certificate renews, you can add the *Run a PowerShell Script* deployment task to your managed certificate. You can also add a script to run before the certificate request is made, to perform any pre-request checks or configuration.
 
-A common use for scripting is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services. The app also has a range of built-in deployment tasks which also use scripting internally.
+The scripts are always provided a `$result` argument which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
+
+A common use for scripting is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
 
 *By default the background service runs as Local System, so your scripts will execute in that context*, this can be important for issues regarding permissions, file system encryption etc. You can optionally configure your task to run as a specific user if network access or special permissions are required.
 
-**Do not store scripts under the C:\Program Files\CertifyTheWeb\* folder. File stored there will be deleted next time you update the app**
+:::warning
+Do not store scripts under the C:\Program Files\CertifyTheWeb\\ path. File stored there will be deleted next time you update the app.
+:::
 
 All scripts should be refined and tested in a staging environment before use in production.
 
+:::tip See More Example Scripts
+Example and community-contributed scripts can also be found at https://github.com/webprofusion/certify-script-examples - feel free to contribute your own examples to share with others.
+:::
 ## Scripting Basics
 
 Here is a sample PowerShell script which demonstrates a few commonly accessed pieces of information:
