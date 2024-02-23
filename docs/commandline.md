@@ -49,18 +49,18 @@ You can use the `acmeacccount add` command to add/create a new ACME account regi
 
 - `certify importcsv` : import managed certificates from a CSV file. See [CSV Import](csv-import.md) for more details
 
-The `certify add` and `certify remove` commands can be used to add or remove domains from an existing managed certificate or create a new managed certificate. You can find the correct managed certificate ID in the app under _Certificate > Advanced > Actions > Managed Certificate Reference Id_ (e.g. `a02e3afe-49ba-470a-83e5-2e397aa946eb:1`).
+The `certify add` and `certify remove` commands can be used to add or remove domains from an existing managed certificate or create a new managed certificate. You can find the correct managed certificate ID in the app under _Certificate > Advanced > Actions > Managed Certificate Reference Id_ (e.g. `a02e3afe-49ba-470a-83e5-2e397aa946eb:1`). The remove command accepts `any` as the managed cert id to remove the matching domains from any managed certificates.
 
 These will not request/renew the actual certificate unless you append `--perform-request` to the end of the command. These commands assume the same domain validation settings are being used for all domains on the same managed certificate:
 
-- `certify remove <managed cert id> domain1.test.com;domain2.test.com` : remove one or more certificates from the configuration of a managed certificate. If removing a domain will mean there are zero domains remaining on the certificate then the managed certificate will be removed completely.
+- `certify remove <managed cert id, or any> domain1.test.com;domain2.test.com` : remove one or more certificates from the configuration of a managed certificate. If removing a domain will mean there are zero domains remaining on the certificate then the managed certificate will be removed completely.
 
 - `certify add <managed cert id, or new> domain1.test.com;domain2.test.com` : add one or more additional domains to the configuration of a managed certificate. e.g. `certify add new example.com`
 
 - `certify add new domain1.test.com;domain2.test.com --template C:\Temp\managedcert-template.json` : add new managed cert with given domain, using a template (json exported from an existing managed cert). 
 
 :::info using templates
-Templates are an advanced feature intended only for users who require managed certificate automation with non-default challenge configuration (e.g. DNS validation). 
+Templates are an advanced feature intended only for users who require managed certificate automation with non-default challenge configuration (e.g. DNS validation).
 
 To generate a template:
 - Use `certify list --json output.json` to export your managed certificates as JSON
