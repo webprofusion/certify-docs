@@ -13,7 +13,7 @@ In the case of ACME domain validated certificates this CSR mainly just includes 
 To enable OCSP-Must staple check *Require OCSP Must-Staple* under Certificate > Advanced > Signing & Security. This will add the OCSP Must Staple extension to the CSR and the resulting certificate.
 
 ## CSR Signing Key Algorithm (Private Key)
-Before version 6.x the app uses RSA 2048 for CSR signing keys (the certificate Private Key), but this has been changed to ECDSA P256 in version 6.x onwards. You can set your preference per-managed certificate under Certificate > Advanced  > Signing & Security > CSR Signing Algorithm. 
+The app defaults to RSA 2048 for CSR signing keys (the certificate Private Key). This default was briefly changed in 6.x to ECDSA 256 but many older versions of Windows Server were found to be incompatible with the key type as a default. You can set your preference globally under *Settings* or per-managed certificate under *Certificate > Advanced  > Signing & Security > CSR Signing Algorithm*.
 
 ## Re-use a Private Key
 In most cases you will want to use a new private key for each certificate request, but in some cases you may want to re-use an existing private key. For example, if you have a private key that is already in use by another system, or you have a private key that you want to use for multiple certificates. If you check *Use the same Private Key for Renewals* the app will generate a key on next renewal and re-use that for subsequent renewals of the same certificate.
@@ -25,4 +25,4 @@ In most cases the CSR (and private key) is generated for you, but in some cases 
 
 - Click New Certificate, then in Certificate > Advanced > Signing & Security, Choose Custom CSR.
 - Select your CSR file, then select your Private key file. The private key file is required in order to build the final certificate PFX.
-- Click Request Certificate. This will perform the certificate request with the ACME CA and submit your CSR, a signed certificate will then be downloaded. 
+- Click Request Certificate. This will perform the certificate request with the ACME CA and submit your CSR, a signed certificate will then be downloaded.

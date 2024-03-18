@@ -17,7 +17,7 @@ Usage: `certify <command>`
 
 - `certify acmeaccount add <ACME CA ID> <your contact email> <optional EAB key id> <optional EAB Key>`: add a new ACME account
 
-You can use the `acmeacccount add` command to add/create a new ACME account registration. Using this command implies your agreement with the chosen ACME CAs current terms and conditions :
+You can use the `acmeaccount add` command to add/create a new ACME account registration. Using this command implies your agreement with the chosen ACME CAs current terms and conditions :
 
 #### Example - Create Let's Encrypt Account:
 
