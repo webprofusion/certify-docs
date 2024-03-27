@@ -9,15 +9,15 @@ Certify DNS is used to answer DNS challenges when your domains normal DNS provid
 
 The service is a cloud hosted version of the [acme-dns](https://github.com/joohoi/acme-dns) standard and uses CNAME delegation of acme challenge TXT records to a dedicated challenge response service. 
 
-This service can be enabled through the https://certifytheweb.com License Keys tab when signed in. The service is compatible with most existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems. 
+This service can be purchased through the https://certifytheweb.com License Keys tab when signed in, it is not currently available as a bundled product with other product license types.
 
-Certify DNS is not required in order to use the Certify (SSL) Certificate Manager app, it's only required if you specifically want to use DNS challenges and can't use DNS automation.
+Certify DNS is not required in order to use the Certify Certificate Manager app, it's only required if you specifically want to use DNS challenges and can't use DNS automation. The service is compatible with most existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems.
 
 **With Certify DNS, you create a special CNAME record in your domain DNS, instead of a TXT record. This CNAME record points to the Certify DNS cloud service and handles ACME challenge responses for your domain.**
 
 ## Using Certify DNS in Certify The Web
 
-- Purchase a Certify DNS license key under your https://certifytheweb.com profile (License Keys > Add a License Key).
+- Purchase a *Certify DNS* license key under your https://certifytheweb.com profile (License Keys > Add a License Key).
 - In the app, Select Certify DNS as the DNS update method under Authorization.
 - Create your Certify DNS credentials using your account email address (as `API Username`) and license key (as `API Key`). You only need to do this once.
 - Click `Request Certificate` to perform a one-time registration with the Certify DNS service (per domain).
