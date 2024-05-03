@@ -3,6 +3,12 @@ id: godaddy
 title: GoDaddy DNS
 ---
 
+:::warning GoDaddy API Limits
+
+Note: from April 2024 GoDaddy have limited their API to accounts which have 10 or more domains. Existing users who have less domains than this will encounter the error `GoDaddy DNS API :: Failed to determine root domain in zone.`
+
+:::
+
 ## Setup your DNS API credentials
 To use the GoDaddy DNS API, you need to setup your API key and authentication secret: 
 
