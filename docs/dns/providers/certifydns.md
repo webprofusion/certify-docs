@@ -5,36 +5,35 @@ title: Certify DNS
 
 # Certify DNS
 
-Certify DNS is used to answer DNS challenges when your domains normal DNS provider isn't supported for automation. 
+*Certify DNS* is an optional service used to answer DNS challenges when your domains normal DNS provider isn't supported for automation. It can be used with any *acme-dns* compatible ACME client.
 
-The service is a cloud hosted version of the [acme-dns](https://github.com/joohoi/acme-dns) standard and uses CNAME delegation of acme challenge TXT records to a dedicated challenge response service. 
+- The service is a cloud hosted version of the [acme-dns](https://github.com/joohoi/acme-dns) protocol and uses CNAME delegation of acme challenge TXT records to a dedicated challenge response service.
+- The service requires a separately purchased *Certify DNS* license, available through the https://certifytheweb.com License Keys tab (when signed in). It is not included in other product licenses from us you may already have, e.g. other products like *Certify Certificate Manager* **do not** include a license for *Certify DNS*.
+- *Certify DNS* is not required in order to use the Certify Certificate Manager app, it's only required if you specifically want to use DNS challenges and can't use standard DNS automation.
+- The service is compatible with most other existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems.
 
-This service can be purchased through the https://certifytheweb.com License Keys tab when signed in, it is not currently available as a bundled product with other product license types.
+**With *Certify DNS*, you create a special CNAME record in your domain DNS, instead of a TXT record. This CNAME record points to the Certify DNS cloud service and handles ACME challenge responses for your domain.**
 
-Certify DNS is not required in order to use the Certify Certificate Manager app, it's only required if you specifically want to use DNS challenges and can't use DNS automation. The service is compatible with most existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems.
+## Using *Certify DNS* in Certify Certificate Manager
 
-**With Certify DNS, you create a special CNAME record in your domain DNS, instead of a TXT record. This CNAME record points to the Certify DNS cloud service and handles ACME challenge responses for your domain.**
-
-## Using Certify DNS in Certify The Web
-
-- Purchase a *Certify DNS* license key under your https://certifytheweb.com profile (License Keys > Add a License Key).
-- In the app, Select Certify DNS as the DNS update method under Authorization.
-- Create your Certify DNS credentials using your account email address (as `API Username`) and license key (as `API Key`). You only need to do this once.
-- Click `Request Certificate` to perform a one-time registration with the Certify DNS service (per domain).
-- You will be prompted to create a CNAME pointing to the TXT record hosted by the Certify DNS service. If you miss this prompt check back in the log file for your managed certificate (see the Status tab).
+- Purchase a *Certify DNS* license key under your https://certifytheweb.com profile (License Keys > Add a License Key, choose *Certify DNS*).
+- In the app, Select *Certify DNS* as the DNS update method under Authorization.
+- Create your *Certify DNS* credentials using your account email address (as `API Username`) and license key (as `API Key`). You only need to do this once.
+- Click `Request Certificate` to perform a one-time registration with the *Certify DNS* service (per domain). If you receive an error such as `Failed to register with Certify DNS` you have probably not used the correct *Certify DNS* license key credentials.
+- You will be prompted to create a CNAME pointing to the TXT record hosted by the *Certify DNS* service. If you miss this prompt check back in the log file for your managed certificate (see the Status tab).
 - Once you have created your CNAME record, delete any existing \_acme-challenge TXT record in the same zone to avoid confusion.
-- Resume the request using `Request Certificate`, the Certify DNS service will automatically provide the required TXT record responses on your behalf.
+- Resume the request using `Request Certificate`, the *Certify DNS* service will automatically provide the required TXT record responses on your behalf.
 - Automatic renewals will then perform this process again without manual intervention.
 
-## Using Certify DNS with other acme-dns compatible clients
+## Using *Certify DNS* with other acme-dns compatible clients
 
-- Once activated on your https://certifytheweb.com account as special URL will be shown under the License Keys tab. This passes your license key info as basic credentials to the Certify DNS service.
+- Once activated on your https://certifytheweb.com account as special URL will be shown under the License Keys tab. This passes your license key info as basic credentials to the *Certify DNS* service.
 - Follow the normal instructions for your acme-dns client, using the provided URL as the base URL for the acme-dns service.
 
 ### Example: Certbot with acme-dns-auth.py (linux)
 
 - Install Certbot and download acme-dns-auth.py (https://github.com/joohoi/acme-dns-certbot-joohoi)
-- Update acme-dns-auth.py to set `ACMEDNS_URL = "https://<your key credentials>@certify-dns.certifytheweb.com"`. Your url with credentials if found on your certifytheweb.com License Keys tab when Certify DNS is enabled.
+- Update acme-dns-auth.py to set `ACMEDNS_URL = "https://<your key credentials>@certify-dns.certifytheweb.com"`. Your url with credentials if found on your certifytheweb.com License Keys tab when *Certify DNS* is enabled.
 - Run certbot with the required auth hook, e.g.:
   `sudo certbot certonly --manual --manual-auth-hook /etc/letsencrypt/acme-dns-auth.py --preferred-challenges dns --debug-challenges -d www.example.com`
 - On first run you will be prompted to create a specific CNAME in your domains DNS after registration completes.
@@ -43,13 +42,15 @@ Certify DNS is not required in order to use the Certify Certificate Manager app,
 
 If the error in the app is `NXDOMAIN for _acme-challenge...` , the Certificate Authority has been unable to find or follow the CNAME you have configured in your DNS. You should review your DNS records to ensure you have created the required CNAME record.
 
-Cloudflare users: If you have Universal SSL configured for your domain in Cloudflare, this will result in *hidden* TXT records being created for your domain and subdomain (called _acme-challenge.yourdomain.com). This will directly conflict with the CNAME record you need to create for Certify DNS to work. You should either disable Universal SSL in Cloudflare or contact Cloudflare for other solutions.
+Cloudflare users: If you have Universal SSL configured for your domain in Cloudflare, this will result in *hidden* TXT records being created for your domain and subdomain (called _acme-challenge.yourdomain.com). This will directly conflict with the CNAME record you need to create for *Certify DNS* to work. You should either disable Universal SSL in Cloudflare or contact Cloudflare for other solutions.
+
+A common source of confusion is the difference between your *Certify DNS* license key and your *Certify Certificate Manager* license key. Each one is unique and specific to the product type.
 
 ## Sharing CNAME registrations across multiple machines
-If you need to have multiple machines fetch certificates for the same domain (such as a wildcard cert) you will find that your CNAME record needs to be the same Certify DNS pointer, which in turn means you need to share the Certify DNS registration config across each machine. To do this, copy the respective config file from C:\ProgramData\certify\certifydns\ (or acme-dns on managed certificates configured using older versions) on one machine all of to the other machines (into C:\ProgramData\certify\certifydns\). Thereafter their renewals will all use the same Certify DNS registration for that domain.
+If you need to have multiple machines fetch certificates for the same domain (such as a wildcard cert) you will find that your CNAME record needs to be the same *Certify DNS* pointer, which in turn means you need to share the Certify DNS registration config across each machine. To do this, copy the respective config file from C:\ProgramData\certify\certifydns\ (or acme-dns on managed certificates configured using older versions) on one machine all of to the other machines (into C:\ProgramData\certify\certifydns\). Thereafter their renewals will all use the same *Certify DNS* registration for that domain.
 
-## Migrating from acme-dns to Certify DNS or vice-versa
-To switch from acme-dns to Certify DNS, first delete the respective domain config from C:\ProgramData\certify\acmedns and switch the DNS provider to Certify DNS. Perform a normal renewal - the first renewal will prompt for a CNAME record to be updated pointing to the service. You can also check the log for this managed certificate and find the new CNAME value you need to populate. Thereafter you can then renew normally.
+## Migrating from acme-dns to *Certify DNS* or vice-versa
+To switch from acme-dns to *Certify DNS*, first delete the respective domain config from C:\ProgramData\certify\acmedns and switch the DNS provider to *Certify DNS*. Perform a normal renewal - the first renewal will prompt for a CNAME record to be updated pointing to the service. You can also check the log for this managed certificate and find the new CNAME value you need to populate. Thereafter you can then renew normally.
 
 ## Securing Issuance
 Delegating DNS validation to an external service theoretically allows the service to complete validation for certificates on your domain. To guard against issuance by a different account some CAs implement the CAA extensions for RFC8657 https://datatracker.ietf.org/doc/html/rfc8657
@@ -64,7 +65,7 @@ This feature requires support from your chosen CA. Your CA account URI is availa
 
 ## Advantages and Disadvantages
 
-There are a number of factors to consider before delegating validation to a service like Certify DNS (or any acme-dns style service).
+There are a number of factors to consider before delegating validation to a service like *Certify DNS* (or any acme-dns style service).
 
 Advantages:
 
@@ -77,7 +78,7 @@ Disadvantages:
 
 ## Pricing
 
-Certify DNS is a commercial service and the following pricing options are available. 
+*Certify DNS* is a commercial service and the following pricing options are available.
 
 | Type     | Renewal Frequency | Domains | Price     |
 | -------- | ----------------- | ------- | --------- |
