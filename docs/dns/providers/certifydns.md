@@ -5,10 +5,10 @@ title: Certify DNS
 
 # Certify DNS
 
-*Certify DNS* is an optional service used to answer DNS challenges when your domains normal DNS provider isn't supported for automation. It can be used with any *acme-dns* compatible ACME client.
+*Certify DNS* is an optional service used to answer DNS challenges when your domains normal DNS provider isn't supported for automation. It can be used with any *acme-dns* compatible ACME client. **The service requires a separately purchased *Certify DNS* license and is not bundled with *Certify Certificate Manager***.
 
 - The service is a cloud hosted version of the [acme-dns](https://github.com/joohoi/acme-dns) protocol and uses CNAME delegation of acme challenge TXT records to a dedicated challenge response service.
-- The service requires a separately purchased *Certify DNS* license, available through the https://certifytheweb.com License Keys tab (when signed in). It is not included in other product licenses from us you may already have, e.g. other products like *Certify Certificate Manager* **do not** include a license for *Certify DNS*.
+- You can purchase a *Certify DNS* license**, via the https://certifytheweb.com License Keys tab (when signed in). It is not included in other product licenses from us you may already have, e.g. other products like *Certify Certificate Manager* **do not** include a license for *Certify DNS*.
 - *Certify DNS* is not required in order to use the Certify Certificate Manager app, it's only required if you specifically want to use DNS challenges and can't use standard DNS automation.
 - The service is compatible with most other existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems.
 
