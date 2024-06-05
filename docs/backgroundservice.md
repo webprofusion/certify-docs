@@ -13,15 +13,18 @@ By default the background service runs a local http API server on port 9696 for 
 
 ## Custom configuration and Troubleshooting "..service not started" error
 
-The certify background service operates a local API for the app on port `9696` by default. If this port is in use by another application/service (or for some other reason it cannot create a binding to `localhost:9696`, or a security product is preventing **local** port access) then you will see the message 'Service not started'.
+The certify background service operates a local API for the app on port `9696` by default. If this port is in use by another application/service (or for some other reason it cannot create a binding to `127.0.0.2:9696` (localhost), or a security product is preventing **local** port access) then you will see the message 'Service not started'.
+
+- `servers.json` : This is the connection information used by the UI to connect to the background service.
+- `serviceconfig.json` : These are the service settings and includes the host/ip and port the service will listen on, so it needs to match the details in `servers.json`.
 
 :::info
-If you are repeatedly seeing the "Service Not Started" error, first try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app. This can help if automatic port negotiation has gotten out of sync.
+If you are repeatedly seeing the "Service Not Started" error, first try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app and these config files will be recreated. This can help if automatic port negotiation has gotten out of sync.
 
 In some cases antivirus software products (such as *ClamWin*, *Watchguard Advanced EPDR*, *ESET*) have been known to prevent the Certify servicing installing properly or prevent some core features working like our temporary http challenge service listener.
 :::
 
-If the default port 9696 is already in use however you can manually specify the settings required by editing/adding the file `c:\programdata\certify\serviceconfig.json` with content as per the following (adjusted as required) then restarting both the service and UI:
+If the default port 9696 is already in use however you can manually specify the settings required by editing/adding the file `c:\programdata\certify\serviceconfig.json` (and servers.json) with content as per the following (adjusted as required) then restarting both the service and UI:
 
 ```json
 {
@@ -29,6 +32,7 @@ If the default port 9696 is already in use however you can manually specify the 
   "port": 9696
 }
 ```
+Any local IP (or `localhost`) can be used, local loopback addresses are strongly recommended so that remote access is not possible.
 
 For example an alternative configuration might be:
 
@@ -56,11 +60,13 @@ To operate properly the background service needs to be able to register an http 
 
 ### Allow Local System account to bind an http listener to the service port
 
-In some cases you need to explicitly allow the service to listen as an http service on the localhost IP address. To Do so run the following command from the command line as an Administrator:
+In some cases you need to explicitly allow the service to listen as an http service on the localhost IP address. To do so run the following command from the command line as an Administrator, substituting your choice of listening IP address and port:
 
 `netsh http add urlacl url=http://127.0.0.1:9696/ user="NT AUTHORITY\SYSTEM"`
 
 ### Enable http listener IP address
+
+If your system is restricting which IP addresses can listen for HTTP traffic you may find you need to enable iplisten for the service IP.
 
 As per https://docs.microsoft.com/en-us/windows/win32/http/add-iplisten enable any IPv4 address to listen for http. :
 
@@ -73,10 +79,10 @@ netsh http add iplisten ipaddress=::
 ```
 
 
-Or to target a specific IP address such as 127.0.0.1 (localhost):
+**Or to target a specific IP address such as 127.0.0.2 (our default local loopback IP setting)**:
 
 ```bat
-netsh http add iplisten ipaddress=127.0.0.1
+netsh http add iplisten ipaddress=127.0.0.2
 ```
 You should monitor other effects on other services when changing the IP listen configuration. We have seen one report of Exchange/Outlook slowing down when the 0.0.0.0 address iplisten is enabled.
 
