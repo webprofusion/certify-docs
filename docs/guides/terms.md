@@ -41,7 +41,7 @@ The Content and Marks are provided in or through the Services 'AS IS' for your i
 
 ### Your use of our Services
 
-Subject to your compliance with these Legal Terms, including the '[PROHIBITED ACTIVITIES](#prohibited)' section below, we grant you a non-exclusive, non-transferable, revocable licence to:
+Subject to your compliance with these Legal Terms, including the '[PROHIBITED ACTIVITIES](#8prohibited-activities)' section below, we grant you a non-exclusive, non-transferable, revocable licence to:
 
 *   access the Services; and
 *   download or print a copy of any portion of the Content to which you have properly gained access.
@@ -58,13 +58,13 @@ Any breach of these Intellectual Property Rights will constitute a material brea
 
 ### Your submissions
 
-Please review this section and the '[PROHIBITED ACTIVITIES](#prohibited)' section carefully prior to using our Services to understand the (a) rights you give us and (b) obligations you have when you post or upload any content through the Services.
+Please review this section and the '[PROHIBITED ACTIVITIES](#8prohibited-activities)' section carefully prior to using our Services to understand the (a) rights you give us and (b) obligations you have when you post or upload any content through the Services.
 
 **Submissions:** By directly sending us any question, comment, suggestion, idea, feedback, or other information about the Services ('Submissions'), you agree to assign to us all intellectual property rights in such Submission. You agree that we shall own this Submission and be entitled to its unrestricted use and dissemination for any lawful purpose, commercial or otherwise, without acknowledgment or compensation to you.   
 
 **You are responsible for what you post or upload:** By sending us Submissions through any part of the Services you:
 
-*   confirm that you have read and agree with our '[PROHIBITED ACTIVITIES](#prohibited)' and will not post, send, publish, upload, or transmit through the Services any Submission that is illegal, harassing, hateful, harmful, defamatory, obscene, bullying, abusive, discriminatory, threatening to any person or group, sexually explicit, false, inaccurate, deceitful, or misleading;
+*   confirm that you have read and agree with our '[PROHIBITED ACTIVITIES](#8prohibited-activities)' and will not post, send, publish, upload, or transmit through the Services any Submission that is illegal, harassing, hateful, harmful, defamatory, obscene, bullying, abusive, discriminatory, threatening to any person or group, sexually explicit, false, inaccurate, deceitful, or misleading;
 *   to the extent permissible by applicable law, waive any and all moral rights to any such Submission;
 *   warrant that any such Submission are original to you or that you have the necessary rights and licenses to submit such Submissions and that you have full authority to grant us the above-mentioned rights in relation to your Submissions; and
 *   warrant and represent that your Submissions do not constitute confidential information.
@@ -112,7 +112,7 @@ If you are unsatisfied with our Services, please contact us.
 
 We may include software for use in connection with our Services. If such software is accompanied by an end user license agreement ('EULA'), the terms of the EULA will govern your use of the software. If such software is not accompanied by a EULA, then we grant to you a non-exclusive, revocable, personal, and non-transferable licence to use such software solely in connection with our services and in accordance with these Legal Terms. Any software and any related documentation is provided 'AS IS' without warranty of any kind, either express or implied, including, without limitation, the implied warranties of merchantability, fitness for a particular purpose, or non-infringement. You accept any and all risk arising out of use or performance of any software. You may not reproduce or redistribute any software except in accordance with the EULA or these Legal Terms.
 
-## 8. PROHIBITED ACTIVITIES <a id="prohibited"></a>
+## 8. PROHIBITED ACTIVITIES
 
 You may not access or use the Services for any purpose other than that for which we make the Services available. The Services may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.
 
