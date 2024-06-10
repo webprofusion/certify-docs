@@ -38,6 +38,9 @@ the https://api.certifytheweb.com server if it can access the resource instead (
 ### Timeout during http validation
 Your firewall is blocking port 80. Open port TCP 80 in Windows Firewall and on any cloud hosting firewall rules you have.
 
+### HTTP domain validations suddenly failing
+If you find you are unexpectedly getting HTTP domain validation failures (particularly "Secondary validation") the most common cause is a Firewall blocking TCP port 80 (http) or you are blocking a range of IP or Geographic locations. To allow only your CAs HTTP validation requests through we recommend using a Web Application Firewall set to allow all http requests to any path starting with `/.well-known/acme-challenge/`. Alternatively block specific countries instead of blocking all countries, as your CA (the default being Let's Encrypt) may choose to validate from any geographic region.
+
 ### Error 500, 404 or 403 (or other http error code)
 The most common problem is that auto configuration has failed to determine the best config for your system. Different editions/distributions of windows have different defaults.
 

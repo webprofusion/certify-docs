@@ -13,7 +13,7 @@ To request a certificate from Let's Encrypt (or any Certificate Authority), you 
 
 In order to validate your control of your domains to the certificate authority you will be required to create a specified TXT record in your domain's DNS zone.
 
-To do this you may need to get the API credentials for the (hosted) DNS from your DNS providers control panel, store these credentials in the app then select them to be used for specific certificate requests.
+To do this you may need to get the API credentials for the (hosted) DNS from your DNS providers control panel, store these credentials in the app then select them to be used for specific certificate requests. DNS credentials are encrypted at rest using Windows DAPI, but where possible you should use limited privilege credentials.
 
 If your DNS provider (or custom DNS setup) does not have an API we can talk to, you can write your own DNS update script or use the Manual DNS option (the request pauses while you manually update DNS).
 
@@ -122,3 +122,7 @@ To use Manual DNS:
 - Perform your initial certificate request. The request will pause and ask you to create a TXT record in your domain (one value for each domain or wildcard). Once you have completed that, wait for your DNS name servers to complete propagation. If you have trouble validating, wait an hour or more for this to complete.
 - Use 'Request Certificate' to resume the request and check validation.
 - If the certificate authority can see the TXT value they asked for in your DNS, they will then allow a certificate to be issued and the request will resume as normal.
+
+## Common Issues
+### DNS domain validations suddenly failing
+DNS providers can and do change their APIs periodically which can impact renewals using DNS validation. For instance, GoDaddy changed their API to only allow API use for customers with more than 10 domains. Other DNS providers have retired their older APIs resulting in renewals that use those failing. We recommend that if a problem develops with DNS validation that you ensure you are using the latest version of the app and if the problem persists contact your DNS provider to ask if their API has recently changed.
