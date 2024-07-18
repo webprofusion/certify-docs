@@ -3,11 +3,11 @@ id: stir-shaken
 title: STIR/SHAKEN Certificates
 ---
 
-STIR/SHAKEN is a telephony standard for caller ID authentication. It is used to help prevent caller ID spoofing. *Certify The Web* v6.0 onwards supports requesting STIR/SHAKEN certificates from any CA which supports the Authority Token extensions for ACME (and TNAuthList identifiers), such as [Martini Security](https://www.martinisecurity.com/)  which are a built in CA, or you can manually add a new CA. 
+STIR/SHAKEN is a telephony standard for caller ID authentication. It is used to help prevent caller ID spoofing. *Certify The Web* v6.0 onwards supports requesting STIR/SHAKEN certificates from any CA which supports the Authority Token extensions for ACME (and TNAuthList identifiers), such as [Martini Security](https://www.martinisecurity.com/)  which are a built in CA, or you can manually add a new CA.
 
 ## Setup your ACME account and SPC token with the CA
 
-In Certify The Web:
+In *Certify Certificate Manager*:
 - For first use, register an ACME account (on a new install selecting New Certificate will also prompt you to do the same):
 	- Under Settings > Certificate Authorities, add an account for the CA (e.g. Martini Security (STIR/SHAKEN)).
         - Select *Add Account*

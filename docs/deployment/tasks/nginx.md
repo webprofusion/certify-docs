@@ -5,7 +5,7 @@ title: Deployment Task - Deploy to nginx
 
 The *Deploy to Nginx* task will export your certificate and the components you choose as a set of PEM format files.
 
-To use a certificate with your web server, the service you are targeting needs to know the certificate for your domain (**Leaf or End-Entity Certificate**), intermediate certificates from your CA (if any) and the **Private Key** that corresponds to the public key in the certificate. Certify The Web can produce the files you need but currently it does not automatically configure nginx to use them.
+To use a certificate with your web server, the service you are targeting needs to know the certificate for your domain (**Leaf or End-Entity Certificate**), intermediate certificates from your CA (if any) and the **Private Key** that corresponds to the public key in the certificate. The app can produce the files you need but currently it does not automatically configure nginx to use them.
 
 ## Task Parameters
 ### Authentication
@@ -35,4 +35,4 @@ In a typical nginx config you would only need to specify the **Full Chain** and 
 For your changes to take effect you will need to restart Nginx. You can do this by adding a *Stop, Start or Restart a Service" task after your *Deploy to nginx* task.
 
 ### CA Preferred Chain
-Some CAs offer alternative certificate chains for compatibility. Let's Encrypt offers both a *DST Root CA X3* chain (expired) and a newer *ISRG Root X1* chain. Certify The Web v6.x onwards defaults to the newer chain. If you need to use the older chain (e.g. for old Android compatibility) you can do so by setting the *Preferred Chain* option under *Certificate > Advanced > Certificate Authority - Preferred Chain* to *DST Root CA X3* and re-requesting your certificate.
+Some CAs offer alternative certificate chains for compatibility. Let's Encrypt offers both a *DST Root CA X3* chain (expired) and a newer *ISRG Root X1* chain. *Certify Certificate Manager* v6.x onwards defaults to the newer chain. If you need to use the older chain (e.g. for old Android compatibility) you can do so by setting the *Preferred Chain* option under *Certificate > Advanced > Certificate Authority - Preferred Chain* to *DST Root CA X3* and re-requesting your certificate.

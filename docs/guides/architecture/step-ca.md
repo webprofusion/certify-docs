@@ -1,9 +1,9 @@
 ---
 id: step-ca
-title: How to use a Step CA instances with Certify The Web
+title: How to use a Step CA instances with *Certify Certificate Manager*
 ---
 
-# How to use a Step CA instances with Certify The Web
+# How to use a Step CA instances with *Certify Certificate Manager*
 
 step-ca is a certificate authority product from smallstep which can be used to issue certificates internally within your organization. It is a good choice if you want to run your own certificate authority and have full control over the certificates you issue.
 

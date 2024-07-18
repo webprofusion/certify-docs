@@ -13,7 +13,7 @@ By default the background service runs a local http API server on port 9696 for 
 
 ## Custom configuration and Troubleshooting "..service not started" error
 
-The certify background service operates a local API for the app on port `9696` by default. If this port is in use by another application/service (or for some other reason it cannot create a binding to `127.0.0.2:9696` (localhost), or a security product is preventing **local** port access) then you will see the message 'Service not started'.
+The background service operates a local API for the app on port `9696` by default. If this port is in use by another application/service (or for some other reason it cannot create a binding to `127.0.0.2:9696` (localhost), or a security product is preventing **local** port access) then you will see the message 'Service not started'.
 
 - `servers.json` : This is the connection information used by the UI to connect to the background service.
 - `serviceconfig.json` : These are the service settings and includes the host/ip and port the service will listen on, so it needs to match the details in `servers.json`.
@@ -21,7 +21,7 @@ The certify background service operates a local API for the app on port `9696` b
 :::info
 If you are repeatedly seeing the "Service Not Started" error, first try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app and these config files will be recreated. This can help if automatic port negotiation has gotten out of sync.
 
-In some cases antivirus software products (such as *ClamWin*, *Watchguard Advanced EPDR*, *ESET*) have been known to prevent the Certify servicing installing properly or prevent some core features working like our temporary http challenge service listener.
+In some cases antivirus software products (such as *ClamWin*, *Watchguard Advanced EPDR*, *ESET*) have been known to prevent the Certify service installing properly or can prevent some core features working like our temporary http challenge service listener.
 :::
 
 If the default port 9696 is already in use however you can manually specify the settings required by editing/adding the file `c:\programdata\certify\serviceconfig.json` (and servers.json) with content as per the following (adjusted as required) then restarting both the service and UI:
@@ -120,7 +120,7 @@ net start http
 
 If the service remains at `STOPPING` or similar then a system reboot may be required.
 
-Once completed, restart the Certify background service from local services, then open the Certify The Web UI again to see if it can connect.
+Once completed, restart the Certify background service from local services, then open the Certify Certificate Manager UI again to see if it can connect.
 
 ## Managed Items Database
 

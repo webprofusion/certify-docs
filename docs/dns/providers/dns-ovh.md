@@ -10,9 +10,9 @@ To use the OVH DNS API, you need to create API keys on the OVH portal :
 - Go to the page [https://api.ovh.com/createToken/index.cgi?GET=/domain/zone*&PUT=/domain/zone*&POST=/domain/zone*&DELETE=/domain/zone*](https://api.ovh.com/createToken/index.cgi?GET=/domain/zone*&PUT=/domain/zone*&POST=/domain/zone*&DELETE=/domain/zone*)
 - Fill the fields :
   - **Account Id / password** : your OVH credentials (used to access the OVH web portal)
-  - **Script name** : as you want. Mine is "_DNS validation (for Let's encrypt) on SRV-01_" (because SRV-01 is the server where the credentials will be used)
-  - **Script description** : as you want. Mine is "_Used by local copy of 'Certify The Web' to perform DNS validation (which is required to request a wildcard certificate)._"
-  - **Validity** : set _Unlimited_ if you don't want to renew the credentials periodically. (On a test environments, set a short delay for security reasons)
+  - **Script name** : as you want. E.g. "_DNS validation (for Let's encrypt) on SRV-01_" (because SRV-01 is the server where the credentials will be used)
+  - **Script description** : as you want. E.g. "_Used by local copy of 'Certify The Web' to perform DNS validation (which is required to request a wildcard certificate)._"
+  - **Validity** : set _Unlimited_ if you don't want to renew the credentials periodically. (In a test environment, set a short validity for security reasons)
   - **Rights** : set `/domain/zone*` on `GET`, `POST`, `PUT`, `DELETE` to allow only access to the DNS API of OVH and no other service. Note : OVH API actions are listed [here](https://api.ovh.com/console/#/domain).
 
 <img alt="Filling the OVH form to create credentials" src="/assets/ovh-api-keys-creation-form.png" />

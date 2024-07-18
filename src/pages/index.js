@@ -28,7 +28,7 @@ function Home() {
   return (
     <Layout
       title={`Docs `}
-      description="Help to get started using Certify The Web">
+      description="Get started using Certify The Web">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>

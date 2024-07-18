@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Certify The Web Docs',
-  tagline: "The GUI for Let's Encrypt and ACME Certificate Management on Windows!",
+  tagline: "The worlds most popular solution for Let's Encrypt and ACME Certificate Management on Windows.",
   url: 'https://docs.certifytheweb.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',

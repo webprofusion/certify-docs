@@ -5,7 +5,7 @@ title: Licensing
 
 
 ## About Licensing
-Certify The Web *Certify Certificate Manager* is a commercial product. A free community edition is available for download and evaluation (limited to a few managed certificates). 
+Certify The Web *Certify Certificate Manager* is a commercial product. A free community edition is available for download and evaluation (limited to a few managed certificates).
 
 
 :::note
@@ -25,7 +25,7 @@ There are two main methods of licensing:
 *We do not offer special licensing terms for any type of organisation.*
 
 ## License Bundles
-For the Certify The Web app you can currently purchase the following license bundles:
+For the *Certify Certificate Manager* app you can currently purchase the following license bundles:
 
 | Type          | Renewal Frequency | Number of Installs| Price         | Bundle Saving |
 |---------------|-------------------|-------------------|---------------|--|
@@ -84,7 +84,7 @@ If you currently have a license key and want to renew your license at a lower ti
 To upgrade to a new license tier you can either purchase a new license key of the required type and move each install to the new key (About > Deactivate Install, then About > Enter Key..) or alternatively contact `support at certifytheweb.com` to discuss upgrade options for an existing license key.
 
 ## Company Information
-Certify The Web is a suite of products including the *Certify Certificate Manager* application and the *Certify DNS* service provided by **Webprofusion Pty Ltd (https://webprofusion.com)**.
+*Certify The Web* is a suite of products including the *Certify Certificate Manager* application and the *Certify DNS* service provided by **Webprofusion Pty Ltd (https://webprofusion.com)**.
 
 We are a small business based in Western Australia, established in 2017. If you need to add our vendor details to your system please use the following:
 

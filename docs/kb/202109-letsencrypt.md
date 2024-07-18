@@ -17,8 +17,8 @@ The root certificate issues an Intermediate certificate which in turn is used to
 
 :::
 
-:::success Lean More About Certify The Web
-Certify The Web is the most popular desktop UI for ACME certificate management and includes commercial support via email to our helpdesk. Find out more at  https://certifytheweb.com
+:::success Lean More About *Certify Certificate Manager*
+*Certify Certificate Manager* is the most popular desktop UI for ACME certificate management and includes commercial support via email to our helpdesk. Find out more at  https://certifytheweb.com
 
 The guidance in this article is aimed at all Windows users with Let's Encrypt related issues, for any ACME client.
 :::
@@ -31,7 +31,7 @@ The *DST Root CA X3* root certificate expired **September 30 14:01:15 2021 GMT**
 
 - In some cases, the expiry of the root (and its related expiring R3 intermediate certificate) may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
 - In other cases, the issue may be with the client computer.
-- Some Certify The Web renewals will fail with *too many certificates (5) already issued for this exact set of domains in the last 168 hours*. See solution below.
+- Some app renewals will fail with *too many certificates (5) already issued for this exact set of domains in the last 168 hours*. See solution below.
 - If you have clients complaining about some android devices not working with their websites, you may need to migrate to a different Certificate Authority (see below).
 
 :::warning CA Migration Recommended On Windows if you need to support old devices
@@ -43,14 +43,14 @@ This means Windows services like IIS generally will not continue to serve conten
 # Solutions
 
 ## Servers
-The following solutions mainly apply to Windows servers running IIS or other windows based services which use the windows trust store. Unless otherwise noted they are not specific to using Certify The Web. Apache, nginx etc have their own trust mechanisms :
+The following solutions mainly apply to Windows servers running IIS or other windows based services which use the windows trust store. Unless otherwise noted they are not specific to using *Certify Certificate Manager*. Apache, nginx etc have their own trust mechanisms :
 
-### Certify The Web renewal failures
-If you are using Certify The Web and see the error ** Error creating new order :: too many certificates (5) already issued for this exact set of domains in the last 168 hours** ensure you have installed the latest version of Certify The Web and wait 1 week for the error to clear. 
+### Certify The Web - *Certify Certificate Manager* renewal failures
+If you are using *Certify Certificate Manager* and see the error ** Error creating new order :: too many certificates (5) already issued for this exact set of domains in the last 168 hours** ensure you have installed the latest version of *Certify Certificate Manager* and wait 1 week for the error to clear.
 
 **As your server has repeatedly attempted to order a certificate and failed you will need to wait 1 week for the Let's Encrypt rate limit to reset for this certificate**, then renewals will automatically resume as normal, as long as you now have the ISRG Root X1 certificate installed. Root certificate updates are a normal part of automatic windows updates, so you should ideally review why your server is not receiving these.
 
-Alternatively you could change Certificate Authority if this is an urgent renewal, Certify The Web supports several public certificate authorities: https://docs.certifytheweb.com/docs/guides/certificate-authorities
+Alternatively you could change Certificate Authority if this is an urgent renewal, *Certify Certificate Manager* supports several public certificate authorities: https://docs.certifytheweb.com/docs/guides/certificate-authorities
 
 ### Servers with problems after expiry
 :::tip Check Your Chain
@@ -58,14 +58,14 @@ Alternatively you could change Certificate Authority if this is an urgent renewa
 
 2 - If your chain contains the expired R3 after it's expiry, reboot your server to clear cached chains.
 
-3 - If the chain issue persists, re-request your certificate in Certify The Web to force a binding refresh or choose `Certificate > Advanced > Actions > Re-apply Certificate To Bindings`.
+3 - If the chain issue persists, re-request your certificate in the app to force a binding refresh or choose `Certificate > Advanced > Actions > Re-apply Certificate To Bindings`.
 :::
 
 ### Server fixes and how to switch chain before (or after) expiry
 
 We recommend the following steps to initially correct your servers certificate chain:
 
-1. Install the latest version of *Certify The Web* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
+1. Install the latest version of *Certify Certificate Manager* from https://certifytheweb.com or use the in-app update process. Even if you are not using this app currently, the upgrade will automatically fix common trust store issues (and it can then be uninstalled if not being used).
 2. **Reboot your server** (this forces windows to re-evaluate the served certificate chains). You may be able to avoid this reboot by using `iisreset /restart` to just restart IIS.
 3. Check your certificate chain with a [chain checker](#chain-checking)
 4. In some cases you may need to refresh your IIS bindings, the easiest method is to click 'Request Certificate' to change certificate and update bindings.
@@ -80,10 +80,10 @@ This chain is supported by current operating systems
 This chain is ideal if you need broader compatibility with older operating systems, including Android 7.1 and lower. This chain is [difficult to support on Windows](#switching-to-chain-2-legacy)
 :::
 
-For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in Certify The Web will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
+For IIS etc, you can only serve one of these chains per Windows server (machine), not a combination per site etc. The default trust store maintenance in the app will provide the *modern* chain. If you need the legacy chain you may still need import the cross signed ISRG Root X1 (see *Switching to Chain 2*, below) unless it was already installed.
 
 :::danger If your chain is still: (your cert) > R3 > DST Root CA X3
-If you still see this old chain after the DST Root CA X3 expiry (after updating Certify The Web and after rebooting), then you need to resolve this urgently. At a minimum you must ensure ISRG Root X1 (Self signed) is installed under your machine Trusted Certification Authorities using certlm.msc and remove the R3 issued by DST Root CA X3 from Intermediate Certification Authorities. See the [further troubleshooting](#further-troubleshooting) section below.
+If you still see this old chain after the DST Root CA X3 expiry (after updating *Certify Certificate Manager* and after rebooting), then you need to resolve this urgently. At a minimum you must ensure ISRG Root X1 (Self signed) is installed under your machine Trusted Certification Authorities using certlm.msc and remove the R3 issued by DST Root CA X3 from Intermediate Certification Authorities. See the [further troubleshooting](#further-troubleshooting) section below.
 :::
 
 ### Switching to Chain 1 (modern)
@@ -145,7 +145,7 @@ Ensure that the HTTP settings for back-end hosts are updated with the latest Tru
 If you use Certify The Web to export certificates to pem files etc (for Apache or other servers), the chain you get in the export will correspond with the chain your server is currently building. The "Preferred Issuer" setting for the certificate authority will have *no effect*, because Windows is overriding the chain.
 
 ### Renewals fail if ISRG Root X1 not installed
-If your server does not have ISRG Root X1 installed, Certify The Web will fail to build your certificate when it renews. The certificate order with Let's Encrypt will succeed but the actual build and install of the PFX file will fail. **You must update Certify The Web to the latest version** or at least install the ISRG Root X1 certificate if your renewals are failing for this reason. Otherwise, you will hit the Let's Encrypt rate limit for duplicate certificate orders and your certificate will not fully renew.
+If your server does not have ISRG Root X1 installed, *Certify Certificate Manager* will fail to build your certificate when it renews. The certificate order with Let's Encrypt will succeed but the actual build and install of the PFX file will fail. **You must update to the latest version** or at least install the ISRG Root X1 certificate if your renewals are failing for this reason. Otherwise, you will hit the Let's Encrypt rate limit for duplicate certificate orders and your certificate will not fully renew.
 
 ## Further Troubleshooting
 

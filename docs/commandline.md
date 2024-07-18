@@ -88,6 +88,6 @@ The user agent returned should be `Certify/HttpChallengeServer`
 
 ### Managing license activation
 
-- `certify activate <email> <key>` : activate the license for this instance of Certify The Web. Useful for larger scale automated deployments.
+- `certify activate <email> <key>` : activate the license for this instance of *Certify Certificate Manager*. Useful for larger scale automated deployments.
 
-- `certify deactivate <email>` : deactivates the license for this instance of Certify The Web.
+- `certify deactivate <email>` : deactivates the license for this instance of *Certify Certificate Manager*.

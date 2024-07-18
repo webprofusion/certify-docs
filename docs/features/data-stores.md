@@ -3,7 +3,7 @@ id: data-stores
 title: Data Stores
 ---
 
-By default Certify The Web uses a set of SQLite file based databases to store configuration for managed certificates and stored credentials. SQLite is a good choice for most users as it is easy to setup and does not require any additional software to be installed. However, if you have a large number of managed certificates you may wish to use an alternative database such as Microsoft SQL Server or PostgreSQL in v6.0 onwards of the app.
+By default *Certify Certificate Manager* uses a set of SQLite file based databases to store configuration for managed certificates and stored credentials. SQLite is a good choice for most users as it is easy to setup and does not require any additional software to be installed. However, if you have a large number of managed certificates you may wish to use an alternative database such as Microsoft SQL Server or PostgreSQL in v6.0 onwards of the app.
 
 ## Supported databases
 For a database to be supported we need to supply a set of compatible data store providers and the choice of database server must support complex JSON data storage and querying. 
@@ -13,9 +13,9 @@ Currently supported database types include:
 - PostgreSQL (9.5+)
 - SQLite
 
-If you decide to use a database other than SQLite you will need to install the database server software and create a database for Certify The Web to use. **We do not provide support for database server installation or configuration**. You must ensure your database installation is backed up and maintained.
+If you decide to use a database other than SQLite you will need to install the database server software and create a database for the app to use. **We do not provide support for database server installation or configuration**. You must ensure your database installation is backed up and maintained.
 
-In all cases you need to setup the initial database schema, users and permissions. You will also need to maintain the necessary database schema updates as new versions of Certify The Web are released.
+In all cases you need to setup the initial database schema, users and permissions. You will also need to maintain the necessary database schema updates as new versions of the app are released.
 
 In all cases is you choose to use alternative data store we cannot provide support for any aspects of the database server installation or configuration or troubleshooting. You should only adopt database servers you are comfortable with and have the necessary skills to maintain.
 

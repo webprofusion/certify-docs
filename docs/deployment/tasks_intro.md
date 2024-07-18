@@ -3,12 +3,12 @@ id: tasks_intro
 title: Deployment Tasks
 ---
 
-**Deployment Tasks are a powerful new feature introduced in Certify The Web v5.x and above.**
+**Deployment Tasks are a powerful new feature introduced in *Certify Certificate Manager* v5.x and above.**
 Once you have a certificate issued by a certificate authority you can go ahead and use that certificate for it's intended purpose. This is generally anything that might require a valid verified domain (such as a webserver, mail server, ftp service, remote access etc).
 
 ![Startup UI](/assets/screens/DeploymentTasks.png)
 
-By default Certify The Web supports Auto deployment to the local machine certificate store and will auto configure/update https bindings in IIS on the local server.
+By default the app supports Auto deployment to the local machine certificate store and will auto configure/update https bindings in IIS on the local server.
 
 If you need to perform more custom steps using the certificate, or if you just want to perform certain workflows after the certificate has been renewed (such as a restarting a local or remote service), you can use _Deployment Tasks_.
 

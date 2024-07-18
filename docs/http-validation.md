@@ -14,7 +14,7 @@ If this step succeeds, you're all set to automatically complete HTTP validation 
 
 ### How Http Validation works
 
-With *Certify The Web*, we attempt to answer the http challenge using the built-in [Http Challenge Server](http-challenge-server.md) and as a fallback we use IIS (or whichever webserver is configured for port 80 http traffic, if any) by automatically detecting the website folder to write the challenge response file to, or by writing to the website path you provide in your configuration (for Apache etc).
+With *Certify Certificate Manager*, we attempt to answer the http challenge using the built-in [Http Challenge Server](http-challenge-server.md) and as a fallback we use IIS (or whichever webserver is configured for port 80 http traffic, if any) by automatically detecting the website folder to write the challenge response file to, or by writing to the website path you provide in your configuration (for Apache etc).
 
 On *IIS* this process presents a few challenges, which we attempt to fix automatically:
 

@@ -5,10 +5,10 @@ title: Frequently Asked Questions
 
 ## Introduction
 
-### What is Certify The Web?
-> Certify The Web is a GUI to manage, request and renew certificates from Let's Encrypt and other popular (or custom) certificate authorities who support the ACME (Automated Certificate Management Environment) standard. Automatic certificate management means that you no longer have to worry about certificates because they are being automatically managed in a reliable way. Deployment of certificates to the services that require them can also be extensively automated.
+### What is Certify The Web - *Certify Certificate Manager*?
+> *Certify Certificate Manager* is a GUI to manage, request and renew certificates from Let's Encrypt and other popular (or custom) certificate authorities who support the ACME (Automated Certificate Management Environment) standard. Automatic certificate management means that you no longer have to worry about certificates because they are being automatically managed in a reliable way. Deployment of certificates to the services that require them can also be extensively automated.
 
-Our aim is to ensure that the app is easy to use and that you get setup with your TLS/SSL certificates as quickly as possible. Unlike other more basic tools, if a problem develops that prevents your certificate renewing Certify The Web will let you know by sending you a notification via our API (with no additional configuration).
+Our aim is to ensure that the app is easy to use and that you get setup with your TLS/SSL certificates as quickly as possible. Unlike other more basic tools, if a problem develops that prevents your certificate renewing the app will let you know by sending you a notification via our API (with no additional configuration).
 
 Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve, check out our [support options](support.md).
 
@@ -20,7 +20,7 @@ Yes, full time [email support](support.md) is available for registered users who
 
 ## License Registration
 
-Certify The Web has a free Community Edition which is limited to 5 different managed certificates (with unlimited renewals) and is intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key to apply your license. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
+*Certify Certificate Manager* has a free Community Edition which is limited to 5 different managed certificates (with unlimited renewals) and is intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key to apply your license. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
 
 **If you are using this application within a business or funded organisation (beyond a temporary evaluation) you are required to purchase a license key.**
 
@@ -47,7 +47,7 @@ Blocking outgoing https connections is not compatible with this application, or 
 The app does not officially support proxied internet connections. Users have managed to use proxies successfully but it's the responsibility of the user to diagnose issues with outgoing https API calls when a proxy or firewall is in use.
 
 ### Do I Need to Keep the App Running?
-No, you can close then app UI when you don't need it. *Certify The Web* installs a background *Certify Certificate Manager* service which will run in the background and manage your certificates. **You can close the app and the service will continue to run.** The app is just used to manage and request new certificates. 
+No, you can close then app UI when you don't need it. *Certify Certificate Manager* installs a background *Certify Certificate Manager* service which will run in the background and manage your certificates. **You can close the app and the service will continue to run.** The app is just used to manage and request new certificates.
 
 ### "Service Not Started" message
 By default the background service runs an internal API bound to localhost and various conditions can cause conflicts or failures. Read more to find out how to [configure or troubleshoot the background service](backgroundservice.md). The service will auto-negotiate an available port to listen on.
@@ -87,7 +87,7 @@ Your server is not configured to support current TLS Cipher suites by default. T
 ### Where are log files kept?
 Each Managed Certificate has it's own log file which you can open using the View Log File option when viewing the details. By default, log files are kept at `%ProgramData%\Certify\logs`.
 
-### Where does Certify The Web store certificates?
+### Where does *Certify Certificate Manager* store certificates?
 Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro.md). For normal deployments the certificates are installed into the local machine certificate store under the My/Personal store.
 
 ### What is the PFX password?
@@ -100,7 +100,7 @@ Your settings are kept under `%ProgramData%\Certify` and you should consider bac
 No, you should close the app before updating and if the installer cannot stop the service for you then you should manually stop the service before updating. If you ignore the warning and continue the update you may end up with a broken installation. You can however fix a broken installation by installing the app again (settings will be preserved).
 
 ### Oops, I upgraded and lost my custom scripts
-All content under the applications program files folder is removed on upgrade, *do not store scripts there*. Instead, store your scripts in a dedicated folder such as C:\Scripts or together with the other Certify The Web settings as C:\ProgramData\Certify\Scripts (for example).
+All content under the applications program files folder is removed on upgrade, *do not store scripts there*. Instead, store your scripts in a dedicated folder such as C:\Scripts or together with the other *Certify Certificate Manager* settings as C:\ProgramData\Certify\Scripts (for example).
 
 ### My certificate is renewing OK but the IIS site bindings are not updated
 Check the *Preview* tab for your managed certificate and ensure that the *Deployment* section will specifically update the expected https bindings. If they are not shown here your https binding will *not* be updated. 
@@ -119,9 +119,7 @@ If Let's Encrypt think you haven't renewed a certificate they will let you know 
 ### When trying to use BuyPass Go (or other CA) I get the error "Failed to build certificate as PFX."
 Normally Certificate Authority root certificates are installed into Windows as part of windows updates but in some cases you may need to import the root certificate for a CA yourself. You should ensure that your servers are all receiving updates normally. See general instructions here:  http://woshub.com/updating-trusted-root-certificates-in-windows-10/
 
-For example, you can manually import the BuyPass root certificate by downloading it (Buypass Class 2 Root CA) from  https://www.buypass.com/security/buypass-root-certificates then importing it using the windows certificate UI (certlm.msc, import it into the Trusted Root Certification Authorities store).
-
-V5.5.4 onwards of the Certify The Web app performs basic trust store maintenance for known ACME certificate authorities.
+In general you should not see this issue with a current version of the app as known roots are no longer required for the PFX build process.
 
 ### My Let's Encrypt certificate chain is invalid after the "DST Root CA X3" expiry.
 See our [knowledge base article](./kb/202109-letsencrypt.md) for more details and solutions.

@@ -3,11 +3,11 @@ id: renewals
 title: Certificate Renewals
 ---
 
-All certificates have an expiry date, after which they cannot be used to secure communication. Certificates from Let's Encrypt expire after 90 days, so for that reason renewals need to happen often, and if there's going to be a problem with validation that will prevent the renewal, you need to know in advance of the certificate expiry.
+All certificates have an expiry date, after which they cannot be used to secure communication. Certificates from Let's Encrypt (our default CA) expire after 90 days, so for that reason renewals need to happen often, and if there's going to be a problem with validation that will prevent the renewal, you need to know in advance of the certificate expiry.
 
 **By default, Certify will attempt to auto-renew your certificates and tell you if something goes wrong**
 
-If the renewal process fails repeatedly, **it will try to notify you** via our API before certificate expiration becomes a problem, unless you have disabled the *Enable Status Reports to Dashboard* option under Settings. **Ensure that your 'Certificate Authority Account' under Settings > Certificate Authorities is set to a real, monitored, email address** preferably accessible by others if you are a group of site administrators. You do not need to configure anything else like SMTP relays etc. to use this feature, it's all automatic by default.
+The app includes a Certify background service which performs all the main function for managed certificates, so you don't need to leave the UI open for renewals etc to run. If the renewal process fails repeatedly, **it will try to notify you** via our API before certificate expiration becomes a problem, unless you have disabled the *Enable Status Reports to Dashboard* option under Settings. **Ensure that your 'Certificate Authority Account' under Settings > Certificate Authorities is set to a real, monitored, email address** preferably accessible by others if you are a group of site administrators. You do not need to configure anything else like SMTP relays etc. to use this feature, it's all automatic by default.
 
 In addition, as your certificate approaches expiration, the certificate authority (such as Let's Encrypt) will also email you. This can also happen if you have changed a certificate (for instance to add more domains to it) so you may get emails for expiring certificates you have since replaced.
 
@@ -19,3 +19,5 @@ You can optionally send a notification to the https://certifytheweb.com dashboar
 By default the app will remove certificates it has created (which have `[Certify]` in the 'friendly name') once they have been expired for over a month. This is to allow users who have manually allocated the certificate to other services to switch to the latest certificate before we delete the old one.
 
 If you are renewing certificates regularly this means you may notice your server stores several duplicate certificates with different expiration dates at any one time, but they will eventually be cleaned up automatically once the app is sure they have expired and are unlikely to be in continued use.
+
+You can change the certificate cleanup strategy based on your own preferences under Settings in the app. Note that cleaning up certificates too eagerly can limit your fallback options and we recommend the default settings.

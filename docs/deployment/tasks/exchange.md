@@ -5,7 +5,7 @@ title: Deployment Task - Deploy To Microsoft Exchange
 
 ## Requesting a certificate for Microsoft Exchange
 
-Certify The Web can be used to request and install certificates for use with Microsoft Exchange. The process is similar to requesting a certificate for IIS, however there are some additional considerations for Exchange. 
+*Certify Certificate Manager* can be used to request and install certificates for use with Microsoft Exchange. The process is similar to requesting a certificate for IIS, however there are some additional considerations for Exchange.
 
 The first part of the process is acquiring the appropriate certificate from a certificate authority (CA) and the second part is deploying the certificate on your Exchange services.
 
@@ -30,10 +30,10 @@ To request a certificate, you can follow the standard [certificate request proce
 
 As a summary that process is:
 
-In Certify The Web, running on the same server where Exchange is installed:
+In the app, running on the same server where Exchange is installed:
 - Select *New Certificate*
 - Add your required domains to your certificate, for instance `mail.contoso.com` and `autodiscover.example.com`
-- On the *Authorization* tab, confirm how you will complete the domain validation process (DNS or HTTP). Http validation is the default and is usually the easiest to complete. For http validation to work all names on your certificate must resolve to the server where you are running Certify The Web and TCP port 80 must be open.
+- On the *Authorization* tab, confirm how you will complete the domain validation process (DNS or HTTP). Http validation is the default and is usually the easiest to complete. For http validation to work all names on your certificate must resolve to the server where you are running *Certify Certificate Manager* and TCP port 80 must be open.
 - Click *Test* to check basic configuration and connectivity, then click "Request Certificate" to begin the certificate request process.
 - If your certificate request is successful the certificate will now be stored in the local machine certificate store and you can proceed to configuring Deployment Tasks to install the certificate on your Exchange server.
 
@@ -48,9 +48,9 @@ To begin on a new Exchange install, start by assigning the new certificate to se
 Open Exchange Admin Center (EAC). Select *servers* on the left pane and navigate to *certificates* to administer certificate for each service.
 :::
 
-The Certify The Web app provides a basic built in deployment task called "Deploy To Microsoft Exchange" which uses a small powershell script to apply the certificate. [The script used](https://github.com/webprofusion/certify-plugins/blob/development/src/DeploymentTasks/Core/Providers/Assets/Exchange.ps1) is also available in the Certify The Web source code repository.
+The *Certify Certificate Manager* app provides a basic built in deployment task called "Deploy To Microsoft Exchange" which uses a small powershell script to apply the certificate. [The script used](https://github.com/webprofusion/certify-plugins/blob/development/src/DeploymentTasks/Core/Providers/Assets/Exchange.ps1) is also available in the app source code repository.
 
-In Certify The Web, select your managed certificate:
+In *Certify Certificate Manager*, select your managed certificate:
 - On the *Tasks tab*, under *Deployment Tasks*, select Add Task > Deploy To Microsoft Exchange. 
 - Under *Task Parameters* the list of services the certificate will be applied to are listed e.g. `POP,IMAP,SMTP,IIS`. You can optionally edit this list to include only the services you require.
 - Save the updated managed certificates settings, then you can try out the Deployment Task by clicking the run button ▶️ next to the task.
@@ -67,7 +67,7 @@ Certificate can fail to renew for a number of reasons, including:
 
 **The app will recover from temporary issues automatically**, however if you have made changes to your infrastructure you may need to update your managed certificate settings to reflect the new configuration. You can force a certificate renewal attempt by selecting *Request Certificate*.
 
-By default, **if your certificate renewal fails repeatedly, you will receive an email notification**. This email is trigger by the default status reporting to our API, which in turn sends an email via SendGrid if multiple failures have been detected. The email address used is the one you specified when you first setup your CA account in the application (under Settings > Certificate Authorities). You can also check the Certify The Web app or the https://certifytheweb.com dashboard (if enabled) for the status of your managed certificates.
+By default, **if your certificate renewal fails repeatedly, you will receive an email notification**. This email is trigger by the default status reporting to our API, which in turn sends an email via SendGrid if multiple failures have been detected. The email address used is the one you specified when you first setup your CA account in the application (under Settings > Certificate Authorities). You can also check the *Certify Certificate Manager* app or the https://certifytheweb.com dashboard (if enabled) for the status of your managed certificates.
 
 If you don't understand why a renewal has suddenly failed it's best not to start changing settings if you are unsure, instead please [contact us for support](../../support.md) if you are a licensed user, or post a question on our [community forum](https://community.certifytheweb.com), ideally including your managed certificate log file, at the least we need your real domain name(s) in order to diagnose common renewal failures. 
 
@@ -77,7 +77,7 @@ Typical troubleshoot steps include checking your firewall (if using http validat
 Things to consider when administering certificates for exchange and IIS:
 
 ### Things to avoid
-- Never delete a certificate from the certificate store while it is still in use by a service, this will break the service and you will need to re-assign a new certificate to the service. Certify The Web will maintain it's own certificates in the store and by default will remove them when they are definitely no longer required.
+- Never delete a certificate from the certificate store while it is still in use by a service, this will break the service and you will need to re-assign a new certificate to the service. *Certify Certificate Manager* will maintain it's own certificates in the store and by default will remove them when they are definitely no longer required.
 - Never revoke a certificate unless the private key has been compromised. Revoking a certificate will break any services using that certificate and is almost never required.
 
 ### Only use valid fully qualified domain names (or valid wildcard names)
@@ -91,7 +91,7 @@ If you manually create an https "binding" (the configuration of an IP address or
 If you use a specific IP address in your binding you are constraining how the certificate can be applied to requests and you are also overriding other less specific bindings on the same IP address. This can cause [binding conflict problems](../../guides/ssl-windows.md) if you have multiple certificates on the same IP address.
 
 ## Alternative Tools
-Other ACME clients are available on Windows and in some cases administrators looking after Exchange may prefer to use a different client. Certify The Web has an extensive feature set aimed at managing a large number of certificates and it may be more than you really need for a single Exchange deployment. 
+Other ACME clients are available on Windows and in some cases administrators looking after Exchange may prefer to use a different client. *Certify Certificate Manager* has an extensive feature set aimed at managing a large number of certificates and it may be more than you really need for a single Exchange deployment.
 
 Some other clients to consider for very specific tasks include [Posh-ACME (PowerShell)](https://github.com/rmbolger/Posh-ACME) and [win-acme (WACS - command line)](https://github.com/win-acme/win-acme). Both of these are well maintained projects which we (Certify The Web) also sponsor on Github.
 
