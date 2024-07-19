@@ -364,11 +364,13 @@ C:\Windows\System32\inetsrv\appcmd.exe set config -section:system.applicationHos
 ```
 
 ## Running In-Process vs Launch New Process
-The Powershell deployment task can run in two modes on Windows: In-Process and as a New Process. This option mainly affects the process features when the background service is attempting to run the task as an impersonated user. In-Process has very limited user impersonation abilities, New Process has extended Impersonation capabilities but different limitations. 
+The Powershell deployment task can run in two modes on Windows: In-Process and as a New Process. This option mainly affects the process features when the background service is attempting to run the task.
 
-In all cases the background service will attempt to run your task as the user you specify in an impersonation context with a specific Windows *LogonType*: https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/reference-tools-logon-types - this affects things like reuse of credentials across network resources and the relevance varies greatly depending on what your script does and which other processes it calls into.
+For in-process the service will attempt to run your task as the user you specify in an impersonation context with a specific Windows *LogonType*: https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/reference-tools-logon-types - this affects things like reuse of credentials across network resources and the relevance varies greatly depending on what your script does and which other processes it calls into.
 
 In all case you will need to test to determine the best option for your specific script. It is not always possible to get a script to work under impersonation and in those cases you may need to write out the relevant certificate variables like the thumbprint or file path then perform operations separately using your own filewatcher process or a scheduled task elsewhere.
+
+Note that the *Launch New Process* option currently does not support impersonation and we aim to address this with new task runner functionality in the future.
 
 ## Troubleshooting
 
