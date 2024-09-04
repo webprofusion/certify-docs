@@ -36,17 +36,17 @@ For the *Certify Certificate Manager* app you can currently purchase the followi
 
 From 1st November 2023 we have moved to a 12 month renewal cycle for all license tiers and revised pricing, this will apply to new licenses, **existing renewals will remain on the previous pricing/terms until after 1st Nov 2025**. Pricing for Power Pro and Enterprise tiers last revised 1st February 2024.
 
-These give you 1 license key (per bundle purchased) which can be used up to the given number of installs.
+- These give you 1 license key (per bundle purchased) which can be used up to the given number of installs.
 
-License tier names are an arbitrary label and are not related to the size/nature of your organisation, they are just our name for the license bundle.
+- License tier names are an arbitrary label and are not related to the size/nature of your organisation, they are just our name for the license bundle.
 
-These license bundles can be purchased using a credit card (via Stripe) or via PayPal. 
+- These license bundles can be purchased using a credit card (via Stripe) or via PayPal. 
 
-**Proforma Invoicing, reseller accounts etc are not generally supported due to the manual processing involved. See Cloud Licensing instead or you can also get a link to send to someone else to complete payment on behalf of your account.**
+- **POs/Proforma Invoicing etc are not supported due to the manual processing involved. See Cloud Licensing instead or you can also get a link to send to someone else to complete payment on behalf of your account.**
 
-If you specifically need to purchase through a reseller please contact https://shi.com with your enquiry. This is generally only available for Power Pro and Enterprise tiers.
+- If you specifically need to purchase through a reseller please provide your preferred reseller a link to this page with your enquiry. See *Licensing through Resellers* below.
 
-Notifications are sent when your license key is about to expire. To stop receiving notifications about an expiring or expired license key, sign into your certifytheweb.com profile and choose `Cancel Now` from the License keys tab.
+- Notifications are sent when your license key is about to expire. To stop receiving notifications about an expiring or expired license key, sign into your certifytheweb.com profile and choose `Cancel Now` from the License keys tab.
 
 ## Cloud Managed Licenses
 An alternative to purchasing a license bundle is to have a flexible license that's managed via a cloud subscription. 
@@ -82,6 +82,15 @@ If you are using a license bundle, you can downgrade your license bundle through
 If you currently have a license key and want to renew your license at a lower tier, you can choose the `Downgrade Now` option. 
 
 To upgrade to a new license tier you can either purchase a new license key of the required type and move each install to the new key (About > Deactivate Install, then About > Enter Key..) or alternatively contact `support at certifytheweb.com` to discuss upgrade options for an existing license key.
+
+## Licensing through Resellers etc
+Any organization can purchase a license then assign it to another account while retaining control of the license key renewal. You do not need to contact us to ask to become a reseller. To get started, sign into https://dash.certifytheweb.com and purchase the license type you require, then select *Assign License* and enter the email address of the organization. They will then be sent an invite link to accept the assigned license and they will not see the original invoice.
+
+Note to all resellers: We *do not* offer discounted pricing for resellers, you are welcome to apply whatever pricing markup your service normally incurs but this is between you and your customer. We only offer electronic license purchases via our https://dash.certifytheweb.com and we do not accept POs or other manual invoicing. If you absolutely require information (forms etc) not listed on this page then we most likely do not provide it and your customer is welcome to engage with us directly.
+
+**Guidance for customers with reseller assigned licenses:**
+- Your license assignment link will be emailed to you. Follow the instructions to sign in (or create an account) on https://dash.certifytheweb.com and follow the "accept the license assigment" link in your email. 
+- Once accepted, the new license will appear on your License Keys page.
 
 ## Company Information
 *Certify The Web* is a suite of products including the *Certify Certificate Manager* application and the *Certify DNS* service provided by **Webprofusion Pty Ltd (https://webprofusion.com)**.
