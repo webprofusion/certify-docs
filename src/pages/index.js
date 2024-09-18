@@ -39,7 +39,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/intro')}>
+              to={useBaseUrl('docs/')}>
               Get Started
             </Link>
             <p>Note: You should use a modern web browser to read this documentation. Internet Explorer is not supported.</p>
@@ -48,7 +48,7 @@ function Home() {
       </header>
       <main>
 
-   <Redirect to="/docs/intro" />
+   <Redirect to="/docs/" />
 
       </main>
     </Layout>

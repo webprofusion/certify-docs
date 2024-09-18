@@ -37,3 +37,20 @@
   box-shadow: #2b7d3252 0px 1px 6px 2px;
 }
 
+.markdown .diagram img {
+  box-shadow: none;
+}
+
+.markdown .img-left {
+ float:left;
+ margin-right:2em;
+}
+
+.markdown .img-right {
+  float:right;
+  margin-right:2em;
+ }
+
+ .markdown .clear-float {
+  clear:both;
+ }

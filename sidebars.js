@@ -1,4 +1,6 @@
-const sidebars = {
+
+export default {
+
   docSiderbar: [
     {
       type: 'category',
@@ -80,4 +82,3 @@ const sidebars = {
   ]
 };
 
-module.exports = sidebars;

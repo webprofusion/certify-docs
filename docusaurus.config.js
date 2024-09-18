@@ -20,8 +20,9 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        { to: 'docs/intro', label: 'Getting Started', position: 'left' },
-        { to: 'docs/faq', label: 'FAQ', position: 'left' },
+        { to: 'docs/intro', label: 'Certify Certificate Manager', position: 'left' },
+        { to: 'docs/dashboard/', label: 'Certify Dashboard', position: 'left' },
+        { to: 'docs/dns/providers/certifydns/', label: 'Certify DNS', position: 'left' },
         { to: 'docs/support', label: 'Support', position: 'left' },
         {
           href: 'https://community.certifytheweb.com',
@@ -42,16 +43,16 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Getting Started',
+              label: 'Certify Certificate Manager',
               to: 'docs/intro',
             },
             {
-              label: 'Requesting a Certificate',
-              to: 'docs/certificate-process',
+              label: 'Certify Dashboard',
+              to: 'docs/dashboard',
             },
             {
-              label: 'FAQ',
-              to: 'docs/faq',
+              label: 'Certify DNS',
+              to: 'docs/dns/providers/certifydns',
             },
             {
               label: 'Support',
@@ -84,8 +85,8 @@ module.exports = {
               href: 'https://github.com/webprofusion/certify',
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/certifytheweb',
+              label: 'X.com',
+              href: 'https://x.com/certifytheweb',
             },
           ],
         },
