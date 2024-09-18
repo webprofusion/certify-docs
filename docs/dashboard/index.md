@@ -2,7 +2,7 @@
 title: Using Certify Dashboard
 ---
 
-*Certify Dashboard* is our hosted service for monitoring certificate renewals. You can report to the dashboard using [Certify Certificate Manager](intro), or by using our dashboard agent tool with supported ACME tools like [Certbot](configuration) and [acme.sh](configuration).
+*Certify Dashboard* is our hosted service for monitoring certificate renewals. You can report to the dashboard using [Certify Certificate Manager](/docs/intro), or by using our dashboard agent tool with supported ACME tools like *Certbot* and *acme.sh*.
 
 ![Dashboard](/assets/screens/dashboard/dashboard_example.png)
 
