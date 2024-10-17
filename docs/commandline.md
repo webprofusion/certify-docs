@@ -73,6 +73,14 @@ To generate a template:
 :::
 
 
+### Stored Credentials
+For advanced automation scenarios you can add/update stored credentials or list your existing items:
+
+- `certify credential store <unique storage key GUID> "<title>" "<type id>" "<secret>"` : for advanced automation use. Stores or updates a stored credential.
+
+- `certify credential list` : list current stored credential summary information. This does not show secret values.
+
+Note that when storing credentials information such as the Type ID and JSON format for the secrets will vary by credential type and are not arbitrary. Contact support to discuss your requirements.
 
 ### Diagnostics
 
