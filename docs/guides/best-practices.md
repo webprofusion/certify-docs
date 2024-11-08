@@ -88,7 +88,7 @@ Whether you are using a custom built website or a content management system (wor
 ## Protocols and Cipher Suites
 
 ### TLS Protocols 
-A *protocol* (such as TLS 1.1 or TLS 1.2) is a standard for the secured communication used during https requests to your server. Your server supports various protocols which may or may not be enabled and these will vary depending on your version of Windows, they will also vary depending on whether a request is being made to your server, or whether you server is making an outgoing request to something else. 
+A *protocol* (such as TLS 1.2 or TLS 1.3) is a standard for the secured communication used during https requests to your server. Your server supports various protocols which may or may not be enabled and these will vary depending on your version of Windows, they will also vary depending on whether a request is being made to your server, or whether you server is making an outgoing request to something else. 
 
 Older protocols such as TLS 1.0 and TLS 1.1 are commonly disabled in modern configurations due to various security issues found in older versions, you may however still need to support them for old software accessing your site (this is up to you). 
 
