@@ -75,7 +75,9 @@ Finally, you can request your certificate which will automatically:
 
 ### 6. Automatic Renewal
 
-By default, [automatic renewal](renewals.md) will take place 30 days after your most recent successful request (per managed certificate). The frequency of renewals (in Days) is set under Settings and once you are comfortable that renewals are happening automatically as expected you should raise to 60 days (for example) to reduce traffic against the certificate authority. The *Certify* background service performs renewal maintenance tasks every 60 minutes and also performs daily tasks such as certificate store maintenance.
+By default, [automatic renewal](renewals.md) will take place after 75% of your certificate lifetime has passed. The frequency of renewals (in Days) is configurable under Settings.
 
-By default, if a certificate fails to renew (because of a configuration change or a problem with the certificate authority etc) then the renewal will be attempted again later. If the certificate renewal continues to fail then a status report will be sent to the certifytheweb.com API and you will then receive an email notification alerting you to the failure. The app uses the email address specified under Settings > Certificate Authorities > Accounts for this.
+The *Certify* background service checks for pending renewal maintenance tasks every 5 minutes and also performs daily tasks such as certificate store maintenance.
+
+By default, if a certificate fails to renew (because of a configuration change or a problem with the certificate authority etc) then the renewal will be attempted again later. If the certificate renewal continues to fail then a status report will be sent to the certifytheweb.com API and you will then receive an email notification alerting you to the failure. The app uses the email address specified under *Settings > Certificate Authorities > Accounts* for this.
 

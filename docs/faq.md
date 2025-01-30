@@ -12,15 +12,16 @@ Our aim is to ensure that the app is easy to use and that you get setup with you
 
 Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve, check out our [support options](support.md).
 
-
 ### Is this application commercially supported?
-Yes, full time [email support](support.md) is available for registered users who have purchased a license key (or those who are evaluating the software) for the Professional or Enterprise editions https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support.md). 
+Yes, full time [email support](support.md) is available for registered users who have purchased a license key (or those who are evaluating the software) via  https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates office-hours, weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support.md). 
 
-*You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported.* 
+*You are encouraged to test out the software yourself as an evaluation before purchasing, as not all usage scenarios will be supported.* 
 
 ## License Registration
 
-*Certify Certificate Manager* has a free Community Edition which is limited to 5 different managed certificates (with unlimited renewals) and is intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. To activate your license key open the app and navigate to the About tab, then click Enter Key to apply your license. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab.
+*Certify Certificate Manager* has a free Community Edition which is limited to 5 different managed certificates (with unlimited renewals) and is intended for evaluation only. This limit may vary across updates and is designed to provide a free way for individuals and hobbyists to use the app and for commercial evaluation and testing. You can upgrade to licensed version (which includes access to the support helpdesk email) at https://certifytheweb.com/register - you will then receive a license key. 
+
+To activate your license key open the app and navigate to the *About* tab, then click *Enter Key* to apply your license. To transfer to a new license key use *About > Deactivate Install*, then *About > Enter Key* to apply the new key. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab. 
 
 **If you are using this application within a business or funded organisation (beyond a temporary evaluation) you are required to purchase a license key.**
 
@@ -50,37 +51,31 @@ The app does not officially support proxied internet connections. Users have man
 No, you can close then app UI when you don't need it. *Certify Certificate Manager* installs a background *Certify Certificate Manager* service which will run in the background and manage your certificates. **You can close the app and the service will continue to run.** The app is just used to manage and request new certificates.
 
 ### "Service Not Started" message
-By default the background service runs an internal API bound to localhost and various conditions can cause conflicts or failures. Read more to find out how to [configure or troubleshoot the background service](backgroundservice.md). The service will auto-negotiate an available port to listen on.
+By default the background service runs an internal API bound to localhost and various conditions can cause conflicts or failures. Read more to find out how to [configure or troubleshoot the background service](backgroundservice.md). 
 
 ### I get an error when trying to request my certificate
 Read the error carefully and check the log for your managed site. Assuming your server has direct access to the internet without a proxy (required), you can use the 'Test' option to see if there are any problems the app can diagnose. Alternatively you can also try using the awesome [Let's Debug](https://letsdebug.net) service.
 
+The most common problem people encounter is they are using the default HTTP domain validation method, which checks your domain using a specific HTTP (TCP port 80) request to /.well-known/acme-challenge. If you block incoming http or block geographically (or by IP range) you may be blocking the CA when they try to check your domain.
+
 ### How do I know which bindings will be updated when my certificate next auto-renews?
 Check the *Preview* tab of your managed certificate, scroll down to the bottom Deployment section and review the bindings which will be updated when the next renewal occurs.
 
-### I have one or more IP specific bindings on the same IIS server, how do I manage these?
+### IIS is serving the wrong certificate from another site
 
-**Do not use IP specific bindings unless you have a specific requirement for them.** 
+**Do not use IP specific bindings unless you have a specific requirement for them. They take priority over all other bindings using the same IP:port** 
 
-If someone else configured existing IP specific bindings *determine if they are absolutely necessary for your requirements*. 
+IP specific bindings (one IP per cert, assigned to port 443) were historically required before SNI (Server Name Indication) was available. SNI has been present in Windows since Windows Server 2012. If someone else configured existing IP specific bindings *determine if they are absolutely necessary for your requirements*. 
 
-On Windows, if you specify a certificate binding to an IP address then that IP is bound only to that certificate (per port, usually 443 for https) and this binding will take precedence over any other less specific bindings. 
+If you are using IP specific bindings because that's how you've always done it, it's time to stop. On Windows, if you specify a certificate binding to an IP address then that IP is bound only to that certificate (per port, usually 443 for https) and this binding will take precedence over any other less specific bindings. 
 
-The default setting for bindings created by the app is to use IP 'All Unassigned' and enable SNI (Server Name Indication), this is ideal for many sites.
-
-If you require IP specific bindings (to support legacy non-SNI capable clients etc) the recommended approach is to run your first certificate request with Deployment set to 'Certificate Store'. You can then manually setup the https binding in IIS against the website, then set Deployment back to Auto and look at the Preview tab to ensure the next update will apply the binding update you expect. 
-
-### My existing wildcard certificate is showing up instead of a Let's Encrypt certificate
-Check the existing bindings you have on your sites. If you are binding to a specific (shared) IP address with a wildcard cert as your default fallback for https requests it will take precedence over other bindings on the same server on the same IP address (even if they are using SNI etc).
-
-### The wrong SSL certificate is suddenly being served, making my site inaccessible
-As above, one or more of your sites likely has an IP specific https binding.
+The default setting for bindings created by the app is to set IP to 'All Unassigned', set the hostname and enable SNI (Server Name Indication), this is ideal for many sites. See [Using Certificates in Windows](guides/ssl-windows.md).
 
 ### The browser says my certificate is OK but my site has some insecure content
 Your site is still referencing some content as `http` instead of `https` - you can view these requests in the browser developer tools. You need to update your website or content management system to use https urls.
 
 ### The browser says `This site can’t provide a secure connection`
-Your server is not configured to support current TLS Cipher suites by default. This requires registry changes on your server. A great tool to apply best practice configuration on Windows is IISCrypto by Nartac <a href="https://www.nartac.com/Products/IISCrypto">https://www.nartac.com/Products/IISCrypto</a>
+Your server is not configured to support current TLS Cipher suites by default. This requires registry changes on your server. A great tool to apply best practice configuration on Windows is IISCrypto by Nartac https://www.nartac.com/Products/IISCrypto
 
 ## Maintenance
 
@@ -91,7 +86,7 @@ Each Managed Certificate has it's own log file which you can open using the View
 Certificate assets are stored under `%ProgramData%\Certify\assets`. You should normally permission this location so that only administrators and Local System can access it. Certificate files names are random after each renewal and to use a certificate file directly you should instead use a [Deployment Task](deployment/tasks_intro.md). For normal deployments the certificates are installed into the local machine certificate store under the My/Personal store.
 
 ### What is the PFX password?
-The default PFX password is blank ("") but is configurable under Certificate > Advanced > Signing and Security. You can centrally manage this password so if many certs use the same password you don't have to edit each one individually.
+The default PFX password is blank ("") but is configurable under *Certificate > Advanced > Signing and Security*. You can centrally manage this password so if many certs use the same password you don't have to edit each one individually.
 
 ### If I upgrade or re-install will I lose my settings and certificates?
 Your settings are kept under `%ProgramData%\Certify` and you should consider backing up this location regularly. Settings are preserved and upgraded when new versions are installed. Settings are *not* removed if you Uninstall the app. **Do not store custom scripts under the %ProgramFiles%\CertifyTheWeb folder as these will deleted on upgrade.**
@@ -110,16 +105,13 @@ The most common reason for this is when the Deployment mode is set to *Single Si
 ### The certificate is renewing automatically but the browser is seeing an expired certificate
 Check the 'Preview' tab in the app for your site to ensure the https binding of your site is targeted for updates. Ensure you only have one https binding in IIS which will respond to https requests. Also investigate if you have any IP specific bindings (as above).
 
-### I have 2 servers running the app.  Can the contact email can be the same on both?
-*Yes, the contact email can be the same on all servers, or you can vary it as required.* There is only one contact per server. The contact email used at the time of requesting a certificate remains fixed until that certificate expires. The email address is generally used by Let's Encrypt to warn you of expiring certificates you have not yet renewed. 
+### I have 2 servers running the app. Can the contact email can be the same on both?
+*Yes, the contact email can be the same on all servers, or you can vary it as required.* The contact email used at the time of requesting a certificate remains fixed until that certificate expires. The email address may also be used by your choice of CA to warn you of service changes or expiring certificates you have not yet renewed. 
 
-### I have an email from Let's Encrypt Expiry Bot saying my certificate is about to expire
-If Let's Encrypt think you haven't renewed a certificate they will let you know using the email address registered as a contact when you installed the app. If your receive an expiry warning, check your certificate is renewing OK. If it all looks good you probably changed the list of domains in your certificate at some point (perhaps adding www. or adding/removing domains) and LE is reminding you about the old version of your certificate, so you can ignore the notification.
+### I have an email from the CA saying my certificate is about to expire
+If your CA thinks you haven't renewed a certificate they will let you know using the email address registered as a contact when you installed the app. If you receive an expiry warning, check your certificate is renewing OK. If it all looks good you probably changed the list of domains in your certificate at some point (perhaps adding www. or adding/removing domains) and the CA is reminding you about the old version of your certificate, so you can ignore the notification.
 
 ### When trying to use BuyPass Go (or other CA) I get the error "Failed to build certificate as PFX."
 Normally Certificate Authority root certificates are installed into Windows as part of windows updates but in some cases you may need to import the root certificate for a CA yourself. You should ensure that your servers are all receiving updates normally. See general instructions here:  http://woshub.com/updating-trusted-root-certificates-in-windows-10/
 
 In general you should not see this issue with a current version of the app as known roots are no longer required for the PFX build process.
-
-### My Let's Encrypt certificate chain is invalid after the "DST Root CA X3" expiry.
-See our [knowledge base article](./kb/202109-letsencrypt.md) for more details and solutions.
