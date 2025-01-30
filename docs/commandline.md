@@ -80,7 +80,7 @@ For advanced automation scenarios you can add/update stored credentials or list 
 
 - `certify credential list` : list current stored credential summary information. This does not show secret values.
 
-Note that when storing credentials information such as the Type ID and JSON format for the secrets will vary by credential type and are not arbitrary. Contact support to discuss your requirements.
+Note that when storing credentials information such as the Type ID and JSON format for the secrets will vary by credential type and are not arbitrary. [See an export](https://github.com/webprofusion/certify-plugins/blob/development/src/DeploymentTasks/Examples/Misc/storedcredential-definitions.txt) of the current list on github or contact support to discuss your requirements.
 
 ### Diagnostics
 
