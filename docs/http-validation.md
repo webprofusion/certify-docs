@@ -1,6 +1,6 @@
 ---
 id: http-validation
-title: HTTP Validation (http-01)
+title: HTTP Domain Validation (http-01)
 ---
 ## Why use HTTP Validation?
 To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt support two methods of validation to prove control of your domain, `http-01` (validation over HTTP) and `dns-01` ([validation via DNS](dns/validation.md)). Wildcard domain certificates (those covering `*.yourdomain.com`) can only be requested using DNS validation.

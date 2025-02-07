@@ -6,35 +6,40 @@ export default {
       type: 'category',
       label: 'Introduction',
       items: [
-        "intro",
-        "guides/installation",
-        "certificate-process",
-        "renewals"
+        'intro',
+        'guides/installation',
+        'certificate-process',
+        'renewals'
       ]
     },
     {
       type: 'category',
       label: 'Guides',
       items: [
-       
         {
           type: 'category',
           collapsible: true,
+          collapsed: true,
           label: 'Background Information',
           items: [
-            "guides/certificate-authorities",
-            "guides/certificates",
-            "http-validation",
-            "dns/validation"
+            'guides/certificates',
+            'guides/certificate-authorities',
+            'http-validation',
+            'dns/validation',
+            'guides/best-practices',
+            'backgroundservice',
+            'guides/ssl-windows',
+            'guides/troubleshooting'
           ],
         },
         {
           type: 'category',
           collapsible: true,
+          collapsed: true,
           label: 'Advanced Deployment',
           items: [
-            "deployment/tasks_intro",
-            "script-hooks",
+            'deployment/tasks_intro',
+            'script-hooks',
             {
               type: 'doc',
               id: 'guides/apache-nginx', 
@@ -48,11 +53,12 @@ export default {
         {
           type: 'category',
           collapsible: true,
+          collapsed: true,
           label: 'Other Advanced Options',
           items: [
-            "features/certificate-advanced",
-            "commandline",
-            "csv-import",
+            'features/certificate-advanced',
+            'commandline',
+            'csv-import',
             'features/stir-shaken'
         ]
         },
@@ -60,22 +66,11 @@ export default {
     },
     {
       type: 'category',
-      label: 'Useful Info',
-      items: [
-        "guides/best-practices",
-        "guides/ssl-windows",
-        "backgroundservice",
-        'guides/troubleshooting'
-
-      ]
-    },
-    {
-      type: 'category',
       label: 'Support',
       items: [
-        "guides/licensing",
-        "faq",
-        "support"
+        'guides/licensing',
+        'faq',
+        'support'
 
       ]
     }

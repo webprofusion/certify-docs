@@ -31,6 +31,8 @@ The app runs in Community Edition mode by default, see [Licensing](licensing.md)
 
 By default the app will check for updates when you open the UI. If you do not regularly open the UI, it's worth checking for updates periodically. Some updates are critical to ensure continuous operation, and only the latest version is supported.
 
+To upgrade manually you can download the latest version and install it. You don't normally need to uninstall first etc.
+
 The latest release notes for the app can be found at https://certifytheweb.com/home/changelog
 
 ### Settings are preserved between installs/upgrades
