@@ -23,10 +23,12 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
+
         { to: 'docs/intro', label: 'Certify Certificate Manager', position: 'left' },
         { to: 'docs/dashboard/', label: 'Certify Dashboard', position: 'left' },
         { to: 'docs/dns/providers/certifydns/', label: 'Certify DNS', position: 'left' },
         { to: 'docs/support', label: 'Support', position: 'left' },
+        { to: 'blog', label: 'Blog', position: 'right' },
         {
           href: 'https://community.certifytheweb.com',
           label: 'Community',
