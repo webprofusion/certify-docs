@@ -11,9 +11,29 @@ Managing SSL/TLS certificates can be a daunting task, especially when dealing wi
 
 Recently Let's Encrypt in particular have announced they will no longer send expiry notification emails, leaving end-users wondering how best to keep track.
 
-In this article, we will explore various options for certificate renewal monitoring tools, including RedSift and Certify Dashboard, and how they compare.
+In this article, we will explore various options for certificate renewal monitoring tools, including UptimeRobot, RedSift and Certify Dashboard, and how they compare.
 
 <!-- truncate -->
+
+## UptimeRobot
+
+### Overview
+UptimeRobot is a popular monitoring service that offers SSL/TLS certificate monitoring as part of its suite of tools. It helps ensure that your certificates are always valid and alerts you to any issues that may arise.
+
+### Key Features
+- **SSL Monitoring**: Continuously monitors your SSL/TLS certificates and notifies you of any upcoming expirations.
+- **Uptime Monitoring**: In addition to certificate monitoring, UptimeRobot also monitors the uptime of your websites and services.
+- **Customizable Alerts**: Set up customizable alerts to receive notifications via email, SMS, or other channels.
+- **Dashboard**: Provides a user-friendly dashboard to view the status of your certificates and other monitored services.
+
+#### Pros
+- Easy to set up and use.
+- Comprehensive monitoring for both SSL certificates and service uptime.
+- Customizable alert options.
+
+#### Cons
+- Limited to monitoring certificate expiration, does not track renewal attempts.
+- Some advanced features may require a paid subscription.
 
 ## RedSift
 
@@ -26,12 +46,12 @@ RedSift is a cybersecurity platform that offers a range of tools for managing an
 - **Integration**: Integrates with various platforms and services to provide a seamless monitoring experience.
 - **Security Alerts**: Notifies you of any security issues related to your certificates, such as weak encryption or misconfigurations.
 
-### Pros
+#### Pros
 - Comprehensive monitoring and reporting features.
 - Integration with multiple platforms.
 - Security alerts for potential issues.
 
-### Cons
+#### Cons
 - May require a learning curve to fully utilize all features.
 - Pricing may be a consideration for smaller organizations.
 - Only tracks certificate issuance, not ACME client renewal attempts.
@@ -50,31 +70,28 @@ Certify Dashboard is unique in that it is not a Certificate Transparency Log mon
 - **Integration with ACME Clients**: Works with popular ACME clients like Certbot and acme.sh, making it easy to incorporate into your existing workflow.
 - **Secure and Reliable**: Uses industry-standard encryption and security practices to protect your certificates and data.
 
-### Pros
+#### Pros
 - User-friendly interface for managing certificates.
 - Seamless integration with Certify Certificate Manager and other ACME clients.
 - Automated tracking and reporting of certificate renewal attempts.
 
-### Cons
+#### Cons
 - Limited to environments that support ACME clients.
 - Some advanced features may require a paid license.
 
 ## Comparison
 
 ### Ease of Use
-Certify Dashboard offers a user-friendly interface that simplifies the process of managing and monitoring certificates. RedSift, while comprehensive, may require a learning curve to fully utilize all its features.
+Certify Dashboard offers a user-friendly interface that simplifies the process of managing and monitoring certificate renewals. RedSift and UptimeRobot, while comprehensive, don't offer monitoring of renewal attempts by ACME clients.
 
 ### Integration
-Both RedSift and Certify Dashboard offer integration with various platforms and services. However, Certify Dashboard's seamless integration with Certify Certificate Manager and other ACME clients makes it a more straightforward choice for users already utilizing these tools.
+All the monitoring solutions offer integration with various platforms and services. However, Certify Dashboard's seamless integration with Certify Certificate Manager and other ACME clients provides a unique approach to direct integration into the automated certificate management lifecycle.
 
 ### Reporting and Alerts
-Both tools provide detailed reporting and alerts for upcoming certificate expirations. RedSift also offers security alerts for potential issues, which can be a valuable feature for organizations concerned about certificate-related security risks.
-
-### Pricing
-Pricing can be a consideration for smaller organizations. Certify Dashboard will offer a free tier for managing up to 250 certificates, making it an attractive option for smaller setups. RedSift's pricing may be higher, but it offers a broader range of cybersecurity tools beyond certificate monitoring.
+All tools provide detailed reporting and alerts for upcoming certificate expirations. RedSift and UptimeRobot also offer security alerts for potential issues, which can be a valuable feature for organizations concerned about certificate-related security risks.
 
 ## Conclusion
 
-Both RedSift and Certify Dashboard provide robust solutions for monitoring SSL/TLS certificate renewals. The choice between them will depend on your specific needs and existing infrastructure. Certify Dashboard is an excellent choice for users looking for a straightforward, integrated solution with Certify Certificate Manager and other ACME clients. RedSift, on the other hand, offers a more comprehensive cybersecurity platform with additional features and integrations.
+UptimeRobot, RedSift and Certify Dashboard provide different solutions for monitoring SSL/TLS certificate renewals. The choice between them will depend on your specific needs and existing infrastructure. Certify Dashboard is an excellent choice for users looking for a straightforward, integrated solution with Certify Certificate Manager and other ACME clients. UptimeRobot and RedSift, on the other hand, offer a more comprehensive cybersecurity platform with additional features and integrations.
 
-We encourage you to explore both options and choose the one that best fits your requirements. Ensuring timely certificate renewals is crucial for maintaining the security and trustworthiness of your websites and services.
+We encourage you to explore these options and choose the one that best fits your requirements. Ensuring timely and reliable certificate renewals is crucial for maintaining the security, availability and trustworthiness of your websites and services.

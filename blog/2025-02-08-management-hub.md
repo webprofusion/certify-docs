@@ -8,7 +8,7 @@ image: https://certifytheweb.com/images/management/summary.png
 hide_table_of_contents: false
 ---
 
-We are excited to introduce our upcoming tool designed to simplify and streamline your certificate management process. **Certify Management Hub** is a centralized platform that allows you to manage all your SSL/TLS certificates from a single interface. Whether you are handling certificates for a small business or a large enterprise, the Management Hub provides the tools you need to ensure your certificates are always up-to-date.
+We are excited to introduce our upcoming tool designed to simplify and streamline your certificate management process. **Certify Management Hub** is a centralized UI and API that allows you to manage all your SSL/TLS certificates from a single interface, making centralized renewal optional. Whether you are handling certificates for a small business or a large enterprise, the Management Hub provides the tools you need to ensure your certificates are always up-to-date.
 
 ![Certify Management Hub](https://certifytheweb.com/images/management/summary.png)
 
@@ -21,10 +21,10 @@ Certify Management Hub provides a single view of all of your managed certificate
 ## Key Features
 
 ### Centralized Management
-With the Certify Management Hub, you can view and manage all your certificates in one place. This eliminates the need to log into multiple systems and simplifies the management process.
+With the Certify Management Hub, you can view and manage all your certificates in one place. This eliminates the need to log into multiple systems and simplifies the management process. You don't however have to keep all your certificates in one place, so certificate renewal (in particular HTTP domain validated renewals) can stay under the control of the servers that use a particular cert, with the hub optionally just used for reporting and convenient administration.
 
 ### Automated Renewals
-Never worry about expired certificates again. The Management Hub automates the renewal process, ensuring that your certificates are always valid and up-to-date.
+Never worry about expired certificates again. The Management Hub automates it's own renewals and provides visibility of the renewal process across multiple Certify Certificate Manager instances, ensuring that your certificates are always valid and up-to-date.
 
 ### Detailed Reporting
 Get detailed reports on the status of your certificates, including upcoming expirations and renewal logs. This helps you stay on top of your certificate management and avoid any potential issues.
