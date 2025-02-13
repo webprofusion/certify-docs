@@ -67,7 +67,7 @@ Certify Dashboard is unique in that it is not a Certificate Transparency Log mon
 - **Centralized Management**: View and manage all your certificates from a single interface.
 - **Automated Renewals**: Automatically tracks and reports on certificate renewals, ensuring they are always up-to-date.
 - **Detailed Reporting**: Get detailed reports on the status of your certificates, including upcoming expirations and renewal history.
-- **Integration with ACME Clients**: Works with popular ACME clients like Certbot and acme.sh, making it easy to incorporate into your existing workflow.
+- **Integration with ACME Clients**: Works with popular ACME clients like win-acme, Certbot and acme.sh, making it easy to incorporate into your existing workflow.
 - **Secure and Reliable**: Uses industry-standard encryption and security practices to protect your certificates and data.
 
 #### Pros

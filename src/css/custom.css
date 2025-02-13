@@ -6,8 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  
-  --ifm-color-primary: #002809;
+  --ifm-color-primary: #407950;
   --ifm-color-primary-dark: rgb(33, 175, 85);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 63);
@@ -16,8 +15,17 @@
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
 }
-h2.title_f1Hy{
+
+
+
+h1.title_f1Hy{
   font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+h2.title_f1Hy{
+  font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 1rem;
 }
@@ -27,6 +35,10 @@ h2.title_f1Hy{
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+.markdown h1 {
+  font-size: 2rem ! important;
+  font-weight: 400;
 }
 
 .markdown h2 {
