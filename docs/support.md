@@ -5,13 +5,17 @@ title: Support Options
 
 ## Getting Started
 
-To get started using the Certify The Web, see the [Getting Started Guide](intro.md).
+To get started using the Certify The Web, see the Getting Started Guidance for each product:
+- [Certify Certificate Manager](intro.md)
+- [Certify Management Hub](hub/index.md)
+- [Certify Dashboard](dashboard/index.md)
+- [Certify DNS](dns/providers/certifydns)
 
 Check out our [FAQ](faq.md) if you are just getting started and having trouble with something.
 
 ## Commercial Support
 
-**The application is ideal for organisations or professionals who need a tool with dependable support.**
+**Our products are ideal for organisations or professionals who need tools with dependable support.**
 
 _You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported._
 

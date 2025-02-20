@@ -90,3 +90,24 @@ We currently use the ssh.net library for .net to provide our SSH related feature
 ### Deploy to Certificate Store (Local)
 
 This task is deprecated and is not generally required. This imports the certificate into the local certificate store with your choice of store type (Personal, Web Hosting) and choice of Friendly Name. Note that the default auto deployment system in Certify will already store certificates in the My/Personal certificate store.
+
+
+## Strategies for Remote Deployment
+The easiest way to renew a certificate on a server is usually to install Certify Certificate Manager and run it locally, however sometimes a remote deployment is desirable depending on what you want to achieve:
+
+### Linux
+- Use a *Deploy to Generic Server* task (or other more specific tasks) to export the files you need via SSH/SFTP.
+- Then use the Script task to then run the commands you need to reload services etc.
+
+### Windows
+#### PowerShell with network use impersonation
+Some PowerShell scripts can work remotely via impersonation using credentials that have the necessary permissions, with logon type set to Network (For instance). However not all scripts succeed in adequate levels of impersonation, depending on how the script works and whether it launches new processes etc.
+
+#### Export to Remote share, use a Windows Scheduled Task for deployment
+Where necessary you can instead export the PFX file to where you need it, then use a script to pick up the file, use it, then delete it once deployment has completed.
+
+- In the app, Add an *Export Certificate* task to copy the PFX to a temporary location e.g. a UNC share on the target server.
+- Create a script to look for the PFX file and if present run your scripted deployment steps using that file, it should then delete the temporary PFX file so that the next run will skip the deployment steps.
+  - If an error occurs during your deployment step, report that using a log or notification script.
+- On your target server, schedule your Windows Task to run your script regularly (e.g. hourly or daily, or within a maintenance schedule) as the required user. 
+  - As you are looking for the file in your script before doing anything it will only ever run the deployment when the certificate file exists (e.g. it has recently been exported by the renewal process).
