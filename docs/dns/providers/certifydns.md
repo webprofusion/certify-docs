@@ -12,7 +12,7 @@ title: Certify DNS
 - *Certify DNS* is not required in order to use the Certify Certificate Manager app, it's only required if you specifically want to use DNS challenges and can't use standard DNS automation.
 - The service is compatible with most other existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems.
 
-**With *Certify DNS*, you create a special CNAME record in your domain DNS, instead of a TXT record. This CNAME record points to the Certify DNS cloud service and handles ACME challenge responses for your domain.**
+**With *Certify DNS*, you create a special CNAME record in your domain DNS (for each domain or subdomain you want to include on a certificate), instead of a TXT record. The CNAME records points to the Certify DNS cloud service and handles ACME challenge responses for your domain.**
 
 ## Using *Certify DNS* in Certify Certificate Manager
 
