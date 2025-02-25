@@ -111,3 +111,26 @@ The source code for our main product Certify Certificate Manager is available fo
 
 ## Terms of Service
 Our services, licenses and products are subject to our [Terms and Conditions](terms.md).
+
+## Frequently Asked Licensing Questions
+
+Q: If I deactivate the license (About > Deactivate Install), will my certificate continue to work?
+
+A: Yes, the app will revert to the Community Edition feature set. Existing certificate renewals will continue as normal, it's just that adding new managed certificates on that install will be subject to the limits of the community edition.
+
+---
+
+Q: How do I transfer the license to another machine?
+
+A: On the old machine, use About > Deactivate Install, or deactivate the install via the certifytheweb.com license keys tab. On the new machine enter the license under About > Enter Key.
+
+---
+Q: My payment method has changed, how do I change it on our subscription
+
+A: We do not retain payment information and license bundle renewals are manual, not automatic, so there is nothing to change.
+
+---
+Q: I don't need my license anymore but I keep getting an email to renew it, how to cancel?
+
+A: Sign into certifytheweb.com and on the License Keys tab choose Cancel Now next to your license key.
+
