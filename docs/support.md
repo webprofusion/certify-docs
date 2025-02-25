@@ -7,7 +7,6 @@ title: Support Options
 
 To get started using the Certify The Web, see the Getting Started Guidance for each product:
 - [Certify Certificate Manager](intro.md)
-- [Certify Management Hub](hub/index.md)
 - [Certify Dashboard](dashboard/index.md)
 - [Certify DNS](dns/providers/certifydns)
 
