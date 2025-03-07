@@ -22,3 +22,7 @@ yarn-error.log*
 .yarn/
 
 yarn.lock
+
+.frontmatter/
+
+.vscode/

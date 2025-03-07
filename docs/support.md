@@ -7,18 +7,17 @@ title: Support Options
 
 To get started using the Certify The Web, see the Getting Started Guidance for each product:
 - [Certify Certificate Manager](intro.md)
+- [Certify Management Hub](hub/index.md)
 - [Certify Dashboard](dashboard/index.md)
 - [Certify DNS](dns/providers/certifydns)
 
 Check out our [FAQ](faq.md) if you are just getting started and having trouble with something.
 
-## Commercial Support
+## Support for Licensed Customers
 
-**Our products are ideal for organisations or professionals who need tools with dependable support.**
+Our products are ideal for organisations or professionals who need tools with dependable support. _You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported._
 
-_You are encouraged to test out the software yourself as an evaluation before purchasing as not all usage scenarios will be supported._
-
-Full time support is available via email support tickets for registered users (or those who are evaluating the software). You can register for the Professional or Enterprise editions via https://certifytheweb.com/upgrade/. To create a new support request for help or for general questions, email **support at certifytheweb.com**, including details of your licensed email address, describing the problem/question in detail with any supporting information you can provide.
+**Full time support is available via email support tickets for registered users (or those who are evaluating the software).** You can register for the Professional or Enterprise editions via https://certifytheweb.com/upgrade/. To create a new support request for help or for general questions, email **support at certifytheweb.com**, including details of your licensed email address, describing the problem/question in detail with any supporting information you can provide.
 
 - Please include how to recreate the problem and any special configuration you may have. 
 - Logs for managed certificates can be found on the Status tab of each managed certificate. 

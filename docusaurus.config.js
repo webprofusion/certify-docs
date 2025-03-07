@@ -24,8 +24,9 @@ module.exports = {
       },
       items: [
 
-        { to: 'docs/intro', label: 'Certify Certificate Manager', position: 'left' },
-        { to: 'docs/dashboard/', label: 'Certify Dashboard', position: 'left' },
+        { to: 'docs/intro', label: 'Certificate Manager', position: 'left' },
+        { to: 'docs/hub/', label: 'Management Hub', position: 'left' },
+        { to: 'docs/dashboard/', label: 'Dashboard', position: 'left' },
         { to: 'docs/dns/providers/certifydns/', label: 'Certify DNS', position: 'left' },
         { to: 'docs/support', label: 'Support', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'right' },
