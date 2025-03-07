@@ -15,7 +15,9 @@ module.exports = {
       apiKey: '95033d5e9d8856ce3e628103f123b748',
       indexName: 'certifytheweb'
     },
-
+    prism: {
+      additionalLanguages: ['powershell'],
+    },
     navbar: {
       title: 'Certify The Web - Docs',
       logo: {

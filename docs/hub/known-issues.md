@@ -2,9 +2,11 @@
 id: known-issues
 title: Known Issues
 ---
-## Management Hub - Known Issues
+## Management Hub
 
+:::info
 As we move development of *Certify Management Hub* towards a full release we will note issues that are commonly encountered here, and remove them as they are resolved.
+:::
 
 ### User Interface
 #### Refreshing a page returns a blank page

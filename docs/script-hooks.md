@@ -168,8 +168,6 @@ if ($result.IsSuccess) {
 
 #### Example: Update certificate for SSTP VPN
 ```PowerShell
-
-
 param($result)
 
 # Store certificate in variable
@@ -185,7 +183,7 @@ Start-Service RemoteAccess
 ### Example: Update SQL Server connection certificate
 This example updates the registry key for the SQL Server certificate thumbprint. Note that the instance name will affect the name of the registry key, so you need to find that and change that in the script. Some SQL Server editions may also require the certificate key to be converted to the older RSA SChannel CSP.
 
-```
+```PowerShell
 param($result)
 
 # Example script to set SQL Server certificate 
@@ -218,7 +216,7 @@ if ($oldthumb -ne $newthumb) {
 This is adapted from a community example: https://community.certifytheweb.com/t/sql-server-reporting-services-ssrs/332/7  
 
 This script gets the report server config object the checks if an existing cert is bound it removes that, then creates the new binding.
-```
+```PowerShell
 param($result)
 
 $ssrsServerName = "RS_MSSQLSERVER"
@@ -259,7 +257,7 @@ $rsConfig.CreateSSLCertificateBinding($ssrsReportWebServiceName, $newthumb, $ipA
 
 Often you will need to allow a specific user account read permission on a certificate private key to allow a service to use the certificate properly:
 
-```
+```PowerShell
 param($result)
 
 ## Update the read permission on the certificate private key to allow NT AUTHORITY\LOCAL_SERVICE (for example) to use the cert (and private key)
@@ -296,7 +294,7 @@ catch
 ```
 
 ### Example: Update the certificate on a local WinRM https listener (Windows Admin Center etc)
-```
+```PowerShell
 param($result)  
 
 # update the local winrm https listener cert, assumes the cert is already installed to local computer certificate store using Certify
@@ -307,7 +305,7 @@ Set-Location -Path WSMan:\localhost\Service
 Set-Item -Path .\CertificateThumbprint -Value $result.ManagedItem.CertificateThumbprintHash
 ```
 ### Example: Convert PFX to Java Key Store using keytool
-```
+```PowerShell
 param($result)  
 
 # adapt paths and passwords as required, assumes keytool is in the system path
@@ -325,7 +323,7 @@ keytool -noprompt -importkeystore -srckeystore $result.ManagedItem.CertificatePa
 
 ### Example: Deploy to Web Management Service (Web Deploy etc)
 This example uses netsh to update the certificate bound to port 8172 (Web Deploy etc), it then also sets the (binary) certificate hash in the registry so that the correct certificate is shown in the IIS user interface for the Web Management Service feature.
-```
+```PowerShell
 param($result)
 
 $thumb = $result.ManagedItem.CertificateThumbprintHash
@@ -352,7 +350,7 @@ New-ItemProperty -Path $registryPath -Name $name -Value $binaryHash -PropertyTyp
 ### Example: Apply a certificate to the Default FTP SSL Settings in IIS
 While the app can update a specific FTP site SSL binding for you (select Single Site under Deployment and check in the Preview tab that the ftp binding will be updated) occasionally there may be a requirement to set the global default FTP certificate settings. The following script updates the assigned default FTP certificate in IIS:
 
-```
+```PowerShell
 param($result)
 
 # https://learn.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/ssl
