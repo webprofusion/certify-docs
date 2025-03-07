@@ -9,12 +9,33 @@ Using [docker](https://docker.com/) is a way to quickly try out *Certify Managem
 
 :::
 
-A key thing to know about running apps in docker is that the container should be considered temporary (to be recreated later), so data should not be stored on the container itself. To host the app in docker properly, you need to specify a permanent data volume to store configuration data. You must setup a mount path that will be used as `/usr/share/certify` within the container.
+A key thing to know about running apps in docker is that the container should be considered temporary (to be recreated later), so data should not be stored only within the container itself. To host the app in docker properly, you need to specify a persistent data volume to store configuration data (which hy default is under `/usr/share/certify`).
 
-```
-docker compose up --url https://certifytheweb.com/download/docker/hubservice
+#### Quick Start using Docker Compose
+Save this file as `docker-compose.yaml`
+
+```yaml
+name: certify-management-hub
+services:
+  certify-hubservice:
+    image: docker.io/certifytheweb/management-hub:latest
+    hostname: certify-hubservice
+    ports:
+      - "8080:8080"
+    volumes:
+      - certifydata:/usr/share/certify/
+volumes:
+  certifydata:
 ```
 
+Then from the same path, run `docker compose up -d` to start the container.
+
+#### Quick Start directly with Docker Run
+Alternatively, to quickly try it out without using docker compose:
+
+`docker run -v /local/path/to/data:/usr/share/certify -p HOST_PORT:8080 docker.io/certifytheweb/management-hub:latest` 
+
+e.g. `docker run -v C:\temp\certifydata -p HOST_PORT:8080 docker.io/certifytheweb/management-hub:latest`
 
 ### Other common container environments
 
@@ -25,7 +46,7 @@ Docker Hub: https://hub.docker.com/repository/docker/certifytheweb/management-hu
 GitHub Packages: https://github.com/certifytheweb?tab=packages
 
 #### OpenShift
-Add Storage > persistent volume claim  certifydata mount path `/usr/share/certifydata`
+Add Storage > persistent volume claim certifydata with mount path `/usr/share/certifydata`, see also `CERTIFY_APP_DATA` below.
 
 ## Certify Agent
 Certify Agent is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
