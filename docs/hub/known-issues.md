@@ -10,9 +10,12 @@ As we move development of *Certify Management Hub* towards a full release we wil
 
 ### User Interface
 #### Refreshing a page returns a blank page
-If using the combined hub service container image or serving the UI via the same service as the API, some app UI routing does not work (e.,g. reloading or booknarking in-app URL routes). 
+If using the combined hub service container image or serving the UI via the same service as the API, some app UI routing does not work (e.,g. reloading or bookmarking in-app URL routes). 
 
 Pages that show data that might change will generally update themselves periodically (summary page, instances, charts etc) or in some cases when the underlying data changes and a message from the hub is streamed back the the UI. In some cases you may need to reload the app from the app root URL to see the latest information while the app is still under development.
+
+#### When managed certificates change, the info doesn't update in the UI
+Normally, when the system changes managed certificate or updates it status the change should be streamed back to the UI via SignalR. This streaming functionality is currently not operational (including streaming renewal progress reports). Click on a managed certificate to load it's current information.
 
 #### Loading time over slow connections
 The web app uses WebAssembly (WASM) and has a large application payload on initial load. Subsequent loads used cached resources.
