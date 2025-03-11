@@ -18,7 +18,7 @@ To alternatively use a "webroot" method (serving the http challenge via apache/n
 - set an output path for the challenge response files pointing to the root structure of your site, under *Authorization > Http > Site Root Directory*. Ensure that extensionless text files written into `/.well-known/acme-challenge/` can be browsed to over http. 
 - You can use "Test' to check if challenges are being served ok.
 
-If you cannot use HTTP validation (or you require a wildcard certificate) the nuse can use teh DNS validation method instead.
+If you cannot use HTTP validation (or you require a wildcard certificate) you can use the DNS validation method instead.
 
 # Deployment to your Web Server (Apache/nginx etc)
 Once you have your cert you can use a deployment task to place the cert files where you want them (e.g. `C:\certs\<yourwebsite>\`) and restart your web server service.

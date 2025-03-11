@@ -28,7 +28,7 @@ The remote option (for SSH etc) is not currently enabled.
 
 ### Containers
 #### Data not persisted using containers
-The app will store settings in a combination of json files and SQLite DB files under `/usr/share/certify`. We will eventually offer the option to store some configuration in external databases such as postgres but the app does need to store some basic settings on file storage. In Docker etc this is achieved by mounting `/usr/share/certify` to persistant storage. You can override teh app data path used by setting the `CERTIFY_APPDATA_PATH` environment variable to a preferred path. This path must be writeable by the non-root container user.
+The app will store settings in a combination of json files and SQLite DB files under `/usr/share/certify`. We will eventually offer the option to store some configuration in external databases such as postgres but the app does need to store some basic settings on file storage. In Docker etc this is achieved by mounting `/usr/share/certify` to persistant storage. You can override the app data path used by setting the `CERTIFY_APPDATA_PATH` environment variable to a preferred path. This path must be writeable by the non-root container user.
 
 Multiple instances of the Certify Agent or Management Hub service reading and writing the same SQLite database storage is not currently supported, so deployments should only ever have one active container. Continous backups/snapshots etc of your volume are *essential* for production environments because SQLite file based databases can, and do, fail.
 

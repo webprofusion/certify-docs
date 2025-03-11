@@ -89,7 +89,7 @@ Any organization can purchase a license then assign it to another account while 
 Note to all resellers: We *do not* offer discounted pricing for resellers, you are welcome to apply whatever pricing markup your service normally incurs but this is between you and your customer. We only offer electronic license purchases via our https://dash.certifytheweb.com and we do not accept POs or other manual invoicing. If you absolutely require information (forms etc) not listed on this page then we most likely do not provide it and your customer is welcome to engage with us directly.
 
 **Guidance for customers with reseller assigned licenses:**
-- Your license assignment link will be emailed to you. Follow the instructions to sign in (or create an account) on https://dash.certifytheweb.com and follow the "accept the license assigment" link in your email. 
+- Your license assignment link will be emailed to you. Follow the instructions to sign in (or create an account) on https://dash.certifytheweb.com and follow the "accept the license assignment" link in your email. 
 - Once accepted, the new license will appear on your License Keys page.
 
 ## Company Information

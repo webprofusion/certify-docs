@@ -6,7 +6,7 @@ title: Installation & Upgrades
 
 *Certify Management Hub* consists of a self-hosted web app, the Management Hub API, and core background service (*Certify Agent*) for overall hub management and certificate management tasks. 
 
-Installations can choose between an all-in-one bundled service for simpler setup, or hosting of the individual components can be seperated.
+Installations can choose between an all-in-one bundled service for simpler setup, or hosting of the individual components can be separated.
 
 You can install the *Certify Management Hub* using docker, various Linux distributions, any supported Windows machine or server.
 
@@ -29,7 +29,7 @@ You can self-host on Windows, macOS or Linux, or you can use your own choice of 
 
 The product internally uses .NET 9.0 or higher and specific supported operating systems are detailed here: https://github.com/dotnet/core/blob/main/release-notes/9.0/supported-os.md
 
-For accesing the web app, "evergreen" desktop web browsers are supported, typically this is Google Chrome, Microsoft Edge, Safari and Firefox.
+For the web app, "evergreen" desktop web browsers are supported, typically this is Google Chrome, Microsoft Edge, Safari and Firefox.
 
 :::warning
 Due to the nature of the work the management hub performs we do not recommend hosting on a public facing web server. While logins are required for most actions, the app and API are not considered to be security hardened for public exposure unless we explicitly state that they are. Default admin credentials should be changed immediately after setup.

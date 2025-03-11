@@ -21,7 +21,7 @@ During normal operation the service will/may need to perform the following privi
 - Add or Remove certificate in the local computer certificate store
 - Add or Remove IIS https bindings
 - Write challenge response files to the IIS sites(s) web root or site subfolders.
-- Start a temporary http listener via http.sys on port 80, listening for http://*/.well-known/acme-challenge)
+- Start a temporary http listener via http.sys on port 80, listening for http://*/.well-known/acme-challenge
 - If used, deployment tasks may run scripts (PowerShell etc) as the same user the service runs under.
 - The service will require read/write for all files under `%ProgramData%\Certify`
 

@@ -14,10 +14,10 @@ There are two ways to install Certify Management Hub directly on Windows (if not
 Install as a single combined management hub service, this is the simplest method with the least amount of configuration between components. This serves the Management Hub API, a backend certify-agent instance, and the web UI. Internally this is using the Kestrel web server which is part of Microsoft ASP.Net.
 
 ### Install as multiple services, possibly on different servers etc.
-- Or, if you need more control over how things are organized, install the components seperately:
+- Or, if you need more control over how things are organized, install the components separately:
     - **The Management Hub API**. This the provides aggregated services to talk to one or more *Certify Agent* or *Certify Certificate Manager* instances. The hub needs to know the details of the certify agent service it will use for backend storage services etc.
     - The **Certify Agent** service. This provides backend storage and certificate management services. The agent needs to know the final URL of the Management Hub API to talk to it.
-    - Serve the **Web UI** via IIS or other web server. The `/wwwwroot/appsettings.json` file of the web app needs to be configured with the Managaement Hub API url.
+    - Serve the **Web UI** via IIS or other web server. The `/wwwwroot/appsettings.json` file of the web app needs to be configured with the Management Hub API url.
 
 The Management Hub API and Certify Agent service both need to be configured to know how to talk to each other, and this is often the most complex part to get right.
 

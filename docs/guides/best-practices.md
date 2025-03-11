@@ -83,7 +83,7 @@ However, an open port does not directly affect your system security, it's the *p
 
 ## Mixed Content Warnings
 
-Whether you are using a custom built website or a content management system (wordpress etc) you may find that the browser still considers your website insecure, even though it's loading the main page over `https` with a valid certificate. This is often caused by "mixed content" e.g. some resources such as images, stylesheets or script being loaded using `http`. To resolve this, change any referenced content in your site to only use `https://` for content URLs.
+Whether you are using a custom built website or a content management system (WordPress etc) you may find that the browser still considers your website insecure, even though it's loading the main page over `https` with a valid certificate. This is often caused by "mixed content" e.g. some resources such as images, stylesheets or script being loaded using `http`. To resolve this, change any referenced content in your site to only use `https://` for content URLs.
 
 ## Protocols and Cipher Suites
 
@@ -110,7 +110,7 @@ If you are running **Windows Server 2008 R2** or lower (including derivatives su
 
 If you are running **Windows Server 2012**, mainstream support from Microsoft ended in 2018 and if you are on extended support this will end in Oct 2023. 
 
-Mainstream microsoft support for **Windows Server 2016** ended in January 2022.
+Mainstream Microsoft support for **Windows Server 2016** ended in January 2022.
 
 ## Disaster Recovery Planning
 It's very common for organisations to consider their apps as being "too difficult" to move to newer operating systems. This is a critical risk for your system and if your service is *business critical* (i.e. your business cannot effectively operate without it) then it's also a high priority risk to your business. If you *cannot* move an app (because you don't really know how), consider whether you can even restore it if the server fails and the impact to your organisation if that happens. 

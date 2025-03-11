@@ -34,7 +34,7 @@ They offer a free, automated, and open certificate authority brought to you by t
 - You can check the Let's Encrypt service status at [https://letsencrypt.status.io/](https://letsencrypt.status.io/)
 
 ### ZeroSSL
-ZeroSSL (https://zerossl.com/) is an ACME service operated by apilayer (https://apilayer.com/).
+ZeroSSL (https://zerossl.com/) is an ACME service operated by HID Global.
 
 - Trusted by all major operating systems and browsers
 - Certificates expire after 90 days.
