@@ -23,6 +23,9 @@ The web app uses WebAssembly (WASM) and has a large application payload on initi
 #### Errors when trying to login
 The UI needs to know the URL of the API it should talk to. This is configured by default to https://localhost:44361 or http://localhosts:808 when running from docker. The setting is changed for all users by editing wwwroot/appsettings.json or you can temporarily change the URL in the login page by clicking the Settings gear icon and setting the correct URL for your installation.
 
+### Deployment Tasks
+The remote option (for SSH etc) is not currently enabled.
+
 ### Containers
 #### Data not persisted using containers
 The app will store settings in a combination of json files and SQLite DB files under `/usr/share/certify`. We will eventually offer the option to store some configuration in external databases such as postgres but the app does need to store some basic settings on file storage. In Docker etc this is achieved by mounting `/usr/share/certify` to persistant storage. You can override teh app data path used by setting the `CERTIFY_APPDATA_PATH` environment variable to a preferred path. This path must be writeable by the non-root container user.
