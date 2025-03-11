@@ -9,9 +9,9 @@ Using [docker](https://docker.com/) is a way to quickly try out *Certify Managem
 
 :::
 
-A key thing to know about running apps in docker is that the container should be considered temporary (to be recreated later), so data should not be stored only within the container itself. To host the app in docker properly, you need to specify a persistent data volume to store configuration data (which hy default is under `/usr/share/certify`).
+A key thing to know about running apps in docker is that the container should be considered temporary (to be recreated later), so data should not be stored only within the container itself. To host the app in docker properly, you need to specify a persistent data volume to store configuration data (which by default is under `/usr/share/certify`).
 
-#### Quick Start using Docker Compose
+#### Quick Start using Docker Compose (recommended)
 Save this file as `docker-compose.yaml`
 
 ```yaml
@@ -19,23 +19,33 @@ name: certify-management-hub
 services:
   certify-hubservice:
     image: docker.io/certifytheweb/management-hub:latest
-    hostname: certify-hubservice
     ports:
       - "8080:8080"
     volumes:
       - certifydata:/usr/share/certify/
+    restart: unless-stopped
 volumes:
   certifydata:
 ```
 
-Then from the same path, run `docker compose up -d` to start the container.
+Then from the same path, run `docker compose up -d` to start/restart the container. 
+
+##### Upgrading
+
+Using the latest version with docker compose is quick and easy:
+- Fetch the latest update with `docker pull certifytheweb/management-hub:latest` 
+- then restart your container (from the path where your above `docker-compose.yaml` is kept): `docker compose up -d`
 
 #### Quick Start directly with Docker Run
 Alternatively, to quickly try it out without using docker compose:
 
-`docker run -v /local/path/to/data:/usr/share/certify -p HOST_PORT:8080 docker.io/certifytheweb/management-hub:latest` 
+`docker run --name certify-management-hub -d -v /local/path/to/data:/usr/share/certify -p HOST_PORT:8080 --restart unless-stopped docker.io/certifytheweb/management-hub:latest` 
 
-e.g. `docker run -v C:\temp\certifydata -p HOST_PORT:8080 docker.io/certifytheweb/management-hub:latest`
+e.g. `docker run --name certify-management-hub -d -v C:\temp\certifydata -p 8080:8080 --restart unless-stopped docker.io/certifytheweb/management-hub:latest`
+
+##### Upgrading
+
+- Fetch the latest update with `docker pull certifytheweb/management-hub:latest` then recreate your container.
 
 ### Other common container environments
 
