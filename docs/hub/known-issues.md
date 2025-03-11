@@ -9,6 +9,12 @@ As we move development of *Certify Management Hub* towards a full release we wil
 :::
 
 ### User Interface
+
+#### Errors when trying to login
+The UI needs to know the URL of the API it should talk to. This is configured by default to `https://localhost:44361` or `http://localhost:8080` when running from docker. The setting is changed for all users by editing wwwroot/appsettings.json or you can temporarily change the URL in the login page by clicking the Settings gear icon and setting the correct URL for your installation.
+
+If the problem occurs with a new docker container, follow the above and set the url to the require host and port e.g. `http://localhost:8080`
+
 #### Refreshing a page returns a blank page
 If using the combined hub service container image or serving the UI via the same service as the API, some app UI routing does not work (e.,g. reloading or bookmarking in-app URL routes). 
 
@@ -20,8 +26,7 @@ Normally, when the system changes managed certificate or updates it status the c
 #### Loading time over slow connections
 The web app uses WebAssembly (WASM) and has a large application payload on initial load. Subsequent loads used cached resources.
 
-#### Errors when trying to login
-The UI needs to know the URL of the API it should talk to. This is configured by default to https://localhost:44361 or http://localhosts:808 when running from docker. The setting is changed for all users by editing wwwroot/appsettings.json or you can temporarily change the URL in the login page by clicking the Settings gear icon and setting the correct URL for your installation.
+
 
 ### Deployment Tasks
 The remote option (for SSH etc) is not currently enabled.
