@@ -17,7 +17,9 @@
 }
 
 
-
+.navbar__item {
+  font-size:small;
+}
 h1.title_f1Hy{
   font-size: 2rem;
   font-weight: 400;
