@@ -17,6 +17,14 @@ You can install the *Certify Management Hub* using docker, various Linux distrib
 
 The product runs in Community Edition mode by default, see [Licensing](../../guides/licensing.md) for more information.
 
+**The default admin login is `admin:admin` and you should change the password immediately before configuring any other parts of the system.**
+
+:::danger
+Due to the nature of the work the management hub performs we do not recommend hosting on a public facing web server. While logins are required for most actions, the app and API are not considered to be security hardened for public exposure unless we explicitly state that they are. Default admin credentials should be changed immediately after setup.
+
+*This alpha version may have some unguarded API endpoints and is not suitable for public hosting.*
+:::
+
 ## Upgrading
 
 By default the app will check for updates when you open the UI.  Some updates are critical to ensure continuous operation, and only the latest version is supported. In particular if you are managing multiple instances of *Certify Certificate Manager* or *Certify Agent* you may need to upgrade these so that the hub can continue to communicate with them properly.
@@ -31,7 +39,5 @@ The product internally uses .NET 9.0 or higher and specific supported operating 
 
 For the web app, "evergreen" desktop web browsers are supported, typically this is Google Chrome, Microsoft Edge, Safari and Firefox.
 
-:::warning
-Due to the nature of the work the management hub performs we do not recommend hosting on a public facing web server. While logins are required for most actions, the app and API are not considered to be security hardened for public exposure unless we explicitly state that they are. Default admin credentials should be changed immediately after setup.
-:::
+
 
