@@ -72,6 +72,12 @@ Where `your data path` is a path on your host machine where you will store setti
 
 ## Environment Variables
 
+`You can optionally specify environment variables to modify the default config:
+
+`CERTIFY_ADMIN_DEFAULTUSERNAME` : Override the initial default `admin` username. Only has an effect on initial setup.
+
+`CERTIFY_ADMIN_DEFAULTPWD`: Override the initial default admin password of `changeme!`. Only has an effect on initial setup.
+
 `CERTIFY_APP_DATA` : Specify an alternative path to store core service settings.
 
 `CERTIFY_MANAGEMENT_HUB` : Specify the management hub API URL when working with multiple containers e.g. `http://certify-api:8080/api/internal/managementhub`
