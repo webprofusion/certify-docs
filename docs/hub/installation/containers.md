@@ -56,10 +56,10 @@ Docker Hub: https://hub.docker.com/repository/docker/certifytheweb/management-hu
 GitHub Packages: https://github.com/certifytheweb?tab=packages
 
 #### OpenShift
-Add Storage > persistent volume claim certifydata with mount path `/usr/share/certifydata`, see also `CERTIFY_APP_DATA` below.
+Add Storage > persistent volume claim `certifydata` with mount path `/usr/share/certifydata`, see also `CERTIFY_APP_DATA` below.
 
-## Certify Agent
-Certify Agent is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
+## Certify Management Agent
+Certify Management Agent is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
 
 ### Docker Example
 
