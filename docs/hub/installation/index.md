@@ -41,3 +41,6 @@ For the web app, "evergreen" desktop web browsers are supported, typically this 
 
 
 
+## Managing Certify Certificate Manager instances
+
+The management hub can administer existing Certify Certificate Manager instances (on Windows etc) if they are up to date with the required application versions and they have been joined to the management hub. To learn more [see our guide](../guides/ccm.md).

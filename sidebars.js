@@ -106,6 +106,7 @@ export default {
               ],
             },
             'hub/known-issues',
+            'hub/guides/ccm'
           ]
         },
         {
