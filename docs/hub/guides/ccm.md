@@ -90,3 +90,10 @@ certify hub join <url of mgmt hub API> <client id> <client secret>
 ## Verification
 
 After joining, confirm that your instance appears in the Management Hub UI's **Instances** list.
+
+
+# Using the Hub to manage a CCM instance
+
+Your *Certify Certificate Manager* install remains much the same as it was before, except it can also be externally managed via the hub. When you are working with individual setting such as Stored Credentials, Certificate Authority accounts etc these remain per-instance settings, so each instance of the app has it's own set of settings and you will selected the target instance when working with those. 
+
+The hub does not currently have global settings that can be pushed to all managed instances etc (such as a single ACME account, or specific stored credential).
