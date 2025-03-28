@@ -174,45 +174,49 @@ export default {
     }],
   dashboardSidebar: [
     {
-      type: 'html',
-      value: '<h4 style="margin-bottom:0">Certify Dashbaord</h4>',
-      defaultStyle: true,
-    },
-    {
       type: 'category',
-      label: 'Introduction',
+      label: 'Certify Dashboard',
       items: [
-        'dashboard/index',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Support',
-      items: [
-        'support'
+        {
+          type: 'category',
+          label: 'Introduction',
+          items: [
+            'dashboard/index',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Support',
+          items: [
+            'support'
+          ]
+        }
       ]
     }
+
   ],
- certifyDnsSidebar: [
-    {
-      type: 'html',
-      value: '<h4 style="margin-bottom:0">Certify DNS</h4>',
-      defaultStyle: true,
-    },
+  certifyDnsSidebar: [
     {
       type: 'category',
-      label: 'Introduction',
+      label: 'Certify DNS',
       items: [
-        'dns/providers/certifydns',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Support',
-      items: [
-        'support'
+        {
+          type: 'category',
+          label: 'Introduction',
+          items: [
+            'dns/providers/certifydns',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Support',
+          items: [
+            'support'
+          ]
+        }
       ]
     }
+
   ]
 };
 
