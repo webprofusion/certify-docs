@@ -7,7 +7,7 @@ title: Installation & Upgrades
 
 **Supported OS: Any currently Microsoft Supported Windows or Windows Server edition with .NET Framework 4.6.2 (or higher).**
 
-This app requires outgoing https for API calls. Proxies are not officially supported. 
+This app requires outgoing https for API calls. Proxies are not officially supported. The app will need to communicate with your choice of Certificate Authority over https (the default is Let's Encrypt). For licensing or status reporting it will need to connect to https://api.certifytheweb.com and if you use any DNS APIs or Deployment Tasks which communicate with a remote API or service you will need connectivity to those.
 
 Some core app functionality can be affected by common anti-virus/protection products (including our background service, temporary http challenge listener, IIS fallback web.config writes etc). We recommend testing your configuration and ensuring that the app, its components, and the `C:\ProgramData\certify` data store path are whitelisted.
 
