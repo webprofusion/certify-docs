@@ -59,19 +59,6 @@ Your *Certify Certificate Manager* install remains much the same as it was befor
 The hub does not currently have global settings that can be pushed to all managed instances etc (such as a single ACME account, or specific stored credential).
 
 ## Other Considerations
-### Ensure Unique Instance IDs
-
-When CCM is installed, an InstanceID value is generated and stored in appsettings.json (on Windows).
-
-**Important:** If you have previously used a VM clone to create a new instance of CCM:
-- You must ensure two instances do not share the same Instance ID
-- Duplicate IDs will cause instances to appear as one, and their communication with the hub will conflict
-- One instance may receive edits intended for the other
-
-Instance IDs must be valid (unique) GUID values. If in doubt:
-1. Delete your `appsettings.json` file (or just the instanceID field)
-2. Restart the Certify background service to let the app create a new one
-
 ## Setting up additional joining keys
  
 If you manage instances across different organizations (e.g. if you are an MSP etc), consider creating multiple joining keys to partition by organization. This allows you to revoke hub access for specific groups without affecting unrelated instances.
@@ -97,6 +84,6 @@ This step may be unnecessary in current versions where it's auto-created.
 3. Select **Managed Instances Service Principle**
 4. Enter **Instance Joining Key** as the title
 5. Select **Management Hub Managed Instance** as the scoped role
-6. **Important:** Click **Add/Remove Role Scope** to add it to the scope list
+   - **Important:** Click **Add/Remove Role Scope** to add it to the scope list
 7. Click **Add** to create the new API token
 8. Copy the **Client ID** and **Secret** values - you'll need these for instance configuration
