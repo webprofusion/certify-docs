@@ -51,9 +51,8 @@ e.g. `docker run --name certify-management-hub -d -v C:\temp\certifydata -p 8080
 
 For simplest setup you can fetch the combined Certify Management Hub image from:
 
-Docker Hub: https://hub.docker.com/repository/docker/certifytheweb/management-hub
-
-GitHub Packages: https://github.com/certifytheweb?tab=packages
+- Docker Hub: https://hub.docker.com/r/certifytheweb/management-hub
+- GitHub Packages: https://github.com/certifytheweb?tab=packages
 
 #### OpenShift
 Add Storage > persistent volume claim `certifydata` with mount path `/usr/share/certifydata`, see also `CERTIFY_APP_DATA` below.
@@ -61,26 +60,37 @@ Add Storage > persistent volume claim `certifydata` with mount path `/usr/share/
 ## Certify Management Agent
 Certify Management Agent is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
 
+- Docker Hub: https://hub.docker.com/r/certifytheweb/certify-agent
+- GitHub Packages: https://github.com/certifytheweb?tab=packages
+
 ### Docker Example
 
-To run an instance of the agent and point it to your management hub:
+To run an instance of the agent and point it to your management hub, with a preset joining secret:
 
-`docker run ghcr.io/certifytheweb/certify-agent:latest -v <your data path>:/usr/share/certify -e CERTIFY_MANAGEMENT_HUB=https://<your hub API>/api/internal/managementhub`
-
+```
+docker run docker.io/certifytheweb/certify-agent:latest -v <your data path>:/usr/share/certify -e CERTIFY_MANAGEMENT_HUB=https://<your hub API> -e CERTIFY_MANAGEMENT_HUB_CLIENT_ID= "managedinstance_sp_01" -e CERTIFY_MANAGEMENT_HUB_CLIENT_SECRET= "<your client secret>" -e CERTIFY_MANAGEMENT_HUB_AUTOJOIN= "true"
+```
+  
 Where `your data path` is a path on your host machine where you will store settings, e.g. `/Users/macos/certifydata` or `C:\CertifyData` - you can make these paths anything you like depending on your requirements. The key thing is that when you update the container you will run it with the same path in order to use the same settings again.
-
 
 ## Environment Variables
 
-`You can optionally specify environment variables to modify the default config:
+You can optionally specify environment variables to modify the default config:
+
+`CERTIFY_MANAGEMENT_HUB` : Specify the management hub API URL when working with multiple containers e.g. `http://certify-api:8080`
+
+`CERTIFY_MANAGEMENT_HUB_CLIENT_ID` : Specify the management hub joining secret Client ID
+
+`CERTIFY_MANAGEMENT_HUB_CLIENT_SECRET` : Specify the management hub joining secret
+
+`CERTIFY_MANAGEMENT_HUB_AUTOJOIN` : Set to `"true"` to tell the instance to automatically attempt to join the specified hub
+
 
 `CERTIFY_ADMIN_DEFAULTUSERNAME` : Override the initial default `admin` username. Only has an effect on initial setup.
 
 `CERTIFY_ADMIN_DEFAULTPWD`: Override the initial default admin password of `changeme!`. Only has an effect on initial setup.
 
 `CERTIFY_APP_DATA` : Specify an alternative path to store core service settings.
-
-`CERTIFY_MANAGEMENT_HUB` : Specify the management hub API URL when working with multiple containers e.g. `http://certify-api:8080/api/internal/managementhub`
 
 `CERTIFY_SERVICE_HOST` : Specify the backend agent host when working with multiple containers.
 
