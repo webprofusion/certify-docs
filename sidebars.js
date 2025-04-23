@@ -102,11 +102,12 @@ export default {
               items: [
                 'hub/installation/index',
                 'hub/installation/containers',
-                'hub/installation/windows'
+                'hub/installation/windows',
+                'hub/guides/ccm',
               ],
             },
-            'hub/known-issues',
-            'hub/guides/ccm'
+            'hub/guides/request-certificate',
+            'hub/known-issues'
           ]
         },
         {
