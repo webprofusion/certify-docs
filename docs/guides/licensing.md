@@ -27,14 +27,14 @@ There are two main methods of licensing:
 ## License Bundles
 For the *Certify Certificate Manager* app you can currently purchase the following license bundles:
 
-| Type          | Renewal Frequency | Number of Installs| Price         | Bundle Saving |
-|---------------|-------------------|-------------------|---------------|--|
-| Starter       | 12 Months         | 1                 | $59 USD    | n/a|
-| Professional  | 12 Months         | 3                 | $149 USD    | 15%|
-| Power Pro     | 12 Months         | 25                | $899 USD   | 39%|
-| Enterprise    | 12 Months         | 100               | $2499 USD   | 57%|
+| Type          | Renewal Frequency | Number of Installs| Price         |
+|---------------|-------------------|-------------------|---------------|
+| Starter       | 12 Months         | 1                 | $59 USD       | 
+| Professional  | 12 Months         | 3                 | $149 USD      | 
+| Power Pro     | 12 Months         | 25                | $649 USD      | 
+| Enterprise    | 12 Months         | 100               | $1999 USD     |
 
-From 1st November 2023 we have moved to a 12 month renewal cycle for all license tiers and revised pricing, this will apply to new licenses, **existing renewals will remain on the previous pricing/terms until after 1st Nov 2025**. Pricing for Power Pro and Enterprise tiers last revised 1st February 2024.
+From 1st November 2023 we have moved to a 12 month renewal cycle for all license tiers and revised pricing, this will apply to new licenses, **existing renewals will remain on the previous pricing/terms until after 1st Nov 2025**. Pricing for Power Pro and Enterprise tiers last revised 1st October 2024.
 
 - These give you 1 license key (per bundle purchased) which can be used up to the given number of installs.
 
