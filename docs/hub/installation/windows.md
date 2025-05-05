@@ -15,9 +15,9 @@ Install as a single combined management hub service, this is the simplest method
 
 You can download the latest **alpha test** version [7.0.0.16-alpha.03 : Released 2025/05/03](https://certifytheweb.s3.amazonaws.com/downloads/archive/CertifyMgmtHubSetup_V7.0.0-alpha.03.exe) - this is intended for test evaluation and not for production use, as subsequent updates may including breaking changes.
 
-The current default configuration will make the service and UI available at `http://localhost:5000` and you will need to set the API endpoint (the same URL) in the login UI. This will change in subsequent releases.
+The current default configuration will make the service and UI available at `http://localhost:8080` and you will need to set the API endpoint (the same URL) in the login UI.
 
-To use the service with https you currently need to reverse proxy from IIS or any other https enabled web server. This will change in a subsequent update.
+To use the service with https you can either [configure the service to use https](service.md) or reverse proxy the service from a webserver of your choice (Caddy, IIS, nginx, Apache etc and administer https on those as normal).
 
 ### Install as multiple services, possibly on different servers etc.
 - Or, if you need more control over how things are organized, install the components separately:
