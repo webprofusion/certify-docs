@@ -24,17 +24,17 @@ Once you have a cert on disk you are ready to configure the service to use that 
       "SvcHttpEndpoint": {
         "Url": "http://0.0.0.0:8080"
       },
-     "HttpsInlineCertFile": {
+      "HttpsInlineCertFile": {
         "Url": "https://0.0.0.0:9697",
         "Certificate": {
           "Path": "C:\\ProgramData\\certify\\internal-certs\\hub.pfx",
           "Password": ""
         }
-      },
+      }
     }
   }
   ```
 
-Then restart the `Certify Management Hub` service, you can now access the service via https e.g. `https://
+Then restart the `Certify Management Hub` service, you can then access the service via https e.g. `https://certifyhub.intranet.yourdomain.com`
 
 This is an example configuration, so you can configure the endpoints and certificates however you prefer.
