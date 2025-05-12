@@ -9,7 +9,7 @@ To check the log for this service, review `C:\ProgramData\Certify\logs\service.e
 
 ## Port 9696 is the default service port
 
-By default the background service runs a local http API server on port 9696 for the UI to talk to (bound to localhost and requiring windows authentication). _Do not open this port to external traffic on your firewall._
+By default the background service runs a local http API server on port 9696 for the UI to talk to (bound to local loopback 127.0.0.2 and requiring windows authentication). _Do not open this service to external traffic on your firewall._
 
 ## Custom configuration and Troubleshooting "..service not started" error
 
@@ -32,7 +32,7 @@ If the default port 9696 is already in use however you can manually specify the 
   "port": 9696
 }
 ```
-Any local IP (or `localhost`) can be used, local loopback addresses are strongly recommended so that remote access is not possible.
+Any local IP, loopback address (or `localhost`) can be used, local loopback addresses are strongly recommended (ip range 127.*) so that remote access is not possible.
 
 For example an alternative configuration might be:
 
@@ -62,7 +62,7 @@ To operate properly the background service needs to be able to register an http 
 
 In some cases you need to explicitly allow the service to listen as an http service on the localhost IP address. To do so run the following command from the command line as an Administrator, substituting your choice of listening IP address and port:
 
-`netsh http add urlacl url=http://127.0.0.1:9696/ user="NT AUTHORITY\SYSTEM"`
+`netsh http add urlacl url=http://127.0.0.2:9696/ user="NT AUTHORITY\SYSTEM"`
 
 ### Enable http listener IP address
 
