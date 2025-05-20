@@ -13,7 +13,7 @@ There are two ways to install Certify Management Hub directly on Windows (if not
 #### Install as a single service
 Install as a single combined management hub service, this is the simplest method with the least amount of configuration between components. This serves the Management Hub API, a backend certify-agent instance, and the web UI. Internally this is using the Kestrel web server which is part of Microsoft ASP.Net.
 
-You can download the latest **alpha test** version [7.0.1.21-alpha.06 : Released 2025/05/14](https://certifytheweb.s3.amazonaws.com/downloads/archive/hub/CertifyMgmtHubSetup_7.0.1.21-alpha.06.exe) - this is intended for test evaluation and not for production use, as subsequent updates may including breaking changes.
+You can download the latest **alpha test** version [7.0.2.23-alpha.07 : Released 2025/05/20](https://certifytheweb.s3.amazonaws.com/downloads/archive/hub/CertifyMgmtHubSetup_7.0.2.23-alpha.07.exe) - this is intended for test evaluation and not for production use, as subsequent updates may including breaking changes.
 
 The current default configuration will make the service and UI available at `http://localhost:8080`
 
