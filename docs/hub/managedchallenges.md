@@ -36,7 +36,7 @@ Under *Settings > Security > Users*, add a User to represent the consumer (user 
 Under *Settings > Security > API Access*, select Add API Token, select the required security principle, enter a descriptive title etc for this consumer token so you know why it exists and what it's being used for. To scope the API access token to managed challenges only, select Managed Challenge Consumer from the Role list and click Add/Remove Role Scope, then Save. A new API token will be created and you will need the Client ID and Secret values to access the API and use the managed challenge.
 
 1. In the hub, navigate to **Settings > Security > Users**
-2. Click **Add New Security Principle**
+2. Click **Add User**
 3. Configure as follows:
    - **Type**: Application/Service
    - **Title**: "Managed Challenge User" (for example, to help identify the consumer of the managed challenge)
