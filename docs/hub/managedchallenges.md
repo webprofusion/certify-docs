@@ -57,7 +57,7 @@ Under *Settings > Security > API Access*, select Add API Token, select the requi
 8. Copy the **Client ID** and **Secret** values - you'll need these for instance configuration
 
 #### Combined Hub joining and Managed Challenge Key
-It is possible to create a combined hub joining key and managed challenge key, which certain clients (such as Certify Certificate Manager) can use by default if they already know the hub joining key. This is provided as an option for convinience but is not configured by default. 
+It is possible to create a combined hub joining key and managed challenge key, which certain clients (such as Certify Certificate Manager) can use by default if they already know the hub joining key. This is provided as an option for convenience but is not configured by default. 
 
 To enable this, add the Managed Challenge Consumer role to the managed instance service principle (or a new service principle), then create a new hub joining key with both the *Hub Managed Instance* role and *Managed Challenge Consumer* role scope.
 

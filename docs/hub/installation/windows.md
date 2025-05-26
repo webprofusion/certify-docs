@@ -19,7 +19,7 @@ The current default configuration will make the service and UI available at `htt
 
 To use the service with https you can either [configure the service to use https](service.md) or reverse proxy the service from a webserver of your choice (Caddy, IIS, nginx, Apache etc and administer https on those as normal).
 
-Do not install the Hub service where you also want to use Certify Certificate Manager as they will share the same settings/databases via different services which could create confusion or conflicts and is not a supported configuration. You can however upgrade a Certify Certificate Manager install to be a hub: uninstall Certify Certificate Manager (the desktop app_ first, install Certify Management Hub, then use the hub to administer your certificates as normal.
+Do not install the Hub service where you also want to use Certify Certificate Manager as they will share the same settings/databases via different services which could create confusion or conflicts and is not a supported configuration. You can however upgrade a Certify Certificate Manager install to be a hub: uninstall Certify Certificate Manager (the desktop app) first, install Certify Management Hub, then use the hub to administer your certificates as normal.
 
 ### Settings are preserved between installs/upgrades
 On Windows your settings are preserved in `%PROGRAMDATA%\certify`. For most users, this is `C:\ProgramData\certify`. Uninstalling the app or installing a new version does not remove the files stored here. We recommend including this location in your regular backup procedure.

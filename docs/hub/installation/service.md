@@ -14,7 +14,7 @@ An example config is included in the file to use a PFX file, so to setup https:
 
 - Decide on your preferred fully qualified service name for the hub, e.g. `certifyhub.intranet.yourdomain.com`
 - Use the management hub to acquire a certificate for the service name you need, using the normal certificate request process.
-- Add a Deployment Task (Export Certificate) to export a PFX (PKCS#12) file to where it's required e.g. C:\ProgramData\certify\internal-certs\hub.pfx , then run the task to export the initial certificate.
+- Add a Deployment Task (*Export Certificate*) to export a PFX (PKCS#12) file to where it's required e.g. C:\ProgramData\certify\internal-certs\hub.pfx , then run the task to export the initial certificate.
 
 Once you have a cert on disk you are ready to configure the service to use that cert file, edit the `hubservice.json` file to include the `HttpsInlineCertFile` entry. The choice of port and filename etc is arbitrary, as long as the process can access the file.:
 
@@ -35,6 +35,8 @@ Once you have a cert on disk you are ready to configure the service to use that 
   }
   ```
 
-Then restart the `Certify Management Hub` service, you can then access the service via https e.g. `https://certifyhub.intranet.yourdomain.com`
+Then restart the `Certify Management Hub` service, you can then access the service via https at the port you specified e.g. `https://certifyhub.intranet.yourdomain.com:9697` - do not expose your installation (e.g. open the port) to the public internet.
 
 This is an example configuration, so you can configure the endpoints and certificates however you prefer.
+
+Note that when using the app remotely the UI (e.g. via Tailscale etc) may take a while to load the WASM files etc for the first time, subsequent loads are much faster.

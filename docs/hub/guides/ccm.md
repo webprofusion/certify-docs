@@ -26,7 +26,7 @@ The management hub will have complete control over the Certify Certificate Manag
 
 ## Joining the Hub
 
-By default a joining API key is created when you install the hub. This is found under Settings > Security > API Access. You will need the API URL, Client Id and Client Secret values.
+By default a joining API key is created when you install the hub. This is found under *Settings > Security > API Access*. You will need the API URL (e.g. `https://hub.internal.yourdomain.com:9697` depending on your configuration), Client Id and Client Secret values.
 
 ### Method 1: Using the Desktop User Interface
 
@@ -54,7 +54,7 @@ After joining, confirm that your instance appears in the Management Hub UI's **I
 
 # Using the Hub to manage a CCM instance
 
-Your *Certify Certificate Manager* install remains much the same as it was before, except it can also be externally managed via the hub. When you are working with individual setting such as Stored Credentials, Certificate Authority accounts etc these remain per-instance settings, so each instance of the app has it's own set of settings and you will selected the target instance when working with those. 
+Your existing *Certify Certificate Manager* install remains much the same as it was before, except it can also be externally managed via the hub. When you are working with individual settings such as Stored Credentials, Certificate Authority accounts etc these remain per-instance settings, so each instance of the app has it's own set of settings and you will selected the target instance when working with those. 
 
 The hub does not currently have global settings that can be pushed to all managed instances etc (such as a single ACME account, or specific stored credential).
 
