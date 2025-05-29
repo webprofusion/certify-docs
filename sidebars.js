@@ -103,6 +103,7 @@ export default {
                 'hub/installation/index',
                 'hub/installation/containers',
                 'hub/installation/windows',
+                'hub/installation/linux',
                 'hub/guides/ccm',
               ],
             },

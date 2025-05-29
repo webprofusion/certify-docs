@@ -1,15 +1,10 @@
 ---
-title: Installing on Windows
+title: Install for Windows
 ---
 
-:::warning[feature under development]
-This feature is under development and documentation may refer to features and procedures that are not yet available.
-:::
 
-## Installing on Windows
-
-#### Install as a single service (UI and API)
-Install as a single combined management hub service is the simplest method with the least amount of configuration between components. This serves the Management Hub API, a backend certify-agent instance, and the web UI. Internally this is using the Kestrel web server which is part of Microsoft ASP.Net.
+#### Installing Certify Management Hub
+The management hub is installed as a single service which serves the Management Hub API, a backend certify-agent instance, and the web UI. Internally this is using the Kestrel web server which is part of Microsoft ASP.Net.
 
 You can download the latest **alpha test** version [7.0.2.23-alpha.07 : Released 2025/05/20](https://certifytheweb.s3.amazonaws.com/downloads/archive/hub/CertifyMgmtHubSetup_7.0.2.23-alpha.07.exe) - this is intended for test evaluation and not for production use, as subsequent updates may including breaking changes.
 

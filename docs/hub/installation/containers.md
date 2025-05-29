@@ -1,6 +1,6 @@
 ---
 id: containers
-title: Docker and other container platforms
+title: Install for Docker and container platforms
 ---
 ### Docker 
 :::info

@@ -1,5 +1,5 @@
 ---
-title: Using with Certify Certificate Manager
+title: Joining the Hub
 ---
 
 ## Summary

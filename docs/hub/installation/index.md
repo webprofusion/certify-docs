@@ -12,7 +12,7 @@ You can install the *Certify Management Hub* using docker, various Linux distrib
 
 - [Docker and container environments](containers)
 - [Windows](windows)
-- Linux
+- [Linux](linux)
 - macOS
 
 The product runs in Community Edition mode by default, see [Licensing](../../guides/licensing.md) for more information.

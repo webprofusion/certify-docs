@@ -6,9 +6,6 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'webprofusion', // Usually your GitHub org/user name.
   projectName: 'certify-docs', // Usually your repo name.
-  future: {
-    experimental_faster: true,
-  },
   themeConfig: {
     algolia: {
       appId: 'YX7T7PF7BX',
