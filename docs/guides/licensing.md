@@ -134,3 +134,7 @@ Q: I don't need my license anymore but I keep getting an email to renew it, how 
 
 A: Sign into certifytheweb.com and on the License Keys tab choose Cancel Now next to your license key.
 
+---
+Q: I don't recognise this purchase and I want to dispute the payment
+
+A: Contact us to discuss via email `support at certifytheweb.com` before filing a dispute with your credit card company, as once your payment is disputed we may no longer provide services to you. You should dispute payments if you think someone has used your credit card without your permission, however this is *extremely* rare and much more commonly people just forget they bought the software license key, or someone on your team made the purchase. Disputes cost us a fee plus the original payment, but if do you dispute a payment we will generally just refund it and cancel your licenses. Repeated disputes will result in a complete ban on purchases from us. We reserve the right to refund your purchases and cancel license keys/services at any time.
