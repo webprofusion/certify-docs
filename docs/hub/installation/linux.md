@@ -15,7 +15,7 @@ The following commands:
 
 ```
 rm ./certify-hub-linux-x64-latest.tar.gz -f
-wget https://downloads.certifytheweb.com/beta/hub/certify-mgmthub-linux-x64-latest.tar.gz
+wget https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-linux-x64-latest.tar.gz
 rm -rf ./certify-hub-install && mkdir -p ./certify-hub-install
 tar -xvf certify-mgmthub-linux-x64-latest.tar.gz -C ./certify-hub-install
 sudo ./certify-hub-install/scripts/install-hub.sh
@@ -56,7 +56,7 @@ The following commands:
 
 ```
 rm ./certify-agent-linux-x64-latest.tar.gz -f
-wget https://downloads.certifytheweb.com/beta/agent/certify-agent-linux-x64-latest.tar.gz
+wget https://downloads.certifytheweb.com/beta/latest/certify-agent-linux-x64-latest.tar.gz
 rm -rf ./certify-agent-install && mkdir -p ./certify-agent-install
 tar -xvf certify-agent-linux-x64-latest.tar.gz -C ./certify-agent-install
 sudo ./certify-agent-install/scripts/install-agent.sh
