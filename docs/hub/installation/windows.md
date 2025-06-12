@@ -6,7 +6,14 @@ title: Install for Windows
 #### Installing Certify Management Hub
 The management hub is installed as a single service which serves the Management Hub API, a backend certify-agent instance, and the web UI. Internally this is using the Kestrel web server which is part of Microsoft ASP.Net.
 
-You can download the latest **alpha test** version [7.0.2.26-alpha.09 : Released 2025/06/09](https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-windows-x64-latest.exe) - this is intended for test evaluation and not for production use, as subsequent updates may including breaking changes.
+[Download the latest **beta** version for Windows](https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-windows-x64-latest.exe) 
+
+Note: this version is intended for test evaluation and is not yet intended for production use, as subsequent updates may including breaking changes.
+
+### Upgrading
+To upgrade download and install the latest version as normal. On Windows your settings are preserved in `%PROGRAMDATA%\certify`. For most users, this is `C:\ProgramData\certify`. Uninstalling the app or installing a new version does not remove the files stored here. We recommend including this location in your regular backup procedure.
+
+## Additional Information
 
 The current default configuration will make the service and UI available at `http://localhost:8080`
 
@@ -18,6 +25,3 @@ Suggested Configuration for multi-user access:
 - Create an internal DNS hostname for the service e.g. certify-hub.yourowndomain.com and point it at the internal IP of your server hosting the hub.
 - [Configure the service to use https](service.md)
 - Setup individual user accounts under Settings > Security > Users, and assign the roles required for each user (e.g. Administrator).
-
-### Settings are preserved between installs/upgrades
-On Windows your settings are preserved in `%PROGRAMDATA%\certify`. For most users, this is `C:\ProgramData\certify`. Uninstalling the app or installing a new version does not remove the files stored here. We recommend including this location in your regular backup procedure.

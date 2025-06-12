@@ -5,7 +5,7 @@ title: Install for Docker and container platforms
 ### Docker 
 :::info
 
-Using [docker](https://docker.com/) is a way to quickly try out *Certify Management Hub* on any OS. This runs the hub services in a virtualized *container* from an app *image* file. Upgrades just involve getting ("pulling") the latest image and recreating the container with that. Be sure to setup a data volume to retain your settings between upgrades.
+Using [docker](https://docker.com/) to quickly try out *Certify Management Hub* on any OS. This runs the hub services in a virtualized *container* from an app *image* file. Upgrades just involve getting ("pulling") the latest image and recreating the container with that. Be sure to setup a data volume to retain your settings between upgrades.
 
 :::
 
