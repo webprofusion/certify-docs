@@ -16,7 +16,7 @@ This guide will help you get started and detail some of the more advanced option
 ![Startup UI](/assets/screens/landing_page.png)
 
 :::info
-*Certify The Web* is our [range](/docs/) of certificate management related products, including *Certify Certificate Manager*, [Certify Dashboard](dashboard) and [Certify DNS](/docs/dns/providers/certifydns)
+*Certify The Web* is our [range](/docs/) of certificate management related products, including *Certify Certificate Manager*,  [Certify Management Hub](hub), [Certify Dashboard](dashboard) and [Certify DNS](/docs/dns/providers/certifydns)
 
 :::
 

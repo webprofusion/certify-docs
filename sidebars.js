@@ -24,7 +24,7 @@ export default {
               {
                 type: 'category',
                 collapsible: true,
-                collapsed: true,
+                collapsed: false,
                 label: 'Background Information',
                 items: [
                   'guides/certificates',
@@ -40,7 +40,7 @@ export default {
               {
                 type: 'category',
                 collapsible: true,
-                collapsed: true,
+                collapsed: false,
                 label: 'Advanced Deployment',
                 items: [
                   'deployment/tasks_intro',
@@ -58,7 +58,7 @@ export default {
               {
                 type: 'category',
                 collapsible: true,
-                collapsed: true,
+                collapsed: false,
                 label: 'Other Advanced Options',
                 items: [
                   'features/certificate-advanced',
@@ -97,7 +97,7 @@ export default {
             {
               type: 'category',
               collapsible: true,
-              collapsed: true,
+              collapsed: false,
               label: 'Installation',
               items: [
                 'hub/installation/index',
@@ -219,6 +219,69 @@ export default {
       ]
     }
 
-  ]
+  ],
+   commonDocsSidebar: [
+    {
+      /* This (last place) sidebar is used for common documentation shared between Certify Certificate Manager and Certify Management Hub, this avoid the wrong product being displayed in breadcrumbs */
+      type: 'category',
+      label: 'Supporting Information',
+      items: [
+    
+        {
+          type: 'category',
+          label: 'Guides',
+          items: [
+            {
+              type: 'category',
+              collapsible: true,
+              collapsed: true,
+              label: 'Background Information',
+              items: [
+                'guides/certificates',
+                'guides/certificate-authorities',
+                'http-validation',
+                'dns/validation'
+              ],
+            },
+            {
+              type: 'category',
+              collapsible: true,
+              collapsed: true,
+              label: 'Advanced Deployment',
+              items: [
+                'deployment/tasks_intro',
+                'script-hooks',
+                {
+                  type: 'doc',
+                  id: 'guides/apache-nginx',
+                  label: 'Apache, nginx etc'
+                },
+                'guides/import-export',
+                'features/data-stores'
+              ],
+            },
+            {
+              type: 'category',
+              collapsible: true,
+              collapsed: true,
+              label: 'Other Advanced Options',
+              items: [
+                'features/certificate-advanced',
+                'features/stir-shaken'
+              ]
+            },
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Support',
+          items: [
+            'faq',
+            'support'
+
+          ]
+        }
+      ]
+    }],
 };
 
