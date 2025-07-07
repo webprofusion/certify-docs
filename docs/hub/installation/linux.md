@@ -47,6 +47,16 @@ Suggested Configuration for multi-user access:
 - [Configure the service to use https](service.md)
 - Setup individual user accounts under Settings > Security > Users, and assign the roles required for each user (e.g. Administrator).
 
+### Service Administration
+
+When the service is installed using systemd the following commands can be useful:
+
+|Task|Command|
+|---|---|
+|Restart the Service | `sudo systemctl restart certify-hub` |
+|Check systemd log | `journalctl -u certify-hub` |
+|Follow current log | `journalctl -u certify-hub -f` |
+
 ## Certify Management Agent
 
 [Certify Management Agent](../guides/agent.md) is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI).
