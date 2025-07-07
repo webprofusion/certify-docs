@@ -68,4 +68,4 @@ To then clean up the temporary install files:
 rm -rf ./certify-agent*
 ```
 
-By default the agent will install to `/opt/certify-agent` as a systemd service called `certify-agent` with config stored at `/usr/share/certify`.
+By default the agent will install to `/opt/certify-agent` as a systemd service called `certify-agent` running as user `certify` with config stored at `/usr/share/certify`.

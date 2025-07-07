@@ -63,4 +63,6 @@ With your agent installed on your target machine and joined to the hub, configur
 | simple-acme  | %PROGRAMDATA%\simple-acme | -  |
 | win-acme  | %PROGRAMDATA%\simple-acme |  - |
 
+The user account the agent service runs as **will need permission to read** from whichever paths are required in your installation, otherwise it will fail to discover the certificate configurations etc.
+
 The agent will cache results from each certificate manager and periodically refresh results, so changes to renewals etc will take a few minutes to show up in the hub UI.
