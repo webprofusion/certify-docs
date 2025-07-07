@@ -1,10 +1,12 @@
 ---
-title: Joining the Hub
+title: Certify Certificate Manager (Desktop)
 ---
 
 ## Summary
 
 Joining your existing *Certify Certificate Manager* (CCM) instance to a Management Hub allows you to control the instance settings as if you were working in the conventional desktop app, without having to remote into the desktop of each instance.
+
+If you are using *Certify Management Agent* on Linux or macOS, [see our agent guide](agent.md).
 
 Start by [downloading the latest version](https://downloads.certifytheweb.com/beta/latest/certify-ccm-windows-x64-latest.exe) of Certify Certificate Manager (v7+) with the option to connect to a management hub.
 

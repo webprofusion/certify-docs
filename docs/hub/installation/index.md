@@ -21,8 +21,6 @@ The product runs in Community Edition mode by default, see [Licensing](../../gui
 
 :::danger
 Due to the nature of the work the management hub performs we do not recommend hosting on a public facing web server. While logins are required for most actions, the app and API are not considered to be security hardened for public exposure unless we explicitly state that they are. Default admin credentials should be changed immediately after setup.
-
-*This alpha version may have some unguarded API endpoints and is not suitable for public hosting.*
 :::
 
 ## Upgrading
@@ -35,7 +33,7 @@ The latest release notes for the app can be found at https://certifytheweb.com/h
 
 You can self-host on Windows, macOS or Linux, or you can use your own choice of container environment (Docker, Kubernetes, Red Hat/IBM OpenShift etc).
 
-The product internally uses .NET 9.0 or higher and specific supported operating systems are detailed here: https://github.com/dotnet/core/blob/main/release-notes/9.0/supported-os.md
+The product internally uses .NET 9.0 or higher (self contained, you do not need to install .net) and specific supported operating systems are detailed here: https://github.com/dotnet/core/blob/main/release-notes/9.0/supported-os.md
 
 For the web app, "evergreen" desktop web browsers are supported, typically this is Google Chrome, Microsoft Edge, Safari and Firefox.
 

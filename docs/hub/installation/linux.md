@@ -49,7 +49,8 @@ Suggested Configuration for multi-user access:
 
 ## Certify Management Agent
 
-The following commands:
+[Certify Management Agent](../guides/agent.md) is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI).
+
 - Download the latest version, ensuring any old download and old install files are removed if present
 - Extract the downloaded archive to the temporary ./certify-agent-install path
 - Runs the install script to install under /opt/certify-agent, and sets up the agent as a systemd service running as user `certify`.
@@ -66,3 +67,5 @@ To then clean up the temporary install files:
 ```
 rm -rf ./certify-agent*
 ```
+
+By default the agent will install to `/opt/certify-agent` as a systemd service called `certify-agent` with config stored at `/usr/share/certify`.

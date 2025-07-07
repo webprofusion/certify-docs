@@ -58,7 +58,7 @@ For simplest setup you can fetch the combined Certify Management Hub image from:
 Add Storage > persistent volume claim `certifydata` with mount path `/usr/share/certifydata`, see also `CERTIFY_APP_DATA` below.
 
 ## Certify Management Agent
-Certify Management Agent is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
+[Certify Management Agent](../guides/agent.md) is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
 
 - Docker Hub: https://hub.docker.com/r/certifytheweb/certify-agent
 - GitHub Packages: https://github.com/certifytheweb?tab=packages

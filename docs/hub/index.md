@@ -7,9 +7,9 @@ title: Getting Started
 
 *Certify Management Hub* is our new cross-platform product for centralized administration of managed certificates. 
 
-:::warning[Alpha Version]
+:::warning[Beta Version]
 
-The product is available to try out as an alpha version (e.g. not the finished product). The documentation shown here is provisional and subject to major changes. To provide feedback contact `support at certifytheweb.com` or post to https://community.certifytheweb.com/. If testing, see current [Known Issues](known-issues.md)
+The product is available to try out as an beta version (e.g. not the finished product). The documentation shown here is provisional and subject to major changes. To provide feedback contact `support at certifytheweb.com` or post to https://community.certifytheweb.com/. If testing, see current [Known Issues](known-issues.md)
 :::
 
 **All the core features of [Certify Certificate Manager](../intro.md), with a web based management UI and API.**

@@ -104,9 +104,10 @@ export default {
                 'hub/installation/containers',
                 'hub/installation/windows',
                 'hub/installation/linux',
-                'hub/guides/ccm',
+               
               ],
             },
+
             'hub/guides/request-certificate',
             'hub/known-issues'
           ]
@@ -116,6 +117,14 @@ export default {
           label: 'Managed Challenges',
           items: [
             'hub/managedchallenges',
+          ]
+        },
+         {
+          type: 'category',
+          label: 'Management Agent & CCM',
+          items: [
+            'hub/guides/ccm',
+            'hub/guides/agent',
           ]
         },
         {
