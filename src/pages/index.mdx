@@ -9,58 +9,75 @@ import TabItem from '@theme/TabItem';
 # Certify The Web 
 ## Documentation & Guidance
 
-[Certify The Web](https://certifytheweb.com) is our range of tools for automated certificate management, including [Certify Certificate Manager](docs/intro), [Certify Dashboard](docs/dashboard/) and [Certify DNS](docs/dns/providers/certifydns). 
-
-You can find out more about our products at https://certifytheweb.com or see below to access our documentation.
+**Certify The Web** is our range of automated SSL/TLS certificate management tools for Windows, Linux, macOS, and cloud environments. Choose the solution that fits your needs:
 
 <Tabs queryString="product">
-  <TabItem value="ccm" label="Certify Certificate Manager" default>
+  <TabItem value="ccm" label="Certificate Manager" default>
 
-    Our popular certificate management system for **Windows** features a comprehensive UI, background renewal service, a range of pre-built deployment tasks and support for custom certificate deployment automation. 
- 
-    [Certify Certificate Manager Documentation](docs/intro)
+    Comprehensive certificate management on *Windows Server* with a desktop UI and background management service.
 
-    <div className="img-left">
+    **Key Features:**
+    - Automated ACME certificate renewals
+    - Pre-built deployment tasks
+    - Support for Let's Encrypt, Google Trust Services, and enterprise CAs
+    - Custom automation scripts
+
+    [**Get Started →**](docs/intro)
+
     ![Certify Certificate Manager](/assets/screens/Startup_Dark_sm.png)
-    </div> 
-
-  
-    Professional management of ACME automated certificates on Windows from your choice of Certificate Authorities including Let's Encrypt, Google Trust Services and custom or enterprise CAs.
-
-    Looking for a cross platform certificate management option? Check out our new <a href="?product=hub">Certify Management Hub</a> product.
-
 
   </TabItem>
-    <TabItem value="hub" label="Certify Management Hub" default>
-    Our new **cross-platform** centralized management hub features a web based UI, all the main features of *Certify Certificate Manager*, plus new features like multi-instance management and managed challenges to help support other ACME clients. 
+  
+  <TabItem value="hub" label="Management Hub">
+    
+    Centralized cross-platform web-based certificate management.
 
-    [Certify Management Hub Documentation](docs/hub/)
+    **Key Features:**
+    - Web-based UI accessible from anywhere
+    - Certificate management with the same core features as Certify Certificate Manager.    
+    - Managed DNS challenges
+    - Support for Windows, Linux, macOS, and containers
+    - Optionally administer many instances of Certify Certificate Manager and Certify Management Agent.
 
-    <div className="img-left">
-    ![Certify Certificate Manager](/assets/screens/hub/hub_intro.png)
-    </div> 
+    [**Get Started →**](docs/hub/)
+
+    ![Certify Management Hub](/assets/screens/hub/hub_intro.png)
     
   </TabItem>
-  <TabItem value="dashboard" label="Certify Dashboard">
-     Our hosted dashboard providing central monitoring of certificate renewal status across your organization, compatible with a cross-platform range of ACME clients.
+  
+  <TabItem value="dashboard" label="Dashboard">
+    
+    Hosted dashboard for centralized certificate monitoring across your organization.
 
-        [Certify Dashboard Documentation](docs/dashboard)
+    **Key Features:**
+    - Real-time certificate status monitoring
+    - Compatible with multiple ACME clients via Certify Management Agent
+    - Organization-wide visibility
 
-        <div className="img-right">
-        ![Dashboard](/assets/screens/dashboard/dashboard_example_sm.png)
-        </div>
+    [**View Documentation →**](docs/dashboard)
 
-      
+    ![Dashboard](/assets/screens/dashboard/dashboard_example_sm.png)
         
-        </TabItem>
-        <TabItem value="dns" label="Certify DNS">
+  </TabItem>
+  
+  <TabItem value="dns" label="Certify DNS">
    
-        When you can't use automation with your existing DNS provider you can optionally use our cloud managed service to perform ACME DNS challenges for your certificates using CNAME delegation. The service is compatible with most existing acmedns clients and can be used with other ACME clients on all operating systems.
+    Cloud-based DNS challenge service for environments where direct DNS automation isn't possible.
 
-        [Certify DNS Documentation](docs/dns/providers/certifydns)
+    **Key Features:**
+    - CNAME delegation support
+    - Compatible with most ACME clients
+    - Cross-platform compatibility
+    - Simplified DNS challenge management
+
+    [**Setup Guide →**](docs/dns/providers/certifydns)
 
   </TabItem>
 </Tabs>
+
+---
+
+**Need help choosing?** Visit [certifytheweb.com](https://certifytheweb.com) for detailed product comparisons and pricing information.
 
 
 

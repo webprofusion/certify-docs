@@ -2,7 +2,7 @@
 title: Using Certify Dashboard
 ---
 
-*Certify Dashboard* is our hosted service for monitoring certificate renewals. You can report to the dashboard using [Certify Certificate Manager](/docs/intro), or by using our dashboard agent tool with supported ACME tools like *Certbot* and *acme.sh*.
+*Certify Dashboard* is our hosted service for monitoring certificate renewals. You can report to the dashboard using [Certify Certificate Manager](/docs/intro), or by using our Certify Management Agent (on linux etc) with supported ACME tools like *Certbot* and *acme.sh*.
 
 ![Dashboard](/assets/screens/dashboard/dashboard_example.png)
 
@@ -23,7 +23,7 @@ If you use *Certify Certificate Manager*, you can start reporting to the dashboa
 Ensure that *Status Reports to Dashboard* is enabled under Settings in the app (enabled by default).
 
 ### Using Other ACME Clients
-To report to the dashboard from third-party ACME clients, you can either use our dashboard API *(coming soon)* with custom tooling or our *Dashboard Agent*. The *Dashboard Agent* is a small tool that runs on your servers and understands the configuration of specific ACME clients. It can run as a service or periodically to send reports.
+To report to the dashboard from third-party ACME clients, you can use *Certify Management Agent* to monitor and report renewal status. The agent is a service that runs on your servers and understands the configuration of specific ACME clients. The agent configuration is managed using Certify Management Hub.
 
 **We are currently accepting beta testers for the Dashboard Agent to help refine the product for:**
 - Certbot
@@ -33,4 +33,4 @@ To report to the dashboard from third-party ACME clients, you can either use our
 The agent is designed to run on Linux, macOS, or Windows.
 
 ## Licensing
-*Certify Dashboard* is included with license key purchases for *Certify Certificate Manager*. For other ACME clients, you can start with our free tier (coming soon) to handle up to 25 managed certificate renewal reports (limit may vary) and for higher usage a *Certify Dashboard* license is required (planned to be $4.99 USD per month). Customers requiring support are required to purchase a license or can ask questions via the [Community forum](https://community.certifytheweb.com/).
+*Certify Dashboard* is included with license key purchases for *Certify Certificate Manager*, *Certify Management Hub* and *Certify Management Agent*.
