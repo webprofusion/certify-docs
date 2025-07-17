@@ -34,7 +34,8 @@ export default {
                   'guides/best-practices',
                   'backgroundservice',
                   'guides/ssl-windows',
-                  'guides/troubleshooting'
+                  'guides/troubleshooting',
+                  'guides/tools'
                 ],
               },
               {
