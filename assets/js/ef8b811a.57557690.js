@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[8947],{56600:e=>{e.exports=JSON.parse('{"authors":[{"name":"Christopher Cook","title":"Lead Developer of Certify The Web","url":"https://github.com/webprofusion-chrisc","imageURL":"https://avatars.githubusercontent.com/u/2445502?v=4","key":"webprofusion-chrisc","page":null,"count":5}]}')}}]);
