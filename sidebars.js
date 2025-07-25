@@ -117,7 +117,7 @@ export default {
           type: 'category',
           label: 'Managed Challenges',
           items: [
-            'hub/managedchallenges',
+            'hub/guides/managedchallenges',
           ]
         },
          {
