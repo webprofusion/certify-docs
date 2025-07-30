@@ -14,10 +14,10 @@ The following commands:
 - Runs the install script to install under /opt/certify-hub, and sets up the hub as a systemd service called `certify-hub`, running as user `certify`.
 
 ```
-rm ./certify-hub-linux-x64-latest.tar.gz -f
-wget https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-linux-x64-latest.tar.gz
+rm ./certify-mgmthub-linux-x64-latest.tar.gz -f
+wget https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-linux-x64-latest.tar.gz 
 rm -rf ./certify-hub-install && mkdir -p ./certify-hub-install
-tar -xvf certify-mgmthub-linux-x64-latest.tar.gz -C ./certify-hub-install
+tar -xf certify-mgmthub-linux-x64-latest.tar.gz -C ./certify-hub-install
 sudo ./certify-hub-install/scripts/install-hub.sh
 ```
 
@@ -67,9 +67,9 @@ When the service is installed using systemd the following commands can be useful
 
 ```
 rm ./certify-agent-linux-x64-latest.tar.gz -f
-wget https://downloads.certifytheweb.com/beta/latest/certify-agent-linux-x64-latest.tar.gz
+wget https://downloads.certifytheweb.com/beta/latest/certify-agent-linux-x64-latest.tar.gz -O 
 rm -rf ./certify-agent-install && mkdir -p ./certify-agent-install
-tar -xvf certify-agent-linux-x64-latest.tar.gz -C ./certify-agent-install
+tar -xf certify-agent-linux-x64-latest.tar.gz -C ./certify-agent-install
 sudo ./certify-agent-install/scripts/install-agent.sh
 ```
 
