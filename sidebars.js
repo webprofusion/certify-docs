@@ -118,6 +118,7 @@ export default {
           label: 'Managed Challenges',
           items: [
             'hub/guides/managedchallenges',
+            'hub/guides/acme-server',
           ]
         },
          {
