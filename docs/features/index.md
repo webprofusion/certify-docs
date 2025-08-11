@@ -1,19 +1,19 @@
 ---
 title: Features Overview for all products
-description: Comprehensive overview of all features available across Certify The Web products
+description: An overview of all major features available across the Certify The Web product range
 displayed_sidebar: null
 ---
 
 # Features Summary
 
-This is a overview of all major features available across the **Certify The Web** product suite, categorized by functionality and indicating which features are common across products or specific to individual components.
+This is a overview of all the major features available across the **Certify The Web** product suite, categorized by functionality and indicating which features are common across products or specific to individual components.
 
 ## Certificate Management & Automation
 
 ### Core Certificate Features
 These fundamental certificate management capabilities are available across all products:
 
-- **Automated ACME Certificate Renewals** - Automatic renewal scheduling with configurable timing
+- **Automated ACME Certificate Renewals** - Automatic renewal with zero-config failure notifications
 - **Multi-CA Support** - Support for Let's Encrypt, Google Trust Services, ZeroSSL, Buypass, and enterprise CAs
 - **Certificate Authority Fallback** - Optional automatic fallback to alternative CAs if the primary fails
 - **Wildcard Certificate Support** - Full support for wildcard domains (`*.example.com`)
