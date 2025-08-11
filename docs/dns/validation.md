@@ -31,43 +31,56 @@ _\* marked providers are contributed and tested by users._
 
 In addition we implement a number of DNS providers courtesy of the Posh-ACME: https://github.com/rmbolger/Posh-ACME project. If you encounter any issues with these you should verify they work normally within Posh-ACME and then raise an issue on our [github page](https://github.com/webprofusion/certify) :
 
-[Akamai](https://poshac.me/docs/v4/Plugins/Akamai),
-[AutoDNS](https://poshac.me/docs/v4/Plugins/AutoDNS),
-[All-Inkl](https://poshac.me/docs/v4/Plugins/All-Inkl),
-[ClouDNS](https://poshac.me/docs/v4/Plugins/ClouDNS),
-[Combell](https://poshac.me/docs/v4/Plugins/Combell),
-[Constellix](https://poshac.me/docs/v4/Plugins/Constellix),
-[DNSPod](https://poshac.me/docs/v4/Plugins/DNSPod),
-[DNSimple](https://poshac.me/docs/v4/Plugins/DNSimple),
-[DomainOffensive](https://poshac.me/docs/v4/Plugins/DomainOffensive),
-[deSEC](https://poshac.me/docs/v4/Plugins/DeSEC),
-[DigitalOcean](https://poshac.me/docs/v4/Plugins/DOcean),
-[Dreamhost](https://poshac.me/docs/v4/Plugins/Dreamhost),
-[Dynu](https://poshac.me/docs/v4/Plugins/Dynu),
-[EasyDNS](https://poshac.me/docs/v4/Plugins/EasyDNS),
-[Gandi](https://poshac.me/docs/v4/Plugins/Gandi),
-[Google Cloud](https://poshac.me/docs/v4/Plugins/GCloud),
-[Hetzner](https://poshac.me/docs/v4/Plugins/Hetzner),
-[Hurricane Electric](https://poshac.me/docs/v4/Plugins/HurricaneElectric),
-[Infoblox](https://poshac.me/docs/v4/Plugins/Infoblox),
-[IBM Cloud/SoftLayer](https://poshac.me/docs/v4/Plugins/IBMSoftLayer),
-[ISPConfig](https://poshac.me/docs/v4/Plugins/ISPConfig),
-[Linode](https://poshac.me/docs/v4/Plugins/Linode),
-[Loopia](https://poshac.me/docs/v4/Plugins/Loopia),
-[LuaDns](https://poshac.me/docs/v4/Plugins/LuaDns),
-[name.com](https://poshac.me/docs/v4/Plugins/NameCom),
-[Namecheap](https://poshac.me/docs/v4/Plugins/Namecheap)
-[NS1](https://poshac.me/docs/v4/Plugins/NS1),
-[PointDNS](https://poshac.me/docs/v4/Plugins/PointDNS),
-[Rackspace](https://poshac.me/docs/v4/Plugins/Rackspace),
-[RFC2136](https://poshac.me/docs/v4/Plugins/RFC2136),
-[Selectel](https://poshac.me/docs/v4/Plugins/Selectel),
-[Simply](https://poshac.me/docs/v4/Plugins/Simply),
-[TotalUptime](https://poshac.me/docs/v4/Plugins/TotalUptime),
-[UKFast](https://poshac.me/docs/v4/Plugins/UKFast),
-[Yandex](https://poshac.me/docs/v4/Plugins/Yandex),
-[Zilore](https://poshac.me/docs/v4/Plugins/Zilore)
-[Zonomi](https://poshac.me/docs/v4/Plugins/Zonomi)
+[Akamai](https://poshac.me/docs/latest/Plugins/Akamai),
+[AutoDNS](https://poshac.me/docs/latest/Plugins/AutoDNS),
+[All-Inkl](https://poshac.me/docs/latest/Plugins/All-Inkl),
+[Bunny](https://poshac.me/docs/latest/Plugins/Bunny),
+[ClouDNS](https://poshac.me/docs/latest/Plugins/ClouDNS),
+[Combell](https://poshac.me/docs/latest/Plugins/Combell),
+[Constellix](https://poshac.me/docs/latest/Plugins/Constellix),
+[DMEasy](https://poshac.me/docs/latest/Plugins/DMEasy),
+[DNSPod](https://poshac.me/docs/latest/Plugins/DNSPod),
+[DNSimple](https://poshac.me/docs/latest/Plugins/DNSimple),
+[DomainOffensive](https://poshac.me/docs/latest/Plugins/DomainOffensive),
+[Domeneshop](https://poshac.me/docs/latest/Plugins/Domeneshop)
+[deSEC](https://poshac.me/docs/latest/Plugins/DeSEC),
+[DigitalOcean](https://poshac.me/docs/latest/Plugins/DOcean),
+[Dreamhost](https://poshac.me/docs/latest/Plugins/Dreamhost),
+[Dynu](https://poshac.me/docs/latest/Plugins/Dynu),
+[EasyDNS](https://poshac.me/docs/latest/Plugins/EasyDNS),
+[Gandi](https://poshac.me/docs/latest/Plugins/Gandi),
+[Google Cloud](https://poshac.me/docs/latest/Plugins/GCloud),
+[Google Domains](https://poshac.me/docs/latest/Plugins/GoogleDomains),
+[Hetzner](https://poshac.me/docs/latest/Plugins/Hetzner),
+[HostingDe](https://poshac.me/docs/latest/Plugins/HostingDe),
+[Hurricane Electric](https://poshac.me/docs/latest/Plugins/HurricaneElectric),
+[Infoblox](https://poshac.me/docs/latest/Plugins/Infoblox),
+[Infomaniak](https://poshac.me/docs/latest/Plugins/Infomaniak)
+[INWX](https://poshac.me/docs/latest/Plugins/INWX)
+[IONOS](https://poshac.me/docs/latest/Plugins/IONOS)
+[IBM Cloud/SoftLayer](https://poshac.me/docs/latest/Plugins/IBMSoftLayer),
+[ISPConfig](https://poshac.me/docs/latest/Plugins/ISPConfig),
+[Leaseweb](https://poshac.me/docs/latest/Plugins/LeaseWeb/),
+[Linode](https://poshac.me/docs/latest/Plugins/Linode),
+[Loopia](https://poshac.me/docs/latest/Plugins/Loopia),
+[LuaDns](https://poshac.me/docs/latest/Plugins/LuaDns),
+[name.com](https://poshac.me/docs/latest/Plugins/NameCom),
+[Namecheap](https://poshac.me/docs/latest/Plugins/Namecheap)
+[NameSilo](https://poshac.me/docs/latest/Plugins/NameSilo)
+[NS1](https://poshac.me/docs/latest/Plugins/NS1),
+[PointDNS](https://poshac.me/docs/latest/Plugins/PointDNS),
+[Porkbun](https://poshac.me/docs/latest/Plugins/Porkbun),
+[PowerDNS](https://poshac.me/docs/latest/Plugins/PowerDNS),
+[Rackspace](https://poshac.me/docs/latest/Plugins/Rackspace),
+[RFC2136](https://poshac.me/docs/latest/Plugins/RFC2136),
+[Selectel](https://poshac.me/docs/latest/Plugins/Selectel),
+[Simply](https://poshac.me/docs/latest/Plugins/Simply),
+[TencentDNS](https://poshac.me/docs/latest/Plugins/TencentDNS),
+[TotalUptime](https://poshac.me/docs/latest/Plugins/TotalUptime),
+[UKFast](https://poshac.me/docs/latest/Plugins/UKFast),
+[Yandex](https://poshac.me/docs/latest/Plugins/Yandex),
+[Zilore](https://poshac.me/docs/latest/Plugins/Zilore)
+[Zonomi](https://poshac.me/docs/latest/Plugins/Zonomi)
 
 **If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they still work.**
 
