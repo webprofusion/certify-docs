@@ -27,6 +27,10 @@ module.exports = {
         { to: 'docs/hub/', label: 'Management Hub', position: 'left' },
         { to: 'docs/dashboard/', label: 'Dashboard', position: 'left' },
         { to: 'docs/dns/providers/certifydns/', label: 'Certify DNS', position: 'left' },
+        {
+          label: 'Features',
+          to: 'docs/features',
+        },
         { to: 'docs/support', label: 'Support', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'right' },
         {
@@ -58,6 +62,10 @@ module.exports = {
             {
               label: 'Certify DNS',
               to: 'docs/dns/providers/certifydns',
+            },
+            {
+              label: 'Features',
+              to: 'docs/features',
             },
             {
               label: 'Support',

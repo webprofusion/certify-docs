@@ -248,10 +248,11 @@ export default {
               collapsed: true,
               label: 'Background Information',
               items: [
+                'features/index',
                 'guides/certificates',
                 'guides/certificate-authorities',
                 'http-validation',
-                'dns/validation'
+                'dns/validation',
               ],
             },
             {
