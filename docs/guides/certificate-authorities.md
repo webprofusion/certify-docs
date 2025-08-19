@@ -42,14 +42,6 @@ ZeroSSL (https://zerossl.com/) is an ACME service operated by HID Global.
 - To use ZeroSSL you first need to sign up for a free account in order to get External Account Binding (EAB) credentials from the *Developer* section of their dashboard. This EAB credential can only be used once and subsequent account registrations (on other servers etc) require a new EAB to be generated.
 - You can check the ZeroSSL service status at [https://status.zerossl.com/](https://status.zerossl.com/)
 
-### BuyPass Go
-BuyPass are a Scandinavian certificate authority who also offer free certificates via their own ACME enabled service. https://www.buypass.com/ssl/products/acme 
-
-- Trusted by all major operating systems and browsers
-- Certificates expire after 180 days.
-- Important rate limits apply: https://community.buypass.com/t/m2r5cj/rate-limits
-- Certificates can contain up to 5 domains. Wildcard certificates are not supported.
-
 ### Google Cloud
 The Google Cloud Certificate Manager is an ACME enabled public certificate service. Certificates are valid for up-to 90 days and can contain multiple domains or wildcards.
 
@@ -65,6 +57,10 @@ SSL .com are an established certificate Certificate Authority who now offer basi
 - Certificates expire after 90 days.
 - Certificates can contain 1 domain plus an optional www subdomain. Wildcard certificates are not supported.
 
+### BuyPass Go
+BuyPass previously offered free ACME services but from October 2025 they have terminated their ACME product offerings.
+
+See https://acmeclients.com/certificate-authorities/ for details of more ACME enabled CAs.
 
 ## Managing CA accounts
 
@@ -77,7 +73,7 @@ You can add configuration for any certificate authority system which supports th
 
 ## Migrating from one CA to another
 
-In the event that you want to change from one Certificate Authority to another (e.g. from Let's Encrypt to BuyPass Go), you should follow this general procedure:
+In the event that you want to change from one Certificate Authority to another (e.g. from Let's Encrypt to Google Trust Services), you should follow this general procedure:
 * Add an account for the new CA if you don't have one already.
 * Perform a certificate request with a typical managed certificate
     * Edit your managed certificate, choose Certificate > Advanced > Certificate Authority, choose the new CA.

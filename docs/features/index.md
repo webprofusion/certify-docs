@@ -14,7 +14,7 @@ This is a overview of all the major features available across the **Certify The 
 These fundamental certificate management capabilities are available across all products:
 
 - **Automated ACME Certificate Renewals** - Automatic renewal with zero-config failure notifications
-- **Multi-CA Support** - Support for Let's Encrypt, Google Trust Services, ZeroSSL, Buypass, and enterprise CAs
+- **Multi-CA Support** - Support for Let's Encrypt, Google Trust Services, ZeroSSL, Actalis, and enterprise CAs
 - **Certificate Authority Fallback** - Optional automatic fallback to alternative CAs if the primary fails
 - **Wildcard Certificate Support** - Full support for wildcard domains (`*.example.com`)
 - **IP Certificates** - Certificate covering IPv4 or IPv6 addresses
