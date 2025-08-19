@@ -5,31 +5,46 @@ title: DNS Domain Validation (dns-01)
 
 ## Why use DNS Validation?
 
-To request a certificate from Let's Encrypt (or any Certificate Authority), you need to provide some kind of proof that you are entitled to receive the certificate for given domain(s). Let's Encrypt supports two methods of validation to prove control of your domain, `http-01` ([validation over HTTP](http-validation.md)) and `dns-01` (validation over DNS).
+To request a certificate from Let's Encrypt (or any Certificate Authority), you must prove control of the domain names on the certificate. Two ACME challenge types are commonly used:
 
-**Wildcard domain certificates (those covering `*.yourdomain.com`) can only be requested using DNS validation.** DNS Validation is also especially useful if the domains you are trying to get certification for are not public websites, or cannot serve http requests on port 80.
+- `http-01` – [validation over HTTP](http-validation.md)
+- `dns-01` – validation over DNS (TXT records)
+
+**Wildcard certificates** (for example, `*.yourdomain.com`) can only be requested using DNS validation. DNS validation is also useful when:
+
+- Your domains are not public websites.
+- Port 80 (HTTP) cannot be used for validation.
 
 ## How to use DNS Validation
 
-In order to validate your control of your domains to the certificate authority you will be required to create a specified TXT record in your domain's DNS zone.
+To validate control of your domains, you create a specific TXT record in the domain's DNS zone for each name on the certificate.
 
-To do this you may need to get the API credentials for the (hosted) DNS from your DNS providers control panel, store these credentials in the app then select them to be used for specific certificate requests. DNS credentials are encrypted at rest using Windows DAPI, but where possible you should use limited privilege credentials.
+Notes:
 
-If your DNS provider (or custom DNS setup) does not have an API we can talk to, you can write your own DNS update script or use the Manual DNS option (the request pauses while you manually update DNS).
+- The TXT value is different for every order/renewal, so automation is strongly recommended.
+- The app includes built‑in integrations for many popular DNS providers with APIs the app can use.
+
+If your DNS provider (or custom DNS setup) does not have a supported API, you can either:
+
+- Provide your own DNS update script, or
+- Use the Manual DNS option (the request pauses while you update DNS records yourself).
 
 ### Certify DNS
 
 Certify DNS is a cloud hosted version of the acme-dns standard (CNAME delegation of acme challenge TXT records to a dedicated challenge response service). This service can be enabled through the https://certifytheweb.com License Keys tab when signed in. The service is compatible with most existing _acme-dns_ clients so it can be used with other ACME clients on all operating systems. Read more about [Certify DNS](providers/certifydns.md).
 
-### DNS API Providers
+### DNS API providers
 
-Current Built-In DNS API providers include:
+Current built‑in DNS API providers include:
 
 - ACME DNS (see below), Aliyun \*, [AWS Route53](providers/awsroute53.md), [Azure DNS](providers/azuredns.md), [Cloudflare](providers/cloudflare.md), [DNS Made Easy](providers/dnsmadeeasy.md), [GoDaddy](providers/godaddy.md), Microsoft DNS \*, IONOS \*, [OVH](providers/dns-ovh.md) \*, Simple DNS Plus \*, TransIP \*
 
-_\* marked providers are contributed and tested by users._
+_\* Providers marked with an asterisk are community‑contributed and tested by users._
 
-In addition we implement a number of DNS providers courtesy of the Posh-ACME: https://github.com/rmbolger/Posh-ACME project. If you encounter any issues with these you should verify they work normally within Posh-ACME and then raise an issue on our [github page](https://github.com/webprofusion/certify) :
+In addition, several providers are supported via the Posh‑ACME project (https://github.com/rmbolger/Posh-ACME). If you encounter issues with these plugins:
+
+1. Verify the provider works as expected in Posh‑ACME.
+2. Then raise an issue on our [GitHub page](https://github.com/webprofusion/certify).
 
 [Akamai](https://poshac.me/docs/latest/Plugins/Akamai),
 [AutoDNS](https://poshac.me/docs/latest/Plugins/AutoDNS),
@@ -82,59 +97,69 @@ In addition we implement a number of DNS providers courtesy of the Posh-ACME: ht
 [Zilore](https://poshac.me/docs/latest/Plugins/Zilore)
 [Zonomi](https://poshac.me/docs/latest/Plugins/Zonomi)
 
-**If you change API credentials, you need to replace the credential settings in Certify under 'Settings > Stored Credentials' to ensure renewals keep working. Once saved, there is also a 'Test' option so you can try out the credentials to check they still work.**
+**If you change API credentials**, update them under Settings > Stored Credentials so renewals continue to work. Use the Test button to confirm connectivity.
 
-### Propagation Delay Seconds
+### Propagation delay (seconds)
 
-When using DNS validation, the certificate authority will check your DNS TXT record using your authoritative nameserver to see if they agree on the expected value of the corresponding `_acme-challenge` record for each domain/subdomain identifier. When the TXT record is updated it can often take up to a minute or two for all your nameservers to agree, we refer to the time we wait to allow for this as *Propagation Delay*. The default propagation delay is 60 seconds, but you can increase this if you are having trouble with validation. If you are using a DNS provider which has a very long propagation delay you may need to increase this value e.g. to 300 seconds (5 minutes). 
+When using DNS validation, the CA checks your `_acme-challenge` TXT record via your authoritative name servers. After you update a TXT record, it can take time for all name servers to agree. The app waits for this window, called the **propagation delay**.
 
-### CNAME Delegation
+- Default: 60 seconds
+- If validation is unreliable or your DNS provider is slow to propagate, increase to 120–300 seconds (or more if required)
 
-An optional advanced approach to DNS validation which removes the need to update your primary domain DNS is to use CNAME delegation, this is where you create an `_acme-challenge.yourdomain.com` CNAME record for each domain/subdomain and point it at a corresponding TXT record in another DNS zone. This allows you to have a dedicated domain or subdomain which specifically handles DNS challenge requests (because it can be automated).
+### CNAME delegation
 
-In the Authorization configuration UI, you can specify the `CNAME Delegation Rule` for each authorization configuration.
+To avoid updating your primary DNS zone directly, you can use CNAME delegation:
 
-The rule format is: `*.source.domain:*.destination.domain`, you can specify multiple rules by separating rules with `;`.
+1. In your primary zone, create an `_acme-challenge.<name>` CNAME for each domain/subdomain.
+2. Point each CNAME at a corresponding `_acme-challenge.<name>` TXT record in a different (delegated) zone that you can automate.
 
-So if for example your website `example.com` has names `example.com` and `www.example.com` these would normally require a challenge TXT record be automatically created for each entry e.g. `_acme-challenge.example.com` and `_acme-challenge.www.example.com`. In this example we could redirect those as CNAME entries to a dedicated zone such as `auth.example.org`.
+In the Authorization configuration UI, set the `CNAME Delegation Rule` for each authorization configuration.
 
-- Configure all of the settings in order to update the target domain (instead of the original domain) and set your `CNAME Delegation Rule` as `*.example.com:*.auth.example.org`.
-- You will then also need an `_acme-challenge` CNAME in your original domain setup to point to delegated domain, for each domain/subdomain (e.g. `_acme-challenge.example.com` pointing to `_acme-challenge.auth.example.org` and `_acme-challenge.www.example.com` pointing to `_acme-challenge.www.auth.example.org`).
-- The app will create/update the target TXT record and values, using the DNS credentials/API selection you have specified for the target domain/DNS zone.
+Rule format: `*.source.domain:*.destination.domain` (use `;` to separate multiple rules).
 
-It's also possible to redirect multiple sources to one destination subdomain using a non-wildcard target e.g. a rule definition of `*.example.com:auth.example.org` would translate `_acme-challenge.www.example.com` to `_acme-challenge.auth.example.org`, ignoring the subdomain. This means all of your TXT updates can use the same TXT record but support for this will vary by DNS provider.
+Example: your site `example.com` includes `example.com` and `www.example.com`. Normally you would create TXT records for `_acme-challenge.example.com` and `_acme-challenge.www.example.com`. Instead, you can delegate both to a dedicated zone such as `auth.example.org`.
 
-### Domain Match Rules
-For certificates that require multiple authorizations across different domain (e.g. different DNS providers/zones or a mix of HTTP and DNS validation) you can use the `Domain Match Rule` to specify which domains/subdomains should be matched for the given authorization configuration. These are optional and *only* used if you have multiple authorization configurations for the same certificate. To match all (first level) subdomains of a domain use a wildcard `*.example.com` or to match only a single specific domain/subdomain identifier use `subdomain.example.com`, multiple rules can be supplied as semicolon separated. 
+- Configure the authorization to update the target (delegated) domain and set `CNAME Delegation Rule` to `*.example.com:*.auth.example.org`.
+- In the original domain, add `_acme-challenge` CNAMEs pointing to the delegated zone, e.g., `_acme-challenge.example.com` → `_acme-challenge.auth.example.org` and `_acme-challenge.www.example.com` → `_acme-challenge.www.auth.example.org`.
+- The app will create/update TXT records in the delegated zone using the DNS credentials/API you specified for that zone.
 
-Note that `*.example.com` will *not* match a further subdomain level such as `something.subdomain.example.com`. To match multiple subdomains either explicitly or as a wildcard you can use a semicolon separated list e.g.`*.example.com;*.subdomain.example.com;www.something.example.com`. You can use the Preview tab to see which authorization configurations will match which identifiers, if an identifier is not matched the app will fall back to HTTP validation for that identifier.
+You can also map multiple sources to a single destination subdomain by using a non‑wildcard target. For example, `*.example.com:auth.example.org` maps `_acme-challenge.www.example.com` to `_acme-challenge.auth.example.org` (ignoring the subdomain). Not all DNS providers support multiple TXT values on a single record—check your provider’s capabilities.
 
-## Other DNS Validation Methods
+### Domain match rules
+If a certificate needs multiple authorization configurations (for example, different DNS zones/providers or a mix of HTTP and DNS), use `Domain Match Rule` to specify which names each configuration applies to. These rules are optional and only used when more than one authorization configuration exists.
+
+Tips:
+
+- `*.example.com` matches first‑level subdomains only, not `something.subdomain.example.com`.
+- Use a semicolon‑separated list to match multiple patterns, e.g., `*.example.com;*.subdomain.example.com;www.something.example.com`.
+- Use the Preview tab to confirm which identifiers match which configurations. If an identifier is not matched, the app falls back to HTTP validation for that name.
+
+## Other DNS validation methods
 
 You can alternatively use the following methods to manage your DNS TXT records:
 
-### ACME DNS
+### acme-dns
 
-[acme-dns](https://github.com/joohoi/acme-dns) is a system to automatically manage TXT record values on behalf of your domain **just for challenge validation**. This is probably the easiest method if you have a trusted acme-dns server you can use, this also avoids storing powerful DNS admin credentials on your server. Find out more on [how to use acme-dns](providers/acme-dns.md).
+[acme-dns](https://github.com/joohoi/acme-dns) automatically manages TXT record values **only for challenge validation**. If you have access to a trusted acme-dns server, this is often the simplest approach and avoids storing DNS admin credentials on your servers. Learn more: [how to use acme-dns](providers/acme-dns.md).
 
-### DNS Scripting
+### DNS scripting
 
-[DNS Scripting](providers/scripting.md) involves providing your own custom script to update/delete TXT records in your DNS using a .bat file which can then optionally call python, node scripts etc.
+[DNS scripting](providers/scripting.md) lets you run your own update/delete logic for TXT records. For example, call a `.bat` file that invokes PowerShell, Python, or Node.js.
 
 ### Manual DNS
 
-If you are just experimenting with wildcard domains you may opt to use manual DNS updates (editing manually via your DNS control panel).
+If you’re experimenting with wildcard domains, you can use manual DNS updates (edit records in your DNS control panel).
 
-**This is the least recommended option as you will need to update this for every renewal.**
+**This is the least‑recommended option** because you must repeat the process for every renewal.
 
-This method can also be extremely confusing when requesting a single cert for `*.domain.com` and `domain.com`, as you need to provide 2 values for the same TXT `_acme-challenge.domain.com` record (to answer both the `*.domain.com` and `domain.com` challenge responses).
+It can also be confusing when requesting a single cert for `*.domain.com` and `domain.com`: you must provide two TXT values for the same `_acme-challenge.domain.com` record (to answer both challenges).
 
 To use Manual DNS:
 
-- Select Manual DNS as your DNS update method
-- Perform your initial certificate request. The request will pause and ask you to create a TXT record in your domain (one value for each domain or wildcard). Once you have completed that, wait for your DNS name servers to complete propagation. If you have trouble validating, wait an hour or more for this to complete.
-- Use 'Request Certificate' to resume the request and check validation.
-- If the certificate authority can see the TXT value they asked for in your DNS, they will then allow a certificate to be issued and the request will resume as normal.
+1. Select Manual DNS as your DNS update method.
+2. Start the certificate request. When prompted, create the TXT record(s) (one value per name). Wait for DNS propagation—if validation fails, wait longer (up to an hour) and try again.
+3. Use Request Certificate to resume and validate.
+4. If the CA can see the expected TXT values, the order proceeds and the certificate is issued.
 
 ## Common Issues
 ### DNS domain validations suddenly failing
