@@ -67,7 +67,7 @@ When the service is installed using systemd the following commands can be useful
 
 ```
 rm ./certify-agent-linux-x64-latest.tar.gz -f
-wget https://downloads.certifytheweb.com/beta/latest/certify-agent-linux-x64-latest.tar.gz -O 
+wget https://downloads.certifytheweb.com/beta/latest/certify-agent-linux-x64-latest.tar.gz
 rm -rf ./certify-agent-install && mkdir -p ./certify-agent-install
 tar -xf certify-agent-linux-x64-latest.tar.gz -C ./certify-agent-install
 sudo ./certify-agent-install/scripts/install-agent.sh
