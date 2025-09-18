@@ -5,29 +5,34 @@ title: Licensing
 
 
 ## About Licensing
-Certify The Web *Certify Certificate Manager* is a commercial product. A free community edition is available for download and evaluation (limited to a few managed certificates).
+Certify The Web is a range of commercial products related to automated certificate management and this documentation covers licensing for the following:
 
+- Certify Certificate Manager (Windows app)
+- Certify Management Agent (Linux, macOS etc)
+- Certify Management Hub
+
+A free community edition is available for download and evaluation but commercial users and funded organizations are expected to license the products by purchasing one or more license keys.
 
 :::note
 
- *This documentation covers the Certify (SSL/TLS) Certificate Manager app. We also have separate licensing for our [Certify DNS](../dns/providers/certifydns.md) managed dns challenge service which is **not** covered by the licensing below.*
+We have separate licensing for our [Certify DNS](../dns/providers/certifydns.md) managed dns challenge service which is **not** covered by the licensing below.
 
 :::
 
-You can purchase a license key which will then enable you to install the app on one or machines (depending on your license type). You can purchase multiple license keys to fit different sized installs and each install can manage an unlimited number of certificates through your choice of Certificate Authority.
+You can purchase a license key which will then enable you to activate the app on one or more machines (depending on your license type). You can purchase multiple license keys to fit different sized organizations and each instance can manage an unlimited number of certificates through your choice of Certificate Authority.
 
-You can review and manage your license keys and active installs via your certifytheweb.com profile under License Keys. 
+You can review and manage your license keys and activated instances via your certifytheweb.com profile under License Keys. 
 
 There are two main methods of licensing:
 - License Bundles
 - Cloud Managed Licenses
 
-*We do not offer special licensing terms for any type of organisation.*
+*We do not offer special licensing terms for any type of organization.*
 
 ## License Bundles
 For the *Certify Certificate Manager* app you can currently purchase the following license bundles:
 
-| Type          | Renewal Frequency | Number of Installs| Price         |
+| Type          | Renewal Frequency | Max Activated Instances| Price         |
 |---------------|-------------------|-------------------|---------------|
 | Starter       | 12 Months         | 1                 | $59 USD       | 
 | Professional  | 12 Months         | 3                 | $149 USD      | 
@@ -37,8 +42,8 @@ For the *Certify Certificate Manager* app you can currently purchase the followi
 From 1st November 2023 we have moved to a 12 month renewal cycle for all license tiers and revised pricing, this will apply to new licenses, **existing renewals will remain on the previous pricing/terms until after 1st Nov 2025**. Pricing for Power Pro and Enterprise tiers last revised 1st October 2024.
 
 - These give you 1 license key (per bundle purchased) which can be used up to the given number of installs.
-
-- License tier names are an arbitrary label and are not related to the size/nature of your organisation, they are just our name for the license bundle.
+- *Certify Management Hub* requires a Power Pro, Enterprise or Cloud Managed license and is not included in Starter or Professional bundles.
+- License tier names are an arbitrary label and are not related to the size/nature of your organization, they are just our name for the license bundle.
 
 - These license bundles can be purchased using a credit card (via Stripe) or via PayPal. 
 
@@ -52,10 +57,10 @@ From 1st November 2023 we have moved to a 12 month renewal cycle for all license
 An alternative to purchasing a license bundle is to have a flexible license that's managed via a cloud subscription. 
 
 The benefits of a cloud managed license are:
-- **Billing is entirely integrated into your organisations existing cloud provider subscription.**
+- **Billing is entirely integrated into your organization's existing cloud provider subscription.**
 - You have one product license key which you can apply to multiple installs.
 - You can increase or decrease the number of installs required at any time. 
-- Your organisation is only billed (by the cloud provider) for the number of installs you have set in your cloud subscription (pro rata per month).
+- Your organization is only billed (by the cloud provider) for the number of installs you have set in your cloud subscription (pro rata per month).
 
 Cloud subscription pricing varies by provider. The *number of licensed installs* set on your subscription is referred to by cloud providers as *Seats* or *Users*.
 
@@ -130,11 +135,11 @@ Q: My payment method has changed, how do I change it on our subscription
 A: We do not retain payment information and license bundle renewals are manual, not automatic, so there is nothing to change.
 
 ---
-Q: I don't need my license anymore but I keep getting an email to renew it, how to cancel?
+Q: If I don't need my license anymore but I keep getting an email to renew it, how do I cancel?
 
 A: Sign into certifytheweb.com and on the License Keys tab choose Cancel Now next to your license key.
 
 ---
-Q: I don't recognise this purchase and I want to dispute the payment
+Q: I don't recognize this purchase and I want to dispute the payment
 
-A: Contact us to discuss via email `support at certifytheweb.com` before filing a dispute with your credit card company, as once your payment is disputed we may no longer provide services to you. You should dispute payments if you think someone has used your credit card without your permission, however this is *extremely* rare and much more commonly people just forget they bought the software license key, or someone on your team made the purchase. Disputes cost us a fee plus the original payment, but if do you dispute a payment we will generally just refund it and cancel your licenses. Repeated disputes will result in a complete ban on purchases from us. We reserve the right to refund your purchases and cancel license keys/services at any time.
+A: Contact us to discuss via email `support at certifytheweb.com` before filing a dispute with your credit card company, as once your payment is disputed we may no longer provide services to you. You should dispute payments if you think someone has used your credit card without your permission, however this is *extremely* rare and much more commonly people just forget they bought the software license key, or someone on your team made the purchase. Disputes cost us a fee plus the original payment, but if you do dispute a payment we will generally just refund it and cancel your licenses. Repeated disputes will result in a complete ban on purchases from us. We reserve the right to refund your purchases and cancel license keys/services at any time.
