@@ -13,7 +13,7 @@ Our aim is to ensure that the app is easy to use and that you get setup with you
 Web hosting configurations vary and sometimes securing your site can be harder than expected, but the good news is that thousands of other users have succeeded before you. There are a few things that are good to know should you run into any problems. If you encounter a problem you can't resolve, check out our [support options](support.md).
 
 ### Is this application commercially supported?
-Yes, full time [email support](support.md) is available for registered users who have purchased a license key (or those who are evaluating the software) via  https://certifytheweb.com/upgrade/. This makes the application ideal for organisations or professionals who need a dependable support option. Support operates office-hours, weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support.md). 
+Yes, full time [email support](support.md) is available for registered users who have purchased a license key (or those who are evaluating the software) via  https://certifytheweb.com/upgrade/. This makes the application ideal for organizations or professionals who need a dependable support option. Support operates office-hours, weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions. Users of the free Community Edition are also supported via our community forum and other [support options](support.md). 
 
 *You are encouraged to test out the software yourself as an evaluation before purchasing, as not all usage scenarios will be supported.* 
 
@@ -23,7 +23,7 @@ Yes, full time [email support](support.md) is available for registered users who
 
 To activate your license key open the app and navigate to the *About* tab, then click *Enter Key* to apply your license. To transfer to a new license key use *About > Deactivate Install*, then *About > Enter Key* to apply the new key. You can also deactivate the usage of a key within the app or from the https://certifytheweb.com License Keys tab. 
 
-**If you are using this application within a business or funded organisation (beyond a temporary evaluation) you are required to purchase a license key.**
+**If you are using this application within a business or funded organization (beyond a temporary evaluation) you are required to purchase a license key.**
 
 For more information about licensing see our [licensing guide](./guides/licensing.md).
 

@@ -7,7 +7,7 @@ title: Certificate Signing & Security
 
 When requesting a certificate from a [Certificate Authority (CA)](certificate-authorities.md) a special file called a Certificate Signing Request (CSR) is submitted. See also https://en.wikipedia.org/wiki/Certificate_signing_request
 
-In the case of ACME domain validated certificates this CSR mainly just includes the list of domains you want to include on the certificate (other fields such as Organisation etc are discarded because ACME doesn't validate these). The CSR is signed using your Private Key, verifiable using the public key included in the CSR. This ensures that the same entity who completed certificate validation is also the same entity submitting the certificate signing request.
+In the case of ACME domain validated certificates this CSR mainly just includes the list of domains you want to include on the certificate (other fields such as Organization etc are discarded because ACME doesn't validate these). The CSR is signed using your Private Key, verifiable using the public key included in the CSR. This ensures that the same entity who completed certificate validation is also the same entity submitting the certificate signing request.
 
 ## OCSP Must-Staple
 To enable OCSP-Must staple check *Require OCSP Must-Staple* under Certificate > Advanced > Signing & Security. This will add the OCSP Must Staple extension to the CSR and the resulting certificate.

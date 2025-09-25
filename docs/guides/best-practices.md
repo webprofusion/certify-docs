@@ -8,7 +8,7 @@ Once you have setup your certificate and your website is accessible over https y
 
 However, if you scan your website with a tool such as https://www.ssllabs.com/ssltest/ it will likely point out a number of areas you could improve upon, many of which are quite cryptic. These include areas such as *HTTP Strict Transport Security* (HSTS), *Protocols* and *Cipher Suites*.
 
-Even if you have a great automated score for security, your choice of operating system can be a security or operational risk and the way you manage your application lifecycle could be a risk to your organisation.
+Even if you have a great automated score for security, your choice of operating system can be a security or operational risk and the way you manage your application lifecycle could be a risk to your organization.
 
 ## Redirecting all visitors to HTTPS
 A user could try to access your site by just typing the domain or perhaps they will even type the full domain with `https://` - whether the site loads as `http://` or `https://` will depend on the web browser or the link the user followed, so in some cases users will see a site as "insecure". To avoid this, you can automatically direct the users browser to the HTTPS version of your site.
@@ -113,7 +113,7 @@ If you are running **Windows Server 2012**, mainstream support from Microsoft en
 Mainstream Microsoft support for **Windows Server 2016** ended in January 2022.
 
 ## Disaster Recovery Planning
-It's very common for organisations to consider their apps as being "too difficult" to move to newer operating systems. This is a critical risk for your system and if your service is *business critical* (i.e. your business cannot effectively operate without it) then it's also a high priority risk to your business. If you *cannot* move an app (because you don't really know how), consider whether you can even restore it if the server fails and the impact to your organisation if that happens. 
+It's very common for organizations to consider their apps as being "too difficult" to move to newer operating systems. This is a critical risk for your system and if your service is *business critical* (i.e. your business cannot effectively operate without it) then it's also a high priority risk to your business. If you *cannot* move an app (because you don't really know how), consider whether you can even restore it if the server fails and the impact to your organization if that happens. 
 
 Write a simply worded document that you can hand to a competent IT administrator (they should not have to know the system or how it works beforehand) that lets them recover your system to a new server. The document should summarize what the system does, how it's put together and most importantly how to set it all up again to the point where users can start using it. **Exercise the plan by getting someone else to setup a test system using your document.**
 
