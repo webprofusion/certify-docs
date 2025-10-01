@@ -21,14 +21,14 @@ To use a managed challenge you need two things:
 - An assigned API Token allowing access to use managed challenges. This will be used by your ACME client to call the management hub API. Generally you should use individual API keys specific to each consumer instead of sharing them across machines, that way when a service is retired you can also remove it's access and you can maintain a clear idea of which things still need access.
 
 
-### Define a Managed Challenge configuration
+### 1. Define a Managed Challenge configuration
 Under *Services > Managed Challenges*, select `+ Add`:
 - Select dns-01 as the challenge type
 - Select the DNS provider specific to your domains DNS service. 
 - Add or select existing stored credentials for updating DNS via the selected API.
 - Populate the *Domain Match Rule* to specify the domains this configuration can update DNS for, then Save.
 
-### Configure API Access
+### 2. Configure API Access
 Before you can use your managed challenge you need to configure API access. This involves assigning an API token for a specific *Service Principle* (a specific user or app).
 
 Under *Settings > Security > Users*, add a User to represent the consumer (user or app etc) accessing the service, then assign them the Managed Challenge Consumer Role. They can have any other roles they need, but you'll need this specific role to access managed challenges.
@@ -45,7 +45,7 @@ Under *Settings > Security > API Access*, select Add API Token, select the requi
 5. Select the `Managed Challenge Consumer` role from Available Roles to assign it.
 6. Click **Save**
 
-### 2. Create an API Key to use the managed challenge
+### 3. Create an API Key to use the managed challenge
 
 1. Navigate to **Settings > Security > API Access**
 2. Click **Add API Token**
