@@ -58,7 +58,7 @@ Note that for FTP site bindings you need to select "Single Site" instead.
 ##### Deployment Tasks and Advanced Usage
 In addition to the Auto Deployment options, you can also make use of a variety of pre-built [Deployment Tasks](deployment/tasks_intro.md) for local or remote deployment. You can also use scripting tasks to work with your certificate using your own custom scripting.
 
-Deployment Tasks can be used used for common certificate tasks such as deploying to Microsoft Exchange, updating a certificate in a secrets vault (such as Azure Key Vault), deploying to a CCS share or converting the certificate into different file types.
+Deployment Tasks can be used used for common certificate tasks such as deploying to Microsoft Exchange, updating a certificate in a secrets vault (such as Azure Key Vault), deploying to a [CCS share](deployment/tasks/ccs.md) or converting the certificate into different file types.
 
 ### 4. Preview
 Using the *Preview* tab you can see a detailed summary of how your Managed Certificate is configured and what actions the app will plan to take next, including how the new certificate will be deployed.

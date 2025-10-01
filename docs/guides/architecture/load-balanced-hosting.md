@@ -35,6 +35,7 @@ Centralized Certificate Store (CCS) is a feature you can enable in Windows to al
 
 This requires that you manage your own https bindings in IIS (configured for CCS) as the standard built-in https deployment in *Certify Certificate Manager* does not configure CCS enabled https bindings for you (and you should use a deployment mode of "Certificate Store Only" or "No Deployment" as "Auto" would instead try to setup the https bindings for you).
 
+There is also a general guide to [using CCS with Certify Certificate Manager](../../deployment//tasks/ccs.md) on Windows.
 
 These recommendations assume you are simply load balancing your DNS name across multiple web servers (virtual machines etc). 
 

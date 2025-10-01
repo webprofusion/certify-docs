@@ -14,7 +14,7 @@ This is a overview of all the major features available across the **Certify The 
 These fundamental certificate management capabilities are available across all products:
 
 - **Automated ACME Certificate Renewals** - Automatic renewal with zero-config failure notifications
-- **Multi-CA Support** - Support for Let's Encrypt, Google Trust Services, ZeroSSL, Actalis, and enterprise CAs
+- **Multi-CA Support** - Support for Let's Encrypt, Google Trust Services, ZeroSSL, Actalis, Custom and enterprise CAs
 - **Certificate Authority Fallback** - Optional automatic fallback to alternative CAs if the primary fails
 - **Wildcard Certificate Support** - Full support for wildcard domains (`*.example.com`)
 - **IP Certificates** - Certificate covering IPv4 or IPv6 addresses
@@ -53,16 +53,16 @@ Comprehensive deployment options for various platforms and services:
 
 **Web Servers & Load Balancers:**
 - IIS (Auto-deployment with binding management)
-- Apache HTTP Server (PEM format export)
-- nginx (PEM format export)
-- Apache Tomcat (PKCS#12 keystore)
+- [Apache HTTP Server (PEM format export)](../guides//apache-nginx.md)
+- [nginx (PEM format export)](../guides/apache-nginx.md)
+- [Apache Tomcat (PKCS#12 keystore)](../deployment/tasks/tomcat.md)
 
 **Microsoft Services:**
 - Microsoft Exchange (IMAP, SMTP, IIS, POP services)
 - Active Directory Federation Services (ADFS)
 - Remote Desktop Services (RDP Gateway, RDP Listener)
 - Routing and Remote Access Service (RAS)
-- IIS Centralized Certificate Store (CCS)
+- [IIS Centralized Certificate Store (CCS)](../deployment/tasks/ccs.md)
 
 **Cloud & Container Platforms:**
 - Azure App Service
