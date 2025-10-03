@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Certify The Web Docs Blog</title>
+        <link>https://docs.certifytheweb.com/blog</link>
+        <description>Certify The Web Docs Blog</description>
+        <lastBuildDate>Tue, 01 Jul 2025 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Introduction to Certificate Management Automation]]></title>
+            <link>https://docs.certifytheweb.com/blog/certificate-automation-intro</link>
+            <guid>https://docs.certifytheweb.com/blog/certificate-automation-intro</guid>
+            <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn the fundamentals of automated SSL/TLS certificate management and why it's essential for modern infrastructure.]]></description>
+            <content:encoded><![CDATA[<p>Your certificates are essential for securing web traffic, APIs, and internal communications. Manually managing certificates across multiple servers and applications can be time-consuming, error-prone, and increasingly impractical as certificate lifetimes continue to shrink.</p>
+<p>This article introduces the fundamentals of certificates and certificate management automation and explains why it's becoming essential for modern infrastructure.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-automate-certificate-management">Why Automate Certificate Management?<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#why-automate-certificate-management" class="hash-link" aria-label="Direct link to Why Automate Certificate Management?" title="Direct link to Why Automate Certificate Management?" translate="no">​</a></h2>
+<p>Manual certificate management worked when certificates had longer lifetimes, but the landscape is rapidly changing:</p>
+<ul>
+<li><strong>Shorter Certificate Lifetimes</strong>: Let's Encrypt currently issues 90-day certificates, and there's industry movement toward even shorter lifetimes (potentially 47 days in the future)</li>
+<li><strong>Scale Challenges</strong>: Managing dozens or hundreds of certificates manually becomes unmanageable</li>
+<li><strong>Reduced Downtime</strong>: Automated renewal eliminates the risk of expired certificates causing service outages</li>
+<li><strong>Security Benefits</strong>: Fresh certificates with shorter lifetimes reduce the window of vulnerability if a private key is compromised</li>
+</ul>
+<p>Starting your automation journey now prepares you for the future of certificate management.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="understanding-the-certificate-lifecycle">Understanding the Certificate Lifecycle<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#understanding-the-certificate-lifecycle" class="hash-link" aria-label="Direct link to Understanding the Certificate Lifecycle" title="Direct link to Understanding the Certificate Lifecycle" translate="no">​</a></h2>
+<p>Certificate management automation involves three main phases:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-certificate-ordering-and-validation">1. Certificate Ordering and Validation<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#1-certificate-ordering-and-validation" class="hash-link" aria-label="Direct link to 1. Certificate Ordering and Validation" title="Direct link to 1. Certificate Ordering and Validation" translate="no">​</a></h3>
+<p>A Certificate Authority (CA) is a public or internal entity which issues certificates. Public CAs issue trusted certificates. That trust happens because your OS/browser already knows and trusts their root issuing certificate via OS/software updates (and in turn any intermediate issuer they have signed using that root).</p>
+<p>Automated certificate management can use various technologies but the most commonly used is the Automatic Certificate Management Environment (ACME) standard: <a href="https://datatracker.ietf.org/doc/html/rfc8555/" target="_blank" rel="noopener noreferrer">RFC8555</a></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="wait-what-is-a-certificate-though">Wait, what is a certificate though?<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#wait-what-is-a-certificate-though" class="hash-link" aria-label="Direct link to Wait, what is a certificate though?" title="Direct link to Wait, what is a certificate though?" translate="no">​</a></h4>
+<p>A certificate is an assurance by an issuer (the CA) that the entity that requested the cert (and held a specific private key, which is a secret chunk of data only your system knows) was verifiably in control of the identifiers included as subjects in the certificate details, at the time the cert was issued.</p>
+<p>A cert typically contains a set (Subject Alternative Names or SAN) of identifiers which can be domains, IP addresses etc) and the public key that corresponds to your private key.</p>
+<p>When using a cert you need your private key and the cert in combination, this is then loaded by the service that uses the certificate to begin the TLS (transport layer security) conversation. The client (browser etc) on the other end of the conversation already trusts the root certificates of the CA via OS updates or other "trust store" certificate distribution.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="domain-validation">Domain Validation<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#domain-validation" class="hash-link" aria-label="Direct link to Domain Validation" title="Direct link to Domain Validation" translate="no">​</a></h4>
+<p>CAs like Let's Encrypt, Google Trust Services, and traditional commercial CAs require proof that you control the domains included in your certificate. This validation typically happens through:</p>
+<p><strong>HTTP Domain Validation</strong>: The CA checks for a specific file or response at a well-known URL on your domain. Automation tools can handle this by temporarily serving the required response.</p>
+<p><strong>DNS Domain Validation</strong>: The CA looks for a specific TXT record in your domain's DNS. Modern certificate management tools can automatically update DNS records through provider APIs, making this method ideal for internal services or when HTTP validation isn't feasible.</p>
+<p>Modern certificate management systems can support multiple CA accounts and the best ones even provide automatic fallback strategies if your preferred CA experiences issues.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-certificate-storage-and-distribution">2. Certificate Storage and Distribution<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#2-certificate-storage-and-distribution" class="hash-link" aria-label="Direct link to 2. Certificate Storage and Distribution" title="Direct link to 2. Certificate Storage and Distribution" translate="no">​</a></h3>
+<p>Once obtained, certificates need to be securely stored and made available to the applications that need them. This typically involves:</p>
+<ul>
+<li><strong>Local Certificate Stores</strong>: On Windows, this means the machine certificate store</li>
+<li><strong>File-based Storage</strong>: PFX archives or PEM files for cross-platform compatibility</li>
+<li><strong>Secrets Management</strong>: Integration with services like Azure Key Vault or HashiCorp Vault</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-deployment-and-application-integration">3. Deployment and Application Integration<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#3-deployment-and-application-integration" class="hash-link" aria-label="Direct link to 3. Deployment and Application Integration" title="Direct link to 3. Deployment and Application Integration" translate="no">​</a></h3>
+<p>This is often the most complex phase, as every application has its own way of consuming certificates:</p>
+<ul>
+<li><strong>IIS Integration</strong>: Windows IIS can use certificate store bindings or Centralized Certificate Store</li>
+<li><strong>File-based Applications</strong>: Many applications read certificates from specific file paths</li>
+<li><strong>API-based Updates</strong>: Some services accept certificate updates through REST APIs</li>
+<li><strong>Service Restarts</strong>: Some applications require restart after certificate updates</li>
+</ul>
+<p>Additionally some applications or appliances require using their own private keys for certificate signing requests (CSRs), or require key re-use for Certificate Pinning (trusts a specific set of certificate public keys).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deployment-strategies">Deployment Strategies<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#deployment-strategies" class="hash-link" aria-label="Direct link to Deployment Strategies" title="Direct link to Deployment Strategies" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="built-in-integration-tasks">Built-in Integration Tasks<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#built-in-integration-tasks" class="hash-link" aria-label="Direct link to Built-in Integration Tasks" title="Direct link to Built-in Integration Tasks" translate="no">​</a></h3>
+<p>Modern certificate management tools can provide various levels of built-in support for common scenarios:</p>
+<ul>
+<li><strong>Web Servers</strong>: IIS, Apache, Nginx</li>
+<li><strong>Mail Servers</strong>: MS Exchange etc</li>
+<li><strong>Secrets Vaults</strong>: Store certificates as secrets for other apps and services to consume</li>
+<li><strong>Cloud Services</strong>: Integration with cloud provider certificate services</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="custom-deployment-tasks">Custom Deployment Tasks<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#custom-deployment-tasks" class="hash-link" aria-label="Direct link to Custom Deployment Tasks" title="Direct link to Custom Deployment Tasks" translate="no">​</a></h3>
+<p>For unique environments, mature automation tools typically offer:</p>
+<ul>
+<li><strong>Export Tasks</strong>: Convert certificates to various formats (PEM, PFX etc)</li>
+<li><strong>File Copy Operations</strong>: Deploy certificates over UNC shares or SSH</li>
+<li><strong>Scripting Integration</strong>: PowerShell, Bash, or other scripting languages for custom logic</li>
+<li><strong>API Calls</strong>: Update configuration or send notifications through REST APIs or other interfaces</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="progressive-automation">Progressive Automation<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#progressive-automation" class="hash-link" aria-label="Direct link to Progressive Automation" title="Direct link to Progressive Automation" translate="no">​</a></h3>
+<p>You don't need to automate everything at once. A typical progression might be:</p>
+<ol>
+<li><strong>Manual Export</strong>: Start by automating certificate acquisition, then manually deploy during maintenance windows</li>
+<li><strong>Automated Export</strong>: Set up automatic export to shared locations where applications can find updated certificates</li>
+<li><strong>Full Automation</strong>: Implement automatic deployment and service updates. Consider monitoring deployment to ensure what you think is deployed is actually working.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deployment-types">Deployment Types<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#deployment-types" class="hash-link" aria-label="Direct link to Deployment Types" title="Direct link to Deployment Types" translate="no">​</a></h2>
+<p>Services that secure communication using TLS reference certificates in a variety of way. Deploying your cert to them requires knowing how the service loads/selects the certificate:</p>
+<ul>
+<li><strong>Thumbprints</strong>: On Windows a cert is commonly stored in the local machine certificate store and referenced by applications using the "Thumbprint" value, this is usually the SHA1 hash of the certificate details, which changes with each renewal even if the same private key is reused.</li>
+<li><strong>PFX</strong>: This is an archive format also known as PKCS#12 or .p12, most popular on Windows. It contains your cert, intermediate issuers (but not the root), and the private key. The private key can optionally be password protected.</li>
+<li><strong>PEM</strong>: Certificates can be split into component files with the primary ("leaf" or "end-entity") certificate and the private key in PEM encoded (base64) text files. These are commonly used for apps that are not native to Windows, or on Linux services etc where PFX/.p12 is less frequently encountered.</li>
+</ul>
+<p>Deploying a cert can variously involve:</p>
+<ul>
+<li>Updating a thumbprint value on a port binding, file or registry key (typical on Windows).</li>
+<li>Copying cert files to a specific location, in specific formats.</li>
+<li>Restarting/reloading services so they pick up the latest cert.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="planning-your-automation-strategy">Planning Your Automation Strategy<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#planning-your-automation-strategy" class="hash-link" aria-label="Direct link to Planning Your Automation Strategy" title="Direct link to Planning Your Automation Strategy" translate="no">​</a></h2>
+<p>Before implementing certificate automation, consider:</p>
+<ol>
+<li><strong>Inventory Your Certificates</strong>: Document all certificates currently in use and their renewal deployment methods</li>
+<li><strong>Assess Application Requirements</strong>: Understand how each application consumes certificates</li>
+<li><strong>Network Access</strong>: Ensure your automation tool can reach all target systems, or target systems can pull the latest cert regularly.</li>
+<li><strong>Security Boundaries</strong>: Plan for deployment across different security zones or networks</li>
+<li><strong>Monitoring and Alerting</strong>: Implement monitoring to detect renewal failures or deployment issues</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="getting-started">Getting Started<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started" translate="no">​</a></h2>
+<p>The complexity of certificate automation varies greatly depending on your environment, but the key is to start simple and gradually expand your automation coverage. Modern tools like Certify Certificate Manager make it easy to begin with basic scenarios and progressively add more sophisticated deployment tasks as your needs grow.</p>
+<p>The goal is to transform certificate management from a manual, error-prone task into a reliable, automated process that enhances both security and operational efficiency.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="our-products">Our Products<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#our-products" class="hash-link" aria-label="Direct link to Our Products" title="Direct link to Our Products" translate="no">​</a></h3>
+<p><strong>Certify Certificate Manager (CCM)</strong> is our Windows-based UI for certificate management and has been around for several years.</p>
+<ul>
+<li>Around 200K active installs globally</li>
+<li>Optimized for Windows/IIS certificate management</li>
+<li>Full UI for management and configuration</li>
+</ul>
+<p><strong>Certify Management Hub</strong> (in beta) is our new self-hosted cross-platform web UI and API which can also talk to and configure many CCM instances (v7 onwards).</p>
+<ul>
+<li>Start small and simple, grow with your requirements</li>
+<li>Centralized role-based access, controlled API access</li>
+<li>New agent for Linux and macOS which has the same core as CCM</li>
+<li>Experimental support for monitoring external ACME clients and can report status of renewals for things like acme.sh, certbot etc.</li>
+<li>Managed Challenges allow centralized DNS challenge config without distributing sensitive credentials</li>
+<li>New experimental ACME API allows standard ACME clients to order certs as normal but have the hub respond to domain validation challenges automatically on their behalf.</li>
+</ul>
+<p>Features include:</p>
+<ul>
+<li>Multi-CA support with optional automated fallback</li>
+<li>Automated renewal and deployment tasks</li>
+<li>Status reporting to our hosted Dashboard or to the self-hosted Management Hub</li>
+<li>Automated zero-config recurring failure notification emails via our hosted API.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="next-steps">Next Steps<a href="https://docs.certifytheweb.com/blog/certificate-automation-intro#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps" translate="no">​</a></h2>
+<p>Ready to start your certificate automation journey? Check out our <a href="https://docs.certifytheweb.com/docs/intro">Getting Started Guide</a> or explore our range of <a href="https://docs.certifytheweb.com/">certificate management tools</a> to find the solution that best fits your environment.</p>]]></content:encoded>
+            <category>certify</category>
+            <category>certificates</category>
+            <category>automation</category>
+            <category>ssl</category>
+            <category>tls</category>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Certify Management Hub]]></title>
+            <link>https://docs.certifytheweb.com/blog/introducing-management-hub</link>
+            <guid>https://docs.certifytheweb.com/blog/introducing-management-hub</guid>
+            <pubDate>Sat, 08 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Simplify and streamline your SSL/TLS certificate management with Certify Management Hub.]]></description>
+            <content:encoded><![CDATA[<p>We are thrilled to announce <strong>Certify Management Hub</strong>, our upcoming tool designed to simplify and streamline SSL/TLS certificate management. This centralized UI and API solution allows you to manage all your certificates from a single interface, making centralized renewal optional. Whether you're managing certificates for a small business or a large enterprise, the Management Hub provides the tools you need to keep your certificates up-to-date and secure.</p>
+<p>If you'd like to explore the alpha version, we are preparing new <a href="https://docs.certifytheweb.com/docs/hub/">documentation for Certify Management Hub</a>.</p>
+<p><img decoding="async" loading="lazy" src="https://certifytheweb.com/images/management/summary.png" alt="Certify Management Hub" class="img_ev3q"></p>
+<p>The first alpha version will be released at the end of March 2025. Beta phases will follow, incorporating user feedback, with the first stable release expected later in the year.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-certify-management-hub">What is Certify Management Hub?<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#what-is-certify-management-hub" class="hash-link" aria-label="Direct link to What is Certify Management Hub?" title="Direct link to What is Certify Management Hub?" translate="no">​</a></h2>
+<p><em>Certify Management Hub</em> offers a unified view of all your managed certificates across your organization—or even across multiple organizations. Key capabilities include:</p>
+<ul>
+<li>Optional centralized certificate renewal or delegation of renewals to individual <em>Certify Certificate Manager</em> instances and compatible agents.</li>
+<li>All the standard <a href="https://certifytheweb.com/home/features" target="_blank" rel="noopener noreferrer">features</a> of <em>Certify Certificate Manager</em> for ACME certificate renewals and deployment tasks.</li>
+<li>Integration with existing <em>Certify Certificate Manager</em> installations, enabling users to manage certificates across hundreds of servers while maintaining local renewal processes.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-features">Key Features<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="centralized-management">Centralized Management<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#centralized-management" class="hash-link" aria-label="Direct link to Centralized Management" title="Direct link to Centralized Management" translate="no">​</a></h3>
+<p>Manage all your certificates in one place, eliminating the need to log into multiple systems. While certificates can be centrally managed, you can also retain control over renewals on individual servers, particularly for HTTP domain-validated certificates. The hub serves as a reporting and administration tool for added convenience.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="automated-renewals">Automated Renewals<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#automated-renewals" class="hash-link" aria-label="Direct link to Automated Renewals" title="Direct link to Automated Renewals" translate="no">​</a></h3>
+<p>Say goodbye to expired certificates. The Management Hub automates its own renewals and provides visibility into the renewal process across multiple <em>Certify Certificate Manager</em> instances, ensuring your certificates remain valid and up-to-date.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="detailed-reporting">Detailed Reporting<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#detailed-reporting" class="hash-link" aria-label="Direct link to Detailed Reporting" title="Direct link to Detailed Reporting" translate="no">​</a></h3>
+<p>Access comprehensive reports on certificate status, including upcoming expirations and renewal logs. This helps you stay informed and avoid potential issues.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="managed-dns-challenges">Managed (DNS) Challenges<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#managed-dns-challenges" class="hash-link" aria-label="Direct link to Managed (DNS) Challenges" title="Direct link to Managed (DNS) Challenges" translate="no">​</a></h3>
+<p>Optionally centralize DNS challenge configurations and allow compatible ACME clients to use the Management Hub API for DNS validation updates. This eliminates the need to distribute sensitive DNS API credentials across multiple servers.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="installation-options">Installation Options<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#installation-options" class="hash-link" aria-label="Direct link to Installation Options" title="Direct link to Installation Options" translate="no">​</a></h2>
+<p><em>Certify Management Hub</em> is self-hosted and can be installed on Windows Server, Linux, macOS, or container environments such as Docker, Kubernetes, and IBM/RedHat OpenShift.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="simple-upgrade-for-certify-certificate-manager-users">Simple Upgrade for Certify Certificate Manager Users<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#simple-upgrade-for-certify-certificate-manager-users" class="hash-link" aria-label="Direct link to Simple Upgrade for Certify Certificate Manager Users" title="Direct link to Simple Upgrade for Certify Certificate Manager Users" translate="no">​</a></h2>
+<p>Upgrading to <em>Certify Management Hub</em> is straightforward for existing <em>Certify Certificate Manager</em> users. Update your app to version 7 or later, then configure the app with the Management Hub URL and joining key.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="join-the-beta">Join the Beta<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#join-the-beta" class="hash-link" aria-label="Direct link to Join the Beta" title="Direct link to Join the Beta" translate="no">​</a></h2>
+<p>We are inviting beta testers for <em>Certify Management Hub</em>. If you're interested, please contact us via email at <code>support at certifytheweb.com</code>. Your feedback and feature requests will help us refine the product to better meet your needs.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="pricing">Pricing<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#pricing" class="hash-link" aria-label="Direct link to Pricing" title="Direct link to Pricing" translate="no">​</a></h2>
+<p>Pricing for <em>Certify Management Hub</em> will be announced soon. Rest assured, it will be highly cost-effective compared to existing "enterprise" solutions. For reference, you can review our <a href="https://docs.certifytheweb.com/docs/guides/licensing">current product pricing</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://docs.certifytheweb.com/blog/introducing-management-hub#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
+<p><em>Certify Management Hub</em> is designed to make certificate management simple, efficient, and secure. We are excited to bring this tool to our users and look forward to your feedback. Stay tuned for updates and new features as we continue to enhance the Management Hub.</p>
+<p>Thank you for your continued support!</p>]]></content:encoded>
+            <category>certify</category>
+            <category>news</category>
+            <category>management-hub</category>
+        </item>
+        <item>
+            <title><![CDATA[Certificate Renewal Monitoring Options]]></title>
+            <link>https://docs.certifytheweb.com/blog/renewal-monitoring</link>
+            <guid>https://docs.certifytheweb.com/blog/renewal-monitoring</guid>
+            <pubDate>Fri, 24 Jan 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Tracking large numbers of certificates can get complicated. Learn about the various options available.]]></description>
+            <content:encoded><![CDATA[<p>Managing SSL/TLS certificates can be a daunting task, especially when dealing with a large number of certificates across multiple domains and servers. Ensuring that certificates are successfully renewed on time is crucial to maintaining the security and trustworthiness of your websites and services.</p>
+<p>Recently Let's Encrypt in particular have announced they will no longer send expiry notification emails, leaving end-users wondering how best to keep track.</p>
+<p>In this article, we will explore various options for certificate renewal monitoring tools, including UptimeRobot, RedSift and Certify Dashboard, and how they compare.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="uptimerobot">UptimeRobot<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#uptimerobot" class="hash-link" aria-label="Direct link to UptimeRobot" title="Direct link to UptimeRobot" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="overview">Overview<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>UptimeRobot is a popular monitoring service that offers SSL/TLS certificate monitoring as part of its suite of tools. It helps ensure that your certificates are always valid and alerts you to any issues that may arise.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-features">Key Features<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h3>
+<ul>
+<li><strong>SSL Monitoring</strong>: Continuously monitors your SSL/TLS certificates and notifies you of any upcoming expirations.</li>
+<li><strong>Uptime Monitoring</strong>: In addition to certificate monitoring, UptimeRobot also monitors the uptime of your websites and services.</li>
+<li><strong>Customizable Alerts</strong>: Set up customizable alerts to receive notifications via email, SMS, or other channels.</li>
+<li><strong>Dashboard</strong>: Provides a user-friendly dashboard to view the status of your certificates and other monitored services.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros">Pros<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#pros" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<ul>
+<li>Easy to set up and use.</li>
+<li>Comprehensive monitoring for both SSL certificates and service uptime.</li>
+<li>Customizable alert options.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons">Cons<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#cons" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<ul>
+<li>Limited to monitoring certificate expiration, does not track renewal attempts.</li>
+<li>Some advanced features may require a paid subscription.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="redsift">RedSift<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#redsift" class="hash-link" aria-label="Direct link to RedSift" title="Direct link to RedSift" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="overview-1">Overview<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#overview-1" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>RedSift is a cybersecurity platform that offers a range of tools for managing and monitoring digital certificates. Their certificate monitoring solution helps organizations keep track of their SSL/TLS certificates and ensures timely renewals.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-features-1">Key Features<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#key-features-1" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h3>
+<ul>
+<li><strong>Automated Monitoring</strong>: Continuously monitors your certificates and alerts you to upcoming expirations.</li>
+<li><strong>Detailed Reporting</strong>: Provides comprehensive reports on the status of your certificates, including expiration dates and renewal history.</li>
+<li><strong>Integration</strong>: Integrates with various platforms and services to provide a seamless monitoring experience.</li>
+<li><strong>Security Alerts</strong>: Notifies you of any security issues related to your certificates, such as weak encryption or misconfigurations.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-1">Pros<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#pros-1" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<ul>
+<li>Comprehensive monitoring and reporting features.</li>
+<li>Integration with multiple platforms.</li>
+<li>Security alerts for potential issues.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-1">Cons<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#cons-1" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<ul>
+<li>May require a learning curve to fully utilize all features.</li>
+<li>Pricing may be a consideration for smaller organizations.</li>
+<li>Only tracks certificate issuance, not ACME client renewal attempts.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="certify-dashboard">Certify Dashboard<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#certify-dashboard" class="hash-link" aria-label="Direct link to Certify Dashboard" title="Direct link to Certify Dashboard" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="overview-2">Overview<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#overview-2" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>Certify Dashboard is a hosted service designed to simplify and streamline the monitoring of SSL/TLS certificate renewals. It integrates seamlessly with Certify Certificate Manager and other ACME clients, providing a centralized platform for managing your certificates.</p>
+<p>Certify Dashboard is unique in that it is not a Certificate Transparency Log monitor, it doesn't just track certificate issuance, its shows attempted renewals and potentially their associated failures.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-features-2">Key Features<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#key-features-2" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h3>
+<ul>
+<li><strong>Centralized Management</strong>: View and manage all your certificates from a single interface.</li>
+<li><strong>Automated Renewals</strong>: Automatically tracks and reports on certificate renewals, ensuring they are always up-to-date.</li>
+<li><strong>Detailed Reporting</strong>: Get detailed reports on the status of your certificates, including upcoming expirations and renewal history.</li>
+<li><strong>Integration with ACME Clients</strong>: Works with popular ACME clients like win-acme, Certbot and acme.sh, making it easy to incorporate into your existing workflow.</li>
+<li><strong>Secure and Reliable</strong>: Uses industry-standard encryption and security practices to protect your certificates and data.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-2">Pros<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#pros-2" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<ul>
+<li>User-friendly interface for managing certificates.</li>
+<li>Seamless integration with Certify Certificate Manager and other ACME clients.</li>
+<li>Automated tracking and reporting of certificate renewal attempts.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-2">Cons<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#cons-2" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<ul>
+<li>Limited to environments that support ACME clients.</li>
+<li>Some advanced features may require a paid license.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="comparison">Comparison<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#comparison" class="hash-link" aria-label="Direct link to Comparison" title="Direct link to Comparison" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ease-of-use">Ease of Use<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#ease-of-use" class="hash-link" aria-label="Direct link to Ease of Use" title="Direct link to Ease of Use" translate="no">​</a></h3>
+<p>Certify Dashboard offers a user-friendly interface that simplifies the process of managing and monitoring certificate renewals. RedSift and UptimeRobot, while comprehensive, don't offer monitoring of renewal attempts by ACME clients.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="integration">Integration<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#integration" class="hash-link" aria-label="Direct link to Integration" title="Direct link to Integration" translate="no">​</a></h3>
+<p>All the monitoring solutions offer integration with various platforms and services. However, Certify Dashboard's seamless integration with Certify Certificate Manager and other ACME clients provides a unique approach to direct integration into the automated certificate management lifecycle.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="reporting-and-alerts">Reporting and Alerts<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#reporting-and-alerts" class="hash-link" aria-label="Direct link to Reporting and Alerts" title="Direct link to Reporting and Alerts" translate="no">​</a></h3>
+<p>All tools provide detailed reporting and alerts for upcoming certificate expirations. RedSift and UptimeRobot also offer security alerts for potential issues, which can be a valuable feature for organizations concerned about certificate-related security risks.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://docs.certifytheweb.com/blog/renewal-monitoring#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
+<p>UptimeRobot, RedSift and Certify Dashboard provide different solutions for monitoring SSL/TLS certificate renewals. The choice between them will depend on your specific needs and existing infrastructure. Certify Dashboard is an excellent choice for users looking for a straightforward, integrated solution with Certify Certificate Manager and other ACME clients. UptimeRobot and RedSift, on the other hand, offer a more comprehensive cybersecurity platform with additional features and integrations.</p>
+<p>We encourage you to explore these options and choose the one that best fits your requirements. Ensuring timely and reliable certificate renewals is crucial for maintaining the security, availability and trustworthiness of your websites and services.</p>]]></content:encoded>
+            <category>certify</category>
+            <category>news</category>
+            <category>management-hub</category>
+            <category>dashboard</category>
+        </item>
+        <item>
+            <title><![CDATA[Draft support for ACME Profiles]]></title>
+            <link>https://docs.certifytheweb.com/blog/acme-profiles-draft</link>
+            <guid>https://docs.certifytheweb.com/blog/acme-profiles-draft</guid>
+            <pubDate>Fri, 17 Jan 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[ACME profiles draft implementation]]></description>
+            <content:encoded><![CDATA[<p>We have implement support for the ACME Profiles extension, a new feature designed to enhance the Automated Certificate Management Environment (ACME) protocol. This extension allows ACME Servers to offer a selection of different certificate profiles to ACME Clients, making it easier for clients to request the specific type of certificate they need.</p>
+<p>ACME Profiles are a new proposed extension to the ACME standard allows CAs to offer certificates with different features depending on user preferences.</p>
+<p><a href="https://datatracker.ietf.org/doc/draft-aaron-acme-profiles/" target="_blank" rel="noopener noreferrer">https://datatracker.ietf.org/doc/draft-aaron-acme-profiles/</a></p>
+<p>This feature will be available in the next major release of Certify Certificate Manager and Certify Management Hub.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-are-acme-profiles">What are ACME Profiles?<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#what-are-acme-profiles" class="hash-link" aria-label="Direct link to What are ACME Profiles?" title="Direct link to What are ACME Profiles?" translate="no">​</a></h2>
+<p>ACME Profiles provide a way for Certificate Authorities (CAs) to advertise the different types of certificates they can issue. For example, a CA might offer a certificate with a shorter lifetime and different key usage constraints. By selecting a profile, clients can ensure they receive a certificate that meets their specific requirements.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-features">Key Features<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="improved-flexibility">Improved Flexibility<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#improved-flexibility" class="hash-link" aria-label="Direct link to Improved Flexibility" title="Direct link to Improved Flexibility" translate="no">​</a></h3>
+<p>ACME Profiles make it easier for CAs to introduce new and improved certificate types. Clients can quickly adopt these new profiles without needing to change their existing workflows or configurations.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="enhanced-security">Enhanced Security<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#enhanced-security" class="hash-link" aria-label="Direct link to Enhanced Security" title="Direct link to Enhanced Security" translate="no">​</a></h3>
+<p>By moving profile selection out of the CSR and into the ACME protocol, ACME Profiles reduce the risk of compliance incidents caused by incorrect or malicious CSR values. This helps ensure that certificates are issued according to the CA's policies and standards.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-it-works">How It Works<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#how-it-works" class="hash-link" aria-label="Direct link to How It Works" title="Direct link to How It Works" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="server-advertisements">Server Advertisements<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#server-advertisements" class="hash-link" aria-label="Direct link to Server Advertisements" title="Direct link to Server Advertisements" translate="no">​</a></h3>
+<p>ACME Servers that support profiles will include a new <code>profiles</code> field in their Directory object. This field lists the available profiles and provides human-readable descriptions or URLs to documentation.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="client-requests">Client Requests<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#client-requests" class="hash-link" aria-label="Direct link to Client Requests" title="Direct link to Client Requests" translate="no">​</a></h3>
+<p>When creating a new Order, clients can specify the desired profile in the <code>profile</code> field of the Order object. The server will then issue a certificate that matches the selected profile.</p>
+<p>In <strong>Certify Certificate Manager</strong> and <strong>Certify Management Hub</strong> this will be available as an option under under <em>Certificate &gt; Advanced &gt; Certificate Authority</em>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="current-implementations">Current Implementations<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#current-implementations" class="hash-link" aria-label="Direct link to Current Implementations" title="Direct link to Current Implementations" translate="no">​</a></h2>
+<p>Let's Encrypt's Boulder ACME Server software fully implements the ACME Profiles extension. Although profiles are not yet configured in Let's Encrypt's Production and Staging environments, the Pebble ACME Server testbed also supports this extension.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://docs.certifytheweb.com/blog/acme-profiles-draft#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
+<p>The ACME Profiles extension is a significant step forward in providing flexibility and preferences in automated certificate management. By allowing clients to select predefined profiles, it reduces complexity, enhances security, and provides greater flexibility for both clients and CAs.</p>
+<p>We encourage you to explore the ACME Profiles feature when it becomes available and provide feedback to help us continue improving this important protocol.</p>]]></content:encoded>
+            <category>acme</category>
+            <category>certificate management</category>
+            <category>security</category>
+        </item>
+        <item>
+            <title><![CDATA[Comparing ACME Clients for Windows]]></title>
+            <link>https://docs.certifytheweb.com/blog/comparing-acme-clients</link>
+            <guid>https://docs.certifytheweb.com/blog/comparing-acme-clients</guid>
+            <pubDate>Sun, 08 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[A detailed comparison of popular ACME clients and how they stack up against Certify The Web.]]></description>
+            <content:encoded><![CDATA[<p>In the world of SSL/TLS certificate management, <a href="https://acmeclients.com/" target="_blank" rel="noopener noreferrer">ACME clients</a> play a crucial role in automating the issuance and renewal of certificates. Today, we will compare some of the most popular ACME clients, with an emphasis on Windows support: win-acme, Posh-ACME, Certbot, and Certify The Web (Certify Certificate Manager). Each of these clients has its own unique features and strengths, making them suitable for different use cases.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="posh-acme">Posh-ACME<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#posh-acme" class="hash-link" aria-label="Direct link to Posh-ACME" title="Direct link to Posh-ACME" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="overview">Overview<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>Posh-ACME is a PowerShell module for managing ACME certificates. It is highly scriptable and ideal for users who prefer working with PowerShell.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-features">Key Features<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#key-features" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h3>
+<ul>
+<li><strong>PowerShell Integration</strong>: Leverages PowerShell for automation and scripting.</li>
+<li><strong>Flexible Validation</strong>: Supports custom challenge validation via your own scripting.</li>
+<li><strong>Customizable</strong>: Highly customizable through PowerShell scripts, allowing for complex automation scenarios.</li>
+<li><strong>Cross-Platform</strong>: Can be used on Windows, macOS, and Linux.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros">Pros<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#pros" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<ul>
+<li>Highly scriptable and customizable.</li>
+<li>Cross-platform support.</li>
+<li>Integrates well with existing PowerShell workflows.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons">Cons<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#cons" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<ul>
+<li>Requires familiarity with PowerShell.</li>
+<li>May have a steeper learning curve for non-PowerShell users.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="win-acme">win-acme<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#win-acme" class="hash-link" aria-label="Direct link to win-acme" title="Direct link to win-acme" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="overview-1">Overview<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#overview-1" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>win-acme is a simple and powerful ACME client for Windows. It is designed to be easy to use and integrates well with IIS. Originally called letsencrypt-win-simple</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-features-1">Key Features<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#key-features-1" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h3>
+<ul>
+<li><strong>Simplicity</strong>: win-acme is great if you have a few certificates to manage and don't want a full UI or extensive features.</li>
+<li><strong>Ease of Use</strong>: win-acme provides a straightforward command-line interface and a user-friendly interactive mode.</li>
+<li><strong>IIS Integration</strong>: Integrates with IIS, making it easy to manage certificates for IIS websites.</li>
+<li><strong>Pluggable Validation</strong>: Supports various validation methods, including HTTP-01, DNS-01, and TLS-ALPN-01.</li>
+<li><strong>Scheduled Renewals</strong>: Automatically schedules certificate renewals using a Windows Scheduled Task, ensuring your certificates are always up-to-date.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-1">Pros<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#pros-1" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<ul>
+<li>Simple interface.</li>
+<li>Excellent integration with IIS.</li>
+<li>Supports multiple validation methods.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-1">Cons<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#cons-1" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<ul>
+<li>The main developer of win-acme has moved on to simple-acme, making win-acme deprecated. Existing users are encouraged to check out <a href="https://simple-acme.com/" target="_blank" rel="noopener noreferrer">https://simple-acme.com</a></li>
+<li>Deployment limited to IIS or custom scripts.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="certbot">Certbot<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#certbot" class="hash-link" aria-label="Direct link to Certbot" title="Direct link to Certbot" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="overview-2">Overview<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#overview-2" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>Certbot is one of the most widely used ACME clients, developed by the Electronic Frontier Foundation (EFF). It is known for its robustness and extensive documentation.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-features-2">Key Features<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#key-features-2" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h3>
+<ul>
+<li><strong>Wide Compatibility</strong>: Supports a wide range of web servers and operating systems.</li>
+<li><strong>Automated Renewals</strong>: Automatically renews certificates and updates web server configurations (Apache and nginx).</li>
+<li><strong>Pluggable Validation</strong>: Supports HTTP-01 and DNS-01 validation methods.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-2">Pros<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#pros-2" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<ul>
+<li>Popular on Linux.</li>
+<li>Supports a wide range of environments (via snap install).</li>
+<li>Strong community support.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-2">Cons<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#cons-2" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<ul>
+<li>No longer supported on Windows.</li>
+<li>Zero IIS integration.</li>
+<li>Command-line interface may be less user-friendly for beginners.</li>
+<li>Requires manual configuration for some web servers.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="certify-the-web">Certify The Web<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#certify-the-web" class="hash-link" aria-label="Direct link to Certify The Web" title="Direct link to Certify The Web" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="overview-3">Overview<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#overview-3" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>Certify The Web is a comprehensive ACME client designed for Windows. It provides a graphical user interface (GUI) and integrates seamlessly with IIS and includes built in Deployment Task support for various web servers and services. It also includes a centralized dashboard option, commercial support and multi-instance management via the upcoming <strong>Certify Management Hub</strong> product.</p>
+<p><img decoding="async" loading="lazy" src="https://certifytheweb.com/images/screens/landing_page.png" alt="Certify Management Hub" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-features-3">Key Features<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#key-features-3" class="hash-link" aria-label="Direct link to Key Features" title="Direct link to Key Features" translate="no">​</a></h3>
+<ul>
+<li><strong>User-Friendly GUI</strong>: Intuitive graphical interface for managing certificates.</li>
+<li><strong>IIS and Beyond</strong>: Supports IIS, Apache, Nginx, and other web servers.</li>
+<li><strong>Automated Renewals</strong>: Automatically renews certificates and updates web server configurations.</li>
+<li><strong>DNS Validation</strong>: Supports DNS-01 validation with many DNS providers. Certify even includes many providers from the Posh-ACME project.</li>
+<li><strong>Advanced Features</strong>: Includes features like deployment tasks, scripting, and reporting.</li>
+<li><strong>Dashboard and Status Reporting</strong>: Includes unique zero-config status reporting ensuring you are notified of renewal failures before they become a real problem.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-3">Pros<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#pros-3" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<ul>
+<li>Easy-to-use graphical interface.</li>
+<li>Supports a wide range of web servers and validation methods.</li>
+<li>Advanced features for complex scenarios.</li>
+<li>Used by hundreds of thousands of organizations around the world.</li>
+<li>Commercial support available by purchasing a license key.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-3">Cons<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#cons-3" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<ul>
+<li>Currently limited to Windows environments, but a new web based Certify Management Hub app will be available soon.</li>
+<li>Command line options are more limited that other command line native apps</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://docs.certifytheweb.com/blog/comparing-acme-clients#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
+<p>Each of these ACME clients has its own strengths and is suitable for different use cases. Obviously we think Certify Certificate Manager is an excellent choice for Windows users, offering a comprehensive feature set, commercial support and a user-friendly GUI. Posh-ACME is ideal for PowerShell enthusiasts who need a highly scriptable solution, win-acme is great for users who prefer the command line, while Certbot is a robust and widely known option (on Linux).</p>
+<p>Ultimately, the best ACME client for you will depend on your specific needs and environment. We encourage you to explore these options and choose the one that best fits your requirements.</p>]]></content:encoded>
+            <category>acme</category>
+            <category>certificate management</category>
+            <category>security</category>
+        </item>
+    </channel>
+</rss>
