@@ -15,13 +15,10 @@ The UI needs to know the URL of the API it should talk to. This is configured by
 
 If the problem occurs with a new docker container, follow the above and set the url to the require host and port e.g. `http://localhost:8080`
 
-#### Refreshing a page returns a blank page
-If using the combined hub service container image or serving the UI via the same service as the API, some app UI routing does not work (e.,g. reloading or bookmarking in-app URL routes). 
+#### Data caching in the UI
+Normally, when the system changes managed certificate or updates it status the change should be streamed back to the UI via SignalR. This streaming functionality is currently a work in progress and most items now update automatically.
 
 Pages that show data that might change will generally update themselves periodically (summary page, instances, charts etc) or in some cases when the underlying data changes and a message from the hub is streamed back the the UI. In some cases you may need to reload the app from the app root URL to see the latest information while the app is still under development.
-
-#### When managed certificates change, the info doesn't update in the UI
-Normally, when the system changes managed certificate or updates it status the change should be streamed back to the UI via SignalR. This streaming functionality is currently a work in progress and most items now update automatically.
 
 #### Loading time over slow connections
 The web app uses WebAssembly (WASM) and has a large application payload on initial load. Subsequent loads used cached resources.
@@ -34,4 +31,5 @@ Multiple instances of the Certify Agent or Management Hub service reading and wr
 
 Note: We do not provide general support for how to use different container technology and you will likely need to know more about your choice of container deployment technology than we do, if you are using containers at all. Certify Management Hub is our first product that supports deployment to containers, so we expect growing pains.
 
-
+### Windows Specific Tasks
+If you will be commonly running PowerShell etc and interacting with Windows Server using Windows AAuthentication you should host the Management Hub on a Windows Server install. The hub *can* be used in containers (or hosted directly on Linux) but with reduced compatibility for Windows specific things like Windows Impersonation credentials.
