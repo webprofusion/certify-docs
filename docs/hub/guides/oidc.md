@@ -11,6 +11,7 @@ You will need to provide:
 - **Authority URL** e.g. `https://login.microsoftonline.com/<your tenant id>`
 - **Client ID**
 - **Client Secret**
+- **Redirect URI**: `<your hub UI url>/authentication/login-callback`
 - **OpenID Scopes**, at a minimum `openid`
 - **Response Type**: `code`
 - **Response Mode**: `form_post`
