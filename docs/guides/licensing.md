@@ -80,6 +80,14 @@ To get started with cloud managed licensing via Microsoft Azure billing you can 
 
 Cloud Managed License pricing via Azure is **$4.99 USD per install per month**.
 
+:::note cloud managed license instructions
+
+To get a cloud managed license key and apply it:
+- Use Azure Marketplace to create your SaaS subscription for the license key product linked above. You can choose which overall Azure subscription/resource groups etc it gets associated with.
+- When created Azure will prompt you with a button to *Configure Account Now*, which will take you back to certifytheweb.com to link your subscription with an account and create your license key.
+- Your new license key will be shown on your profile License Keys tab at https://certifytheweb.com/profile and you can also see it on https://dash.certifytheweb.com
+
+:::
 If you would like us to support a different cloud provider marketplace for licensing, please contact `support at certifytheweb.com`.
 
 ## Upgrading and Downgrading License Keys
