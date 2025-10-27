@@ -31,7 +31,9 @@ Use Azure portal to create a new app registration:
     - Redirect URI:
         - Select "Web" as the platform type
         - `https://<your hub UI url>/authentication/login-callback`
-- Under *Certificates & secrets* configure a new Client secret, note the Applicaiton ID and Client Secret values. Secretes expire, so keep this in mind if auth fails in the future.
+    - Note the *Application ID* for use later.
+- Under *Certificates & secrets*
+    - configure a new Client secret, note Client Secret value. Secrets expire, so keep this in mind if auth fails in the future.
 
 ## Setup OIDC provider in Certify Management Hub
 
