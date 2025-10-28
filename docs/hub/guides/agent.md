@@ -76,3 +76,13 @@ When the service is installed using systemd the following commands can be useful
 |Restart the Service | `sudo systemctl restart certify-agent` |
 |Check systemd log | `journalctl -u certify-agent` |
 |Follow current log | `journalctl -u certify-agent -f` |
+
+
+## Troubleshooting
+
+If the agent is listed in the hub, but viewing managed certificates etc fails there may be a mismatch between the instanceID assigned by the hub and the settings currently stored in the agent config. 
+
+To resolve this:
+- Remove the instance from the hub (Managed Instances > Remove)
+- Edit the agents config at `/usr/shre/certify/serviceconfig.json` and remove the `"HubAssignedInstanceId": "<GUID>",` line, then restart the certify-agent service. 
+- Re-join the agent to the hub 
