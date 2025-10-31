@@ -3,20 +3,18 @@ id: backgroundservice
 title: Background Service
 ---
 
-In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" (Certify Certificate Manager Service). This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](guides/security.md)
+In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" or "Certify.Server.Core" (the full title is either `Certify Certificate Manager Service` or `Certify Management Agent` for v7 onwards). 
+
+This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](guides/security.md)
 
 To check the log for this service, review `C:\ProgramData\Certify\logs\service.exceptions.log`.
 
-## Port 9696 is the default service port
-
-By default the background service runs a local http API server on port 9696 for the UI to talk to (bound to local loopback 127.0.0.2 and requiring windows authentication). _Do not open this service to external traffic on your firewall._
-
 ## Custom configuration and Troubleshooting "..service not started" error
 
-The background service operates a local API for the app on port `9696` by default. If this port is in use by another application/service (or for some other reason it cannot create a binding to `127.0.0.2:9696` (localhost), or a security product is preventing **local** port access) then you will see the message 'Service not started'.
+By default the background service runs a local http API server on port `9696` for the UI to talk to (bound to local loopback `127.0.0.2` and requiring windows authentication). _Do not open this service to external traffic on your firewall._
 
-- `servers.json` : This is the connection information used by the UI to connect to the background service.
-- `serviceconfig.json` : These are the service settings and includes the host/ip and port the service will listen on, so it needs to match the details in `servers.json`.
+ If this port is in use by another application/service or for some other reason the service cannot create/use a binding to `127.0.0.2:9696` (localhost), or a security product is preventing **local** port access) then you will see the message **'Service not started'**.
+
 
 :::info
 If you are repeatedly seeing the "Service Not Started" error, first try deleting `serviceconfig.json` and `servers.json` from C:\ProgramData\Certify\ then restart the background service and the app and these config files will be recreated. This can help if automatic port negotiation has gotten out of sync.
@@ -24,7 +22,10 @@ If you are repeatedly seeing the "Service Not Started" error, first try deleting
 In some cases antivirus software products (such as *ClamWin*, *Watchguard Advanced EPDR*, *ESET*) have been known to prevent the Certify service installing properly or can prevent some core features working like our temporary http challenge service listener.
 :::
 
-If the default port 9696 is already in use however you can manually specify the settings required by editing/adding the file `c:\programdata\certify\serviceconfig.json` (and servers.json) with content as per the following (adjusted as required) then restarting both the service and UI:
+- `servers.json` : This is the connection information used by the UI to connect to the background service.
+- `serviceconfig.json` : These are the service settings and includes the host/ip and port the service will listen on, so it needs to match the details in `servers.json`.
+
+If the default port 9696 is already in use you can manually specify the settings required by editing/adding the file `c:\programdata\certify\serviceconfig.json` (and servers.json) with content as per the following (adjusted as required) then restarting both the service and UI:
 
 ```json
 {
@@ -43,7 +44,7 @@ For example an alternative configuration might be:
 }
 ```
 
-**You will also need to update corresponding configuration in the `servers.json` file (which the UI refers to in order to locate the service).**
+*You will also need to update corresponding configuration in the `servers.json` file (which the UI refers to in order to locate the service).*
 
 To test that the reconfigured service is communicating OK, you can try opening the following URL in your browser:
 `http://localhost:9695/api/system/appversion` where 'localhost' is your configured service `host` value and `9695` is an example configured port.
@@ -54,17 +55,14 @@ You can also try the same using PowerShell:
 Invoke-RestMethod -Uri http://localhost:9696/api/system/appversion -UseDefaultCredentials
 ```
 
-## Other Considerations for 'Service Not Started..'
+### Other Considerations for 'Service Not Started..'
 
 To operate properly the background service needs to be able to register an http listener for it's API server via http.sys, for that to work the IP address the service tries to use must be enabled as an http listen address and in some versions of windows the Http kernel service may not be enabled and you will need to enable it.
 
-### Allow Local System account to bind an http listener to the service port
 
-In some cases you need to explicitly allow the service to listen as an http service on the localhost IP address. To do so run the following command from the command line as an Administrator, substituting your choice of listening IP address and port:
+#### Enable http listener IP address
 
-`netsh http add urlacl url=http://127.0.0.2:9696/ user="NT AUTHORITY\SYSTEM"`
-
-### Enable http listener IP address
+**You do not normally have to configure any netsh iplisten rules, unless your system already has retrictions in place.**
 
 If your system is restricting which IP addresses can listen for HTTP traffic you may find you need to enable iplisten for the service IP.
 
@@ -85,6 +83,16 @@ netsh http add iplisten ipaddress=::
 netsh http add iplisten ipaddress=127.0.0.2
 ```
 You should monitor other effects on other services when changing the IP listen configuration. We have seen one report of Exchange/Outlook slowing down when the 0.0.0.0 address iplisten is enabled.
+
+:::info
+Check your current system IP listener rules using `netsh show iplisten`. If you have any IP listen rules *already configured* not using the catch-all `0.0.0.0` IP then your system will not listen on the default 127.0.0.2 IP and you will need to run `netsh http add iplisten ipaddress=127.0.0.2` to allow the service listener to work.
+:::
+
+#### Allow Local System account to bind an http listener to the service port
+
+In some cases you need to explicitly allow the service to listen as an http service on the localhost IP address. To do so run the following command from the command line as an Administrator, substituting your choice of listening IP address and port:
+
+`netsh http add urlacl url=http://127.0.0.2:9696/ user="NT AUTHORITY\SYSTEM"`
 
 By default the windows http service is typically enabled but if you receive the error 'Operation is not supported on this platform' in `service.exceptions.log` then try checking the status of the windows http service. To do so, run the following from an elevated command prompt (using Run As Administrator):
 
