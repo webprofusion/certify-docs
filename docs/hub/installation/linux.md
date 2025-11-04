@@ -79,3 +79,14 @@ rm -rf ./certify-agent*
 ```
 
 By default the agent will install to `/opt/certify-agent` as a systemd service called `certify-agent` running as user `certify` with config stored at `/usr/share/certify`.
+
+
+## General Administration
+### Permissions for local Deployment Tasks
+When using a deployment task (such as *Deploy to Apache*) locally on the same machine as the Hub or Agent, the user the process is running as needs permission to write to your destination paths. By default the install script creates the user and group `certify` which has no special permissions initially.
+
+So for example, if you have an Apache install at `/etc/apache2` and you wanted to deploy some certs under that path like `/etc/apache2/certs`, you could permission the directory with:
+
+`sudo setfacl -m g:certify:rwx /etc/apache2/certs` (`x` is included to allow directory traversal in this case). 
+
+You can permission destination paths however you prefer, but you should ensure the process user can write to those paths with a test such as `sudo -u certify touch /etc/apache2/certs/test.pem`
