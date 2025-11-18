@@ -8,6 +8,10 @@ title: Known Issues
 As we move development of *Certify Management Hub* towards a full release we will note issues that are commonly encountered here, and remove them as they are resolved.
 :::
 
+### Hub connections
+Instances of *Certify Certificate Manager* and *Certify Management Agent* services may need to be restarted (just the service, not the OS) to reconnect to a hub that has restarted or been updated. We recommend updating agents/ccm instances to the latest version corresponding to the hub when possible, although not strictly required for some minor updates.
+
+
 ### User Interface
 
 #### Errors when trying to login
@@ -32,4 +36,4 @@ Multiple instances of the Certify Agent or Management Hub service reading and wr
 Note: We do not provide general support for how to use different container technology and you will likely need to know more about your choice of container deployment technology than we do, if you are using containers at all. Certify Management Hub is our first product that supports deployment to containers, so we expect growing pains.
 
 ### Windows Specific Tasks
-If you will be commonly running PowerShell etc and interacting with Windows Server using Windows AAuthentication you should host the Management Hub on a Windows Server install. The hub *can* be used in containers (or hosted directly on Linux) but with reduced compatibility for Windows specific things like Windows Impersonation credentials.
+If you will be commonly running PowerShell etc and interacting with Windows Server using Windows Authentication you should host the Management Hub on a Windows Server install. The hub *can* be used in containers (or hosted directly on Linux) but with reduced compatibility for Windows specific things like Windows Impersonation credentials.

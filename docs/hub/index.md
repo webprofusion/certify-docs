@@ -25,3 +25,4 @@ The product is available to try out as an release candidate version (shortly to 
 ![Startup UI](/assets/screens/hub/hub_intro.png)
 
 
+- For info on current and future planned development see our [hub product roadmap](roadmap.md).
