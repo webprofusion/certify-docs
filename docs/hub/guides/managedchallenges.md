@@ -67,3 +67,5 @@ Where an ACME client supports Certify Managed Challenges you will follow the nor
 #### Using with Certify Certificate Manager 
 In *Certify Certificate Manager*, under Authorization, select dns-01 as the Challenge Type, and *Certify Managed Challenge API* as the provider, then add/select the required managed challenge consumer credentials. If the instance is joined to the hub you can leave the hub API url blank.
 
+#### Using with Hub certificates
+If you are configuring a managed certificate in the hub itself (not a remote CCM/Agent instance) you can choose to use a local managed challenge under Authorization > dns-01 > (Use Managed Challenge), this avoids defining DNS authorization configuration for each managed certificate where there is a common DNS zone being updated.
