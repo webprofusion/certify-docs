@@ -9,7 +9,7 @@ _Azure DNS documentation originally written by: Tony Johncock @Tony1044_
 
 # To Configure using Azure Portal
 
-## Create an Azure AD Service Principle
+## Create an Azure AD Service Principal
 
 - In Azure Active Directory, create a user who will then be assigned permissions to update your DNS zone, this can be an App registration. **Take note of your Application (client) ID and Directory (tenant) ID.**
 - In your DNS Zone, use the Access Control (IAM) option to Add a Role Assignment (DNS Zone Contributor). **Take note of your DNS Zone resource-group name and Subscription ID**

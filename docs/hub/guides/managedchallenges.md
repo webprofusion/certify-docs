@@ -29,11 +29,11 @@ Under *Services > Managed Challenges*, select `+ Add`:
 - Populate the *Domain Match Rule* to specify the domains this configuration can update DNS for, then Save.
 
 ### 2. Configure API Access
-Before you can use your managed challenge you need to configure API access. This involves assigning an API token for a specific *Service Principle* (a specific user or app).
+Before you can use your managed challenge you need to configure API access. This involves assigning an API token for a specific *Service Principal* (a specific user or app).
 
 Under *Settings > Security > Users*, add a User to represent the consumer (user or app etc) accessing the service, then assign them the Managed Challenge Consumer Role. They can have any other roles they need, but you'll need this specific role to access managed challenges.
 
-Under *Settings > Security > API Access*, select Add API Token, select the required security principle, enter a descriptive title etc for this consumer token so you know why it exists and what it's being used for. To scope the API access token to managed challenges only, select Managed Challenge Consumer from the Role list and click Add/Remove Role Scope, then Save. A new API token will be created and you will need the Client ID and Secret values to access the API and use the managed challenge.
+Under *Settings > Security > API Access*, select Add API Token, select the required security principal, enter a descriptive title etc for this consumer token so you know why it exists and what it's being used for. To scope the API access token to managed challenges only, select Managed Challenge Consumer from the Role list and click Add/Remove Role Scope, then Save. A new API token will be created and you will need the Client ID and Secret values to access the API and use the managed challenge.
 
 1. In the hub, navigate to **Settings > Security > Users**
 2. Click **Add User**
@@ -41,7 +41,7 @@ Under *Settings > Security > API Access*, select Add API Token, select the requi
    - **Type**: Application/Service
    - **Title**: "Managed Challenge User" (for example, to help identify the consumer of the managed challenge)
    - **Description**: "Managed challenge consumer" (for example)
-4. After adding, click the **Roles icon** (People+ icon) next to the new security principle's ID
+4. After adding, click the **Roles icon** (People+ icon) next to the new security principal's ID
 5. Select the `Managed Challenge Consumer` role from Available Roles to assign it.
 6. Click **Save**
 
@@ -49,7 +49,7 @@ Under *Settings > Security > API Access*, select Add API Token, select the requi
 
 1. Navigate to **Settings > Security > API Access**
 2. Click **Add API Token**
-3. Select **Managed Challenge User** as the security principle.
+3. Select **Managed Challenge User** as the security principal.
 4. Enter **Managed Challenge API Key** as the title
 5. Select **Managed Challenge Consumer** as the scoped role
     - **Important:** Click **Add/Remove Role Scope** to add it to the scope list
@@ -59,10 +59,11 @@ Under *Settings > Security > API Access*, select Add API Token, select the requi
 #### Combined Hub joining and Managed Challenge Key
 It is possible to create a combined hub joining key and managed challenge key, which certain clients (such as Certify Certificate Manager) can use by default if they already know the hub joining key. This is provided as an option for convenience but is not configured by default. 
 
-To enable this, add the Managed Challenge Consumer role to the managed instance service principle (or a new service principle), then create a new hub joining key with both the *Hub Managed Instance* role and *Managed Challenge Consumer* role scope.
+To enable this, add the Managed Challenge Consumer role to the managed instance service principal (or a new service principal), then create a new hub joining key with both the *Hub Managed Instance* role and *Managed Challenge Consumer* role scope.
 
 ### Configure your ACME Client
 Where an ACME client supports Certify Managed Challenges you will follow the normal process used by that client for selecting that provider and you will be required to specify the Client ID and Secret from the above configuration, you will also need to specify the Management Hub API Url. When you then perform your certificate order it will call the Management Hub API to complete the DNS updates required.
 
-In Certify Certificate Manager, under Authorization, select dns-01 as the Challenge Type, and Certify Managed Challenge API as the provider, then add the required credentials.
+#### Using with Certify Certificate Manager 
+In *Certify Certificate Manager*, under Authorization, select dns-01 as the Challenge Type, and *Certify Managed Challenge API* as the provider, then add/select the required managed challenge consumer credentials. If the instance is joined to the hub you can leave the hub API url blank.
 

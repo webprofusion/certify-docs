@@ -67,17 +67,17 @@ The hub does not currently have global settings that can be pushed to all manage
  
 If you manage instances across different organizations (e.g. if you are an MSP etc), consider creating multiple joining keys to partition by organization. This allows you to revoke hub access for specific groups without affecting unrelated instances.
 
-### 1. Add a Security Principle for Managed Instances
+### 1. Add a Security Principal for Managed Instances
 
 This step may be unnecessary in current versions where it's auto-created.
 
 1. In the hub, navigate to **Security > Users**
-2. Click **Add New Security Principle**
+2. Click **Add New Security Principal**
 3. Configure as follows:
    - **Type**: Application/Service
    - **Title**: "Hub Managed Instance"
-   - **Description**: "Principle for Management Hub Instance Joining"
-4. After adding, click the **Roles icon** (People+ icon) next to the new security principle's ID
+   - **Description**: "Principal for Management Hub Instance Joining"
+4. After adding, click the **Roles icon** (People+ icon) next to the new security principal's ID
 5. Select the `Management Hub Managed Instance` role from Available Roles
 6. Click **Save**
 
@@ -85,7 +85,7 @@ This step may be unnecessary in current versions where it's auto-created.
 
 1. Navigate to **Settings > Security > API Access**
 2. Click **Add API Token**
-3. Select **Managed Instances Service Principle**
+3. Select **Managed Instances Service Principal**
 4. Enter **Instance Joining Key** as the title
 5. Select **Management Hub Managed Instance** as the scoped role
    - **Important:** Click **Add/Remove Role Scope** to add it to the scope list
