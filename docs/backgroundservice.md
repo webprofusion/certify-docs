@@ -62,7 +62,14 @@ To operate properly the background service needs to be able to register an http 
 
 #### Enable http listener IP address
 
-**You do not normally have to configure any netsh iplisten rules, unless your system already has retrictions in place.**
+**You do not normally have to configure any netsh iplisten rules, unless your system already has restrictions in place.**
+
+First check if you have any existing iplisten rules are defined:
+```bat
+netsh http show iplisten
+```
+
+If any are listed (other than `0.0.0.0`) then further IP listeners on different IPs need to be added.
 
 If your system is restricting which IP addresses can listen for HTTP traffic you may find you need to enable iplisten for the service IP.
 
@@ -85,7 +92,7 @@ netsh http add iplisten ipaddress=127.0.0.2
 You should monitor other effects on other services when changing the IP listen configuration. We have seen one report of Exchange/Outlook slowing down when the 0.0.0.0 address iplisten is enabled.
 
 :::info
-Check your current system IP listener rules using `netsh show iplisten`. If you have any IP listen rules *already configured* not using the catch-all `0.0.0.0` IP then your system will not listen on the default 127.0.0.2 IP and you will need to run `netsh http add iplisten ipaddress=127.0.0.2` to allow the service listener to work.
+Check your current system IP listener rules using `netsh http show iplisten`. If you have any IP listen rules *already configured* not using the catch-all `0.0.0.0` IP then your system will not listen on the default 127.0.0.2 IP and you will need to run `netsh http add iplisten ipaddress=127.0.0.2` to allow the service listener to work.
 :::
 
 #### Allow Local System account to bind an http listener to the service port
