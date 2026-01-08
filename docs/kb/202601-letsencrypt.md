@@ -33,10 +33,10 @@ Curl: `curl: (60) SSL certificate problem: unable to get local issuer certificat
 ### Issue from the older chain
 Before May 2026 you can option to use the "classic" (default) ACME profile with the Let's Encrypt service and have your certificate issued form the older chain. This would normally be the most obvious fix unless that issuance has been retired.
 
-### Update clients to trust the new roots
+### Update clients to trust the new self-signed roots
 
 #### Manually Trust New Roots on Windows
-Download the root from the CA and import into the *Local Machine* certificate store under *Trusted Root Certification Authorities*, then reboot. 
+Download the (self signed) roots from the CA and import into the *Local Machine* certificate store under *Trusted Root Certification Authorities*, then reboot. 
 
 The quick way to do this is to open the file with the default windows certificate view, choose *Install Certificate..*, then choose *Local Machine* > *Place all certificates in the following store..* > *Trusted Root Certification Authorities*.
 
