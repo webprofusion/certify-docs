@@ -110,3 +110,7 @@ Check the 'Preview' tab in the app for your site to ensure the https binding of 
 
 ### I have an email from the CA saying my certificate is about to expire
 If your CA thinks you haven't renewed a certificate they will let you know using the email address registered as a contact when you installed the app. If you receive an expiry warning, check your certificate is renewing OK. If it all looks good you probably changed the list of domains in your certificate at some point (perhaps adding www. or adding/removing domains) and the CA is reminding you about the old version of your certificate, so you can ignore the notification.
+
+
+### Let's Encrypt Root YE/YR
+From January 2026 some users may be affected by updates to the Let's Encrypt chain of trust, see our [article](kb/202601-letsencrypt.md) on the topic for resolutions.
