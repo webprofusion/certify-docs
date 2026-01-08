@@ -5,7 +5,7 @@ title: Let's Encrypt YE/YR Roots on Windows
 
 # Summary
 
-**From January 7th 2026 let's Encrypt have started to issue from a new hierarchy with root certificates Root YE (ECDSA chains) and Root YR (RSA chains).** This may affect compatibility with some "clients" (browsers and other software connecting to your services) if their trust store does not have these new roots.
+**From January 7th 2026 let's Encrypt have started to issue from a new hierarchy with root certificates Root YE (ECDSA chains) and Root YR (RSA chains).** This may affect compatibility with some "clients" (browsers and other software connecting to your services) if their trust store does not have these new roots. *This issuance chain is currently limited to ACME clients renewing with the *tlsserver* or *shortlived* profiles.*
 
 Certificate trust mainly relies on the "root" issuing certificate (and intermediate certificates issued via that root) being trusted by your computer. 
 
@@ -29,6 +29,9 @@ Curl: `curl: (60) SSL certificate problem: unable to get local issuer certificat
 :::warning if you need to support old devices or those not updated to new roots
  If you require legacy support without workarounds, you may prefer to temporarily change the [Certificate Authority](../guides/certificate-authorities.md) for your certificates.
 :::
+
+### Issue from the older chain
+Before May 2026 you can option to use the "classic" (default) ACME profile with the Let's Encrypt service and have your certificate issued form the older chain. This would normally be the most obvious fix unless that issuance has been retired.
 
 ### Update clients to trust the new roots
 
