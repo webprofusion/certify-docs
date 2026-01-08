@@ -73,10 +73,8 @@ Your server will however continue to trust the new roots while windows update et
 ### Proxy your service
 Instead, if you require this chain for compatibility, either use a proxy (Caddy, nginx, Apache) in front of IIS and use the proxy to terminate TLS. This lets you control the served chain via that proxy.
 
-## Use a different CA
-If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a new Certificate Authority.
-:::
-
+### Use a different CA
+If no other solution works or for any other reason you cannot update client trusts stores etc or require other broader compatibility, you may need to consider moving your certificate to a different Certificate Authority.
 
 ## Other considerations
 ### Certify Certificate Manager - Export Tasks
