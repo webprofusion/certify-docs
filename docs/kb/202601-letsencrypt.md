@@ -11,7 +11,7 @@ Certificate trust mainly relies on the "root" issuing certificate (and intermedi
 
 This is called a "Chain" of trust. Your certificate (called a Leaf or end-entity certificate) will be validated by following this chain or using OS/app-specific chain building logic.
 
-The [new YE/YR hierarchy](https://letsencrypt.org/certificates/) also includes a "cross-sign" to the already trusted ISRG Root X1/X3 roots. For most windows clients (browsers, .Net, PowerShell etc) this means the client will determine a trusted chain on it's own, even if it doesn't yet trust Root YR/Root YE.
+The [new YE/YR hierarchy](https://letsencrypt.org/certificates/) also includes a "cross-sign" to the already trusted ISRG Root X1/X2 roots. For most windows clients (browsers, .Net, PowerShell etc) this means the client will determine a trusted chain on it's own, even if it doesn't yet trust Root YR/Root YE.
 
 ## The Problem
 
