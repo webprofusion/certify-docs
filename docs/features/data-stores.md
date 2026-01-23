@@ -21,6 +21,8 @@ In all cases is you choose to use alternative data store we cannot provide suppo
 
 High latency or potentially unreliable connections such as remotely hosted cloud databases are not recommended or supported.
 
+Each instance of the app needs it's own database and a single database cannot be shared by multiple instances.
+
 ### Microsoft SQL Server
 Read more about how to use SQL Server as a data store: [SQL Server Data Store Getting Started](https://github.com/webprofusion/certify-plugins/tree/development/src/DataStores/SQLServer)
 
