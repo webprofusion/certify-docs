@@ -5,6 +5,11 @@ title: Data Stores
 
 By default *Certify Certificate Manager* uses a set of SQLite file based databases to store configuration for managed certificates and stored credentials. SQLite is a good choice for most users as it is easy to setup and does not require any additional software to be installed. However, if you have a large number of managed certificates you may wish to use an alternative database such as Microsoft SQL Server or PostgreSQL in v6.0 onwards of the app.
 
+:::warning
+### v7.x migration requires a schema update
+If you are upgrading from 6.x to 7.x there are schema changes required which you must do as part of your coordinated upgrade of each instance of the app. If you do not migrate the schema the instance will fail to start after the version update until you upgrade the schema.
+:::
+
 ## Supported databases
 For a database to be supported we need to supply a set of compatible data store providers and the choice of database server must support complex JSON data storage and querying. 
 
