@@ -20,7 +20,7 @@ title: Certify DNS
 - In the app, Select *Certify DNS* as the DNS update method under Authorization.
 - Create your *Certify DNS* credentials using your account email address (as `API Username`) and license key (as `API Key`). You only need to do this once.
 - Click `Request Certificate` to perform a one-time registration with the *Certify DNS* service (per domain). If you receive an error such as `Failed to register with Certify DNS` you have probably not used the correct *Certify DNS* license key credentials.
-- You will be prompted to create a CNAME pointing to the TXT record hosted by the *Certify DNS* service. If you miss this prompt check back in the log file for your managed certificate (see the Status tab).
+- You will be prompted to create a CNAME pointing to the TXT record hosted by the *Certify DNS* service (each domain/subdomain has a unique generated value) . **If you miss this prompt or the CNAME value to configure, check back in the log file for your managed certificate (see the Status tab).**
 - Once you have created your CNAME record, delete any existing \_acme-challenge TXT record in the same zone to avoid confusion.
 - Resume the request using `Request Certificate`, the *Certify DNS* service will automatically provide the required TXT record responses on your behalf.
 - Automatic renewals will then perform this process again without manual intervention.
