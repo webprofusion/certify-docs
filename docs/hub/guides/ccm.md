@@ -18,6 +18,8 @@ To use Certify Management Hub with existing installations:
 
 ## Before Joining the Hub
 
+**Do not used cloned settings** (e.g. a server snapshot, clone etc of an already joined instance) when joining the hub as your instance will not appear as a separate server and configuration duplication may occur. One or more instances sharing the same joined identity will become unmanageable. If in doubt, contact support.
+
 ### Security Considerations
 
 :::warning Important
