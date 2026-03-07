@@ -30,5 +30,5 @@ All users of the free Community Edition are encouraged to join our community for
 
 If there is a general bug or feature request you'd like to discuss in public, you can create a new issue against our <a href="https://github.com/webprofusion/certify/issues" target="_blank">GitHub project</a> or discuss on the community forum.
 
-
-
+## Solution Partners
+If you are looking for regional consultants who can offer advice and consultancy for our product range see our growing list of [Solution Partners](partners).
