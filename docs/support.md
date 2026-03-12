@@ -37,7 +37,7 @@ Support operates weekdays (Australian Western Standard Time) with some coverage 
 
 Our products are ideal for organizations or professionals who need tools with dependable support. _You are encouraged to test the software yourself before purchasing, as not all usage scenarios are supported._
 
-Contact **support {at} certifytheweb.com** if you have questions about the products.
+Contact **support at certifytheweb.com** if you have questions about the products.
 
 ## Help from Solution Partners
 
@@ -50,5 +50,5 @@ If you are a solution partner providing consultancy and have a question, please 
 ## Community Support
 All users of the free Community Edition are encouraged to join our community forum: <a href="https://community.certifytheweb.com" target="_blank">community.certifytheweb.com</a>
 
-If there is a general bug or feature request you'd like to discuss in public, you can create a new issue against our <a href="https://github.com/webprofusion/certify/issues" target="_blank">GitHub project</a> or discuss on the community forum.
+If there is a general bug or feature request (you'd like to discuss in public, you can create a new issue against our <a href="https://github.com/webprofusion/certify/issues" target="_blank">GitHub project</a> (not used for support requests) or discuss on the community forum.
 

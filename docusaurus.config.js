@@ -88,6 +88,10 @@ module.exports = {
               label: 'certifytheweb.com',
               href: 'https://certifytheweb.com',
             },
+            {
+              label: 'Become A Solution Partner',
+              to: 'docs/partners',
+            }
           ],
         },
         {
