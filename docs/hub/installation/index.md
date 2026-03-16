@@ -35,7 +35,7 @@ If you require deployment of Certificates from the hub to Windows hosts (Service
 
 You can self-host on Windows, macOS or Linux, or you can use your own choice of container environment (Docker, Kubernetes, Red Hat/IBM OpenShift etc).
 
-The product internally uses .NET 9.0 or higher (self contained, you do not need to install .net) and specific supported operating systems are detailed here: https://github.com/dotnet/core/blob/main/release-notes/9.0/supported-os.md
+The product internally uses .NET 10.0 or higher (self contained, you do not need to install .net) and specific supported operating systems are detailed here: https://github.com/dotnet/core/blob/main/release-notes/10.0/supported-os.md
 
 For the web app, "evergreen" desktop web browsers are supported, typically this is Google Chrome, Microsoft Edge, Safari and Firefox.
 
