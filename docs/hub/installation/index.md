@@ -15,7 +15,7 @@ You can install the *Certify Management Hub* using docker, various Linux distrib
 - [Linux](linux)
 - macOS
 
-The product runs in Community Edition mode by default, see [Licensing](../../guides/licensing.md) for more information.
+The product runs in Community Edition mode by default. *Certify Management Hub* can now be licensed using the same license key types as *Certify Certificate Manager*, see [Licensing](../../guides/licensing.md) for more information.
 
 **The default admin login is `admin:changeme!` and you should change the password immediately before configuring any other parts of the system.** 
 

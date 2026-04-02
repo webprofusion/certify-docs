@@ -30,7 +30,7 @@ There are two main methods of licensing:
 *We do not offer special licensing terms for any type of organization.*
 
 ## License Bundles
-For the *Certify Certificate Manager* app you can currently purchase the following license bundles:
+You can currently purchase the following license bundles:
 
 | Type          | Renewal Frequency | Max Activated Instances| Price         |
 |---------------|-------------------|-------------------|---------------|
@@ -42,7 +42,7 @@ For the *Certify Certificate Manager* app you can currently purchase the followi
 From 1st November 2023 we have moved to a 12 month renewal cycle for all license tiers and revised pricing, this will apply to new licenses, **existing renewals will remain on the previous pricing/terms until 1st Nov 2025**. Pricing for Power Pro and Enterprise tiers last revised 1st October 2024.
 
 - These give you 1 license key (per bundle purchased) which can be used up to the given number of installs.
-- *Certify Management Hub* requires a Power Pro, Enterprise or Cloud Managed license and is not included in Starter or Professional bundles.
+- *Certify Management Hub* can now be licensed using the same license key types as *Certify Certificate Manager*. e.g. Starter Edition or Cloud Managed licenses onwards.
 - License tier names are an arbitrary label and are not related to the size/nature of your organization, they are just our name for the license bundle.
 
 - These license bundles can be purchased using a credit card (via Stripe) or via PayPal. 
