@@ -19,7 +19,7 @@ export default {
           },
           {
             type: 'category',
-            label: 'Operate & Automate',
+            label: 'Automation & Deployment',
             collapsible: true,
             collapsed: true,
             items: [
@@ -57,21 +57,45 @@ export default {
             collapsible: true,
             collapsed: true,
             items: [
-              'features/index',
-              'guides/certificates',
-              'guides/certificate-authorities',
-              'http-validation',
-              'dns/validation',
-              'backgroundservice',
-              'guides/ssl-windows',
-              'guides/best-practices',
-              'guides/security',
-              'guides/tools',
-              'guides/csr',
-              'guides/architecture/step-ca',
-              'features/certificate-advanced',
-              'features/data-stores',
-              'features/stir-shaken'
+              {
+                type: 'category',
+                label: 'Certificate Basics',
+                collapsible: true,
+                collapsed: true,
+                items: [
+                  'features/index',
+                  'guides/certificates',
+                  'guides/certificate-authorities',
+                  'http-validation',
+                  'dns/validation'
+                ]
+              },
+              {
+                type: 'category',
+                label: 'Platform & Operations',
+                collapsible: true,
+                collapsed: true,
+                items: [
+                  'backgroundservice',
+                  'guides/ssl-windows',
+                  'guides/best-practices',
+                  'guides/security',
+                  'guides/tools'
+                ]
+              },
+              {
+                type: 'category',
+                label: 'Advanced Topics',
+                collapsible: true,
+                collapsed: true,
+                items: [
+                  'guides/csr',
+                  'guides/architecture/step-ca',
+                  'features/certificate-advanced',
+                  'features/data-stores',
+                  'features/stir-shaken'
+                ]
+              }
             ]
           }
         ]
@@ -103,40 +127,64 @@ export default {
               ],
             },
 
-            'hub/guides/request-certificate',
-            'hub/known-issues'
+            'hub/guides/request-certificate'
           ]
         },
         {
           type: 'category',
-          label: 'Operations',
+          label: 'Concepts',
           collapsible: true,
           collapsed: true,
           items: [
             'hub/concepts/architecture',
-            'hub/concepts/management-models',
+            'hub/concepts/management-models'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Certificate Workflows',
+          collapsible: true,
+          collapsed: true,
+          items: [
             'hub/guides/certificate-operations',
             'hub/guides/request-and-deploy-certificates',
             'hub/guides/certificate-subscriptions',
-            'hub/guides/certificate-authorities-and-credentials',
+            'hub/guides/certificate-authorities-and-credentials'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Administration & Security',
+          collapsible: true,
+          collapsed: true,
+          items: [
             'hub/guides/hub-settings-overview',
             'hub/guides/security-and-access',
             'hub/guides/import-export-and-migration',
-            'hub/guides/day-2-operations',
+            'hub/guides/day-2-operations'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Instances & Integrations',
+          collapsible: true,
+          collapsed: true,
+          items: [
             'hub/guides/managedchallenges',
             'hub/guides/acme-server',
             'hub/guides/ccm',
             'hub/guides/agent',
-            'hub/guides/oidc',
-            'hub/hub-roadmap'
+            'hub/guides/oidc'
           ]
         },
+        'hub/hub-roadmap',
         {
           type: 'category',
           label: 'Troubleshooting & Support',
           collapsible: true,
           collapsed: true,
           items: [
+            'hub/known-issues',
             'guides/troubleshooting',
             'guides/maintenance',
             'guides/licensing',
@@ -150,23 +198,47 @@ export default {
           collapsible: true,
           collapsed: true,
           items: [
-            'features/index',
-            'guides/certificates',
-            'guides/certificate-authorities',
-            'http-validation',
-            'dns/validation',
-            'deployment/tasks_intro',
-            'script-hooks',
             {
-              type: 'doc',
-              id: 'guides/apache-nginx',
-              label: 'Apache, nginx, and other web servers'
+              type: 'category',
+              label: 'Certificate Basics',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                'features/index',
+                'guides/certificates',
+                'guides/certificate-authorities',
+                'http-validation',
+                'dns/validation'
+              ]
             },
-            'guides/import-export',
-            'features/data-stores',
-            'features/certificate-advanced',
-            'features/stir-shaken',
-            'guides/security'
+            {
+              type: 'category',
+              label: 'Automation & Deployment',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                'deployment/tasks_intro',
+                'script-hooks',
+                {
+                  type: 'doc',
+                  id: 'guides/apache-nginx',
+                  label: 'Apache, nginx, and other web servers'
+                },
+                'guides/import-export'
+              ]
+            },
+            {
+              type: 'category',
+              label: 'Advanced Topics',
+              collapsible: true,
+              collapsed: true,
+              items: [
+                'features/data-stores',
+                'features/certificate-advanced',
+                'features/stir-shaken',
+                'guides/security'
+              ]
+            }
           ]
         }
       ]
