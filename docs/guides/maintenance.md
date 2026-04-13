@@ -10,9 +10,9 @@ This page covers the main data locations, upgrade behavior, script storage, and 
 
 ## Important Paths
 
-- Managed certificate logs are stored under `%ProgramData%\Certify\logs`.
-- Certificate assets are stored under `%ProgramData%\Certify\assets`.
-- General settings and service configuration are stored under `%ProgramData%\Certify`.
+- General settings and service configuration are stored under `%ProgramData%\Certify` (Windows) or `/usr/share/certify` (Linux), referred to as `<certify data>` below.
+- Managed certificate logs are stored under `%ProgramData%\Certify\logs` or `/usr/share/certify/logs`.
+- Certificate assets are stored under `%ProgramData%\Certify\assets` or `/usr/share/certify/assets`.
 
 You should normally restrict access to these locations to administrators and Local System.
 
@@ -20,7 +20,7 @@ You should normally restrict access to these locations to administrators and Loc
 
 For normal Windows deployments, certificates are installed into the local machine certificate store under **My/Personal**.
 
-Certificate files created during renewals are stored under `%ProgramData%\Certify\assets`. The filenames change over time, so if another service depends on files directly, use a [deployment task](../deployment/tasks_intro.md) instead of pointing at a temporary asset path.
+Certificate files created during renewals are stored under `<certify data>\assets`. The filenames change over time, so if another service depends on files directly, use a [deployment task](../deployment/tasks_intro.md) instead of pointing at a temporary asset path.
 
 ## PFX Passwords
 
@@ -31,8 +31,8 @@ If many certificates need the same password, manage it centrally through stored 
 ## Upgrades and Reinstalls
 
 - Settings are preserved across upgrades and reinstalls.
-- Uninstalling the app does not remove `%ProgramData%\Certify`.
-- Back up `%ProgramData%\Certify` as part of your normal server backup process.
+- Uninstalling the app does not remove `<certify data>`.
+- Back up `<certify data>` as part of your normal server backup process.
 
 If the installer reports a file-in-use warning, do not continue blindly. Close the UI, allow the service to stop, and retry. If an update was interrupted, re-run the installer.
 
@@ -40,7 +40,7 @@ If the installer reports a file-in-use warning, do not continue blindly. Close t
 
 Do not store custom scripts under `%ProgramFiles%\CertifyTheWeb` because application upgrades can remove or overwrite files in that location.
 
-Use a dedicated path such as `C:\Scripts` or `%ProgramData%\Certify\Scripts` instead.
+Use a dedicated path such as `C:\Scripts` or `<certify data>\scripts` instead.
 
 ## Multi-Server Contact Email
 
