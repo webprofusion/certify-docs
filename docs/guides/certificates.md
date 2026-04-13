@@ -5,15 +5,40 @@ title: Certificates
 
 # Certificates
 
-Certificates are part of a Public Key Infrastructure (PKI) trust mechanism which state that a [Certificate Authority (CA)](certificate-authorities.md) has validated the identity of something. In our case, certificates are Domain Validated (DV) certificates, meaning they are (automatically) validated to ensure they have been issued to the organization controlling the given domain.
+A certificate helps a service prove its identity during TLS, which many people still call SSL. In the Certify context, this usually means proving control of a domain name.
 
-A digital certificate consists of a set of public information which has been signed by a Certificate Authority and issued to the holder of a secret *Private Key*. It asserts that the CA believes the holder (represented by their own public key, derived from their own private key) controls a particular domain (or set of domains). The public certificate itself is useless to anyone else except to verify the identity of the service presenting it. They can encrypt something with the public key and only the holder of the private key can decrypt it. This proves that the service you are communicating with also holds the private key that was used when the certificate was created.
+Certificates are part of a Public Key Infrastructure (PKI) trust model. A [Certificate Authority (CA)](certificate-authorities.md) issues the certificate after validating the requester. In most Certify scenarios, this is a Domain Validated (DV) certificate, meaning the CA checks that the requester controls the domain.
 
-The Certificate Authority signs the certificate it awards using it's own certificate(s). This consists of a Root certificate and any number of Intermediate certificates (they may delegate to these for signing so they don't have to use their root certificate all the time).
+## What a certificate includes
 
-The final 'domain' certificate you receive is sometimes also called the end-entity or leaf certificate.
+A certificate contains public information signed by a CA. It is linked to a secret **private key** held by the service using the certificate.
 
-The resulting certificate can be used as part of the TLS (also called SSL) protocol conversation to help ensure encrypted and authenticated communication.
+- The **certificate** is public.
+- The **private key** must stay private.
+- The certificate contains a **public key**.
+- Only the holder of the matching private key can correctly use that certificate during TLS.
+
+This is what allows a client to verify that the service presenting the certificate is the legitimate holder of the private key.
+
+## Certificate chain
+
+Certificates are trusted because they are signed by a CA.
+
+That trust usually involves:
+
+- a **root certificate**
+- one or more **intermediate certificates**
+- the final **leaf** or **end-entity certificate** issued for your domain
+
+The leaf certificate is the one installed on your site or service. The chain links it back to a trusted root certificate.
+
+## TLS and SSL
+
+The certificate and private key are used during the TLS handshake to provide:
+
+- encryption
+- service identity
+- trust through the certificate chain
 
 :::tip Learn more about TLS and PKI
 
@@ -23,16 +48,27 @@ If you are interested in reading more about how certificates work, what TLS is a
 
 :::
 
-## File Types
+## Common file types
 
-Certificates consists of a public and private cryptographic key and optionally the public 'certificate chain' used to issue the final certificate. Filenames and file type used to contain certificate information can be confusing:
-- A `.pfx` (or `.p12`) file is a combined container format (PKCS#12) which can include the certificate and it's associated private key. The `.pfx` file extension is most commonly used on Windows and is the default file type produced by Certify. This type of file may optionally be encrypted with a password.
-- a PEM file (sometimes with a `.pem` extension) can be either a certificate file, a chain (a set of certificates) or a private key file. Sometimes the extensions `.crt`, `.key`, `.chain` are used but these are usually PEM (base64 encoded text) files with different purposes.  The file extensions just help you identify what the file is for, and some are interchangeable.
-- `.der` is a binary encoding of the same type of information and can be used for multiple certificate components (certificate files sometimes using the extension `.cer`, confusingly a `.key` file could be either a PEM encoded file or a DER encoded file).
+Certificate files can be confusing because different formats can contain different parts of the same certificate set:
 
-Different services can choose which file types/sources they want to support for their certificates, for instance:
-- IIS on Windows either uses the certificate that's stored in the computer certificate store or it can use a shared certificate file store with PFX files (CCS). 
-- The Apache and nginx web servers uses PEM encoded certificate and key files (the file extension isn't important).
+- A `.pfx` or `.p12` file is a PKCS#12 container. It can include the certificate and its private key. This is common on Windows and is the default file type produced by Certify. It can also be protected with a password.
+- A PEM file is a text-based format that can hold a certificate, a chain, or a private key. Common extensions include `.pem`, `.crt`, `.key`, and `.chain`.
+- A `.der` file is a binary encoding of similar certificate data. A `.cer` file may also be DER encoded.
 
-## Deployment
-- Some services refer to certificate by files, others use the computer certificate store and a certificate *Thumbprint* value, which is then stored in a registry key, configuration file or database. Deploying to these services requires applying the new thumbprint value via an appropriate method.
+The file extension is often just a naming convention. What matters is the content and what your target service expects.
+
+## Deployment basics
+
+Different services use certificates in different ways:
+
+- Some use certificate files directly.
+- Some use the operating system certificate store.
+- Some refer to certificates by a *thumbprint* stored in a registry key, configuration file, or database.
+
+Examples:
+
+- IIS on Windows can use the computer certificate store or a shared certificate store with PFX files (CCS).
+- Apache and nginx usually use PEM-encoded certificate and key files.
+
+Deploying a renewed certificate may mean replacing files, updating a thumbprint reference, or both, depending on the target service.

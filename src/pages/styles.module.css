@@ -35,3 +35,34 @@
   width: 200px;
 }
 
+.productTabs :global(.tabs) {
+  gap: 0.5rem;
+}
+
+.productTabs :global(.tabs__item) {
+  min-width: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .productTabs :global(.tabs) {
+    border-bottom: 0;
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .productTabs :global(.tabs__item) {
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: 999px;
+    flex: 1 1 calc(50% - 0.5rem);
+    justify-content: center;
+    margin-top: 0;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .productTabs :global(.tabs__item--active) {
+    border-color: var(--ifm-color-primary);
+    border-width: 2px;
+  }
+}
+

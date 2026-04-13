@@ -1,12 +1,12 @@
-# Configuring and using OpenID Connect (OIDC)
+# OpenID Connect (OIDC)
 
-The hub can be configured to allow users to sign in by authenticating against an external OIDC provider such as Azure Entra.
+The Hub can authenticate users through an external OIDC provider such as Azure Entra.
 
-## Configure an OIDC provider
+## Provider Configuration
 
-You can add the configuration for a new OIDC provider under Settings > Security > OpenID Connect (OIDC).
+Add a provider under Settings > Security > OpenID Connect (OIDC).
 
-You will need to provide:
+Required values:
 - **Provider Name** for display on the sign in screen
 - **Authority URL** e.g. `https://login.microsoftonline.com/<your tenant id>`
 - **Client ID**
@@ -16,15 +16,16 @@ You will need to provide:
 - **Response Type**: `code`
 - **Response Mode**: `form_post`
 
-## Signing In
+## Sign-In Flow
 
-Once an OIDC provider is configured, any user can try to sign in using that provider. A stub account will then be created within the system with no roles assigned. The administrator can then assign hub roles to that account. When the user signs back in they will have the assigned roles and feature access.
+After a provider is configured, a user can sign in through that provider. The first sign-in creates a local account with no roles. An administrator then assigns Hub roles, and the user signs in again with the new permissions.
 
 
-# Example - Azure Entra
+## Azure Entra Example
 
-## Configure OIDC Application in Azure Entra
-Use Azure portal to create a new app registration:
+### Azure Entra Application
+
+Create an app registration in the Azure portal:
 - App registrations > New Registration
     - Name e.g.: Certify Management Hub (Production)
     - Select account scope, generally Accounts in this organization directory only
@@ -35,7 +36,7 @@ Use Azure portal to create a new app registration:
 - Under *Certificates & secrets*
     - configure a new Client secret, note Client Secret value. Secrets expire, so keep this in mind if auth fails in the future.
 
-## Setup OIDC provider in Certify Management Hub
+### Hub Provider Configuration
 
 - Navigate to *Settings > Security > OpenID Connect (OIDC)*
 - Select *Add OIDC Provider*
@@ -49,7 +50,7 @@ Use Azure portal to create a new app registration:
         - Response Type: *code* (default, so that a code will be passed back to the Redirect URI as part of the query string)
         - Response Mode: *form_post* (default).
 
-## Sign In with your OIDC Provider
+### First Sign-In
 - Reload the Hub UI and select the OIDC provider to sign in with, complete sign in as normal
 - Initially your account will have no roles:
     - Sign out of the hub and Sign In as Admin, assign a role to your account under Settings > Security > [Your new account] (people +) > e.g. Hub View (which has read only permissions), Administrator or Certificate Manager, then sign out.

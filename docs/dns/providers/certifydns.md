@@ -1,11 +1,26 @@
 ---
 id: certifydns
-title: Certify DNS
+title: Get Started with Certify DNS
+description: Use Certify DNS for delegated DNS challenge handling when direct DNS automation is unavailable, and understand setup, troubleshooting, and security tradeoffs.
 ---
 
-# Certify DNS
+# Get Started with Certify DNS
 
 *Certify DNS* is an optional service used to answer DNS challenges when your domains normal DNS provider isn't supported for automation. It can be used with any *acme-dns* compatible ACME client. **The service requires a separately purchased *Certify DNS* license and is not bundled with *Certify Certificate Manager***.
+
+## Best Fit
+
+- Your DNS provider does not have an API you can automate.
+- You need wildcard or DNS-based validation but cannot store primary DNS credentials on every client.
+- You want one-time CNAME delegation followed by automated renewals.
+
+## Quick Setup
+
+1. Purchase and activate a *Certify DNS* license.
+2. Configure *Certify DNS* credentials in the client that will request certificates.
+3. Complete the first request so the service can register each domain.
+4. Create the prompted CNAME record in your normal DNS zone.
+5. Re-run the request so the certificate authority can follow the delegated challenge.
 
 - The service is a cloud hosted version of the [acme-dns](https://github.com/joohoi/acme-dns) protocol and uses CNAME delegation of acme challenge TXT records to a dedicated challenge response service.
 - You can purchase a *Certify DNS* license**, via the https://certifytheweb.com License Keys tab (when signed in). It is not included in other product licenses from us you may already have, e.g. other products like *Certify Certificate Manager* **do not** include a license for *Certify DNS*.
@@ -86,3 +101,8 @@ Disadvantages:
 | Cloud Licensed via [Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/webprofusionptyltd1588924351007.certifytheweb-certifydns?tab=Overview) | Monthly | 500 | $4.99 USD |
 
 The standard license can be purchased through your https://certifytheweb.com account on the License Keys tab. The Cloud License option is purchased via your normal Microsoft Azure billing.
+
+## Next Docs to Read
+
+- [DNS validation overview](../validation.md)
+- [Get help and support](../../support.md)

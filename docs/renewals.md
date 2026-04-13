@@ -1,7 +1,10 @@
 ---
 id: renewals
-title: Certificate Renewals
+title: Monitor and Renew Certificates
+description: Understand Certify renewal timing, failure notifications, dashboard reporting, and certificate cleanup behavior.
 ---
+
+This page covers renewal timing, failure visibility, dashboard reporting, and certificate cleanup.
 
 All certificates have an expiry date, after which they cannot be used to secure communication. Certificates from Let's Encrypt (our default CA) expire after 90 days, so for that reason renewals need to happen often, and if there's going to be a problem with validation that will prevent the renewal, you need to know in advance of the certificate expiry.
 

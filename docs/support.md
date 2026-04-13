@@ -1,54 +1,62 @@
 ---
 id: support
-title: Support Options
+title: Get Help and Support
+description: Find the right path for help with Certify The Web products, including self-service docs, troubleshooting, licensing guidance, community help, and direct support.
+displayed_sidebar: helpSupportSidebar
 ---
 
-## Getting Started
+# Get Help and Support
 
-To get started with Certify The Web products, see the Getting Started guidance for each product:
+This page lists the main support paths for Certify The Web products, including self-service documentation, community discussion, partner help, and direct support.
+
+## Self-Service Resources
+
+Start with the product or task guide that matches the problem:
 
 - [Certify Certificate Manager](intro.md)
 - [Certify Management Hub](hub/index.md)
 - [Certify Dashboard](dashboard/index.md)
-- [Certify DNS](dns/providers/certifydns)
+- [Certify DNS](dns/providers/certifydns.md)
+- [Troubleshooting](guides/troubleshooting.md)
+- [Maintenance and data locations](guides/maintenance.md)
+- [Licensing](guides/licensing.md)
+- [Frequently Asked Questions](faq.md)
 
-Check out our [FAQ](faq.md) if you are just getting started and having trouble with something.
+## Contact Support When You Need Product-Specific Help
 
-## Support Helpdesk
+Full time support is available by email for registered users and for organizations actively evaluating the software.
 
-**Full time support is available via email support tickets for registered users or those who are evaluating the software.**
+To create a new support request, email **support at certifytheweb.com**.
 
-If you are a licensed customer or are evaluating the software please do get in touch with support if you have any questions. 
+Support operates weekdays in Australian Western Standard Time, with some weekend coverage. Telephone support and general consultancy are not currently offered.
 
-## Support for Customers
+## Include This Information in Your Request
 
-To create a new support request for help or for general questions, email **support at certifytheweb.com**
+- The licensed account email address, or note that you are evaluating the software.
+- A clear description of the problem, expected behavior, and what changed.
+- Steps to reproduce the issue.
+- Relevant environment details such as Windows version, hosting platform, CA, DNS provider, or deployment target.
+- Logs from the managed certificate Status tab where applicable.
 
-Please include:
- - A note of your licensed account email address
- - Describe the problem/question in detail with any supporting information you can provide.
- - Include how to recreate the problem and/or any special configuration you may have. 
- - Logs for managed certificates can be found on the Status tab of each managed certificate and are essential for diagnosing certificate request/renewal problems. 
- - Domain details shared with us via support are treated as confidential and there is no need to redact domains in logs etc (redacting domains can make issue diagnosis more difficult).
-
-Support operates weekdays (Australian Western Standard Time) with some coverage on weekends. Telephone support and general consultancy is not currently available but we will try to help where we can for all questions.
+Domain details shared with us via support are treated as confidential. There is normally no need to redact domains in logs, and doing so can make diagnosis harder.
 
 ## Evaluating the Software
 
-Our products are ideal for organizations or professionals who need tools with dependable support. _You are encouraged to test the software yourself before purchasing, as not all usage scenarios are supported._
+Our products are aimed at organizations and professionals who need dependable certificate automation with support. You are encouraged to test your own scenario before purchase, because not all usage patterns are supported.
 
-Contact **support at certifytheweb.com** if you have questions about the products.
+If you are evaluating the product and have pre-purchase questions about fit, deployment, or supported scenarios, contact **support at certifytheweb.com**.
 
-## Help from Solution Partners
+## Community and Public Issues
 
-We do not yet offer pre-sales support calls or onsite consultancy, but we are happy to answer questions via our helpdesk.
+- Community Edition users are encouraged to join the community forum: <a href="https://community.certifytheweb.com" target="_blank">community.certifytheweb.com</a>
+- Public bug reports and feature requests can be discussed on the community forum or raised on the <a href="https://github.com/webprofusion/certify/issues" target="_blank">GitHub project</a> when appropriate.
+- GitHub issues are not used for private support requests.
 
-If you are looking for regional consultants who can offer advice and consultancy for our product range, see our growing list of [Solution Partners](partners).
+## Consultants and Solution Partners
 
-If you are a solution partner providing consultancy and have a question, please contact our helpdesk.
+We do not currently offer pre-sales calls or onsite consultancy directly, but we are happy to answer product questions via the helpdesk.
 
-## Community Support
-All users of the free Community Edition are encouraged to join our community forum: <a href="https://community.certifytheweb.com" target="_blank">community.certifytheweb.com</a>
+If you are looking for regional consultants who can advise on deployment or operations, see our list of [Solution Partners](partners.md).
 
-If there is a general bug or feature request (you'd like to discuss in public, you can create a new issue against our <a href="https://github.com/webprofusion/certify/issues" target="_blank">GitHub project</a> (not used for support requests) or discuss on the community forum.
+If you are a solution partner and need product-specific clarification, contact the helpdesk in the usual way.
 

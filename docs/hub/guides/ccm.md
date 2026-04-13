@@ -2,39 +2,39 @@
 title: Certify Certificate Manager (Desktop)
 ---
 
-## Summary
+## Scope
 
-Joining your existing *Certify Certificate Manager* (CCM) instance to a Management Hub allows you to control the instance settings as if you were working in the conventional desktop app, without having to remote into the desktop of each instance.
+Joining an existing *Certify Certificate Manager* (CCM) instance to the Hub allows centralized control of instance settings without using the desktop UI on each server.
 
 If you are using *Certify Management Agent* on Linux or macOS, [see our agent guide](agent.md).
 
-Start by [downloading the latest version](https://downloads.certifytheweb.com/beta/latest/certify-ccm-windows-x64-latest.exe) of Certify Certificate Manager (v7+) with the option to connect to a management hub.
+Start with the [latest version](https://downloads.certifytheweb.com/beta/latest/certify-ccm-windows-x64-latest.exe) of Certify Certificate Manager (v7+) with Hub support.
 
-To use Certify Management Hub with existing installations:
+Basic sequence:
 
 1. Set up a Joining API key in the hub (one is automatically created when the hub is installed).
 2. Configure CCM to join the hub (via UI or command line)
 3. Verify that the joining has completed in the hub UI
 
-## Before Joining the Hub
+## Instance Identity
 
-**Do not used cloned settings** (e.g. a server snapshot, clone etc of an already joined instance) when joining the hub as your instance will not appear as a separate server and configuration duplication may occur. One or more instances sharing the same joined identity will become unmanageable. If in doubt, contact support.
+Do not reuse cloned settings from an already joined instance. If two instances share the same joined identity, they become difficult to manage correctly.
 
-### Security Considerations
+## Security
 
 :::warning Important
 
-The management hub will have complete control over the Certify Certificate Manager instance settings, including the ability to specify deployment tasks which may include locally executed code (PowerShell etc).
+The Hub has full control over CCM settings, including deployment tasks that may run local code.
 
  **Do not join a hub you don't control or trust.**
 
  :::
 
-## Joining the Hub
+## Hub Join
 
-By default a joining API key is created when you install the hub. This is found under *Settings > Security > API Access*. You will need the API URL (e.g. `https://hub.internal.yourdomain.com:9697` depending on your configuration), Client Id and Client Secret values.
+By default a joining API key is created when the Hub is installed. It is available under *Settings > Security > API Access*. You need the Hub API URL, Client Id, and Client Secret.
 
-### Method 1: Using the Desktop User Interface
+### Desktop UI
 
 1. In *Certify Certificate Manager*, go to **Settings > Management Hub**
 2. Enter the following:
@@ -42,12 +42,12 @@ By default a joining API key is created when you install the hub. This is found 
    - Client ID
    - Client Secret
 3. Click **Join**
-4. The app will attempt to join the management hub
-5. If successful, the instance will appear in the **Instances** list of the Management Hub UI and managed certificates will be shown in the hub.
+4. Click **Join**.
+5. Confirm the instance appears in the **Instances** list in the Hub UI.
 
-### Method 2: Using the Command Line
+### Command Line
 
-If you need to automate joining for a large number of instances you may prefer to script using the command line. To do so, run the following command (from `C:\Program Files\CertifyTheWeb\` as a member of Administrators):
+For automated joins, run the following command from `C:\Program Files\CertifyTheWeb\` as an administrator:
 
 ```
 certify hub join <url of mgmt hub API> <client id> <client secret>
@@ -57,21 +57,19 @@ certify hub join <url of mgmt hub API> <client id> <client secret>
 
 After joining, confirm that your instance appears in the Management Hub UI's **Instances** list.
 
+## Per-Instance Settings
 
-# Using the Hub to manage a CCM instance
+Stored credentials, CA accounts, and similar items remain per-instance settings. Select the correct target instance when working with them.
 
-Your existing *Certify Certificate Manager* install remains much the same as it was before, except it can also be externally managed via the hub. When you are working with individual settings such as Stored Credentials, Certificate Authority accounts etc these remain per-instance settings, so each instance of the app has it's own set of settings and you will selected the target instance when working with those. 
+The Hub does not currently push global ACME accounts or stored credentials to all managed instances.
 
-The hub does not currently have global settings that can be pushed to all managed instances etc (such as a single ACME account, or specific stored credential).
-
-## Other Considerations
-## Setting up additional joining keys
+## Additional Joining Keys
  
-If you manage instances across different organizations (e.g. if you are an MSP etc), consider creating multiple joining keys to partition by organization. This allows you to revoke hub access for specific groups without affecting unrelated instances.
+If you manage instances across different organizations or trust zones, create separate joining keys for each group.
 
-### 1. Add a Security Principal for Managed Instances
+### Managed Instance Principal
 
-This step may be unnecessary in current versions where it's auto-created.
+A shared managed instance principal is automatically created when the hub is installed. If you would like to create separate identities you can set each up using:
 
 1. In the hub, navigate to **Security > Users**
 2. Click **Add New Security Principal**
@@ -83,7 +81,9 @@ This step may be unnecessary in current versions where it's auto-created.
 5. Select the `Management Hub Managed Instance` role from Available Roles
 6. Click **Save**
 
-### 2. Create an API Key for Joining Instances
+### Joining API Key
+
+A joining API key is automatically created when the hub is installed. If you need to create separate ones you would do so using:
 
 1. Navigate to **Settings > Security > API Access**
 2. Click **Add API Token**
@@ -92,4 +92,4 @@ This step may be unnecessary in current versions where it's auto-created.
 5. Select **Management Hub Managed Instance** as the scoped role
    - **Important:** Click **Add/Remove Role Scope** to add it to the scope list
 7. Click **Add** to create the new API token
-8. Copy the **Client ID** and **Secret** values - you'll need these for instance configuration
+8. Copy the **Client ID** and **Secret** values.

@@ -1,6 +1,7 @@
 ---
 id: kb-202601-letsencrypt
 title: Let's Encrypt YE/YR Roots on Windows
+displayed_sidebar: helpSupportSidebar
 ---
 
 # Summary

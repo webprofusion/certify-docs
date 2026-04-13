@@ -1,7 +1,10 @@
 ---
 id: certificate-process
-title: Requesting a Certificate
+title: Request Your First Certificate
+description: Choose domains, validation, deployment options, and renewal behavior when requesting a certificate with Certify Certificate Manager.
 ---
+
+Use this guide when you are creating a new managed certificate and want to understand the full request, deployment, and renewal flow.
 
 When you install Certify you will be prompted to register with the [Certificate Authority](guides/certificate-authorities.md) who will validate your domains and issue your [certificates](guides/certificates.md) (e.g. Let's Encrypt). You should provide a real email address, otherwise they can't contact you if there is a problem with your certificate.
 

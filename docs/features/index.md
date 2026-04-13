@@ -1,12 +1,12 @@
 ---
-title: Features Overview for all products
-description: An overview of all major features available across the Certify The Web product range
-displayed_sidebar: null
+title: Features
+description: Compare major features across the Certify The Web product range and jump into the shared reference material used by multiple products.
+displayed_sidebar: commonDocsSidebar
 ---
 
-# Features Summary
+# Features
 
-This is a overview of all the major features available across the **Certify The Web** product suite, categorized by functionality and indicating which features are common across products or specific to individual components.
+This page compares the major features across the **Certify The Web** product suite and links to the common concept pages shared by multiple products.
 
 ## Certificate Management & Automation
 
@@ -53,7 +53,7 @@ Comprehensive deployment options for various platforms and services:
 
 **Web Servers & Load Balancers:**
 - IIS (Auto-deployment with binding management)
-- [Apache HTTP Server (PEM format export)](../guides//apache-nginx.md)
+- [Apache HTTP Server (PEM format export)](../guides/apache-nginx.md)
 - [nginx (PEM format export)](../guides/apache-nginx.md)
 - [Apache Tomcat (PKCS#12 keystore)](../deployment/tasks/tomcat.md)
 

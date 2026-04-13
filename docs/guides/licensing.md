@@ -1,8 +1,11 @@
 ---
 id: licensing
-title: Licensing
+title: Licensing and Subscription Options
+description: Compare Certify The Web license bundles, cloud-managed licensing, transfers, renewals, and reseller scenarios.
+displayed_sidebar: helpSupportSidebar
 ---
 
+This page covers license bundles, cloud-managed subscriptions, transfers, renewals, and purchasing questions.
 
 ## About Licensing
 Certify The Web is a range of commercial products related to automated certificate management and this documentation covers licensing for the following:

@@ -16,13 +16,13 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [24.x]
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
@@ -30,7 +30,7 @@ jobs:
       env:
         CI: true
     - name: Deploy to GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v4
+      uses: crazy-max/ghaction-github-pages@v5
       with:    
         # Allow an empty commit to be created
         allow_empty_commit: false

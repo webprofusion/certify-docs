@@ -1,10 +1,25 @@
 ---
-title: Using Certify Dashboard
+title: Get Started with Certify Dashboard
+description: Use Certify Dashboard to monitor certificate renewals across servers, understand reporting sources, and decide when to add Hub or Agent components.
 ---
 
-*Certify Dashboard* is our hosted service for monitoring certificate renewals. You can report to the dashboard using [Certify Certificate Manager](/docs/intro), or by using our Certify Management Agent (on linux etc) with supported ACME tools like *Certbot* and *acme.sh*.
+# Get Started with Certify Dashboard
+
+*Certify Dashboard* is our hosted service for monitoring certificate renewals across your organization. You can report to the dashboard using [Certify Certificate Manager](/docs/intro) directly, or by using *Certify Management Agent* with supported ACME clients such as *Certbot* and *acme.sh*.
+
+## Best Fit
+
+- You want centralized visibility into renewal success and failure across multiple servers.
+- You need a simple hosted monitoring layer without fully centralizing certificate operations.
+- You want to see certificate expiry risk and failure details without logging into each server.
 
 ![Dashboard](/assets/screens/dashboard/dashboard_example.png)
+
+## Quick Setup
+
+1. If you use *Certify Certificate Manager*, enable dashboard reporting and choose **Add to Dashboard** from the start-up screen.
+2. If you use other ACME clients, deploy *Certify Management Agent* and manage that configuration from *Certify Management Hub*.
+3. Confirm that renewal activity appears in the dashboard after the next successful request or renewal.
 
 ## Features
 - Monitor successful and failed renewals.
@@ -34,3 +49,9 @@ The agent is designed to run on Linux, macOS, or Windows.
 
 ## Licensing
 *Certify Dashboard* is included with license key purchases for *Certify Certificate Manager*, *Certify Management Hub* and *Certify Management Agent*.
+
+## Next Docs to Read
+
+- [Certify Management Hub](../hub/)
+- [Monitor renewals and alerts](../renewals.md)
+- [Get help and support](../support.md)

@@ -6,7 +6,7 @@ sidebar_label: Roadmap
 
 # Product Roadmap
 
-The roadmap highlights current focus areas for the Certify Management Hub. Timelines are indicative and subject to change as we gather feedback from production deployments.
+The roadmap highlights focus areas for the Certify Management Hub. Timelines are indicative and subject to change as we gather feedback from production deployments.
 
 ## Release Status
 

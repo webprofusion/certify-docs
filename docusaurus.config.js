@@ -1,3 +1,5 @@
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
   title: 'Certify The Web Docs',
   tagline: "The worlds most popular solution for Let's Encrypt and ACME Certificate Management on Windows.",
@@ -23,13 +25,15 @@ module.exports = {
       },
       items: [
 
+        { to: 'docs/', label: 'Docs Home', position: 'left' },
         { to: 'docs/intro', label: 'Certificate Manager', position: 'left' },
         { to: 'docs/hub/', label: 'Management Hub', position: 'left' },
         { to: 'docs/dashboard/', label: 'Dashboard', position: 'left' },
         { to: 'docs/dns/providers/certifydns/', label: 'Certify DNS', position: 'left' },
         {
-          label: 'Features',
+          label: 'Reference',
           to: 'docs/features',
+          position: 'left',
         },
         { to: 'docs/support', label: 'Support', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'right' },
@@ -52,8 +56,16 @@ module.exports = {
           title: 'Docs',
           items: [
             {
+              label: 'Documentation Home',
+              to: 'docs/',
+            },
+            {
               label: 'Certify Certificate Manager',
               to: 'docs/intro',
+            },
+            {
+              label: 'Certify Management Hub',
+              to: 'docs/hub',
             },
             {
               label: 'Certify Dashboard',
@@ -64,7 +76,7 @@ module.exports = {
               to: 'docs/dns/providers/certifydns',
             },
             {
-              label: 'Features',
+              label: 'Reference',
               to: 'docs/features',
             },
             {
@@ -119,17 +131,19 @@ module.exports = {
           path: './docs',
           // Sidebars file relative to website dir.
           sidebarPath: require.resolve('./sidebars.js'),
-          sidebarCollapsible: false,
+          sidebarCollapsible: true,
           editUrl:
             'https://github.com/webprofusion/certify-docs/edit/master/',
         },
         theme: {
           customCss: [require.resolve('./src/css/custom.css')],
         },
-        gtag: {
-          trackingID: 'G-RLGYG5TYY5',
-          anonymizeIP: true
-        },
+        gtag: isProduction
+          ? {
+              trackingID: 'G-RLGYG5TYY5',
+              anonymizeIP: true,
+            }
+          : undefined,
       },
     ],
   ],

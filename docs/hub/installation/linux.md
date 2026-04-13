@@ -55,7 +55,7 @@ When the service is installed using systemd the following commands can be useful
 |---|---|
 |Restart the Service | `sudo systemctl restart certify-hub` |
 |Check systemd log | `journalctl -u certify-hub` |
-|Follow current log | `journalctl -u certify-hub -f` |
+|Follow log | `journalctl -u certify-hub -f` |
 
 ## Certify Management Agent
 

@@ -3,9 +3,9 @@ title: Hub Service Config
 ---
 
 ## Port and TLS Certificate
-By default the hub service will initially be created on `http://localhost:8080` which generally means it can't be used from other machines and it also doesn't have https enabled (the irony!).
+By default the Hub service starts on `http://localhost:8080`, which means it is usually limited to local access and does not have HTTPS enabled.
 
-A default sample config is created at `C:\ProgramData\certify\hubservice.json` or `/usr/share/certify/hubservice.json` and this allows you to customise the http listener, which is a .net Kestrel web server:
+A sample config is created at `C:\ProgramData\certify\hubservice.json` or `/usr/share/certify/hubservice.json`. Use it to customize the HTTP listener for the .NET Kestrel web server:
 
 https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel/endpoints?view=aspnetcore-9.0
 

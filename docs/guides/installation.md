@@ -1,7 +1,17 @@
 ---
 id: installation
-title: Installation & Upgrades
+title: Install and Upgrade Certify Certificate Manager
+description: System requirements, installation steps, upgrade guidance, and common setup issues for Certify Certificate Manager on Windows.
 ---
+
+Use this guide when you are installing *Certify Certificate Manager* on a Windows server or workstation, or when you need to review upgrade behavior and common installer issues.
+
+## Quick Path
+
+1. Confirm the server can reach the internet over HTTPS.
+2. Download the current installer from https://certifytheweb.com.
+3. Install with administrative privileges.
+4. Request a first certificate using [Request Your First Certificate](../certificate-process.md).
 
 ## System Requirements
 

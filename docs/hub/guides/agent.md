@@ -2,41 +2,41 @@
 title: Certify Management Agent (Linux, macOS)
 ---
 
-## Summary
+## Scope
 
-The *Certify Management Agent* is a service which can be use on Linux or macOS to perform certificate renewals and deployment tasks, or to monitor renewals managed by external certificate managers (including Certbot, acme.sh, win-acme/simple-acme and Posh-ACME). The agent is functionally the same as [Certify Certificate Manager](ccm.md) on Windows, but without a Desktop UI.
+*Certify Management Agent* is a service for Linux or macOS that can perform certificate renewals and deployment tasks, or monitor renewals managed by external certificate managers such as Certbot, acme.sh, win-acme/simple-acme, and Posh-ACME. Functionally, it is similar to [Certify Certificate Manager](ccm.md) on Windows, but without a desktop UI.
 
-## Installation and Upgrades
+## Installation
 
-See our [install guide](../installation/linux#certify-management-agent) for details installing and upgrading.
+See the [install guide](../installation/linux#certify-management-agent).
 
-## Joining the Management Hub
+## Hub Join
 
-Joining your existing *Certify Management Agent* instance to a Management Hub allows you to control the instance settings, renewals and monitoring.
+Joining an Agent instance to the Hub allows centralized control of instance settings, renewals, and monitoring.
 
-The basic steps are:
+Basic sequence:
 
 1. Set up a Joining API key in the hub (one is automatically created when the hub is installed).
 2. Configure the agent to join the hub (via the command line)
 3. Verify that the joining has completed in the hub UI
 
-## Before Joining the Hub
+## Instance Identity
 
-**Do not used cloned settings** (e.g. a server snapshot, clone etc of an already joined instance) when joining the hub as your instance will not appear as a separate server and configuration duplication may occur. One or more instances sharing the same joined identity will become unmanageable. If in doubt, contact support.
+Do not reuse cloned settings from an already joined instance. If two instances share the same joined identity, they become difficult to manage correctly.
 
-### Security Considerations
+## Security
 
 :::warning Important
 
-The Management Hub will have complete control over the Certify Management Agent instance settings, including the ability to specify deployment tasks which may include locally executed code (PowerShell etc).
+The Management Hub has full control over Agent settings, including deployment tasks that may run local code.
 
  **Do not join a hub you don't control or trust.**
 
  :::
 
-## Joining the Hub
+## Join Command
 
-By default a joining API key is created when you install the hub. This is found under *Settings > Security > API Access*. You will need the API URL (e.g. `https://hub.internal.yourdomain.com:9697` depending on your configuration), Client Id and Client Secret values.
+By default a joining API key is created when the Hub is installed. It is available under *Settings > Security > API Access*. You need the Hub API URL, Client Id, and Client Secret.
 
 ```
 curl -X POST http://127.0.0.2:9696/api/system/hub/join -H 'Content-Type: application/json' -d '{"clientId":"managedinstance_sp_01","secret":"<secret>","url":"<hub url>"}'
@@ -46,16 +46,15 @@ curl -X POST http://127.0.0.2:9696/api/system/hub/join -H 'Content-Type: applica
 
 After joining, confirm that your instance appears in the Management Hub UI's **Instances** list.
 
-## Using the Hub to manage the agent
+## Per-Instance Settings
 
-When you are working with individual settings such as Stored Credentials, Certificate Authority accounts etc these remain per-instance settings, so each instance of the app has it's own set of settings and you will selected the target 
-instance when working with those. 
+Stored credentials, CA accounts, and similar items remain per-instance settings. Select the correct target instance when working with them.
 
-### Monitoring External Certificate Managers
+## External Certificate Manager Monitoring
 
-The agent can provide monitoring of renewals that are managed by a selected number of ACME certificate management tools including Certbot, acme.sh, win-acme/simple-acme and Posh-ACME.
+The Agent can monitor renewals managed by Certbot, acme.sh, win-acme/simple-acme, and Posh-ACME.
 
-With your agent installed on your target machine and joined to the hub, configure the paths for your chosen certificate manager under *Settings > General > External Certificate Managers*, ensuring to select your target instance from the Target Instance dropdown list at the top the page. By default the system will attempt to discover existing config using the default paths. Configuration of log paths is only required where logs are stored separately from the other config (e.g. Certbot).
+Configure the paths under *Settings > General > External Certificate Managers* for the selected target instance. The system attempts discovery using default paths. Log paths are only needed where logs are stored separately, such as Certbot.
 
 | Cert Manager  | Default Config Path  | Default Log Path  |
 |---|---|---|
@@ -65,13 +64,13 @@ With your agent installed on your target machine and joined to the hub, configur
 | simple-acme  | %PROGRAMDATA%\simple-acme | -  |
 | win-acme  | %PROGRAMDATA%\simple-acme |  - |
 
-The user account the agent service runs as **will need permission to read** from whichever paths are required in your installation, otherwise it will fail to discover the certificate configurations etc.
+The service account must have read access to the relevant paths.
 
-The agent will cache results from each certificate manager and periodically refresh results, so changes to renewals etc will take a few minutes to show up in the hub UI.
+The Agent caches results and refreshes them periodically, so changes can take a few minutes to appear in the Hub UI.
 
-## Service Administration
+## Service Commands
 
-When the service is installed using systemd the following commands can be useful:
+For systemd-based installs:
 
 |Task|Command|
 |---|---|

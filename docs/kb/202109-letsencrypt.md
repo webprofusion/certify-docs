@@ -1,6 +1,7 @@
 ---
 id: kb-202109-letsencrypt
 title: Let's Encrypt DST Root CA X3 expiry Sept 30th 2021 
+displayed_sidebar: helpSupportSidebar
 ---
 
 # Summary

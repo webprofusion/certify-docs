@@ -1,17 +1,19 @@
 ---
 title: Certify The Web - Documentation
 hide_table_of_contents: true
+description: Product documentation for Certify The Web, with guided entry points for Certificate Manager, Management Hub, Dashboard, and Certify DNS.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import styles from './styles.module.css';
 
 # Certify The Web 
 ## Documentation & Guidance
 
-**Certify The Web** is our range of automated SSL/TLS certificate management tools for Windows, Linux, macOS, and cloud environments. Choose the solution that fits your needs:
+**Certify The Web** is our range of automated SSL/TLS certificate management tools for Windows, Linux, macOS, and cloud environments. Choose the product that fits your environment, then use the common task links below if you already know what you need to do.
 
-<Tabs queryString="product">
+<Tabs queryString="product" className={styles.productTabs}>
   <TabItem value="ccm" label="Certificate Manager" default>
 
     Comprehensive certificate management on *Windows Server* with a desktop UI and background management service.
@@ -76,6 +78,26 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 ---
+
+## Popular Tasks
+
+- [Install Certify Certificate Manager](docs/guides/installation)
+- [Install Certify Management Hub](docs/hub/installation)
+- [Request your first certificate](docs/certificate-process)
+- [Choose DNS or HTTP validation](docs/dns/validation)
+- [Review renewals and monitoring](docs/renewals)
+- [Troubleshoot renewal issues](docs/guides/troubleshooting)
+- [Licensing and support](docs/support)
+
+## Browse by Role
+
+- **Windows server admin:** [Certificate Manager getting started](docs/intro), [installation](docs/guides/installation), and [requesting a certificate](docs/certificate-process)
+- **Platform or DevOps team:** [Management Hub](docs/hub/), [hub installation](docs/hub/installation), and [deployment tasks](docs/deployment/tasks_intro)
+- **Managed service provider or consultant:** [Dashboard](docs/dashboard), [support](docs/support), and [solution partners](docs/partners)
+
+## Documentation Home
+
+Need a broader map of the documentation? Use the [documentation home](docs/) to browse by product, task, or role without changing the existing document URLs.
 
 **Need help choosing?** Visit [certifytheweb.com](https://certifytheweb.com) for detailed product comparisons and pricing information.
 

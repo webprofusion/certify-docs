@@ -1,21 +1,24 @@
 ---
-title: Install for Windows
+title: Install Certify Management Hub on Windows
+sidebar_label: Install for Windows
+description: Install Certify Management Hub on Windows, understand the preview release channel, and review the initial service configuration guidance.
 ---
 
+Use this guide when you want to deploy *Certify Management Hub* as a Windows service.
 
-#### Installing Certify Management Hub
+## Install Certify Management Hub
 The management hub is installed as a single service which serves the Management Hub API, a backend certify-agent instance, and the web UI. Internally this is using the Kestrel web server which is part of Microsoft ASP.Net.
 
-[Download the latest **beta** version for Windows](https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-windows-x64-latest.exe) 
+[Download the latest Windows preview build](https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-windows-x64-latest.exe)
 
-Note: this version is intended for test evaluation and is not yet intended for production use, as subsequent updates may including breaking changes.
+The Windows installer is distributed through the preview channel. It is suitable for staged evaluation and careful production testing, but you should expect updates while the release candidate phase continues.
 
 ### Upgrading
 To upgrade download and install the latest version as normal. On Windows your settings are preserved in `%PROGRAMDATA%\certify`. For most users, this is `C:\ProgramData\certify`. Uninstalling the app or installing a new version does not remove the files stored here. We recommend including this location in your regular backup procedure.
 
 ## Additional Information
 
-The current default configuration will make the service and UI available at `http://localhost:8080`
+The default configuration will make the service and UI available at `http://localhost:8080`
 
 To use the service with https you can either [configure the service to use https](service.md) or reverse proxy the service from a webserver of your choice (Caddy, IIS, nginx, Apache etc and administer https on those as normal).
 

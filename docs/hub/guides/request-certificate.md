@@ -1,36 +1,50 @@
-# Requesting a Certificate
+---
+title: Request Your First Certificate
+description: Follow the quickest path to your first working certificate in Certify Management Hub, then continue to the fuller certificate workflow guides.
+---
 
-:::info Before We Start - What is a Target Instance?
+# Request Your First Certificate
 
-Unique to *Certify Management Hub*, each managed certificate configuration and settings can either be set up on the *Management Hub* server (the default *Target Instance*) or on an instance of *Certify Certificate Manager* which has joined the hub. All managed certificates and settings can be configured via the one Management Hub user interface. The instance which will store the request configuration and perform the certificate request is called the **Target Instance**
+:::info Target Instance
+
+In *Certify Management Hub*, each managed certificate is stored on a selected **Target Instance**. That instance holds the request configuration and performs the certificate request. The target can be the Hub server itself or a joined *Certify Certificate Manager* instance.
 
 :::
 
 
-# Configure a certificate authority
-A Certificate Authority is an entity which issues certificates (public or private). Before you can request a certificate you may need to configure a Certificate Authority (ACME) account on your target instance (where the certificate order will take place). To do so using the hub, go to *Settings* > *Certificate Authorities*, confirm your Target Instance selection and select *Add*. 
+## Certificate Authority
+
+Before requesting a certificate, configure a CA account on the target instance under *Settings* > *Certificate Authorities*.
 
 - [Let's Encrypt](https://letsencrypt.org) is the default CA. You can optionally enter an email address for contact about certificate renewal issues, then agree to the CAs terms and conditions and click OK. Note that omitting an email address will also prevent automated failure notifications provided by the certifytheweb.com API.
 
 - For some CAs you can optionally select "Use Staging" to only create a test account which creates test (not publicly trusted) certificates. If you select this option you also need to indicate that you will use Staging in your certificate settings later.
 
-# Requesting your first certificate
+## Certificate Request
 
-Ordering a certificate from a CA requires specifying which identifiers (domains) you want to include and proving you control those identifiers.
+A certificate request needs the identifiers to include and a way to prove control of them.
 
 To add a new managed certificate:
-1. select *Certificates* > *New*
-    - the *Target Instance* will default to the management hub server, but you can optionally select a target *Certify Certificate Manager* instance (the instance must have already joined the hub). 
+1. Select *Certificates* > *New*.
+    - The target instance defaults to the Hub server, but a joined *Certify Certificate Manager* instance can be selected instead.
 2. Provide a descriptive title for your certificate (for your own reference) and add the set of domains you want to include.
 3. On the *Authorization* tab, configure how to prove domain control by adding one or more challenge-response configurations. If your domain points to the same server as the *Target Instance* then that instance can provide HTTP domain validation responses. Otherwise, select dns-01 as the challenge type and configure an appropriate DNS validation method.
-4. You can then select "Test" to perform a basic check of your authorization configuration, then select Request Certificate to begin your certificate order with the CA.
+4. Select **Test** to perform a basic check, then select **Request Certificate** to begin the order.
 
 :::info 
 
-Note: If you want to create a test certificate using a CA’s Staging environment, select *Certificate > Advanced > Certificate Authority*, choose your CA, and check *Use Staging Mode*.
+To create a test certificate using a CA staging environment, select *Certificate > Advanced > Certificate Authority*, choose the CA, and enable *Use Staging Mode*.
 
 :::
 
-Once your certificate request is working, you can decide how to use the certificate: either use it on the same server as the Management Hub, or export it for use elsewhere using a deployment task under Tasks.
+After the request succeeds, either use the certificate on the same server as the Hub or export it with a deployment task.
 
-You can also use the hub API from any other machine to pull the latest version of the certificate.
+The Hub API can also be used from another machine to pull the latest version of the certificate.
+
+## Related Guides
+
+For the broader operating model, continue with:
+
+- [Manage certificates in the Hub](certificate-operations.md)
+- [Request and deploy certificates](request-and-deploy-certificates.md)
+- [Certificate Authorities and stored credentials](certificate-authorities-and-credentials.md)
