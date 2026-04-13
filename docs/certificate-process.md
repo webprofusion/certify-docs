@@ -42,9 +42,11 @@ You will need to prove you control the domains you have added to your certificat
 You can validate using [HTTP validation (http-01)](http-validation.md) or [DNS Validation (dns-01)](dns/validation.md). 
 
 **HTTP validation** requires that your domain be a publicly accessible website with an http service on TCP port 80 (even if that's only for http validation purposes). <em>You cannot use http validation if you need a wildcard certificate.</em>
+
 ![HTTP Validation](/assets/screens/Auth_http.png)
 
 **DNS validation** requires that you can automatically create a TXT record in your domain's DNS zone (usually using a DNS API from a cloud DNS provider). If neither of these options are viable for you, you may not be able to use an automated certificate service.
+
 ![DNS Validation](/assets/screens/Auth_DNS.png)
 
 ### 3. Decide how to deploy

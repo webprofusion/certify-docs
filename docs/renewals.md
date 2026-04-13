@@ -24,6 +24,9 @@ In addition, as your certificate approaches expiration, the certificate authorit
 ### Certify Dashboard
 You can optionally send reports to the certifytheweb.com [Dashboard](dashboard/index.md) when a renewal is successful or fails. This is useful if you have multiple system administrators and want to see when a renewal fails, or if you want to monitor renewal attempt status across many servers. You can see the status of all your certificates on the dashboard. To get started with sending reports to the Dashboard, select the *Add to Dashboard* option from the start up screen of the app on your machine.
 
+### Certify Management Hub
+If you manage a significant number of certificates across multiple machines we recommend adopting [Certify Management Hub](hub/index.md). Individual instances can be joined to the hub for centralized monitoring and administration. The hub also enables a wider range of features and certificate management approaches (such as tagging and certificate subscriptions).
+
 ## App Updates Are Important
 
 If the app offers an update you should check the release notes to see if they sounds relevant to you and if in doubt you should update the app anyway. Certificate Authorities regularly change how their services work, and not updating the app can result in future renewal failures. We only support the latest version of the app at all times.
