@@ -7,114 +7,53 @@ description: Operate Certify Management Hub after installation, including monito
 
 ## Routine Checks
 
-- **Certificates > Summary** for overall health state
-- **Certificates > In Progress** for active requests
-- **Settings > System > Status** for service and API status
-
-These three areas cover most routine checks.
+Use **Certificates > Summary** to see the overall health of your managed certificates. To review indvidual items, select a managed certificate, review the status tab and select the View Log option to see recent log entries.
 
 ## Upgrades
 
-For upgrades:
+Keep the Hub updated, especially if it manages other instances. Joined instances should stay reasonably close to the Hub version so that features and status reporting remain predictable. 
 
-- keep the Hub updated, especially if it manages other instances
-- keep joined instances reasonably aligned with the Hub version
-- back up Hub data before significant changes
-- verify certificates, instance connectivity, and status reporting after the upgrade
+Before any significant upgrade, back up the Hub data and settings. After the upgrade, confirm that certificates still appear correctly, joined instances remain connected, and status information is updating as expected.
 
 For platform-specific service steps, use the installation docs for [Windows](../installation/windows.md), [Linux](../installation/linux.md), and [service configuration](../installation/service.md).
 
 ## Backups
 
-Back up the Hub data location regularly.
-
-Include the settings and datastore path used by the deployment. For Windows and Linux paths, follow the installation documentation.
-
-This is especially important when using local file-based storage or container volumes.
+Back up the Hub data location regularly. Make sure the backup includes the settings and datastore path used by your deployment. This is especially important if you use local file-based storage or container volumes, because that data can be easier to overlook during infrastructure changes. For the correct Windows and Linux paths, follow the installation documentation.
 
 ## Maintenance Windows
 
-Use maintenance windows only when renewals must be limited to specific periods.
-
-After enabling them:
-
-- verify the correct default is selected
-- confirm any certificate-specific overrides are intentional
-- make sure the allowed window is wide enough for retries
-
-Narrow windows reduce resilience.
+Use maintenance windows (per-instance or per-managed certificate) only if renewals *must* be limited to specific times. After enabling them, check that the correct default window is selected, confirm that any certificate-specific overrides are intentional, and make sure the allowed window is wide enough to support retries. If the window is too narrow, renewals become less resilient and temporary failures are harder to recover from.
 
 ## System Status
 
-The **System > Status** area shows checks such as:
-
-- Hub API availability
-- API URLs allocated
-- service config load state
-- plugin load state
-- datastore health
-
-Review it when:
-
-- the UI behaves unexpectedly
-- you need to confirm the service actually started cleanly
+The **System > Status** area shows key health checks for the Hub, including API availability, allocated API URLs, service configuration load state, plugin load state, and datastore health. Review this page when the UI behaves unexpectedly or when you need to confirm that the service started cleanly after a restart, configuration change, or upgrade.
 
 ## Feature Enablement
 
-The **System > Features** area shows which major Hub capabilities are enabled, including management hub features, certificate management, challenge services, and ACME proxy services.
-
-Check this page if the UI or API does not expose a feature you expected to use.
+The **System > Features** area shows which major Hub capabilities are enabled, including management hub features, certificate management, challenge services, and ACME proxy services. Check this page when the UI or API does not show a feature you expected to use, because the issue may be feature availability rather than configuration.
 
 ## External Certificate Manager Monitoring
 
-The General settings area supports configuration for external certificate managers.
-
-Use this when the Hub should monitor renewals managed by tools such as:
-
-- Certbot
-- acme.sh
-- Posh-ACME
-- win-acme or simple-acme
-
-After configuring discovery paths:
-
-- verify the paths are correct for the selected target instance
-- confirm the service account can read those paths
-- allow time for cached results to refresh
+The General settings area supports monitoring for external certificate managers. Use this when the Hub should track renewals handled by tools such as Certbot, acme.sh, Posh-ACME, win-acme/simple-acme. After you configure discovery paths, verify that the paths are correct for the selected target instance, confirm that the service account can read them, and allow time for cached results to refresh.
 
 ## Tags and Filtering
 
-Use tags consistently to:
+Use tags consistently so you can filter certificate views by environment or application, identify ownership more quickly, and support migration or cleanup work later. Good tagging becomes more valuable over time, especially as the number of managed certificates and instances grows. 
 
-- filter certificate views by environment or application
-- identify ownership quickly
-- support migration or cleanup work later
+**Tags used in role scoping inherently have a security implication** because they then control which instances can access each managed certificate etc.
 
 ## Licensing
 
-Review **Settings > Licensing** when:
-
-- applying a new license key
-- checking license activation state
-- planning changes across multiple managed instances
+Review **Settings > Licensing** when you need to apply a new license key, check the current activation state, or plan changes across multiple managed instances. This is also a useful place to verify licensing before expansion or upgrade work.
 
 ## Escalation
 
-If the problem is not obvious after checking Summary, In Progress, and System Status, move to:
-
-- [Known Issues](../known-issues.md)
-- [Troubleshooting](../../guides/troubleshooting.md)
-- [Get Help and Support](../../support.md)
+If the problem is still not clear after checking Summary, In Progress, and System Status, the next step is to review [Known Issues](../known-issues.md), then [Troubleshooting](../../guides/troubleshooting.md), and then [Get Help and Support](../../support.md) if you need direct assistance.
 
 ## Operations Checklist
 
-1. Confirm certificate health counts look normal.
-2. Review any warning or error items.
-3. Check for stuck or unexpected in-progress requests.
-4. Confirm joined instances are connected.
-5. Review recent admin changes to CA accounts, credentials, or security tokens.
-6. Check System Status if the UI or service behavior looks abnormal.
-7. Verify backups and upgrade plans before major changes.
+A simple operating routine is to confirm that certificate health counts look normal, review any warnings or errors, and check for stuck or unexpected in-progress requests. If the environment uses joined instances, confirm that they are connected. When something changes unexpectedly, review recent admin changes to CA accounts, credentials, or security tokens, and check System Status if the UI or service behavior looks abnormal. Before major changes, make sure backups are current and the upgrade plan is clear.
 
 ## Read Next
 

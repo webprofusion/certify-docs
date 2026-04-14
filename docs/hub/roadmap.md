@@ -28,6 +28,18 @@ The roadmap highlights recently delivered work and the next focus areas for Cert
 - Centralized visibility of renewal status, including non-Hub ACME clients.
 - Integrated DNS challenge service to avoid distributing privileged DNS credentials.
 
+## Next Planned Features
+
+- Audit trail (OCSF, OTEL) to aid compliance considerations for industry standard information security compliance frameworks (SOC2, ISO 27001 etc).
+   - Event history for charting/reporting, e.g. success vs failure events.
+- Revised and extended CLI options for Certify Agent
+- Smaller planned feature improvements:
+   - Copy/move managed certificates and dependencies between target instances for simpler server migrations.
+   - Auto convert instance managed cert to hub managed cert with cert subscription at instance
+   - Extending use of tag scoped roles
+   - Global reporting web hooks so hub and instances can all automatically submit status to central points of your choice. Include reporting sensitive updates such as a changes to script tasks, assigned tags etc.
+   - Bulk instance settings sync/reporting to help manage the same settings across many instances
+
 ## Future Focus
 
 1. **Usability enhancements**

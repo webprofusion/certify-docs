@@ -5,144 +5,55 @@ description: Decide when to use the Hub itself, joined CCM instances, Agents, or
 
 # Choose a Management Model
 
-The main design choice is where certificate requests, renewals, and deployment should run.
+Choosing a management model means deciding where certificate requests, renewals, and deployment should happen. Some teams want everything to run from the Hub. Others need the work to run close to the systems that use the certificate. The best option depends on network access, deployment needs, and how centralized you want day-to-day operations to be. You can use a mixed approach according to your own organizational preferences.
 
 ## Execution Location
 
-Your main options are:
-
-- on the Hub server itself
-- on a joined *Certify Certificate Manager* instance
-- on a joined *Certify Management Agent* instance
-- on a managed instance that subscribes to a Hub-managed certificate
-- in another ACME client that uses the Hub only for shared services
+The Hub supports several ways to manage and operate certificate renewals. You can renew certificate directly on the Hub, on a joined *Certify Certificate Manager* (CCM) instance, on a joined *Certify Management Agent*, on a managed instance that subscribes to a Hub-managed certificate, or in another ACME client that uses the Hub for shared services. Many environments end up using more than one of these models at the same time.
 
 ## Hub Execution
 
-Best fit:
+The Hub requests the certificate, completes validation, and handles deployment from the Hub server itself. This works well when the Hub can already reach the systems it needs to manage and when local deployment from the Hub is acceptable. It is often a good fit for centralized environments, internal services managed from one Windows host, DNS-based validation, or early proof-of-concept work.
 
-- the Hub server can reach the target systems and any deployment endpoints it needs
-- you want a central web-only operating model
-- you only need one or a few execution locations
-- local deployment from the Hub is acceptable
-
-Common cases:
-
-- internal services managed from one Windows host
-- DNS-based validation where the Hub can complete the order directly
-- simple initial deployments and proof-of-concept environments
-
-Less suitable when:
-
-- HTTP validation must happen on many remote web servers
-- deployment requires platform-local access that the Hub host does not have
-- the work needs to stay with the machine that actually owns the certificate
+This model is less suitable when work needs to happen on many remote systems or when deployment depends on access that only the target machine has. For example, if HTTP validation must happen on several web servers or deployment relies on platform-local tools, running everything from the Hub can become challenging.
 
 ## CCM Execution
 
-Best fit:
+CCM execution is a strong choice when you already use *Certify Certificate Manager* on Windows servers. In this model, the Hub gives you centralized administration, but the actual renewal and deployment work still runs on the joined CCM instance. That means IIS deployment and other Windows-specific tasks stay local to the server that owns the workload.
 
-- you already use *Certify Certificate Manager* on Windows servers
-- IIS or other Windows-specific deployment remains local to those servers
-- you want centralized administration without moving the execution point
-
-Common cases:
-
-- existing Windows certificate automation is already working
-- you need to manage many Windows servers from one UI
-- deployment uses local Windows features, shares, services, or PowerShell-based automation
+This approach works well when you already have Windows automation in place and do not want to move the execution point. It also fits environments where deployment depends on local Windows features such as IIS, CCS shares, services, or PowerShell-based automation.
 
 ## Agent Execution
 
-Best fit:
+Agent execution is intended for systems such as Linux, macOS, container hosts, or other headless environments. The Hub still manages the configuration, but the joined Management Agent runs renewals and deployment near the workload. This is useful when you want centralized control without forcing the Hub server to do all the work itself.
 
-- the target systems are Linux, macOS, container hosts, or headless environments
-- renewals and deployment should happen near the workload
-- you want the Hub to control the configuration but not run the work locally
-
-Common cases:
-
-- Apache, nginx, and other non-Windows stacks
-- distributed platform teams
-- external client monitoring on non-Windows hosts
+It is commonly used for Apache, nginx, and other non-Windows stacks. It also fits distributed platform teams and environments where external client monitoring needs to run on non-Windows hosts.
 
 ## Certificate Subscription Model
 
-Best fit:
+The certificate subscription model separates renewal from consumption. One system (the hub or another managed instance) renews the certificate, while another managed instance only receives and deploys the latest result. This is useful when you want CA accounts, ACME challenge settings, and renewal logic to stay centralized, but still need the certificate on other machines.
 
-- one system should renew the certificate
-- another managed instance should only consume and deploy it
-- CA accounts and challenge configuration should remain centralized
-
-Common cases:
-
-- a Hub-managed certificate is reused by one or more managed instances
-- remote instances need the latest certificate but should not run local renewal
-
-This model depends on the managed instance having the **Cert Consumer** role, usually filtered by tag so only the intended certificates are visible.
+In practice, this allows a Hub-managed certificate to be reused by one or more managed instances without each instance running its own renewal. The managed instance normally needs the **Cert Consumer** role, and access is usually filtered by tag so only the intended certificates are visible.
 
 ## External ACME Clients
 
-Best fit:
+You can also keep using other ACME clients and use the Hub for shared services. This is helpful when you already have an existing client you do not want to replace, but you still want centralized DNS challenge handling or a managed ACME endpoint.
 
-- you already have another ACME client that you do not want to replace
-- you need centralized DNS challenge handling
-- you want the Hub to act as a managed ACME endpoint for compatible clients
+There are two main patterns. With **Managed Challenges**, the client still orders the certificate, but the Hub performs DNS updates on its behalf. With **Managed ACME Service**, the client talks to the Hub's ACME endpoint, and the Hub proxies the order to the real ACME CA.
 
-Service patterns:
+## How to Choose
 
-- **Managed Challenges**: the client still orders the certificate, but the Hub performs DNS updates on its behalf
-- **Managed ACME Service**: the client talks to the Hub's ACME endpoint, and the Hub proxies the order to the real ACME CA
+If the Hub server already has the access it needs and you want the fewest moving parts, Hub execution is usually the simplest choice. If the workload is Windows-based and deployment should stay on the Windows server that owns it, CCM is usually the better fit. If the workload is on Linux, macOS, or another headless platform, an Agent is usually the right option.
 
-## Selection Criteria
-
-### Hub
-
-- central execution is simpler than distributing execution
-- local access from the Hub host is enough
-- you want the smallest number of moving parts
-
-### CCM
-
-- the workload is Windows-based
-- deployment should stay with the Windows server that owns the workload
-- you want to preserve existing CCM operating patterns
-
-### Agent
-
-- the workload is not Windows-based
-- you need local execution on Linux or macOS
-- you need headless operation
-
-### Certificate Subscription
-
-- renewal should stay on the source system
-- the target instance only needs the resulting certificate
-- certificate access should be controlled through managed instance roles and tags
-
-### Managed Challenge or Managed ACME
-
-- you want to reduce distribution of DNS API credentials
-- you need to support other ACME clients
-- the Hub should provide centralized authorization or API-based certificate services
+If renewal should happen in one place but the resulting certificate needs to be used somewhere else, the subscription model is often the cleanest approach. If you need to support other ACME clients or reduce how widely DNS API credentials are distributed, Managed Challenges or Managed ACME Service can be a better match.
 
 ## Mixed Deployments
 
-Many environments use more than one model.
-
-Examples:
-
-- The Hub runs some internal certificates directly, while remote CCM instances handle IIS-bound sites.
-- Agents renew certificates on Linux hosts, while the Hub provides managed DNS challenges centrally.
-- One Hub-managed certificate is renewed centrally and consumed by selected managed instances through subscriptions.
-- A third-party ACME client uses the Hub ACME service, while other systems are joined directly.
+Many real environments use a mix of models. For example, the Hub might handle a few internal certificates directly while remote CCM instances manage IIS-bound sites. Agents may renew certificates on Linux hosts while the Hub provides managed DNS challenges for the wider environment. In another setup, a certificate may be renewed centrally in the Hub and then consumed by selected managed instances through subscriptions. It is also possible to combine joined instances with third-party ACME clients that use the Hub's shared services.
 
 ## Deployment Sequence
 
-1. Start with one target instance and one working certificate path.
-2. Confirm where renewals and deployment should run.
-3. Add joined instances where local execution is required.
-4. Add managed challenges or managed ACME only when shared services are needed.
+A practical way to begin is to start with one target instance and make sure one certificate path works from end to end. Once that is working, confirm where renewal and deployment should run in your environment. After that, add joined instances only where local execution is required, and introduce Managed Challenges or Managed ACME only when shared services solve a real problem.
 
 ## Read Next
 
