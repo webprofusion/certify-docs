@@ -61,6 +61,7 @@ The product is in the release candidate phase and is suitable for staged product
 ## Administration
 
 - [Hub settings overview](guides/hub-settings-overview.md)
+- [Managed instances](guides/managed-instances.md)
 - [Certificate Authorities and stored credentials](guides/certificate-authorities-and-credentials.md)
 - [Security and access](guides/security-and-access.md)
 - [Import, export, and migration](guides/import-export-and-migration.md)

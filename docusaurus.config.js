@@ -25,14 +25,13 @@ module.exports = {
       },
       items: [
 
-        { to: 'docs/', label: 'Docs Home', position: 'left' },
         { to: 'docs/intro', label: 'Certificate Manager', position: 'left' },
         { to: 'docs/hub/', label: 'Management Hub', position: 'left' },
-        { to: 'docs/dashboard/', label: 'Dashboard', position: 'left' },
+      
         { to: 'docs/dns/providers/certifydns/', label: 'Certify DNS', position: 'left' },
         {
-          label: 'Reference',
-          to: 'docs/features',
+          label: 'Licensing',
+          to: 'docs/guides/licensing',
           position: 'left',
         },
         { to: 'docs/support', label: 'Support', position: 'left' },
@@ -76,8 +75,8 @@ module.exports = {
               to: 'docs/dns/providers/certifydns',
             },
             {
-              label: 'Reference',
-              to: 'docs/features',
+              label: 'Licensing',
+              to: 'docs/guides/licensing',
             },
             {
               label: 'Support',

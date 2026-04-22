@@ -52,7 +52,7 @@ Without that permission, the instance cannot fetch source certificates from the 
 
 ## Configuration
 
-1. Create and maintain the source certificate in the Hub.
+1. Create and maintain the source certificate in the Hub. 
 2. Apply tags to that certificate if tag-scoped access will be used.
 3. In the Hub, assign **Cert Consumer** to the managed instance and filter by tag where required.
 4. On the consuming instance, create or edit the certificate definition.
@@ -61,6 +61,8 @@ Without that permission, the instance cannot fetch source certificates from the 
 7. Save and validate the resulting deployment behavior on the consuming instance.
 
 The source system owns renewal. The consuming instance owns local use of the retrieved certificate, including deployment paths, tasks, and permissions.
+
+Currently you should not apply a PFX password on teh source certificate as the consumer will not be able to decrypt that.
 
 ## Common Issues
 

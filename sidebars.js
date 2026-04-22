@@ -18,6 +18,11 @@ export default {
             ]
           },
           {
+            type: 'doc',
+            id: 'guides/licensing',
+            label: 'Licensing'
+          },
+          {
             type: 'category',
             label: 'Automation & Deployment',
             collapsible: true,
@@ -45,7 +50,6 @@ export default {
             items: [
               'guides/troubleshooting',
               'guides/maintenance',
-              'guides/licensing',
               'faq',
               'support'
 
@@ -131,6 +135,11 @@ export default {
           ]
         },
         {
+          type: 'doc',
+          id: 'guides/licensing',
+          label: 'Licensing'
+        },
+        {
           type: 'category',
           label: 'Concepts',
           collapsible: true,
@@ -187,7 +196,6 @@ export default {
             'hub/known-issues',
             'guides/troubleshooting',
             'guides/maintenance',
-            'guides/licensing',
             'faq',
             'support'
           ]
