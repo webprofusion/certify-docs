@@ -31,7 +31,7 @@ For other similar web server types that require PEM output certificate files, us
 
 The above tasks also support deployment over SSH if your service is remote to the machine being used to acquire the certificates.
 
-You normally would set the fullchain.pem path and privkey.pem path *under Task Parameters), then save and select▶️Play next to the task to try it out. This should give you the output file you need in the location you want. You then just need to point your apache config at the right files. You can refine this task configuration and test the task without re-requesting a whole new certificate.
+You normally would set the fullchain.pem path and privkey.pem path (under Task Parameters), then save and select▶️Play next to the task to try it out. This should give you the output file you need in the location you want. You then just need to point your apache config at the right files. You can refine this task configuration and test the task without re-requesting a whole new certificate.
 
 You would normally also need a *Stop/Start/Restart* service task (for the service running your web server).
 

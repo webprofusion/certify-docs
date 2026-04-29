@@ -39,7 +39,7 @@ In the app, running on the same server where Exchange is installed:
 
 Other topics to consider include selecting between different Certificate Authorities, Private Key types and PFX password protection. These options are all configured under *Advanced*.
 
-## Deploying Your Certificate to Exchanges Services
+## Deploying Your Certificate to Exchange Services
 Once you have your certificate you can automate deploying it to your Exchange services. 
 
 :::info
@@ -61,13 +61,13 @@ For complex or customised deployments you may wish to use a [custom deployment s
 It's possible to continue to apply the certificate manually using the standard Exchange Admin Center features, however this is not recommended because certificates typically renew frequently (e.g. within 90 days) and you would need to remember to repeat the process each time. You should instead use automation to ensure your certificates are always up to date.
 
 ## Renewal Failures
-Certificate can fail to renew for a number of reasons, including:
+Certificates can fail to renew for a number of reasons, including:
 - Changes to your infrastructure (e.g. firewall changes, DNS changes)
 - Temporary issues with your CA
 
 **The app will recover from temporary issues automatically**, however if you have made changes to your infrastructure you may need to update your managed certificate settings to reflect the new configuration. You can force a certificate renewal attempt by selecting *Request Certificate*.
 
-By default, **if your certificate renewal fails repeatedly, you will receive an email notification**. This email is trigger by the default status reporting to our API, which in turn sends an email via SendGrid if multiple failures have been detected. The email address used is the one you specified when you first setup your CA account in the application (under Settings > Certificate Authorities). You can also check the *Certify Certificate Manager* app or the https://certifytheweb.com dashboard (if enabled) for the status of your managed certificates.
+By default, **if your certificate renewal fails repeatedly, you will receive an email notification**. This email is triggered by the default status reporting to our API, which in turn sends an email via SendGrid if multiple failures have been detected. The email address used is the one you specified when you first setup your CA account in the application (under Settings > Certificate Authorities). You can also check the *Certify Certificate Manager* app or the https://certifytheweb.com dashboard (if enabled) for the status of your managed certificates.
 
 If you don't understand why a renewal has suddenly failed it's best not to start changing settings if you are unsure, instead please [contact us for support](../../support.md) if you are a licensed user, or post a question on our [community forum](https://community.certifytheweb.com), ideally including your managed certificate log file, at the least we need your real domain name(s) in order to diagnose common renewal failures. 
 
@@ -77,13 +77,13 @@ Typical troubleshoot steps include checking your firewall (if using http validat
 Things to consider when administering certificates for exchange and IIS:
 
 ### Things to avoid
-- Never delete a certificate from the certificate store while it is still in use by a service, this will break the service and you will need to re-assign a new certificate to the service. *Certify Certificate Manager* will maintain it's own certificates in the store and by default will remove them when they are definitely no longer required.
+- Never delete a certificate from the certificate store while it is still in use by a service, this will break the service and you will need to re-assign a new certificate to the service. *Certify Certificate Manager* will maintain its own certificates in the store and by default will remove them when they are definitely no longer required.
 - Never revoke a certificate unless the private key has been compromised. Revoking a certificate will break any services using that certificate and is almost never required.
 
 ### Only use valid fully qualified domain names (or valid wildcard names)
 Certificates need to be issued for valid fully qualified names or wildcards. A certificate can cover multiple hostnames or subdomains and can also be wildcards that cover all subdomains of a domain e.g. `*.contoso.com` would cover `mail.contoso.com` and `autodiscover.contoso.com` but not `mail.contoso.com.au` or `mail.contoso.local`.
 
-If your exchange services and connections are configured to use local or intranet names like `localhost` or `mail.contoso.local` then the service will not have a valid TLS connection to the server and will not be able to use the certificate, this is because the name is not included in the certificate your are trying to use. You will need to ensure that all services and connections use valid hostnames which match your certificate(s).
+If your exchange services and connections are configured to use local or intranet names like `localhost` or `mail.contoso.local` then the service will not have a valid TLS connection to the server and will not be able to use the certificate, this is because the name is not included in the certificate you are trying to use. You will need to ensure that all services and connections use valid hostnames which match your certificate(s).
 
 ### IP Address Bindings vs SNI Hostname Bindings
 If you manually create an https "binding" (the configuration of an IP address or hostname + socket + certificate) then you should enable SNI (Server Name Indication), set a hostname and avoid using specific IP addresses, instead use `All Unassigned` or `*` in IIS etc. This maps to the catch-all address `0.0.0.0` and matches the binding to all network interfaces.
@@ -97,7 +97,7 @@ Some other clients to consider for very specific tasks include [Posh-ACME (Power
 
 ## Other resources
 
-Details of the general processes begin importing and installing a certificate for Exchange can be found here:
+Details of the general processes for importing and installing a certificate for Exchange can be found here:
 
 https://learn.microsoft.com/en-us/exchange/architecture/client-access/import-certificates?view=exchserver-2019
 

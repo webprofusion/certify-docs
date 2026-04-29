@@ -23,12 +23,12 @@ This section covers options related to the Private Key and Certificate Signing R
 See [Certificate Signing Request](../guides/csr.md) for more information on CSR related options.
 
 ### Security (PFX Password)
-By default the app produce PFX file with a blank password. While this makes them more convenient to use in some situations, it is not secure if the file will be distributed to other locations etc. The password will be applied when your certificate is next request/renewed. You can centrally manage the password (such as updating the same password for many certificates) under *Settings > Stored Credentials*.
+By default the app produces a PFX file with a blank password. While this makes them more convenient to use in some situations, it is not secure if the file will be distributed to other locations etc. The password will be applied when your certificate is next request/renewed. You can centrally manage the password (such as updating the same password for many certificates) under *Settings > Stored Credentials*.
 
 ## General Options
 
 #### Comments
-Add an optional comment for your own use to describe this managed certificate or it's purpose.
+Add an optional comment for your own use to describe this managed certificate or its purpose.
 
 #### Enable Auto Renewal
 Include this managed certificate in standard auto renewal (enabled by default).

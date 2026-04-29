@@ -12,7 +12,7 @@ Certificate trust mainly relies on the "root" issuing certificate (and intermedi
 
 This is called a "Chain" of trust. Your certificate (called a Leaf or end-entity certificate) will be validated by following this chain or using OS/app-specific chain building logic.
 
-The [new YE/YR hierarchy](https://letsencrypt.org/certificates/) also includes a "cross-sign" to the already trusted ISRG Root X1/X2 roots. For most windows clients (browsers, .Net, PowerShell etc) this means the client will determine a trusted chain on it's own, even if it doesn't yet trust Root YR/Root YE.
+The [new YE/YR hierarchy](https://letsencrypt.org/certificates/) also includes a "cross-sign" to the already trusted ISRG Root X1/X2 roots. For most windows clients (browsers, .Net, PowerShell etc) this means the client will determine a trusted chain on its own, even if it doesn't yet trust Root YR/Root YE.
 
 ## The Problem
 
@@ -20,7 +20,7 @@ If your server trusts the new Root YR and Root YR certificates for Let's Encrypt
 
 If your server trusts the new roots YE/YR *before your connected clients do* your server may present a chain that your clients don't yet trust. This may affect clients such as browsers, mobile devices, apps, tools etc.
 
-On Windows, the default TLS implementation schannel determines the most trusted path for a given certificate chain, regardless of what the initially intended/preferred chain should be. It then use this chain in the TLS conversation when presenting a TLS-enabled service to a client such as a browser.
+On Windows, the default TLS implementation schannel determines the most trusted path for a given certificate chain, regardless of what the initially intended/preferred chain should be. It then uses this chain in the TLS conversation when presenting a TLS-enabled service to a client such as a browser.
 
 ### Example Errors for affected clients
 Curl: `curl: (60) SSL certificate problem: unable to get local issuer certificate` 
@@ -32,7 +32,7 @@ Curl: `curl: (60) SSL certificate problem: unable to get local issuer certificat
 :::
 
 ### Issue from the older chain
-Before May 2026 you can option to use the "classic" (default) ACME profile with the Let's Encrypt service and have your certificate issued form the older chain. This would normally be the most obvious fix unless that issuance has been retired.
+Before May 2026 you can opt to use the "classic" (default) ACME profile with the Let's Encrypt service and have your certificate issued from the older chain. This would normally be the most obvious fix unless that issuance has been retired.
 
 ### Update clients to trust the new self-signed roots
 
@@ -54,7 +54,7 @@ For older macOS not updated by Apple:
 - Find the certificate in System and double click on it, open the Trust menu and change "Use System Defaults" to "Always Trust", then close that and enter your password to confirm the change (if prompted).
 
 ## Java based systems etc
-Some applications maintain their own trust store. . Any system that can't be updated needs to see the cross-signed chain or you need to switch CA.
+Some applications maintain their own trust store. Any system that can't be updated needs to see the cross-signed chain or you need to switch CA.
 
 e.g. for Java you might use: `keytool -import -alias isrgrootx1 -keystore $JAVA_HOME/jre/lib/security/cacerts -trustcacerts -file rootye.cer`
 

@@ -11,7 +11,7 @@ To use the AWS Route53 DNS API, you need to setup your API key and authenticatio
 
 - Add a new user (e.g. 'certifydnsadmin')
   - Enable Programmatic access,
-  - Create a user Group if you don't already has a group.
+  - Create a user Group if you don't already have a group.
   - You can either allow all permissions:
     - Allow AmazonRoute53FullAccess for the group.
   - Or restrict permission to the following actions:

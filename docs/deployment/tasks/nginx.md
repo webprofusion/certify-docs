@@ -32,7 +32,7 @@ In a typical nginx config you would only need to specify the **Full Chain** and 
 - Point *ssl_certificate* at your **Full Chain** file
 
 ### Restarting nginx
-For your changes to take effect you will need to restart Nginx. You can do this by adding a *Stop, Start or Restart a Service" task after your *Deploy to nginx* task.
+For your changes to take effect you will need to restart Nginx. You can do this by adding a "Stop, Start or Restart a Service" task after your *Deploy to nginx* task.
 
 ### CA Preferred Chain
 Some CAs offer alternative certificate chains for compatibility. Let's Encrypt offers both a *DST Root CA X3* chain (expired) and a newer *ISRG Root X1* chain. *Certify Certificate Manager* v6.x onwards defaults to the newer chain. If you need to use the older chain (e.g. for old Android compatibility) you can do so by setting the *Preferred Chain* option under *Certificate > Advanced > Certificate Authority - Preferred Chain* to *DST Root CA X3* and re-requesting your certificate.

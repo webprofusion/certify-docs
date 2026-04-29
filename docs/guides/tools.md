@@ -15,5 +15,5 @@ The following tools can be useful for ACME related debugging, configuration and 
 - **[Unbound Test](https://unboundtest.com):** Debug DNS or DNS challenge issues.
 - **[Unbound Test Log Viewer](https://unbounded.tools.certifytheweb.com/):** Debug DNS or DNS challenge issues.
 - **[CNAME Lookup](https://www.whatsmydns.net/):** Check DNS propagation and CNAME records globally.
-- **[Base 64 Encode/Decode](https://base64.tools.certifytheweb.com/):** Check base 64 encoded payloads (uncluding base64 url encoded items)
+- **[Base 64 Encode/Decode](https://base64.tools.certifytheweb.com/):** Check base 64 encoded payloads (including base64 url encoded items)
 - **[IIS Crypto](https://www.nartac.com/Products/IISCrypto):** Used to review and configure Windows TLS Cipher Suites

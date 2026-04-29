@@ -16,7 +16,7 @@ A common use for scripting is to use your new certificate for services other tha
 *By default the background service runs as Local System, so your scripts will execute in that context*, this can be important for issues regarding permissions, file system encryption etc. You can optionally configure your task to run as a specific user if network access or special permissions are required.
 
 :::warning
-Do not store scripts under the C:\Program Files\CertifyTheWeb\\ path. File stored there will be deleted next time you update the app.
+Do not store scripts under the C:\Program Files\CertifyTheWeb\\ path. Files stored there will be deleted next time you update the app.
 :::
 
 All scripts should be refined and tested in a staging environment before use in production.
@@ -215,7 +215,7 @@ if ($oldthumb -ne $newthumb) {
 
 This is adapted from a community example: https://community.certifytheweb.com/t/sql-server-reporting-services-ssrs/332/7  
 
-This script gets the report server config object the checks if an existing cert is bound it removes that, then creates the new binding.
+This script gets the report server config object then checks if an existing cert is bound it removes that, then creates the new binding.
 ```PowerShell
 param($result)
 
@@ -366,7 +366,7 @@ The Powershell deployment task can run in two modes on Windows: In-Process and a
 
 For in-process the service will attempt to run your task as the user you specify in an impersonation context with a specific Windows *LogonType*: https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/reference-tools-logon-types - this affects things like reuse of credentials across network resources and the relevance varies greatly depending on what your script does and which other processes it calls into.
 
-In all case you will need to test to determine the best option for your specific script. It is not always possible to get a script to work under impersonation and in those cases you may need to write out the relevant certificate variables like the thumbprint or file path then perform operations separately using your own filewatcher process or a scheduled task elsewhere.
+In all cases you will need to test to determine the best option for your specific script. It is not always possible to get a script to work under impersonation and in those cases you may need to write out the relevant certificate variables like the thumbprint or file path then perform operations separately using your own filewatcher process or a scheduled task elsewhere.
 
 Note that the *Launch New Process* option currently does not support impersonation and we aim to address this with new task runner functionality in the future.
 

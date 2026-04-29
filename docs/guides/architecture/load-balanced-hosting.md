@@ -7,7 +7,7 @@ title: Load Balanced Hosting
 
  If you are load balancing across a set of web servers (e.g. a Web Farm) your certificate options include:
 
-- have each server manage it's own certificates
+- have each server manage its own certificates
 - centrally renewing certificates, then copying the certificates to each server
 - terminating TLS on a web application firewall or reverse proxy.
 
@@ -22,7 +22,7 @@ If you can only use http validation you will require a web application firewall 
 
 ## Testing
 
-You should try out your intended deployment strategy on a set of test machines to you can learn how each of part is configured and practice sharing a certificate between multiple machines/sites.
+You should try out your intended deployment strategy on a set of test machines to you can learn how each part is configured and practice sharing a certificate between multiple machines/sites.
 
 ## Windows (IIS) Deployment Strategies
 ### Centralized Certificate Store (CCS)

@@ -27,7 +27,6 @@ Managed challenges need two things:
 ## Managed Challenge Definition
 
 Under *Services > Managed Challenges*, select `+ Add`:
-Under *Services > Managed Challenges*, select `+ Add`:
 - Select dns-01 as the challenge type
 - Select the DNS provider specific to your domains DNS service. 
 - Add or select existing stored credentials for updating DNS via the selected API.

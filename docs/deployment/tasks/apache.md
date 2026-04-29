@@ -47,7 +47,7 @@ For older versions of Apache you may need to specify the **CA Chain** file separ
 - Point *SSLCertificateFile* at your **Leaf Certificate** file.
 
 ### Restarting Apache
-For your changes to take effect you will need to restart Apache. You can do this by adding a *Stop, Start or Restart a Service" task after your *Deploy to Apache* task.
+For your changes to take effect you will need to restart Apache. You can do this by adding a "Stop, Start or Restart a Service" task after your *Deploy to Apache* task.
 
 ### CA Preferred Chain
 Some CAs offer alternative certificate chains for compatibility. Let's Encrypt offers both a *DST Root CA X3* chain (expired) and a newer *ISRG Root X1* chain. v6.x onwards of the app defaults to the newer chain for LE. If you need to use the older chain (e.g. for old Android compatibility) you can do so by setting the *Preferred Chain* option under *Certificate > Advanced > Certificate Authority - Preferred Chain* to *DST Root CA X3* and re-requesting your certificate.

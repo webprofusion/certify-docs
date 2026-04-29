@@ -7,7 +7,7 @@ description: Operate Certify Management Hub after installation, including monito
 
 ## Routine Checks
 
-Use **Certificates > Summary** to see the overall health of your managed certificates. To review indvidual items, select a managed certificate, review the status tab and select the View Log option to see recent log entries.
+Use **Certificates > Summary** to see the overall health of your managed certificates. To review individual items, select a managed certificate, review the status tab and select the View Log option to see recent log entries.
 
 ## Upgrades
 

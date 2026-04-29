@@ -5,7 +5,7 @@ title: Background Service
 
 In order to perform certificate requests and automatic renewals we install a background service called "Certify.Service" or "Certify.Server.Core" (the full title is either `Certify Certificate Manager Service` or `Certify Management Agent` for v7 onwards). 
 
-This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](guides/security.md)
+This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](guides/security.md).
 
 To check the log for this service, review `C:\ProgramData\Certify\logs\service.exceptions.log`.
 
@@ -57,7 +57,7 @@ Invoke-RestMethod -Uri http://localhost:9696/api/system/appversion -UseDefaultCr
 
 ### Other Considerations for 'Service Not Started..'
 
-To operate properly the background service needs to be able to register an http listener for it's API server via http.sys, for that to work the IP address the service tries to use must be enabled as an http listen address and in some versions of windows the Http kernel service may not be enabled and you will need to enable it.
+To operate properly the background service needs to be able to register an http listener for its API server via http.sys, for that to work the IP address the service tries to use must be enabled as an http listen address and in some versions of windows the Http kernel service may not be enabled and you will need to enable it.
 
 
 #### Enable http listener IP address
@@ -121,7 +121,7 @@ SERVICE_NAME: http
 
 ```
 
-If the state is not `RUNNING` use the following command the enable the service on demand:
+If the state is not `RUNNING` use the following command to enable the service on demand:
 
 ```bat
 sc config http start= demand
@@ -139,7 +139,7 @@ Once completed, restart the Certify background service from local services, then
 
 ## Managed Items Database
 
-The data store for the managed certificates database is the C:\ProgramData\Certify\manageditems.db SQLite database. This stores your renewal configuration data (not certificates). This is an sqlite3 format database files.
+The data store for the managed certificates database is the C:\ProgramData\Certify\manageditems.db SQLite database. This stores your renewal configuration data (not certificates). This is an sqlite3 format database file.
 
 You should include C:\ProgramData\Certify\ in your normal backup procedures, otherwise if you lose this configuration or it is corrupted you may need to add all of your managed certificates again. **To guard against database corruption you should add an exclusion to your anti-virus software to avoid sharing conflicts.**
 

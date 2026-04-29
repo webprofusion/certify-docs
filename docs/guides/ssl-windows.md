@@ -3,7 +3,7 @@ id: ssl-windows
 title: Using Certificates in Windows
 ---
 
-Using SSL/TLS certificates in Windows has a few aspects that can prevent your site working properly if don't know about them. This guide outlines some key points. **See the special mention below for limitations regarding Windows Server 2008 R2 (IIS 7.5) and lower.**
+Using SSL/TLS certificates in Windows has a few aspects that can prevent your site working properly if you don't know about them. This guide outlines some key points. **See the special mention below for limitations regarding Windows Server 2008 R2 (IIS 7.5) and lower.**
 
 If you are new to managing certificates or want to know more, you can read more about [Certificates](certificates.md) themselves.
 

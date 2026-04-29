@@ -9,7 +9,7 @@ Use this guide when you are creating a new managed certificate and want to under
 When you install Certify you will be prompted to register with the [Certificate Authority](guides/certificate-authorities.md) who will validate your domains and issue your [certificates](guides/certificates.md) (e.g. Let's Encrypt). You should provide a real email address, otherwise they can't contact you if there is a problem with your certificate.
 
 :::tip Quick Start
-If you are requesting a certificate for an IIS website with existing http/https domain hostname bindings it's possible to just install the app on the web server, click **New Certificate**, selected your IIS Website and confirm your domains, then click **Request Certificate** to automatically validate your domain(s), fetch the certificate and auto-apply it. You can then access your website via https. Your certificate will automatically renew using the same process.
+If you are requesting a certificate for an IIS website with existing http/https domain hostname bindings it's possible to just install the app on the web server, click **New Certificate**, select your IIS Website and confirm your domains, then click **Request Certificate** to automatically validate your domain(s), fetch the certificate and auto-apply it. You can then access your website via https. Your certificate will automatically renew using the same process.
 :::
 
 ## What is an ACME client?
@@ -63,7 +63,7 @@ Note that for FTP site bindings you need to select "Single Site" instead.
 ##### Deployment Tasks and Advanced Usage
 In addition to the Auto Deployment options, you can also make use of a variety of pre-built [Deployment Tasks](deployment/tasks_intro.md) for local or remote deployment. You can also use scripting tasks to work with your certificate using your own custom scripting.
 
-Deployment Tasks can be used used for common certificate tasks such as deploying to Microsoft Exchange, updating a certificate in a secrets vault (such as Azure Key Vault), deploying to a [CCS share](deployment/tasks/ccs.md) or converting the certificate into different file types.
+Deployment Tasks can be used for common certificate tasks such as deploying to Microsoft Exchange, updating a certificate in a secrets vault (such as Azure Key Vault), deploying to a [CCS share](deployment/tasks/ccs.md) or converting the certificate into different file types.
 
 ### 4. Preview
 Using the *Preview* tab you can see a detailed summary of how your Managed Certificate is configured and what actions the app will plan to take next, including how the new certificate will be deployed.

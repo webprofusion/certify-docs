@@ -10,7 +10,7 @@ Certificate trust mainly relies on the "root" issuing certificate (and intermedi
 
 The root certificate issues an Intermediate certificate which in turn is used to issue general certificates such as the ones for your website. This is called a "Chain" of trust. Your certificate (called a Leaf or end-entity certificate) will be validated by following this chain.
 
-*From Sept 30th 2021 Let's Encrypts previous root certificate *DST Root CA X3* (and it's R3 intermediate) will expire. It has been replaced by their *ISRG Root X1* certificate (and replacement R3 intermediate).*
+*From Sept 30th 2021 Let's Encrypts previous root certificate *DST Root CA X3* (and its R3 intermediate) will expire. It has been replaced by their *ISRG Root X1* certificate (and replacement R3 intermediate).*
 
 :::note
 
@@ -30,7 +30,7 @@ The version of the *R3* intermediate signing certificate which chains to *DST Ro
 
 The *DST Root CA X3* root certificate expired **September 30 14:01:15 2021 GMT**.
 
-- In some cases, the expiry of the root (and its related expiring R3 intermediate certificate) may causes certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
+- In some cases, the expiry of the root (and its related expiring R3 intermediate certificate) may cause certificates to be considered untrusted or invalid. To fix this you need to make your server use (serve) the correct chain.
 - In other cases, the issue may be with the client computer.
 - Some app renewals will fail with *too many certificates (5) already issued for this exact set of domains in the last 168 hours*. See solution below.
 - If you have clients complaining about some android devices not working with their websites, you may need to migrate to a different Certificate Authority (see below).
@@ -106,7 +106,7 @@ If no other solution works or for any other reason you cannot update client trus
 :::
 
 ## Non-IIS servers (Apache, nginx etc on Windows or Linux)
-Verify that your service is configured to use your certificate, with it's private key *and* it's **chain**. These services will work without pointing to a chain file but in the case of the expired R3 your clients will try to resolve the R3 themselves (because you haven't given it to them) and they may then resolve it to the old (expired) one.
+Verify that your service is configured to use your certificate, with its private key *and* it's **chain**. These services will work without pointing to a chain file but in the case of the expired R3 your clients will try to resolve the R3 themselves (because you haven't given it to them) and they may then resolve it to the old (expired) one.
 
 We have seen reports of issues with old iOS versions when using IIS as a front end reverse proxied to node (for NextJS etc). This is an unrelated issue to do with http headers: https://stackoverflow.com/questions/71037910/safari-10-fails-to-load-https-with-node-js-iisnode-spams-requests
 

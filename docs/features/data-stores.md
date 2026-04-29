@@ -22,11 +22,11 @@ If you decide to use a database other than SQLite you will need to install the d
 
 In all cases you need to setup the initial database schema, users and permissions. You will also need to maintain the necessary database schema updates as new versions of the app are released.
 
-In all cases is you choose to use alternative data store we cannot provide support for any aspects of the database server installation or configuration or troubleshooting. You should only adopt database servers you are comfortable with and have the necessary skills to maintain.
+In all cases if you choose to use alternative data store we cannot provide support for any aspects of the database server installation or configuration or troubleshooting. You should only adopt database servers you are comfortable with and have the necessary skills to maintain.
 
 High latency or potentially unreliable connections such as remotely hosted cloud databases are not recommended or supported.
 
-Each instance of the app needs it's own database and a single database cannot be shared by multiple instances.
+Each instance of the app needs its own database and a single database cannot be shared by multiple instances.
 
 ### Microsoft SQL Server
 Read more about how to use SQL Server as a data store: [SQL Server Data Store Getting Started](https://github.com/webprofusion/certify-plugins/tree/development/src/DataStores/SQLServer)
@@ -37,7 +37,7 @@ A typical connection string to an SQL Server database might look like the follow
 Note that SQL Express is not recommended if the database instance is used by other processes such as another web application as artificial query governor constraints can cause connection or query errors. 
 
 ### PostgreSQL
-Read more about how to use SQL Server as a data store: [PostgreSQL  Data Store Getting Started](https://github.com/webprofusion/certify-plugins/tree/development/src/DataStores/Postgres)
+Read more about how to use PostgreSQL as a data store: [PostgreSQL  Data Store Getting Started](https://github.com/webprofusion/certify-plugins/tree/development/src/DataStores/Postgres)
 
 A typical connection string to a PostgreSQL database might look like this:
 `Server=127.0.0.1;Port=5432;Database=certify;User Id=certify_app;Password=certify_app_pwd;`
