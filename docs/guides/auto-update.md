@@ -11,7 +11,7 @@ Alternative methods include performing app updates using windows management tool
 
 *Certify Certificate Manager* bundles a PowerShell script you can schedule using Windows Task Scheduler called `C:\Program Files\CertifyTheWeb\Scripts\AutoUpdate\AutoUpdate.ps1`. This script will attempt to download and install the latest stable version of the application, if a newer version is available.
 
-You can scheduled this task to run (as an Administrator or user in the Administrators group) using:
+You can schedule this task to run (as an Administrator or user in the Administrators group) using:
 
 - Windows Task Scheduler > Create Basic Task..
 - Name: `Certify The Web - Auto Update`, Next..

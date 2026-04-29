@@ -18,7 +18,7 @@ To request a certificate from Let's Encrypt (or any Certificate Authority), you 
 ## How to use HTTP Validation (on Windows)
 When the Certificate Authority performs domain validation over http (known as an `http-01` challenge) they ask for a randomly named text file to be presented in the `/.well-known/acme-challenge` path of your website. So they should be able to retrieve it at `http://<yourdomain>/.well-known/acme-challenge/<filename>`
 
-**Your server must be able to respond on TCP port 80 in order to perform any HTTP validation. If your firewall blocks port 80 (or blocks requests from other countries etc), unblock it to proceed. You don't need IIS http bindings as by default the app will use it's own http challenge response server.**
+**Your server must be able to respond on TCP port 80 in order to perform any HTTP validation. If your firewall blocks port 80 (or blocks requests from other countries etc), unblock it to proceed. You don't need IIS http bindings as by default the app will use its own http challenge response server.**
 
 If this step succeeds, you're all set to automatically complete HTTP validation of your domain. Once completed, the Certificate Authority marks your domain (associated with your account) as 'valid' and we can then proceed with requesting the final certificate.
 
@@ -44,7 +44,7 @@ the https://api.certifytheweb.com server if it can access the resource instead (
 ## Common Issues
 
 ### Timeout during http validation
-Your firewall is blocking port 80. Open port TCP 80 in Windows Firewall and on any cloud hosting firewall rules you have. Validation will occurs from multiple geographic locations, so if you need geographic blocking only block specific countries, or if you have an application-aware firewall allow all incoming http requests to `/.well-known/acme-challenge`
+Your firewall is blocking port 80. Open port TCP 80 in Windows Firewall and on any cloud hosting firewall rules you have. Validation will occur from multiple geographic locations, so if you need geographic blocking only block specific countries, or if you have an application-aware firewall allow all incoming http requests to `/.well-known/acme-challenge`
 
 ### HTTP domain validations suddenly failing
 If you find you are unexpectedly getting HTTP domain validation failures (particularly "Secondary validation") the most common cause is a Firewall blocking TCP port 80 (http) or you are blocking a range of IP or Geographic locations. To allow only your CAs HTTP validation requests through we recommend using a Web Application Firewall set to allow all http requests to any path starting with `/.well-known/acme-challenge/`. Alternatively block specific countries instead of blocking all countries, as your CA (the default being Let's Encrypt) may choose to validate from any geographic region.
@@ -54,7 +54,7 @@ The most common problem is that auto configuration has failed to determine the b
 
 1 - Check the challenge folder exists
 
-Check that configcheck file has been created at: `wwwwroot\inetpub\*yourwebsite*\.well-known\acme-challenge`
+Check that configcheck file has been created at: `wwwroot\inetpub\*yourwebsite*\.well-known\acme-challenge`
 
 If not, check your folder permissions allow this folder/files to be created. If necessary, check the website root path is correctly mapped.
 

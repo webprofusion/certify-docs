@@ -12,7 +12,7 @@ All certificates have an expiry date, after which they cannot be used to secure 
 
 The renewal frequency defaults to 75% of the certificate lifetime. This is configurable under Settings in the app.
 
-The app includes a Certify background service which performs all the main function for managed certificates, so you don't need to leave the UI open for renewals etc to run. 
+The app includes a Certify background service which performs all the main functions for managed certificates, so you don't need to leave the UI open for renewals etc to run. 
 
 ## Monitoring Certificate Renewals
 
@@ -29,7 +29,7 @@ If you manage a significant number of certificates across multiple machines we r
 
 ## App Updates Are Important
 
-If the app offers an update you should check the release notes to see if they sounds relevant to you and if in doubt you should update the app anyway. Certificate Authorities regularly change how their services work, and not updating the app can result in future renewal failures. We only support the latest version of the app at all times.
+If the app offers an update you should check the release notes to see if they sound relevant to you and if in doubt you should update the app anyway. Certificate Authorities regularly change how their services work, and not updating the app can result in future renewal failures. We only support the latest version of the app at all times.
 
 ## Certificate Cleanup
 

@@ -13,7 +13,7 @@ In the case of ACME domain validated certificates this CSR mainly just includes 
 To enable OCSP-Must staple check *Require OCSP Must-Staple* under Certificate > Advanced > Signing & Security. This will add the OCSP Must Staple extension to the CSR and the resulting certificate.
 
 ## CSR Signing Key Algorithm (Private Key)
-The app defaults to RSA 2048 for CSR signing keys (the certificate Private Key). This default was briefly changed in 6.x to ECDSA 256 but many older versions of Windows Server were found to be incompatible with the key type as a default. You can set your preference globally under *Settings* or per-managed certificate under *Certificate > Advanced  > Signing & Security > CSR Signing Algorithm*.
+The app defaults to RSA 2048 for CSR signing keys (the certificate Private Key). This default was briefly changed in 6.x to ECDSA 256 but many older versions of Windows Server were found to be incompatible with the key type as a default. You can set your preference globally under *Settings* or per-managed certificate under *Certificate > Advanced > Signing & Security > CSR Signing Algorithm*.
 
 ## Re-use a Private Key
 In most cases you will want to use a new private key for each certificate request, but in some cases you may want to re-use an existing private key. For example, if you have a private key that is already in use by another system, or you have a private key that you want to use for multiple certificates. If you check *Use the same Private Key for Renewals* the app will generate a key on next renewal and re-use that for subsequent renewals of the same certificate.

@@ -99,7 +99,7 @@ Certify The Web is a comprehensive ACME client designed for Windows. It provides
 
 #### Cons
 - Currently limited to Windows environments, but a new web based Certify Management Hub app will be available soon.
-- Command line options are more limited that other command line native apps
+- Command line options are more limited than other command line native apps
 
 ## Conclusion
 

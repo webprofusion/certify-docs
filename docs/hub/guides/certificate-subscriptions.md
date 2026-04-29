@@ -62,7 +62,7 @@ Without that permission, the instance cannot fetch source certificates from the 
 
 The source system owns renewal. The consuming instance owns local use of the retrieved certificate, including deployment paths, tasks, and permissions.
 
-Currently you should not apply a PFX password on teh source certificate as the consumer will not be able to decrypt that.
+Currently you should not apply a PFX password on the source certificate as the consumer will not be able to decrypt that.
 
 ## Common Issues
 

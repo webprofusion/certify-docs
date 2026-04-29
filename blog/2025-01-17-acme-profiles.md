@@ -8,11 +8,11 @@ image: https://certifytheweb.com/images/management/summary.png
 hide_table_of_contents: false
 ---
 
-We have implement support for the ACME Profiles extension, a new feature designed to enhance the Automated Certificate Management Environment (ACME) protocol. This extension allows ACME Servers to offer a selection of different certificate profiles to ACME Clients, making it easier for clients to request the specific type of certificate they need.
+We have implemented support for the ACME Profiles extension, a new feature designed to enhance the Automated Certificate Management Environment (ACME) protocol. This extension allows ACME Servers to offer a selection of different certificate profiles to ACME Clients, making it easier for clients to request the specific type of certificate they need.
 
 <!-- truncate -->
 
-ACME Profiles are a new proposed extension to the ACME standard allows CAs to offer certificates with different features depending on user preferences.
+ACME Profiles are a new proposed extension to the ACME standard that allows CAs to offer certificates with different features depending on user preferences.
 
 https://datatracker.ietf.org/doc/draft-aaron-acme-profiles/
 
@@ -38,7 +38,7 @@ ACME Servers that support profiles will include a new `profiles` field in their 
 ### Client Requests
 When creating a new Order, clients can specify the desired profile in the `profile` field of the Order object. The server will then issue a certificate that matches the selected profile.
 
-In **Certify Certificate Manager** and **Certify Management Hub** this will be available as an option under under *Certificate > Advanced > Certificate Authority*.
+In **Certify Certificate Manager** and **Certify Management Hub** this will be available as an option under *Certificate > Advanced > Certificate Authority*.
 
 ## Current Implementations
 Let's Encrypt's Boulder ACME Server software fully implements the ACME Profiles extension. Although profiles are not yet configured in Let's Encrypt's Production and Staging environments, the Pebble ACME Server testbed also supports this extension.

@@ -3,7 +3,7 @@ id: commandline
 title: Command Line (CLI)
 ---
 
-A set of command line are available using the tool _certify.exe_ which is found in the installation directory. The commands must be performed using an elevated administrators account.
+A set of command line tools are available using the tool _certify.exe_ which is found in the installation directory. The commands must be performed using an elevated administrators account.
 
 :::tip
 Most users do not need to use the command line options at all. By default all certificate renewals are taken care of automatically by the Certify background service.
@@ -47,7 +47,7 @@ You can use the `acmeaccount add` command to add/create a new ACME account regis
 
 - `certify deploy "<managed cert id>" "<task id>"` : perform a specific deployment task for the given managed certificate. See the Manual trigger mode for deployment tasks.
 
-### Adding or Remove Managed Certificates
+### Adding or Removing Managed Certificates
 
 - `certify importcsv` : import managed certificates from a CSV file. See [CSV Import](csv-import.md) for more details
 

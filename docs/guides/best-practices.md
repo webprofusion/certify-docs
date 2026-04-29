@@ -4,7 +4,7 @@ title: Best Practices
 ---
 
 # Best Practices
-Once you have setup your certificate and your website is accessible over https you could stop there and users will be able to access your website using a secure TLS (Transport Layer Security) connection (also known as it's old name, SSL). 
+Once you have set up your certificate and your website is accessible over https you could stop there and users will be able to access your website using a secure TLS (Transport Layer Security) connection (also known as its old name, SSL). 
 
 However, if you scan your website with a tool such as https://www.ssllabs.com/ssltest/ it will likely point out a number of areas you could improve upon, many of which are quite cryptic. These include areas such as *HTTP Strict Transport Security* (HSTS), *Protocols* and *Cipher Suites*.
 
@@ -13,7 +13,7 @@ Even if you have a great automated score for security, your choice of operating 
 ## Redirecting all visitors to HTTPS
 A user could try to access your site by just typing the domain or perhaps they will even type the full domain with `https://` - whether the site loads as `http://` or `https://` will depend on the web browser or the link the user followed, so in some cases users will see a site as "insecure". To avoid this, you can automatically direct the users browser to the HTTPS version of your site.
 
-### Redirect to HTTP using IIS
+### Redirect to HTTPS using IIS
 
 
 If you are using IIS on Windows, there are a few way to redirect users from http to https. The most common method uses the *URL Rewrite* module https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module which is an extension to IIS which uses a web.config directive to rewrite http requests.
@@ -88,7 +88,7 @@ Whether you are using a custom built website or a content management system (Wor
 ## Protocols and Cipher Suites
 
 ### TLS Protocols 
-A *protocol* (such as TLS 1.2 or TLS 1.3) is a standard for the secured communication used during https requests to your server. Your server supports various protocols which may or may not be enabled and these will vary depending on your version of Windows, they will also vary depending on whether a request is being made to your server, or whether you server is making an outgoing request to something else. 
+A *protocol* (such as TLS 1.2 or TLS 1.3) is a standard for the secured communication used during https requests to your server. Your server supports various protocols which may or may not be enabled and these will vary depending on your version of Windows, they will also vary depending on whether a request is being made to your server, or whether your server is making an outgoing request to something else. 
 
 Older protocols such as TLS 1.0 and TLS 1.1 are commonly disabled in modern configurations due to various security issues found in older versions, you may however still need to support them for old software accessing your site (this is up to you). 
 

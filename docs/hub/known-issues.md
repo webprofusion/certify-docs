@@ -17,15 +17,15 @@ Instances of *Certify Certificate Manager* and *Certify Management Agent* servic
 #### Errors when trying to login
 The UI needs to know the URL of the API it should talk to. This is configured by default to `https://localhost:44361` or `http://localhost:8080` when running from docker. The setting is changed for all users by editing wwwroot/appsettings.json or you can temporarily change the URL in the login page by clicking the Settings gear icon and setting the correct URL for your installation.
 
-If the problem occurs with a new docker container, follow the above and set the url to the require host and port e.g. `http://localhost:8080`
+If the problem occurs with a new docker container, follow the above and set the url to the required host and port e.g. `http://localhost:8080`
 
 #### Data caching in the UI
 Normally, when the system changes managed certificate or updates it status the change should be streamed back to the UI via SignalR. This streaming functionality is still a work in progress and most items now update automatically.
 
-Pages that show data that might change will generally update themselves periodically (summary page, instances, charts etc) or in some cases when the underlying data changes and a message from the hub is streamed back the the UI. In some cases you may need to reload the app from the app root URL to see the latest information while the app is still under development.
+Pages that show data that might change will generally update themselves periodically (summary page, instances, charts etc) or in some cases when the underlying data changes and a message from the hub is streamed back to the UI. In some cases you may need to reload the app from the app root URL to see the latest information while the app is still under development.
 
 #### Loading time over slow connections
-The web app uses WebAssembly (WASM) and has a large application payload on initial load. Subsequent loads used cached resources.
+The web app uses WebAssembly (WASM) and has a large application payload on initial load. Subsequent loads use cached resources.
 
 ### Containers
 #### Data not persisted using containers

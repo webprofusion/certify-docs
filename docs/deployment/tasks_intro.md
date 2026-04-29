@@ -4,7 +4,7 @@ title: Deployment Tasks
 ---
 
 **Deployment Tasks are a powerful new feature introduced in *Certify Certificate Manager* v5.x and above.**
-Once you have a certificate issued by a certificate authority you can go ahead and use that certificate for it's intended purpose. This is generally anything that might require a valid verified domain (such as a webserver, mail server, ftp service, remote access etc).
+Once you have a certificate issued by a certificate authority you can go ahead and use that certificate for its intended purpose. This is generally anything that might require a valid verified domain (such as a webserver, mail server, ftp service, remote access etc).
 
 ![Startup UI](/assets/screens/DeploymentTasks.png)
 
@@ -14,7 +14,7 @@ If you need to perform more custom steps using the certificate, or if you just w
 
 ## Pre-Request Tasks
 
-You may wish to run a custom task before you renew your certificate. For instance, you may wish to to make automated firewall changes or call a custom Web Hook/API. These are called 'Pre-Request Tasks'.
+You may wish to run a custom task before you renew your certificate. For instance, you may wish to make automated firewall changes or call a custom Web Hook/API. These are called 'Pre-Request Tasks'.
 
 ## Deployment Tasks
 
@@ -33,7 +33,7 @@ Built-in deployment task types, each with UI to configure the task parameters et
 
 | Name | Description |
 |---|---|
-| Deploy Certificate to ADFS | Applies the certificate a local Active Directory Federation Services installation |
+| Deploy Certificate to ADFS | Applies the certificate to a local Active Directory Federation Services installation |
 | [Deploy to Apache](./tasks/apache.md) | Export the certificate components in PEM file format for use with the Apache webserver. |
 | [Deploy to Apache Tomcat](./tasks/tomcat.md) | Export the certificate as a pkcs12 key store for use with Apache Tomcat application server. |
 | [Deploy to Azure App Service](./tasks/azure-app-service.md) | Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment. |
@@ -43,11 +43,11 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | [Deploy to Microsoft Exchange](./tasks/exchange.md)| Export the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
 | Deploy to Hashicorp Vault| Export the certificate to your Vault instance, with optional namespaces.  |
 | [Deploy to nginx](./tasks/nginx.md) | Export the certificate components in PEM file format for use with the nginx webserver. |
-| Deploy to RAS (Direct Access, VNP, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
+| Deploy to RAS (Direct Access, VPN, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
 | Deploy to RDP Gateway Service| Provides a basic deployment for a local RDP Gateway. You may require your own script for more sophisticated deployments. |
 | Deploy to RDP Listener Service| Provides a basic deployment for a local RDP Listener (Terminal Services). |
 | Run a Script | Execute an environment specific script (such as as a windows batch file or a linux bash script). |
-| Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to new applied. |
+| Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to be applied. |
 | Set Certificate Key Permissions | Although not usually required, some services may need read permission granted for the certificate private key. This task adds read permission for the nominated account. |
 | Update Port Binding | Provides a standard way to perform netsh IP:port bindings without custom scripting. |
 
