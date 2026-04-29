@@ -5,7 +5,7 @@ title: Install for Linux
 
 ## Certify Management Hub
 
-If you just want to try out the Management Hub and easy way to do that is to use [docker or other container tool](containers.md). However if you want to install the Management Hub (or Management Agent) directly you can do that as well.
+If you just want to try out the Management Hub, an easy way to do that is to use [docker or other container tool](containers.md). However if you want to install the Management Hub (or Management Agent) directly you can do that as well.
 
 #### Scripted Install
 The following commands:
