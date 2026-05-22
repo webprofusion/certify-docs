@@ -18,15 +18,10 @@ export default {
             ]
           },
           {
-            type: 'doc',
-            id: 'guides/licensing',
-            label: 'Licensing'
-          },
-          {
             type: 'category',
             label: 'Automation & Deployment',
             collapsible: true,
-            collapsed: true,
+            collapsed: false,
             items: [
               'deployment/tasks_intro',
               'script-hooks',
@@ -46,60 +41,13 @@ export default {
             type: 'category',
             label: 'Troubleshooting & Support',
             collapsible: true,
-            collapsed: true,
+            collapsed: false,
             items: [
               'guides/troubleshooting',
               'guides/maintenance',
               'faq',
+              'guides/licensing',
               'support'
-
-            ]
-          },
-          {
-            type: 'category',
-            label: 'Common Concepts',
-            collapsible: true,
-            collapsed: true,
-            items: [
-              {
-                type: 'category',
-                label: 'Certificate Basics',
-                collapsible: true,
-                collapsed: true,
-                items: [
-                  'features/index',
-                  'guides/certificates',
-                  'guides/certificate-authorities',
-                  'http-validation',
-                  'dns/validation'
-                ]
-              },
-              {
-                type: 'category',
-                label: 'Platform & Operations',
-                collapsible: true,
-                collapsed: true,
-                items: [
-                  'backgroundservice',
-                  'guides/ssl-windows',
-                  'guides/best-practices',
-                  'guides/security',
-                  'guides/tools'
-                ]
-              },
-              {
-                type: 'category',
-                label: 'Advanced Topics',
-                collapsible: true,
-                collapsed: true,
-                items: [
-                  'guides/csr',
-                  'guides/architecture/step-ca',
-                  'features/certificate-advanced',
-                  'features/data-stores',
-                  'features/stir-shaken'
-                ]
-              }
             ]
           }
         ]
@@ -120,7 +68,7 @@ export default {
             {
               type: 'category',
               collapsible: true,
-              collapsed: true,
+              collapsed: false,
               label: 'Installation',
               items: [
                 'hub/installation/index',
@@ -130,31 +78,25 @@ export default {
                 'hub/installation/service',
               ],
             },
-
             'hub/guides/request-certificate'
           ]
         },
         {
-          type: 'doc',
-          id: 'guides/licensing',
-          label: 'Licensing'
-        },
-        {
           type: 'category',
-          label: 'Concepts',
+          label: 'Core Workflows',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
-            'hub/concepts/architecture',
-            'hub/concepts/management-models'
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Certificate Workflows',
-          collapsible: true,
-          collapsed: true,
-          items: [
+            {
+              type: 'category',
+              label: 'Architecture & Concepts',
+              collapsible: true,
+              collapsed: false,
+              items: [
+                'hub/concepts/architecture',
+                'hub/concepts/management-models'
+              ]
+            },
             'hub/guides/certificate-operations',
             'hub/guides/request-and-deploy-certificates',
             'hub/guides/certificate-subscriptions',
@@ -163,9 +105,27 @@ export default {
         },
         {
           type: 'category',
+          label: 'Automation & Deployment',
+          collapsible: true,
+          collapsed: false,
+          items: [
+            'deployment/tasks_intro',
+            'script-hooks',
+            'guides/import-export',
+            {
+              type: 'doc',
+              id: 'guides/apache-nginx',
+              label: 'Apache, nginx, and other web servers'
+            },
+            'guides/architecture/load-balancing',
+            'guides/auto-update'
+          ]
+        },
+        {
+          type: 'category',
           label: 'Administration & Security',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'hub/guides/hub-settings-overview',
             'hub/guides/security-and-access',
@@ -175,9 +135,9 @@ export default {
         },
         {
           type: 'category',
-          label: 'Instances & Integrations',
+          label: 'Integrations',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'hub/guides/managedchallenges',
             'hub/guides/acme-server',
@@ -186,67 +146,19 @@ export default {
             'hub/guides/oidc'
           ]
         },
-        'hub/hub-roadmap',
         {
           type: 'category',
-          label: 'Troubleshooting & Support',
+          label: 'Resources & Support',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
+            'hub/hub-roadmap',
             'hub/known-issues',
             'guides/troubleshooting',
             'guides/maintenance',
             'faq',
+            'guides/licensing',
             'support'
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Common Concepts',
-          collapsible: true,
-          collapsed: true,
-          items: [
-            {
-              type: 'category',
-              label: 'Certificate Basics',
-              collapsible: true,
-              collapsed: true,
-              items: [
-                'features/index',
-                'guides/certificates',
-                'guides/certificate-authorities',
-                'http-validation',
-                'dns/validation'
-              ]
-            },
-            {
-              type: 'category',
-              label: 'Automation & Deployment',
-              collapsible: true,
-              collapsed: true,
-              items: [
-                'deployment/tasks_intro',
-                'script-hooks',
-                {
-                  type: 'doc',
-                  id: 'guides/apache-nginx',
-                  label: 'Apache, nginx, and other web servers'
-                },
-                'guides/import-export'
-              ]
-            },
-            {
-              type: 'category',
-              label: 'Advanced Topics',
-              collapsible: true,
-              collapsed: true,
-              items: [
-                'features/data-stores',
-                'features/certificate-advanced',
-                'features/stir-shaken',
-                'guides/security'
-              ]
-            }
           ]
         }
       ]
@@ -267,7 +179,7 @@ export default {
           type: 'category',
           label: 'Common Tasks',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'renewals',
             'guides/troubleshooting'
@@ -277,7 +189,7 @@ export default {
           type: 'category',
           label: 'Support',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'guides/licensing',
             'support'
@@ -297,26 +209,26 @@ export default {
           label: 'Start Here',
           items: [
             'dns/providers/certifydns',
-              'dns/validation'
+            'dns/validation'
           ]
         },
         {
           type: 'category',
-          label: 'Common Tasks',
+          label: 'DNS Providers & Integration',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'dns/providers/acme-dns',
-            'dns/providers/scripting',
-            'guides/troubleshooting'
+            'dns/providers/scripting'
           ]
         },
         {
           type: 'category',
           label: 'Support',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
+            'guides/troubleshooting',
             'guides/licensing',
             'support'
           ]
@@ -332,17 +244,18 @@ export default {
       items: [
         {
           type: 'category',
-          label: 'Start Here',
+          label: 'Quick Help',
           items: [
             'faq',
-            'support'
+            'support',
+            'guides/licensing'
           ]
         },
         {
           type: 'category',
           label: 'Troubleshooting',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'guides/troubleshooting',
             'guides/maintenance'
@@ -350,18 +263,9 @@ export default {
         },
         {
           type: 'category',
-          label: 'Licensing',
-          collapsible: true,
-          collapsed: true,
-          items: [
-            'guides/licensing'
-          ]
-        },
-        {
-          type: 'category',
           label: 'Knowledge Base',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             {
               type: 'doc',
@@ -399,14 +303,14 @@ export default {
           type: 'category',
           label: 'Automation & Deployment',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'deployment/tasks_intro',
             {
               type: 'category',
               label: 'Deployment Task Guides',
               collapsible: true,
-              collapsed: true,
+              collapsed: false,
               items: [
                 'deployment/tasks/ccs',
                 'deployment/tasks/apache',
@@ -432,7 +336,7 @@ export default {
           type: 'category',
           label: 'Operations & Maintenance',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'renewals',
             'backgroundservice',
@@ -447,7 +351,7 @@ export default {
           type: 'category',
           label: 'Advanced Certificate Options',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'guides/csr',
             'features/certificate-advanced',
@@ -458,7 +362,7 @@ export default {
           type: 'category',
           label: 'Product Help',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             'faq',
             'guides/licensing',
@@ -469,7 +373,7 @@ export default {
           type: 'category',
           label: 'Knowledge Base',
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           items: [
             {
               type: 'doc',

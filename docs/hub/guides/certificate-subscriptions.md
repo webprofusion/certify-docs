@@ -9,7 +9,7 @@ description: Subscribe a managed instance to a certificate sourced from the Hub,
 
 A certificate subscription allows a managed instance to use a certificate sourced from the Hub instead of renewing that certificate locally.
 
-In the certificate editor this appears as **Use External Subscription**.
+In the managed certificate editor this appears as **Use Certificate Subscription**.
 
 ## Subscription Model
 
@@ -27,16 +27,6 @@ This is useful when one system should own renewal while another should only cons
 - one Hub-managed certificate is deployed to multiple managed instances
 - a remote instance should receive an updated certificate but should not hold CA accounts or DNS credentials
 - renewal logic should stay centralized while deployment stays local to the consuming machine
-
-## Editor Fields
-
-When **Use External Subscription** is enabled, the main fields are:
-
-- **Source Type**
-- **Retrieval Mode**
-- **Managed Hub Certificate**
-
-The editor shows **Managed Hub** as the source type and **Auto** as the retrieval mode.
 
 ## Access Control
 
@@ -56,11 +46,11 @@ Without that permission, the instance cannot fetch source certificates from the 
 2. Apply tags to that certificate if tag-scoped access will be used.
 3. In the Hub, assign **Cert Consumer** to the managed instance and filter by tag where required.
 4. On the consuming instance, create or edit the certificate definition.
-5. Enable **Use External Subscription**.
-6. Select the source type and source certificate.
-7. Save and validate the resulting deployment behavior on the consuming instance.
+5. Enable **Use Certificate Subscription**.
+6. Select the source certificate.
+7. Save and validate the resulting deployment behavior on the consuming instance by selecting *Request Certificate*.
 
-The source system owns renewal. The consuming instance owns local use of the retrieved certificate, including deployment paths, tasks, and permissions.
+The source system owns renewal of the actual certificate. The consuming instance owns local use of the retrieved certificate, including deployment paths, tasks, and permissions.
 
 Currently you should not apply a PFX password on the source certificate as the consumer will not be able to decrypt that.
 

@@ -30,7 +30,7 @@ The product runs in Community Edition mode by default. *Certify Management Hub* 
 **The default admin login is `admin:changeme!` and you should change the password immediately before configuring any other parts of the system.** 
 
 :::danger
-Due to the nature of the work the management hub performs we do not recommend hosting on a public facing web server. While logins are required for most actions, the app and API are not considered to be security hardened for public exposure unless we explicitly state that they are. Default admin credentials should be changed immediately after setup.
+Due to the nature of the work the management hub performs we do not recommend hosting on a public facing web server with open access. If you must host on the public internet you must restrict access using methods such via firewall IP ranges or VPN access. Default admin credentials should be changed immediately after setup.
 :::
 
 ## Upgrading

@@ -7,6 +7,8 @@ title: Install for Linux
 
 If you just want to try out the Management Hub, an easy way to do that is to use [docker or other container tool](containers.md). However if you want to install the Management Hub (or Management Agent) directly you can do that as well.
 
+Note: If you plan to use Windows-centric tasks directly on the hub you should use a Windows host for your hub instead. Various functionality such as Windows networking, windows user impersonation, system powershell/modules etc are not available on Linux.
+
 #### Scripted Install
 The following commands:
 - Download the latest version, ensuring any old download and old install files are removed if present
