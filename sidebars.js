@@ -25,6 +25,7 @@ export default {
             items: [
               'deployment/tasks_intro',
               'script-hooks',
+              'guides/powershell-support',
               'commandline',
               'csv-import',
               'guides/import-export',
@@ -282,7 +283,7 @@ export default {
       ]
     }
   ],
-   commonDocsSidebar: [
+  commonDocsSidebar: [
     {
       /* This (last place) sidebar is used for common documentation shared between Certify Certificate Manager and Certify Management Hub, this avoid the wrong product being displayed in breadcrumbs */
       type: 'category',

@@ -1,29 +1,37 @@
 ---
 id: script-hooks
-title: Scripting
+title: PowerShell Scripting
 ---
 
-# Scripting
+# PowerShell Scripting
+## Using the *Run a PowerShell Script* deployment task
 
-Certify is extensible via PowerShell custom scripts tasks which can be configured to run before or after the Certificate Request. The app also has a number of built-in tasks for common scenarios, see [Tasks](deployment/tasks_intro.md) for more information.
+The system is extensible via PowerShell custom script tasks which can be configured to run before or after the Certificate Request. The app also has a number of built-in tasks for common scenarios, see [Tasks](deployment/tasks_intro.md) for more information.
 
 To run a custom PowerShell script when your certificate renews, you can add the *Run a PowerShell Script* deployment task to your managed certificate. You can also add a script to run before the certificate request is made, to perform any pre-request checks or configuration.
 
-The scripts are always provided a `$result` argument which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
+By default the scripts are always provided a `$result` argument which contains the status and details of the managed certificate being requested. You can execute any commands including creating new processes, or using other command line tools.
 
 A common use for scripting is to use your new certificate for services other than IIS websites, such as Microsoft Exchange, RDP Gateway, FTP servers and other services.
 
+:::warning
+- Scripts may execute under powerful execution contexts and script modification should be tightly controlled.
+- Test script in a staging environment before use in production.
+- Test scripts before deploying major releases of the app
+- Do not store scripts under the app installation path. Files stored there will be deleted next time you update the app.
+- Compatibility has changed in v7 (Hub and CCM/Agent). You should test existing scripts before upgrading.
+:::
+
+
+
+## PowerShell Execution Modes, Versions, Impersonation
+
 *By default the background service runs as Local System, so your scripts will execute in that context*, this can be important for issues regarding permissions, file system encryption etc. You can optionally configure your task to run as a specific user if network access or special permissions are required.
 
-:::warning
-Do not store scripts under the C:\Program Files\CertifyTheWeb\\ path. Files stored there will be deleted next time you update the app.
-:::
+From v7 onward, PowerShell-based tasks support three execution modes: *Automatic*, *In Process*, and *System PowerShell*. The PowerShell version used can vary.
 
-All scripts should be refined and tested in a staging environment before use in production.
+For simple tasks, the default options are usually enough. For more advanced scenarios, see [PowerShell Support and Execution Modes](guides/powershell-support.md) for details on execution mode selection, PowerShell version behavior, and impersonation considerations.
 
-:::tip See More Example Scripts
-Example and community-contributed scripts can also be found at https://github.com/webprofusion/certify-script-examples - feel free to contribute your own examples to share with others.
-:::
 ## Scripting Basics
 
 Here is a sample PowerShell script which demonstrates a few commonly accessed pieces of information:
@@ -70,12 +78,26 @@ Notes: Pre-request scripts/tasks are executed immediately before the Certificate
 
 Deployment task (post-request) scripts are executed immediately after the Certificate Request was completed, and the certificate was automatically installed and configured according to the site configuration within Certify.
 
-By default these run if the request was successful but you can change the task trigger (On Success, On Fail, etc). You can also configure them for manual execution only, so that you can perform them during a maintenance window, or via a windows scheduled task using the command line.
+By default these run if the request was successful but you can change the task trigger (On Success, On Fail, etc). You can also configure them for manual execution only, so that you can perform them during a maintenance window, or via a Windows scheduled task using the command line.
 
 * The `$result.IsSuccess` value indicates whether or not the Certificate Request was successfully completed.
 * The `$result.Message` value provides a message describing the reason for failure, or a message indicating success.
 
 Legacy uses for scripting (v4.x and lower) may have previously included CCS Export, PEM file creation etc however these functions are provided by built-in Deployment Tasks which you should use instead unless the built-in functionality does not meet your requirements.
+
+
+## Troubleshooting
+
+* In the Certify UI, you may test scripts by clicking the ▶ button. You should ideally test scripts after you have completed a successful certificate request so that you have real results and a certificate to work with.
+
+* The `$result.ManagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
+
+## Script Examples   
+
+
+:::tip See More Example Scripts
+Example and community-contributed scripts can also be found at https://github.com/webprofusion/certify-script-examples - feel free to contribute your own examples to share with others.
+:::
 
 ### Example: Output the result properties to a text file
 ```PowerShell
@@ -142,7 +164,7 @@ Enable-ExchangeCertificate -Thumbprint $result.ManagedItem.CertificateThumbprint
 ```
 
 ### Example: Update VMWare Horizon certificate
-This example removes any previous certificate with the same FriendlyName (`vdm`) then renames the Friendly Name property of the new certificate to `vmd`. It then restarts the `wstunnel` service.
+This example removes any previous certificate with the same FriendlyName (`vdm`) then renames the Friendly Name property of the new certificate to `vdm`. It then restarts the `wstunnel` service.
 
 ```PowerShell
 param($result)
@@ -197,8 +219,8 @@ $instanceKey = 'MSSQL15.MSSQLSERVER'  # Change this as required
 # -------------------------------------------------------------------------
 
 $registryPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\$instanceKey\MSSQLServer\SuperSocketNetLib"
-$oldthumbprint = (Get-Itemproperty -Path $registryPath).Certificate
-$newthumbprint = $result.ManagedItem.CertificateThumbprintHash
+$oldthumb = (Get-Itemproperty -Path $registryPath).Certificate
+$newthumb = $result.ManagedItem.CertificateThumbprintHash
 
 if ($oldthumb -ne $newthumb) { 
 
@@ -233,10 +255,10 @@ $ipAddress = "0.0.0.0"
 $version = (Get-WmiObject –namespace root\Microsoft\SqlServer\ReportServer\$ssrsServerName  –class __Namespace).Name
 $rsConfig = Get-WmiObject –namespace "root\Microsoft\SqlServer\ReportServer\$ssrsServerName\$version\Admin" -class MSReportServer_ConfigurationSetting
 
-# the cert thumbnail of the newest certificate
+# the cert thumbprint of the newest certificate
 $newthumb = $result.ManagedItem.CertificateThumbprintHash.ToLower()
 
-# check the cert thumbnail of the currently bound certificate (if any)
+# check the cert thumbprint of the currently bound certificate (if any)
 
 $oldthumb = ''
 
@@ -309,7 +331,7 @@ Set-Item -Path .\CertificateThumbprint -Value $result.ManagedItem.CertificateThu
 param($result)  
 
 # adapt paths and passwords as required, assumes keytool is in the system path
-# this examples uses -noprompt to avoid the process hanging on prompts and also redirects output to a single stream otherwise keytool will output to the powershell error stream
+# this example uses -noprompt to avoid the process hanging on prompts and also redirects output to a single stream otherwise keytool will output to the PowerShell error stream
 
 # update these parameters as required
 $src_password =""
@@ -361,22 +383,3 @@ $thumb = $result.ManagedItem.CertificateThumbprintHash
 C:\Windows\System32\inetsrv\appcmd.exe set config -section:system.applicationHost/sites /siteDefaults.ftpServer.security.ssl.serverCertHash:$thumb /commit:apphost
 ```
 
-## Running In-Process vs Launch New Process
-The Powershell deployment task can run in two modes on Windows: In-Process and as a New Process. This option mainly affects the process features when the background service is attempting to run the task.
-
-For in-process the service will attempt to run your task as the user you specify in an impersonation context with a specific Windows *LogonType*: https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/reference-tools-logon-types - this affects things like reuse of credentials across network resources and the relevance varies greatly depending on what your script does and which other processes it calls into.
-
-In all cases you will need to test to determine the best option for your specific script. It is not always possible to get a script to work under impersonation and in those cases you may need to write out the relevant certificate variables like the thumbprint or file path then perform operations separately using your own filewatcher process or a scheduled task elsewhere.
-
-Note that the *Launch New Process* option currently does not support impersonation and we aim to address this with new task runner functionality in the future.
-
-## Troubleshooting
-
-* In the Certify UI, you may test scripts by clicking the ▶ button. You should ideally test scripts after you have completed a successful certificate request so that you have real results and a certificate to work with.
-
-* The `$result.ManagedItem.CertificatePath` value will be set to the filename (including path) of the PFX file containing the requested certificate, unless the site is new and has not had a successful Certificate Request, in which case the value will not be set.
-
-* PowerShell Execution Policies may be set by your administrator which affect script execution. The app will try to set the policy to "Unrestricted" by default which may conflict with higher level policy settings. You can set the default script execution policy in the server settings file (then restart the Certify background service) `%PROGRAMDATA%\Certify\serviceconfig.json`
-   * `"PowershellExecutionPolicy":"Unrestricted"` or
-   * `"PowershellExecutionPolicy":"Bypass"` or
-   * `"PowershellExecutionPolicy":""` (blank string) to use the default policy set by your administrator.

@@ -11,95 +11,107 @@ import styles from './styles.module.css';
 # Certify The Web 
 ## Documentation & Guidance
 
-**Certify The Web** is our range of automated SSL/TLS certificate management tools for Windows, Linux, macOS, and cloud environments. Choose the product that fits your environment, then use the common task links below if you already know what you need to do.
+**Certify The Web** is our range of automated SSL/TLS certificate management tools for Windows, Linux, macOS, and cloud environments.
 
 <Tabs queryString="product" className={styles.productTabs}>
   <TabItem value="ccm" label="Certificate Manager" default>
 
-    Comprehensive certificate management on *Windows Server* with a desktop UI and background management service.
+    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '24px', alignItems: 'center' }}>
+      <div style={{ flex: '1 1 300px' }}>
 
-    **Key Features:**
-    - Automated ACME certificate renewals
-    - Pre-built deployment tasks
-    - Support for Let's Encrypt, Google Trust Services, and enterprise CAs
-    - Custom automation scripts
+        **Certify Certificate Manager** (CCM) provides comprehensive certificate management on *Windows Server* with a desktop UI and background management service.
 
-    [**Get Started →**](docs/intro)
+        **Key Features:**
+        - Automated ACME certificate renewals
+        - Direct integration with IIS on Windows
+        - Pre-built deployment tasks or custom automation scripts
+        - Support for Let's Encrypt, Google Trust Services, and enterprise CAs
+        - Functions as a *Managed Instance* when joined to *Certify Management Hub* for easier administration and extended functionality like Certificate Subscriptions.
+        - Also available for linux and macOS as *Certify Management Agent*, administered via the hub.
 
-    ![Certify Certificate Manager](/assets/screens/Startup_Dark_sm.png)
+        [**Get Started →**](docs/intro)
+
+      </div>
+      <div style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center' }}>
+
+        [![Certify Certificate Manager](/assets/screens/Startup_Dark_sm.png)](docs/intro)
+
+      </div>
+    </div>
 
   </TabItem>
   
   <TabItem value="hub" label="Management Hub">
     
-    Centralized cross-platform web-based certificate management.
+    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '24px', alignItems: 'center' }}>
+      <div style={{ flex: '1 1 300px' }}>
 
-    **Key Features:**
-    - Web-based UI accessible from anywhere
-    - Certificate management with the same core features as Certify Certificate Manager.    
-    - Managed DNS challenges
-    - Support for Windows, Linux, macOS, and containers
-    - Optionally administer many instances of Certify Certificate Manager and Certify Management Agent.
+        **Certify Management Hub** provides centralized cross-platform web-based certificate management and administration.
 
-    [**Get Started →**](docs/hub/)
+        **Key Features:**
+        - Web-based UI accessible from anywhere
+        - Certificate management with the same core features as *Certify Certificate Manager*.    
+        - Managed DNS challenges allow centralized handling of DNS updates with ACME challenges
+        - Certificate Subscriptions allows authorized CCM/agent instances to pull centrally renewed certificates
+        - Support for Windows, Linux, macOS, and containers
+        - Optionally administer many instances of *Certify Certificate Manager* and *Certify Management Agent*.
 
-    ![Certify Management Hub](/assets/screens/hub/hub_intro.png)
+        [**Get Started →**](docs/hub/)
+
+      </div>
+      <div style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center' }}>
+
+        [![Certify Management Hub](/assets/screens/hub/hub_intro.png)](docs/hub/)
+
+      </div>
+    </div>
     
   </TabItem>
   
   <TabItem value="dashboard" label="Dashboard">
     
-    Hosted dashboard for centralized certificate monitoring across your organization.
+    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '24px', alignItems: 'top' }}>
+      <div style={{ flex: '1 1 300px' }}>
 
-    **Key Features:**
-    - Real-time certificate status monitoring
-    - Compatible with multiple ACME clients via Certify Management Agent
-    - Organization-wide visibility
+        **Certify Dashboard** is a simple cloud based monitoring tool for certificate renewals across your organization.
 
-    [**View Documentation →**](docs/dashboard)
+        **Key Features:**
+        - Real-time certificate status monitoring
+        - Report from multiple ACME clients via *Certify Management Agent*
+        - Organization-wide visibility
 
-    ![Dashboard](/assets/screens/dashboard/dashboard_example_sm.png)
+        [**View Documentation →**](docs/dashboard)
+
+      </div>
+      <div style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center' }}>
+
+        [![Dashboard](/assets/screens/dashboard/dashboard_example_sm.png)](docs/dashboard)
+
+      </div>
+    </div>
         
   </TabItem>
   
   <TabItem value="dns" label="Certify DNS">
    
-    Cloud-based DNS challenge service for environments where direct DNS automation isn't possible.
+    **Certify DNS** is our cloud-based DNS challenge service for environments where direct DNS automation isn't possible.
 
     **Key Features:**
-    - CNAME delegation support
-    - Compatible with most ACME clients
-    - Cross-platform compatibility
     - Simplified DNS challenge management
-
-    [**Setup Guide →**](docs/dns/providers/certifydns)
+    - CNAME delegation support
+    - Compatible with most ACME clients which support the acme-dns protocol
+    - Cross-platform compatibility
+    
+    [**Certify DNS Setup Guide →**](docs/dns/providers/certifydns)
 
   </TabItem>
 </Tabs>
 
----
+## Documentation Overview
 
-## Popular Tasks
+Use the [documentation overview](docs/) to browse by product, task, or role.
 
-- [Install Certify Certificate Manager](docs/guides/installation)
-- [Install Certify Management Hub](docs/hub/installation)
-- [Request your first certificate](docs/certificate-process)
-- [Choose DNS or HTTP validation](docs/dns/validation)
-- [Review renewals and monitoring](docs/renewals)
-- [Troubleshoot renewal issues](docs/guides/troubleshooting)
-- [Licensing and support](docs/support)
-
-## Browse by Role
-
-- **Windows server admin:** [Certificate Manager getting started](docs/intro), [installation](docs/guides/installation), and [requesting a certificate](docs/certificate-process)
-- **Platform or DevOps team:** [Management Hub](docs/hub/), [hub installation](docs/hub/installation), and [deployment tasks](docs/deployment/tasks_intro)
-- **Managed service provider or consultant:** [Dashboard](docs/dashboard), [support](docs/support), and [solution partners](docs/partners)
-
-## Documentation Home
-
-Need a broader map of the documentation? Use the [documentation home](docs/) to browse by product, task, or role without changing the existing document URLs.
-
-**Need help choosing?** Visit [certifytheweb.com](https://certifytheweb.com) for detailed product comparisons and pricing information.
+Visit [certifytheweb.com](https://certifytheweb.com) for product feature summaries and pricing information.
 
 
 
