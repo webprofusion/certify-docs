@@ -37,7 +37,11 @@ Use this mode when you want predictable PowerShell 7 behavior regardless of what
 
 This is the closest equivalent to the older embedded-host model, except the embedded engine is now PowerShell 7 rather than embedded Windows PowerShell 5.1. PowerShell 5.1 is no longer available as an embedded option because it depends on a much older .NET runtime than the app uses. 
 
-Currently, system PowerShell modules such as CimCmdlets may not be available In-Process and you should use an alternative mode.
+A major consideration is that system PowerShell modules loaded in PS 5.1 are *not* necessarily loaded by default. For example if you require any **Cim**Cmdlets you need to load the module at the start of your script (after *params*) and for older modules you also need to skip the check for compatible powershell version e.g.:
+
+`Import-Module -Name CimCmdlets -SkipEditionCheck`
+
+A good way to tell if a module is available by default in PowerShell 7 is to launch a PowerShell 7 system command prompt and try your commands there. Most modules are not imported by default.
 
 ## System PowerShell Mode
 
