@@ -5,7 +5,7 @@ title: Automatic App Updates
 
 It is essential to regularly update the *Certify Certificate Manager* app as important changes may be included which affect continuity of the certificate renewals or other essential certificate maintenance. By default app updates will be offered (if available) when you open the UI and you should generally update at the earliest convenience. Users have commonly requested an Auto Update mechanism and so this has now been provided as a script which can be scheduled.
 
-Alternative methods include performing app updates using windows management tools (such as WSUS), using the [Chocolatey](https://community.chocolatey.org/packages/certifytheweb) command line update tool or manually updating.
+Alternative methods include performing app updates using windows management tools (such as Microsoft Intune), using the [Chocolatey](https://community.chocolatey.org/packages/certifytheweb) command line update tool or manually updating. Batch updates can be achievedd using common tools such as [ansible](https://github.com/ansible/ansible). These methods are generally preferable especially if they are standard in your organization.
 
 # Auto Updating (Beta)
 
