@@ -23,7 +23,7 @@ description: Use Certify Dashboard to monitor certificate renewals across server
 
 ## Features
 - Monitor successful and failed renewals.
-- Receive warnings for items nearing certificate expiration.
+- See warnings for items nearing certificate expiration.
 - View failure messages directly without checking individual server logs.
 - Report automatically from *hundreds* of servers, for *thousands* of certificates.
 - Avoid unexpected downtime due to repeated renewal failures.
@@ -40,10 +40,11 @@ Ensure that *Status Reports to Dashboard* is enabled under Settings in the app (
 ### Using Other ACME Clients
 To report to the dashboard from third-party ACME clients, you can use *Certify Management Agent* to monitor and report renewal status. The agent is a service that runs on your servers and understands the configuration of specific ACME clients. The agent configuration is managed using Certify Management Hub.
 
-**We are currently accepting beta testers for the Dashboard Agent to help refine the product for:**
+**We currently support:**
 - Certbot
 - acme.sh
-- Other suggested ACME clients (contact us to discuss)
+- win-acme & simple-acme
+- Posh-ACME
 
 The agent is designed to run on Linux, macOS, or Windows.
 
