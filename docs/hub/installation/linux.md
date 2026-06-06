@@ -92,3 +92,5 @@ So for example, if you have an Apache install at `/etc/apache2` and you wanted t
 `sudo setfacl -m g:certify:rwx /etc/apache2/certs` (`x` is included to allow directory traversal in this case). 
 
 You can permission destination paths however you prefer, but you should ensure the process user can write to those paths with a test such as `sudo -u certify touch /etc/apache2/certs/test.pem`
+
+User impersonation (running tasks under different user credentials) is not currently supported on Linux or macOS.
