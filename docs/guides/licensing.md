@@ -29,16 +29,16 @@ We do not offer special licensing terms for specific organization types.
 ## License Bundles
 License Bundles are fixed-term licenses that include a set number of activated installs.
 
-| Type          | Renewal Frequency | Max Activated Instances| Price         |
-|---------------|-------------------|-------------------|---------------|
-| Starter       | 12 Months         | 1                 | $59 USD       | 
-| Professional  | 12 Months         | 3                 | $149 USD      | 
-| Power Pro     | 12 Months         | 25                | $649 USD      | 
-| Enterprise    | 12 Months         | 100               | $1999 USD     |
+| Type          | Renewal Frequency | Max Activated Instances | Includes Hub | Price         |
+|---------------|-------------------|-------------------------|--------------|---------------|
+| Starter       | 12 Months         | 1                       | No           | $59 USD       | 
+| Professional  | 12 Months         | 3                       | No           | $149 USD      | 
+| Power Pro     | 12 Months         | 25                      | Yes          | $649 USD      | 
+| Enterprise    | 12 Months         | 100                     | Yes          | $1999 USD     |
 
 From 1 November 2023, all license tiers moved to a 12 month renewal cycle with revised pricing. This applies to new licenses. Existing renewals remained on their previous pricing and terms until 1 November 2025 and have now moved to standard pricing. Pricing for Power Pro and Enterprise was last revised on 1 October 2024.
 
-Each bundle purchase provides one license key that can be used up to the number of installs shown above. Certify Management Hub uses the same license key types as Certify Certificate Manager, including Starter Edition and Cloud Managed licensing. License tier names are simply labels for bundle sizes and are not tied to the size or type of your organization.
+Each bundle purchase provides one license key that can be used up to the number of installs shown above. *Certify Management Hub* uses the same license key types as *Certify Certificate Manager* and requires a *Power Pro* (or higher) license key or *Cloud Managed licensing*. License tier names are simply labels for bundle sizes and are not tied to the size or type of your organization.
 
 License Bundle keys can be purchased with a credit card through Stripe or with PayPal. POs, pro forma invoices, and other manual invoicing options are not supported because they require manual processing. If you need centralized billing or delegated purchasing, Cloud Managed Licensing is usually the better fit, and you can also generate a payment link for someone else to complete on behalf of your account.
 
