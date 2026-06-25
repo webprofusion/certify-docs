@@ -41,6 +41,8 @@ Download the (self signed) roots from the CA and import into the *Local Machine*
 
 The quick way to do this is to open the file with the default windows certificate view, choose *Install Certificate..*, then choose *Local Machine* > *Place all certificates in the following store..* > *Trusted Root Certification Authorities*.
 
+You may still find that Windows prefers to build the trust chain to ISRG X1/X2 via cross signed intermediate versions of Root YE/YR. This will be apparent in both the windows certificate viewer and the served chain in IIS etc. To test without ISRG X1 (for example) locate that root in the Local Machine trusted roots> properties, select *Disable all purposes for this certificate*. You will then find IIS serves the chain to the new root and this can impact trust on clients. If Windows clients still trust the cross signed path they will continue to use that, but some clients that use alternative implementations (linux etc) will need the root in their trust store or they will cease to function.
+
 #### Linux, macOS, iOS etc
 
 Update the OS with the latest updates, for some tools you may need to update the individual tools if they have their own trust store (sometimes called a "ca bundle").
