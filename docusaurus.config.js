@@ -84,6 +84,26 @@ module.exports = {
             },
           ],
         },
+        {title:'Trust Center',
+          items:[
+             {
+              label: 'Overview',
+              to: 'docs/trust-center',
+            },
+              {
+              label: 'Information Security Policy',
+              to: 'docs/trust-center/information-security',
+            },
+            {
+              label: 'Privacy Policy',
+              to: 'docs/trust-center/privacy-policy',
+            },
+             {
+              label: 'Terms and Conditions',
+              to: 'docs/trust-center/terms',
+            },
+          ]
+        },
         {
           title: 'Community',
           items: [

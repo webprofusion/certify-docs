@@ -105,7 +105,7 @@ We have no tax presence outside Australia. We do not currently provide internati
 The source code for our main product Certify Certificate Manager is available for review at https://github.com/webprofusion/certify
 
 ## Terms of Service
-Our services, licenses and products are subject to our [Terms and Conditions](terms.md).
+Our services, licenses and products are subject to our [Terms and Conditions](../trust-center/terms.md).
 
 ## Frequently Asked Licensing Questions
 
