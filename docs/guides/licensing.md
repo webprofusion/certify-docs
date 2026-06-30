@@ -33,10 +33,15 @@ License Bundles are fixed-term licenses that include a set number of activated i
 |---------------|-------------------|-------------------------|--------------|---------------|
 | Starter       | 12 Months         | 1                       | No           | $59 USD       | 
 | Professional  | 12 Months         | 3                       | No           | $149 USD      | 
-| Power Pro     | 12 Months         | 25                      | Yes          | $649 USD      | 
-| Enterprise    | 12 Months         | 100                     | Yes          | $1999 USD     |
+| Power Pro     | 12 Months         | 50                      | Yes          | $649 USD      | 
+| Power Pro     | 24 Months         | 50                      | Yes          | $1199 USD     | 
+| Enterprise    | 12 Months         | 250                     | Yes          | $1999 USD     |
+| Enterprise    | 24 Months         | 250                     | Yes          | $3499 USD     |
+| Enterprise    | 36 Months         | 250                     | Yes          | $5499 USD     |
 
 From 1 November 2023, all license tiers moved to a 12 month renewal cycle with revised pricing. This applies to new licenses. Existing renewals remained on their previous pricing and terms until 1 November 2025 and have now moved to standard pricing. Pricing for Power Pro and Enterprise was last revised on 1 October 2024.
+
+From 30 June 2026, Power Pro covers up to 50 installs vs the previous 25. Enterprise covers up to 250 installs vs the previous 100. This has been applied retrospectively to existing recently created/renewed licenses.
 
 Each bundle purchase provides one license key that can be used up to the number of installs shown above. *Certify Management Hub* uses the same license key types as *Certify Certificate Manager* and requires a *Power Pro* (or higher) license key or *Cloud Managed licensing*. License tier names are simply labels for bundle sizes and are not tied to the size or type of your organization.
 
