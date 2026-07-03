@@ -15,7 +15,7 @@ Use this guide when you are installing *Certify Certificate Manager* on a Window
 
 ## System Requirements
 
-**Supported OS: Any currently Microsoft Supported Windows or Windows Server edition with .NET Framework 4.6.2 (or higher).**
+**Supported OS: Any currently Microsoft Supported Windows or Windows Server edition compatible with [.NET 10](https://github.com/dotnet/core/blob/main/os-lifecycle-policy.md).**
 
 This app requires outgoing https for API calls. Proxies are not officially supported. The app will need to communicate with your choice of Certificate Authority over https (the default is Let's Encrypt). For licensing or status reporting it will need to connect to https://api.certifytheweb.com and if you use any DNS APIs or Deployment Tasks which communicate with a remote API or service you will need connectivity to those.
 
@@ -47,6 +47,32 @@ The latest release notes for the app can be found at https://certifytheweb.com/h
 
 ### Settings are preserved between installs/upgrades
 Your settings are preserved in `%PROGRAMDATA%\certify`. For most users, this is `C:\ProgramData\certify`. Uninstalling the app or installing a new version does not remove the files stored here. We recommend including this location in your regular backup procedure.
+
+### Upgrade from v6 to v7
+v7 onwards of our app use .Net 10 or higher (self-contained, you do not need to update .net) include substantial changes to compatabilty.
+- The Service exctuable has changed from Certify.Service.exe to Certify.Server.Core.exe (Certify Management Agent). If you had special security/firewall rules in place you may need to update them. If you have used a custom service account see below.
+- You should test before upgrading, in particular if you have any custom powershell scripts for deployment tasks. Our internal Powershell process has changed from PS5.1 to PS7.x and the app will now call out to the system powershell process by default for compatability.
+
+#### Upgrading with custom service accounts
+By default the app would have previously used Local System for it's service. If you have customized this you will need to perform a careful upgrade to preserve encrypted items like Stored Credentials.
+
+To proceed:
+- Backup C:\ProgramData\certify (or equivalent location)
+. Note which service account you were running the Certify background service under.
+- Uninstall Certify Certificate Manager (your ProgramData settings will be preserved)
+- Run the install for Certify Certificate Manager 7.x but choose the advanced option, this is to avoid starting the service after the install
+- In Windows Local Services, set the log on for the new Certify.Server.Core.exe (Certify Management Agent) service to the same account you were using previously for the old service, ensure service startup is set to automatic, then start the service.
+- The service will upgrade your settings and you can now launch the app.
+- You should review that renewals are working as expected and any stored credentials for DNS etc are still operational.
+
+#### Emergency Downgrade
+If you require an emergency downgrade to 6.x:
+- Ensure you have your previous backup of C:\ProgramData\certify ready to restore
+- Download the [old version](https://certifytheweb.s3.amazonaws.com/downloads/archive/CertifyTheWebSetup_V6.1.11.exe) 
+- Uninstall Certify Certificate Manager.
+- Copy the newer C:\ProgramData\certify to a temp/backup location, then remove C:\ProgramData\certify
+- Restore your old backup settings to C:\ProgramData\certify
+- Install the older version normally.
 
 ### Common Issues
 - For in-app upgrading issues, download the latest version from https://certifytheweb.com and install normally.
