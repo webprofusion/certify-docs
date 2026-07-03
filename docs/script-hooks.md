@@ -148,12 +148,12 @@ if ($result.IsSuccess -and $result.ManagedItem.GroupId -eq 1) {
 
 ```PowerShell
 param($result)
-$tempfile = "$env:TEMP\CertifyTemp.pfx"
-$pfx = get-pfxcertificate -filepath $result.ManagedItem.CertificatePath
-certutil -f -p Certify -exportpfx $pfx.SerialNumber $tempfile
-certutil -delstore my $pfx.SerialNumber
-certutil -p Certify -csp "Microsoft RSA SChannel Cryptographic Provider" -importpfx $tempfile
-remove-item $tempfile
+
+# certutil import with blank password
+Write-Output "`n`n" | certutil -csp "Microsoft RSA SChannel Cryptographic Provider" -importPFX $result.ManagedItem.CertificatePath 
+
+# certutil import with a specific password
+#certutil -p <thepassword> -csp "Microsoft RSA SChannel Cryptographic Provider" -importPFX $result.ManagedItem.CertificatePath
 ```
 
 ### Example: Enable certificate for Exchange 2013 / 2016 services on local server
@@ -208,28 +208,11 @@ This example updates the registry key for the SQL Server certificate thumbprint.
 ```PowerShell
 param($result)
 
-# Example script to set SQL Server certificate 
+$registryPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\*\MSSQLServer\SuperSocketNetLib"
 
-# Note that some instances of SQL server may require certificate key storage to use the "Microsoft RSA SChannel Cryptographic Provider" 
-# See an example conversion: https://docs.certifytheweb.com/docs/script-hooks#example-convert-cng-certificate-storage-to-csp-for-exchange-2013
+# apply the new certificate thumbprint to the registry key
+Set-ItemProperty -Path $registryPath -Name 'Certificate' -Value $result.ManagedItem.CertificateThumbprintHash
 
-# See HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\ for the required instance key
-$instanceKey = 'MSSQL15.MSSQLSERVER'  # Change this as required
-
-# -------------------------------------------------------------------------
-
-$registryPath = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\$instanceKey\MSSQLServer\SuperSocketNetLib"
-$oldthumb = (Get-Itemproperty -Path $registryPath).Certificate
-$newthumb = $result.ManagedItem.CertificateThumbprintHash
-
-if ($oldthumb -ne $newthumb) { 
-
-  # apply the new certificate thumbprint to the registry key
-  Set-ItemProperty -Path $registryPath -Name 'Certificate' -Value $newthumb
-
-  # optionally restart the SQL service (uncomment if required in this step), correct service name may vary
-  # Restart-Service mssqlserver
-}
 ```
 
 
