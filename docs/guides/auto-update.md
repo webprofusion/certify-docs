@@ -7,7 +7,11 @@ It is essential to regularly update the *Certify Certificate Manager* app as imp
 
 Alternative methods include performing app updates using windows management tools (such as Microsoft Intune), using the [Chocolatey](https://community.chocolatey.org/packages/certifytheweb) command line update tool or manually updating. Batch updates can be achievedd using common tools such as [ansible](https://github.com/ansible/ansible). These methods are generally preferable especially if they are standard in your organization.
 
-# Auto Updating (Beta)
+# Auto Updating (Deprecated)
+
+:::warning
+This script is deprecated and is included only for compatibility reasons. You should use popular industry standard software package management tools like Ansible instead.
+:::
 
 *Certify Certificate Manager* bundles a PowerShell script you can schedule using Windows Task Scheduler called `C:\Program Files\CertifyTheWeb\Scripts\AutoUpdate\AutoUpdate.ps1`. This script will attempt to download and install the latest stable version of the application, if a newer version is available.
 
