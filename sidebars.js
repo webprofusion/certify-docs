@@ -110,7 +110,7 @@ export default {
           collapsible: true,
           collapsed: false,
           items: [
-            'deployment/tasks_intro',
+            {type:'ref',id:'deployment/tasks_intro'},
             'script-hooks',
             'guides/import-export',
             {

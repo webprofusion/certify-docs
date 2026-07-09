@@ -99,3 +99,19 @@ Write-Output ("User: " + [System.Environment]::UserName)
 This makes it easier to confirm whether the task is running under Windows PowerShell 5.1, PowerShell 7, the system host, or the embedded in-process host.
 
 For script examples and general scripting guidance, see [Scripting](../script-hooks.md).
+
+## Full Impersonation (Windows)
+By default the service runs as Local System and is restricted from performing full windows network/domain user impersonation. To enable full impersonation you need to run the Certify background service as a local or domain account in the Administrators group. Migrating to this configuration requires multiple steps and you cannot just change the service logon user as that will result in encrypted items being inaccessible.
+
+To change the service process user (Hub service or CCM Certify Management Agent):
+- Backup C:\ProgramData\certify
+- Ensure service account user is added to Administrators group on machine. This is required for certificate store updates and IIS binding updates. Renewal will fail on certificate store issues otherwise.
+- Ensure service account user has full control of C:\ProgramData\certify and subfolders (if they are in Administrators group this should already be the case)
+- Perform an export of your current settings using Settings > Import & Export > Export. This exports DAPI encrypted items that will become inaccessible after you change the service user.
+- Change the service logon user, restart the service, verify the service starts and there are no errors in windows event log, reopen app
+- Using Settings > Import & Export > Import (with overwrite) to re-import settings.
+- Test renewals, tasks and stored credentials (such as DNS credentials zone lookup or run Test on items which use a DNS provider).
+
+Once the service is migrated to a service account you can use the Full Impersonation (or Full Impersonation with Profile) mode in your Powershell script tasks. This allows network enabled processes and remoting etc to work as expected.
+
+**Changing the service user affects compatibility and you should test before applying in production.**
