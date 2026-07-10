@@ -1,6 +1,7 @@
 ---
 id: auto-update
 title: Automatic App Updates
+displayed_sidebar: commonDocsSidebar
 ---
 
 It is essential to regularly update the *Certify Certificate Manager* app as important changes may be included which affect continuity of the certificate renewals or other essential certificate maintenance. By default app updates will be offered (if available) when you open the UI and you should generally update at the earliest convenience. Users have commonly requested an Auto Update mechanism and so this has now been provided as a script which can be scheduled.

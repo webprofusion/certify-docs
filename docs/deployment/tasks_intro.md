@@ -1,6 +1,7 @@
 ---
 id: tasks_intro
 title: Deployment Tasks
+displayed_sidebar: commonDocsSidebar
 ---
 
 **Deployment Tasks are a powerful new feature introduced in *Certify Certificate Manager* v5.x and above.**

@@ -1,6 +1,7 @@
 ---
 id: import-export
 title: Import & Export
+displayed_sidebar: commonDocsSidebar
 ---
 
 ## Migration from one instance to another
