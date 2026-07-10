@@ -23,7 +23,7 @@ description: Install and secure Certify Management Hub, understand its operating
 - Do not expose the Hub publicly unless you have explicitly designed and reviewed that deployment.
 - If you plan to administer existing *Certify Certificate Manager* or *Certify Management Agent* instances, keep them updated so they remain compatible with the Hub.
 
-## Fastest Path to a Working Hub
+## Quick Start
 
 1. Install the Hub using the [installation guide](installation/index.md) for your preferred platform. 
 2. Secure the instance by changing the admin password and reviewing the [service and TLS configuration](installation/service.md).
