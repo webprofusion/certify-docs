@@ -30,7 +30,7 @@ Use this process when you need:
 ## Important Notes
 
 - Certificate store updates and IIS binding updates require elevated permissions. If the service account lacks required rights, renewals can fail.
-- Stored credential access depends on DPAPI under the service identity. Re-importing after migration is expected.
+- Stored credential access depends on Windows DAPI under the service identity. Re-importing after migration is expected.
 - Validate this process in a staging/non-production environment first.
 
 After migration, you can use **Full Impersonation** modes in PowerShell script tasks with improved compatibility for network access and remoting scenarios.

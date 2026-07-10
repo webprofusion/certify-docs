@@ -1,210 +1,70 @@
 ---
 title: Features
-description: Compare major features across the Certify The Web product range and jump into the shared reference material used by multiple products.
+description: Choose a Certify The Web product and explore its certificate management, validation, deployment, and monitoring capabilities.
 displayed_sidebar: commonDocsSidebar
 ---
 
-# Features
+# Product Feature Summary 
 
-Compare the major features across the **Certify The Web** product suite and use the links to shared concept pages.
+Certify The Web products request, deploy, and renew TLS certificates. The right product depends on where certificates are managed and whether you need to coordinate more than one server.
 
-## Certificate Management & Automation
+## Our Products
 
-### Core Certificate Features
-These fundamental certificate management capabilities are available across all products:
+### Certify Certificate Manager
 
-- **Automated ACME Certificate Renewals** - Automatic renewal with zero-config failure notifications
-- **Multi-CA Support** - Support for Let's Encrypt, Google Trust Services, ZeroSSL, Actalis, Custom and enterprise CAs
-- **Certificate Authority Fallback** - Optional automatic fallback to alternative CAs if the primary fails
-- **Wildcard Certificate Support** - Full support for wildcard domains (`*.example.com`)
-- **IP Certificates** - Certificate covering IPv4 or IPv6 addresses
-- **Multi-Domain Certificates (SAN)** - Single certificate covering multiple domains
-- **Certificate Preview** - Preview planned changes before requesting certificates
-- **Multi-config Validation** - Configure multiple mixed domain/ip validation methods for one certificate
-- **Certificate Revocation** - Manual certificate revocation when needed
-- **Configuration Export/Import** - Backup and restore certificate configurations
+Use Certificate Manager for a Windows server or desktop. It provides the desktop UI and background service, manages IIS bindings and the Windows Certificate Store, and can run deployment tasks after a certificate is renewed.
 
-### Advanced Certificate Options
-- **Custom Private Key Types** - RSA and ECDSA key support with configurable key sizes
-- **Preferred Certificate Chains** - Specify preferred certificate chains for compatibility
-- **Certificate Signing Request (CSR) Control** - Optionally use your own CSR, ideal for when the private key is not controlled by you
-- **PFX Password Protection** - Secure certificate files with passwords
-- **Staging Mode Support** - Test certificates for development and testing
-- **Certificate Comments & Metadata** - Organize certificates with custom descriptions
+### Certify Management Hub
 
-## Domain Validation Methods
+Use Management Hub when certificates, credentials, or teams need to be managed centrally. It adds a web UI and API, role-based access, managed DNS challenges, and coordination for Certificate Manager and Management Agent instances.
 
-### DNS Validation (dns-01)
-- **50+ DNS Provider Integrations** - Built-in support for major DNS providers
-- **Certify DNS Service** - Hosted acme-dns compatible service
-- **acme-dns support** - Standard CNAME-based delegation
-- **Manual DNS Option** - Manual TXT record creation when APIs aren't available
-- **Custom DNS Scripting** - Custom scripts for unsupported DNS providers
+### Certify Management Agent
 
-### HTTP Validation (http-01)
-- **Built-in HTTP Challenge Server** - Integrated challenge response server
-- **IIS Integration** - Automatic HTTP validation via IIS (Windows)
-- **Custom HTTP Challenge Handlers** - Configurable challenge response methods
+Use Management Agent for headless Linux and macOS systems. It can manage certificates directly and monitor renewals from compatible third-party ACME clients.
 
-## Deployment & Integration
+### Certify Dashboard
 
-### Built-in Deployment Tasks
-Comprehensive deployment options for various platforms and services:
+Use Certify Dashboard for hosted monitoring of renewal activity and failures across your certificate estate.
 
-**Web Servers & Load Balancers:**
-- IIS (Auto-deployment with binding management)
-- [Apache HTTP Server (PEM format export)](../guides/apache-nginx.md)
-- [nginx (PEM format export)](../guides/apache-nginx.md)
-- [Apache Tomcat (PKCS#12 keystore)](../deployment/tasks/tomcat.md)
+## Request and Renew Certificates
 
-**Microsoft Services:**
-- Microsoft Exchange (IMAP, SMTP, IIS, POP services)
-- Active Directory Federation Services (ADFS)
-- Remote Desktop Services (RDP Gateway, RDP Listener)
-- Routing and Remote Access Service (RAS)
-- [IIS Centralized Certificate Store (CCS)](../deployment/tasks/ccs.md)
+Certify supports ACME certificate authorities including Let's Encrypt, Google Trust Services, ZeroSSL, Actalis, and private or enterprise CAs. Managed certificates can include multiple domain names, wildcard names, and eligible IP addresses.
 
-**Cloud & Container Platforms:**
-- Azure App Service
-- Azure Key Vault
-- HashiCorp Vault (with namespace support)
-- AWS services (via export tasks)
+Before requesting a certificate you can use the preview to inspect the planned validation and deployment. Renewal checks run automatically through the relevant background service. Where required, configure a staging CA, fallback CA, key type, preferred chain, or your own custom certificate signing request.
 
-**Security & Secrets Management:**
-- Local Windows Certificate Store
-- Doppler secrets storage
-- Various secrets vault integrations
+See [certificate requests and deployment](../certificate-process.md), [certificate authorities](../guides/certificate-authorities.md), and [renewal behavior](../renewals.md).
 
-### Custom Deployment Options
-- **PowerShell Script Execution** - Custom PowerShell scripts with parameter passing (cross platform)
-- **Bash Script Support** - Linux/macOS script execution
-- **Webhook Integration** - HTTP webhooks with customizable payloads
-- **SSH/SFTP Deployment** - Remote file deployment over secure connections
-- **UNC Share Deployment** - Network share certificate distribution (Windows)
-- **Service Management** - Start/stop/restart services after deployment (Windows)
-- **Permission Management** - Set certificate key permissions (Windows)
+## Validate Domain Ownership
 
-## User Interfaces & Management
+Use HTTP validation when the certificate authority can reach the target host over the web. Certificate Manager can use IIS or its built-in challenge server.
 
-### Desktop Application (CCM - Windows)
-- **Rich Desktop UI** - Full-featured Windows desktop application
-- **Real-time Status Monitoring** - Live renewal status and progress tracking
-- **Certificate Store Integration** - Direct Windows certificate store management
-- **IIS Management** - Visual IIS site and binding management
+Use DNS validation for wildcard certificates, hosts without inbound HTTP access, or environments where DNS is the appropriate control point. Built-in providers cover common DNS services. You can also delegate records with Certify DNS and acme-dns, create TXT records manually, or run a custom DNS script. The Hub can manage DNS challenges centrally.
 
-### Web-Based Management (Management Hub)
-- **Cross-Platform Web UI** - Browser-based interface for all platforms
-- **Multi-User Access** - Role-based user management and permissions
-- **Centralized Management** - Manage certificates across multiple instances
-- **API Access** - RESTful API for automation and integration
+Read [HTTP validation](../http-validation.md) and [DNS validation](../dns/validation.md).
 
-### Command Line Interface
-- **Full CLI Support** - Complete command-line interface for automation
-- **Scripting Integration** - PowerShell and bash scripting support
-- **Automated Deployment** - Unattended installation and configuration
-- **Bulk Operations** - Mass certificate management operations
+## Deploy Certificates
 
-## Monitoring & Reporting
+Deployment tasks can install a certificate in the Windows Certificate Store, manage IIS bindings, and export PEM or PFX/PKCS#12 files. Built-in tasks cover Apache, nginx, Tomcat, Exchange, ADFS, RDP, Azure App Service, Azure Key Vault, HashiCorp Vault, and IIS Centralized Certificate Store.
 
-### Status & Health Monitoring
-- **Real-time Status Dashboard** - Live certificate status overview
-- **Renewal Failure Detection** - Automatic failure notification system
-- **Certificate Expiry Monitoring** - Proactive expiration warnings
-- **Detailed Logging** - Comprehensive activity and error logging
+For services outside those tasks, use PowerShell or Bash scripts, webhooks, SSH/SFTP, or UNC shares. Windows deployments can update private-key permissions and restart dependent services.
 
-### Hosted Dashboard Service
-- **Centralized Reporting** - Cloud-based certificate monitoring
-- **Multi-Server Aggregation** - Monitor hundreds of servers from one dashboard
-- **Failure Analysis** - Detailed failure messages and troubleshooting
-- **Email Notifications** - Automated renewal failure notifications
-- **Historical Reporting** - Certificate renewal history and trends
+Browse [deployment tasks](../deployment/tasks_intro.md), [Apache and nginx deployment](../guides/apache-nginx.md), and [IIS Centralized Certificate Store](../deployment/tasks/ccs.md).
 
-### External ACME Client Monitoring
-*Hub & Agent Only:*
-- **Certbot Integration** - Monitor existing Certbot renewals
-- **acme.sh Support** - Track renewals from acme.sh installations
-- **win-acme and simple-acme** - Monitor Windows ACME client renewals
-- **Posh-ACME Integration** - PowerShell ACME module monitoring
+## Administration and Monitoring
 
-## Infrastructure & Deployment
+Management Hub provides centralized administration for multiple instances, including role-based access, API access. It can run on Windows, Linux, macOS, containers, Kubernetes, and OpenShift. Choose SQLite for a single instance, or SQL Server or PostgreSQL for larger deployments.
 
-### Platform Support
-**Common Across Products:**
-- Windows Server (2016+)
-- Windows Desktop (Windows 10+)
+Certificate status, expiry, and renewal failures are visible where certificates are managed. Hub and Certify Dashboard aggregate this information across instances and provide notifications and renewal history. Hub and Management Agent can also monitor Certbot, acme.sh, win-acme, simple-acme, and Posh-ACME.
 
-**Hub & Agent Only:**
-- Linux (Ubuntu, CentOS, RHEL, Debian, Alpine)
-- macOS (Intel & Apple Silicon)
-- Docker containers
-- Kubernetes
-- Red Hat/IBM OpenShift
+Credentials are encrypted at rest. Certificate Manager uses Windows DPAPI or .net key based encryption; Hub adds role-based access controls and scoped API authentication. The products support ACME V2 (RFC 8555 and supported extension and draft extensions like ARI, dns-persist-01) and standard PEM, PFX, and PKCS#12 certificate formats.
 
-### Data Storage Options
-- **SQLite** (Default) - File-based database for single instances
-- **Microsoft SQL Server** - Enterprise database support (2016+)
-- **PostgreSQL** - Open-source database support (9.5+)
-- **Database Migration Tools** - Migrate between database types
+For telecommunications deployments, Certificate Manager and Hub support STIR/SHAKEN certificate workflows, including authority tokens. Certificate configurations can be imported, exported, and migrated between instances.
 
-### Scalability & Performance
-- **Multi-Instance Management** - Manage hundreds of certificate instances
-- **Distributed Architecture** - Scale across multiple servers
-- **Background Processing** - Non-blocking certificate operations
-- **Batch Operations** - Efficient bulk certificate management
-
-## Security & Compliance
-
-### Security Features
-- **Encrypted Credential Storage** - DPAPI encryption for stored credentials (Windows)
-- **Role-Based Access Control** - Granular user permissions (Hub)
-- **API Security** - Token-based authentication for scoped API access
-
-### Compliance & Standards
-- **ACME Protocol Compliance** - Comprehensive RFC 8555 ACME support, plus draft features.
-- **Industry Standard Formats** - PEM, PFX, PKCS#12 certificate formats
-
-## Specialized Features
-
-### STIR/SHAKEN Certificates
-*CCM & Hub:*
-- **Telecommunications Certificate Support** - Specialized certificates for telecom providers
-- **Authority Token Management** - SPC token and CRL handling
-
-
-### Import/Export
-- **Bulk Certificate Management** - Import/export certificate configurations
-- **Migration Tools** - Migrate certificates between instances
-- **Backup & Restore** - Complete configuration backup capabilities
-
-## Product-Specific Features
-
-### Certify Certificate Manager (CCM) 
-- **Desktop UI** - Windows desktop application and background service
-
-### Management Hub
-- **Web-Based Interface** - Cross-platform browser access
-- **Multi-User Management** - Role-based user accounts
-- **Instance Management** - Control multiple CCM instances
-- **Container Support** - Docker and Kubernetes deployment
-- **Managed DNS Challenges** - Centralized DNS challenge handling
-- **Managed ACME API Server** - Act as ACME server for other clients
-
-### Management Agent
-- **Headless Operation** - No UI required for Linux/macOS
-- **External Client Monitoring** - Monitor third-party ACME clients
-- **Cross-Platform Service** - systemd/launchd service integration
-
-### Dashboard Service
-- **Hosted Monitoring** - Cloud-based renewal monitoring
-
----
+See [Hub installation options](../hub/installation/index.md), [Hub architecture](../hub/concepts/architecture.md), and the [Trust Center](../trust-center/index.mdx).
 
 ## Getting Started
 
-To get started with any of these features:
-
-- **Certify Certificate Manager**: [Installation Guide](../guides/installation.md)
-- **Management Hub**: [Hub Installation](../hub/installation/index.md)
-- **Dashboard Service**: [Dashboard Setup](../dashboard/index.md)
-
-For specific feature documentation, see the individual guides.
+- [Install Certify Certificate Manager](../guides/installation.md)
+- [Install Management Hub](../hub/installation/index.md)
+- [Set up Certify Dashboard](../dashboard/index.md)
+- [Browse deployment tasks](../deployment/tasks_intro.md)
