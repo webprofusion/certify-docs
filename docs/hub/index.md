@@ -8,9 +8,10 @@ description: Install and secure Certify Management Hub, understand its operating
 
 *Certify Management Hub* is a self-hosted, cross-platform web UI and API for centralized certificate management, managed challenges, reporting, and multi-instance administration.
 
-## Best Fit
+## When To Use Certify Management Hub
 
-- You need centralized certificate management across multiple servers or teams.
+- You need centralized certificate management across multiple servers or teams
+- You require large scale certificate management.
 - You want a web UI and API instead of a local Windows desktop app.
 - You need Linux, macOS, Windows, or container-based deployments.
 - You want managed DNS challenges, OIDC sign-in, or visibility into third-party ACME clients.
@@ -24,7 +25,7 @@ description: Install and secure Certify Management Hub, understand its operating
 
 ## Fastest Path to a Working Hub
 
-1. Install the Hub using the [installation guide](installation/index.md) for your preferred platform.
+1. Install the Hub using the [installation guide](installation/index.md) for your preferred platform. Windows is recommended if much of your organisation uses Windows already.
 2. Secure the instance by changing the admin password and reviewing the [service and TLS configuration](installation/service.md).
 3. Decide whether the first certificate request will run on the Hub itself or on a joined target instance.
 4. Follow the Hub-specific [certificate request guide](guides/request-certificate.md).

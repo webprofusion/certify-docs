@@ -8,7 +8,7 @@ description: Use Certify DNS for delegated DNS challenge handling when direct DN
 
 *Certify DNS* is an optional service used to answer DNS challenges when your domain's normal DNS provider isn't supported for automation. It can be used with any *acme-dns* compatible ACME client. **The service requires a separately purchased *Certify DNS* license and is not bundled with *Certify Certificate Manager***.
 
-## Best Fit
+## Why Use Certify DNS
 
 - Your DNS provider does not have an API you can automate.
 - You need wildcard or DNS-based validation but cannot store primary DNS credentials on every client.
