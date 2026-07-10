@@ -23,19 +23,19 @@ export default {
             collapsible: true,
             collapsed: false,
             items: [
-              'deployment/tasks_intro',
-              'script-hooks',
+                { type: 'ref', id: 'deployment/tasks_intro' },
+                { type: 'ref', id: 'script-hooks' },
               'guides/powershell-support',
               'commandline',
               'csv-import',
-              'guides/import-export',
+                { type: 'ref', id: 'guides/import-export' },
               {
-                type: 'doc',
+                  type: 'ref',
                 id: 'guides/apache-nginx',
                 label: 'Apache, nginx, and other web servers'
               },
-              'guides/architecture/load-balancing',
-              'guides/auto-update'
+                { type: 'ref', id: 'guides/architecture/load-balancing' },
+                { type: 'ref', id: 'guides/auto-update' }
             ]
           },
           {
@@ -44,11 +44,11 @@ export default {
             collapsible: true,
             collapsed: false,
             items: [
-              'guides/troubleshooting',
-              'guides/maintenance',
-              'faq',
-              'guides/licensing',
-              'support'
+                { type: 'ref', id: 'guides/troubleshooting' },
+                { type: 'ref', id: 'guides/maintenance' },
+                { type: 'ref', id: 'faq' },
+                { type: 'ref', id: 'guides/licensing' },
+                { type: 'ref', id: 'support' }
             ]
           }
         ]
@@ -111,15 +111,15 @@ export default {
           collapsed: false,
           items: [
             {type:'ref',id:'deployment/tasks_intro'},
-            'script-hooks',
-            'guides/import-export',
+            { type: 'ref', id: 'script-hooks' },
+            { type: 'ref', id: 'guides/import-export' },
             {
-              type: 'doc',
+              type: 'ref',
               id: 'guides/apache-nginx',
               label: 'Apache, nginx, and other web servers'
             },
-            'guides/architecture/load-balancing',
-            'guides/auto-update'
+            { type: 'ref', id: 'guides/architecture/load-balancing' },
+            { type: 'ref', id: 'guides/auto-update' }
           ]
         },
         {
@@ -155,11 +155,11 @@ export default {
           items: [
             'hub/hub-roadmap',
             'hub/known-issues',
-            'guides/troubleshooting',
-            'guides/maintenance',
-            'faq',
-            'guides/licensing',
-            'support'
+            { type: 'ref', id: 'guides/troubleshooting' },
+            { type: 'ref', id: 'guides/maintenance' },
+            { type: 'ref', id: 'faq' },
+            { type: 'ref', id: 'guides/licensing' },
+            { type: 'ref', id: 'support' }
           ]
         }
       ]

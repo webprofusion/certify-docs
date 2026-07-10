@@ -1,6 +1,7 @@
 ---
 id: script-hooks
 title: PowerShell Scripting
+displayed_sidebar: commonDocsSidebar
 ---
 
 # PowerShell Scripting

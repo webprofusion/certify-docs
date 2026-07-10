@@ -1,6 +1,7 @@
 ---
 id: load-balancing
 title: Load Balanced Hosting
+displayed_sidebar: commonDocsSidebar
 ---
 
 # Load Balanced Hosting

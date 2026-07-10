@@ -1,6 +1,7 @@
 ---
 id: apache-nginx
 title: Using with Apache, nginx or Other Web Servers
+displayed_sidebar: commonDocsSidebar
 ---
 
 
