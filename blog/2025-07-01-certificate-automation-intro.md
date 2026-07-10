@@ -131,7 +131,7 @@ The goal is to transform certificate management from a manual, error-prone task 
 - Optimized for Windows/IIS certificate management
 - Full UI for management and configuration
 
-**Certify Management Hub** (in beta) is our new self-hosted cross-platform web UI and API which can also talk to and configure many CCM instances (v7 onwards).
+**Certify Management Hub** is our new self-hosted cross-platform web UI and API which can also talk to and configure many CCM instances (v7 onwards).
 - Start small and simple, grow with your requirements
 - Centralized role-based access, controlled API access
 - New agent for Linux and macOS which has the same core as CCM
