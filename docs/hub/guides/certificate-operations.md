@@ -127,4 +127,4 @@ Review certificate details, request progress, and any deployment or challenge er
 
 - [Request and deploy certificates](request-and-deploy-certificates.md)
 - [Certificate Authorities and stored credentials](certificate-authorities-and-credentials.md)
-- [Day-2 Hub operations](day-2-operations.md)
+- [Hub operations](operations.md)

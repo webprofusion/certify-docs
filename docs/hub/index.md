@@ -60,7 +60,7 @@ description: Install and secure Certify Management Hub, understand its operating
 - [Certificate Authorities and stored credentials](guides/certificate-authorities-and-credentials.md)
 - [Security and access](guides/security-and-access.md)
 - [Import, export, and migration](guides/import-export-and-migration.md)
-- [Day-2 Hub operations](guides/day-2-operations.md)
+- [Hub operations](guides/operations.md)
 
 ## Next Docs to Read
 

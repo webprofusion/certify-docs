@@ -155,4 +155,5 @@ Use this split when deciding where to make a change:
 
 - [Security and access](security-and-access.md)
 - [Import, export, and migration](import-export-and-migration.md)
-- [Day-2 Hub operations](day-2-operations.md)
+- [Hub operations](operations.md)
+

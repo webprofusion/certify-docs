@@ -52,7 +52,7 @@ const createHubTaskGuidesCategory = () => ({
     { type: 'doc', id: 'hub/guides/request-and-deploy-certificates', label: 'Request and deploy certificates' },
     { type: 'doc', id: 'hub/guides/managed-instances', label: 'Manage connected instances' },
     { type: 'doc', id: 'hub/guides/security-and-access', label: 'Configure security and access' },
-    { type: 'doc', id: 'hub/guides/day-2-operations', label: 'Run day-2 operations' }
+    { type: 'doc', id: 'hub/guides/operations', label: 'Run operations' }
   ]
 });
 
@@ -249,7 +249,7 @@ export default {
           items: [
             'hub/guides/hub-settings-overview',
             'hub/guides/security-and-access',
-            'hub/guides/day-2-operations'
+            'hub/guides/operations'
           ]
         },
         {

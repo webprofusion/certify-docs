@@ -1,9 +1,9 @@
 ---
-title: Day-2 Hub Operations
+title: Hub Operations
 description: Operate Certify Management Hub after installation, including monitoring, upgrades, system checks, maintenance windows, external certificate managers, and support paths.
 ---
 
-# Day-2 Hub Operations
+# Hub Operations
 
 ## Routine Checks
 
