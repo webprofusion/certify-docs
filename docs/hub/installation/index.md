@@ -5,7 +5,7 @@ description: Choose a deployment model for Certify Management Hub, secure the in
 
 Use this guide when you are deploying *Certify Management Hub* for the first time or planning how to upgrade it safely.
 
-## Quick Path
+## Quick Start
 
 1. Choose your platform: [containers](containers.md), [Windows](windows.md), or [Linux](linux.md).
 2. Install the Hub and sign in with the default admin account.

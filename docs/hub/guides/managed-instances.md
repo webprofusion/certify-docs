@@ -1,15 +1,11 @@
 ---
 title: Managed Instances
-description: Review and operate managed instances in Certify Management Hub using summary entry points, table and card views, filters, and per-instance actions.
+description: Review and operate managed instances in Certify Management Hub.
 ---
 
 # Managed Instances
 
-From **Certificates > Summary** select the **Managed Instances** count tile. This opens **Management Hub > Instances**.
-
-## Layout
-
-At the top of the page, you will see a results summary showing how many instances are currently displayed. Search by name or description, and apply quick filters. You can also filter by tag when you need to focus on a specific group of instances.
+From the main navigation select **Hub Management > Instances**.
 
 ## Quick Filters
 
@@ -17,7 +13,14 @@ The quick filters make it easier to find specific instances when you are working
 
 ## Per-Instance Actions
 
-Each instance has an **Actions** menu with options to edit details (like a custom title or description), edit tags, add the instance to the dash.certifytheweb.com dashboard, or remove it from the hub. Use **Remove From Hub** carefully, because it deletes that joined instance from hub management.
+Each instance has an **Actions** menu with options to:
+- Edit Details: Customize the instance title or description
+- Edit Tags: Apply tags such as organization, dept or environment. 
+- Add To Dashboard: Add the instance to the dash.certifytheweb.com dashboard
+- Remove From Hub: Remove (forget) the instance from the hub. 
+- Settings: Navigate to the target instance settings.
+
+Use **Remove From Hub** carefully, because it deletes that joined instance from hub management and related tags, role assignments etc. To permanenetly remove an instance remove the hub joining key from the target instance first so it cannot rejoin by itself.
 
 ## Read Next
 

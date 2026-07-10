@@ -8,7 +8,7 @@ description: Install and secure Certify Management Hub, understand its operating
 
 *Certify Management Hub* is a self-hosted, cross-platform web UI and API for centralized certificate management, managed challenges, reporting, and multi-instance administration.
 
-## When To Use Certify Management Hub
+## Why Use Certify Management Hub
 
 - You need centralized certificate management across multiple servers or teams
 - You require large scale certificate management.
@@ -18,14 +18,14 @@ description: Install and secure Certify Management Hub, understand its operating
 
 ## Before You Start
 
-- Choose your deployment model first: [containers](installation/containers.md), [Windows](installation/windows.md), or [Linux](installation/linux.md).
+- Choose your deployment model first: [containers](installation/containers.md), [Windows](installation/windows.md), or [Linux](installation/linux.md). Windows is recommended if much of your organisation uses Windows already.
 - Change the default admin credentials immediately after installation.
 - Do not expose the Hub publicly unless you have explicitly designed and reviewed that deployment.
 - If you plan to administer existing *Certify Certificate Manager* or *Certify Management Agent* instances, keep them updated so they remain compatible with the Hub.
 
 ## Fastest Path to a Working Hub
 
-1. Install the Hub using the [installation guide](installation/index.md) for your preferred platform. Windows is recommended if much of your organisation uses Windows already.
+1. Install the Hub using the [installation guide](installation/index.md) for your preferred platform. 
 2. Secure the instance by changing the admin password and reviewing the [service and TLS configuration](installation/service.md).
 3. Decide whether the first certificate request will run on the Hub itself or on a joined target instance.
 4. Follow the Hub-specific [certificate request guide](guides/request-certificate.md).
@@ -34,8 +34,7 @@ description: Install and secure Certify Management Hub, understand its operating
 
 ![Startup UI](/assets/screens/hub/hub_intro.png)
 
-
-## What You Can Add Later
+## Features To Explore
 
 - [Managed Challenges](guides/managedchallenges.md) for centralized validation.
 - [Managed ACME Service](guides/acme-server.md) for compatible external ACME clients.
