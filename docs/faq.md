@@ -7,7 +7,7 @@ displayed_sidebar: helpSupportSidebar
 
 # Frequently Asked Questions
 
-This page is a quick answer index. For deeper guidance, follow the linked pages for troubleshooting, maintenance, licensing, and product-specific setup.
+Use this as a quick answer index. For deeper guidance, follow the linked pages for troubleshooting, maintenance, licensing, and product-specific setup.
 
 ## Start Here
 

@@ -17,7 +17,7 @@ The following commands:
 
 ```
 rm ./certify-mgmthub-linux-x64-latest.tar.gz -f
-wget https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-linux-x64-latest.tar.gz 
+wget https://downloads.certifytheweb.com/release/latest/certify-mgmthub-linux-x64-latest.tar.gz 
 rm -rf ./certify-hub-install && mkdir -p ./certify-hub-install
 tar -xf certify-mgmthub-linux-x64-latest.tar.gz -C ./certify-hub-install
 sudo ./certify-hub-install/scripts/install-hub.sh
@@ -69,7 +69,7 @@ When the service is installed using systemd the following commands can be useful
 
 ```
 rm ./certify-agent-linux-x64-latest.tar.gz -f
-wget https://downloads.certifytheweb.com/beta/latest/certify-agent-linux-x64-latest.tar.gz
+wget https://downloads.certifytheweb.com/release/latest/certify-agent-linux-x64-latest.tar.gz
 rm -rf ./certify-agent-install && mkdir -p ./certify-agent-install
 tar -xf certify-agent-linux-x64-latest.tar.gz -C ./certify-agent-install
 sudo ./certify-agent-install/scripts/install-agent.sh

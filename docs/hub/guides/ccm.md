@@ -8,7 +8,7 @@ Joining an existing *Certify Certificate Manager* (CCM) instance to the Hub allo
 
 If you are using *Certify Management Agent* on Linux or macOS, [see our agent guide](agent.md).
 
-Start with the [latest version](https://downloads.certifytheweb.com/beta/latest/certify-ccm-windows-x64-latest.exe) of Certify Certificate Manager (v7+) with Hub support.
+Start with the [latest version](https://certifytheweb.com/home/changelog?product=ccm) of Certify Certificate Manager (v7+) with Hub support.
 
 Basic sequence:
 

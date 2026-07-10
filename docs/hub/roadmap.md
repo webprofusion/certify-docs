@@ -12,7 +12,7 @@ The roadmap highlights recently delivered work and the next focus areas for Cert
 
 | Track | Status | Notes |
 | --- | --- | --- |
-| Hub Release Candidate | ✅ Available | Production-suitable with staged rollout and known issues documented. |
+| Hub General Release | ✅ Available | Production-suitable with staged rollout and known issues documented. |
 | Agent (Windows/Linux) | ✅ Available | Supports on-device certificate renewal with hub management and 3rd party ACME client reporting. |
 
 ## Recently Delivered

@@ -7,7 +7,7 @@ displayed_sidebar: helpSupportSidebar
 
 # Troubleshooting
 
-This page covers common request, renewal, validation, connectivity, and deployment problems.
+The sections below cover common request, renewal, validation, connectivity, and deployment problems.
 
 ## Quick Triage Checklist
 

@@ -9,7 +9,7 @@ Use this guide when you want to deploy *Certify Management Hub* as a Windows ser
 ## Install Certify Management Hub
 The management hub is installed as a single service which serves the Management Hub API, a backend certify-agent instance, and the web UI. Internally this is using the Kestrel web server which is part of Microsoft ASP.Net.
 
-[Download the latest Windows version](https://downloads.certifytheweb.com/beta/latest/certify-mgmthub-windows-x64-latest.exe)
+[Download the latest Windows version](https://certifytheweb.com/home/changelog?product=hub)
 
 ### Upgrading
 To upgrade download and install the latest version as normal. On Windows your settings are preserved in `%PROGRAMDATA%\certify`. For most users, this is `C:\ProgramData\certify`. Uninstalling the app or installing a new version does not remove the files stored here. We recommend including this location in your regular backup procedure.

@@ -6,7 +6,7 @@ displayed_sidebar: helpSupportSidebar
 
 # Maintenance and Data Locations
 
-This page covers the main data locations, upgrade behavior, script storage, and other recurring maintenance topics.
+The sections below cover the main data locations, upgrade behavior, script storage, and other recurring maintenance topics.
 
 ## Important Paths
 

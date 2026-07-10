@@ -6,7 +6,7 @@ displayed_sidebar: commonDocsSidebar
 
 # Features
 
-This page compares the major features across the **Certify The Web** product suite and links to the common concept pages shared by multiple products.
+Compare the major features across the **Certify The Web** product suite and use the links to shared concept pages.
 
 ## Certificate Management & Automation
 

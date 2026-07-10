@@ -1,13 +1,15 @@
 ---
 id: step-ca
-title: How to use a Step CA instances with *Certify Certificate Manager*
+title: Using step-ca with Certify Products
 ---
 
-# How to use a Step CA instances with *Certify Certificate Manager*
+# Using step-ca with Certify Products
 
 step-ca is a certificate authority product from smallstep which can be used to issue certificates internally within your organization. It is a good choice if you want to run your own certificate authority and have full control over the certificates you issue.
 
 step-ca can be configured to support the ACME protocol for certificate orders: https://smallstep.com/docs/step-ca/acme-basics/
+
+You can use step-ca with both *Certify Certificate Manager* and *Certify Management Hub* managed instances by configuring the same ACME endpoint and account credentials.
 
 # Example step-ca setup using docker
 

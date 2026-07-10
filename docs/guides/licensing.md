@@ -5,7 +5,7 @@ description: Compare Certify The Web license bundles, cloud-managed licensing, t
 displayed_sidebar: helpSupportSidebar
 ---
 
-This page covers license bundles, cloud-managed subscriptions, transfers, renewals, and license key purchasing questions.
+This guide covers license bundles, cloud-managed subscriptions, transfers, renewals, and license key purchasing questions.
 
 ## About Licensing
 Certify The Web is a range of commercial products related to automated certificate management. This document covers licensing for Certify Certificate Manager, Certify Management Agent, and Certify Management Hub.

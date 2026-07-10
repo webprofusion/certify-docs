@@ -8,11 +8,6 @@ description: Install and secure Certify Management Hub, understand its operating
 
 *Certify Management Hub* is a self-hosted, cross-platform web UI and API for centralized certificate management, managed challenges, reporting, and multi-instance administration.
 
-:::info[Release Candidate]
-
-The product is in the release candidate phase and is suitable for staged production use with appropriate testing and gradual adoption. If testing, see [Known Issues](known-issues.md)
-:::
-
 ## Best Fit
 
 - You need centralized certificate management across multiple servers or teams.

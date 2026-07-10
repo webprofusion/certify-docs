@@ -1,4 +1,68 @@
 
+const createDeploymentTaskGuidesCategory = () => ({
+  type: 'category',
+  label: 'Deployment Task Guides',
+  collapsible: true,
+  collapsed: false,
+  items: [
+    { type: 'ref', id: 'deployment/tasks/ccs' },
+    { type: 'ref', id: 'deployment/tasks/apache' },
+    { type: 'ref', id: 'deployment/tasks/nginx' },
+    { type: 'ref', id: 'deployment/tasks/tomcat' },
+    { type: 'ref', id: 'deployment/tasks/exchange' },
+    { type: 'ref', id: 'deployment/tasks/task-azure-app-service' }
+  ]
+});
+
+const createCommonConceptsCategory = () => ({
+  type: 'category',
+  label: 'Common Concepts',
+  collapsible: true,
+  collapsed: false,
+  items: [
+    { type: 'ref', id: 'features/index' },
+    { type: 'ref', id: 'guides/certificates' },
+    { type: 'ref', id: 'guides/certificate-authorities' },
+    { type: 'ref', id: 'http-validation' },
+    { type: 'ref', id: 'dns/validation' }
+  ]
+});
+
+const createCommonTaskGuidesCategory = () => ({
+  type: 'category',
+  label: 'Task-Oriented Guides',
+  collapsible: true,
+  collapsed: false,
+  items: [
+    { type: 'ref', id: 'certificate-process', label: 'Request your first certificate' },
+    { type: 'ref', id: 'dns/validation', label: 'Set up DNS validation' },
+    { type: 'ref', id: 'deployment/tasks_intro', label: 'Deploy certificates to services' },
+    { type: 'ref', id: 'renewals', label: 'Monitor renewals and alerts' },
+    { type: 'ref', id: 'guides/troubleshooting', label: 'Troubleshoot failures' }
+  ]
+});
+
+const createHubTaskGuidesCategory = () => ({
+  type: 'category',
+  label: 'Task-Oriented Guides',
+  collapsible: true,
+  collapsed: false,
+  items: [
+    { type: 'doc', id: 'hub/guides/request-certificate', label: 'Request your first Hub-managed certificate' },
+    { type: 'doc', id: 'hub/guides/request-and-deploy-certificates', label: 'Request and deploy certificates' },
+    { type: 'doc', id: 'hub/guides/managed-instances', label: 'Manage connected instances' },
+    { type: 'doc', id: 'hub/guides/security-and-access', label: 'Configure security and access' },
+    { type: 'doc', id: 'hub/guides/day-2-operations', label: 'Run day-2 operations' }
+  ]
+});
+
+const createCommonSupportItems = () => ([
+  { type: 'ref', id: 'guides/troubleshooting' },
+  { type: 'ref', id: 'faq' },
+  { type: 'ref', id: 'guides/licensing' },
+  { type: 'ref', id: 'support' }
+]);
+
 export default {
 
   docSidebar: [
@@ -14,7 +78,18 @@ export default {
               'intro',
               'guides/installation',
               'certificate-process',
-              'renewals'
+              { type: 'ref', id: 'renewals' },
+            ]
+          },
+          {
+            type: 'category',
+            label: 'Concepts & Core Workflows',
+            collapsible: true,
+            collapsed: false,
+            items: [
+              createCommonTaskGuidesCategory(),
+              createCommonConceptsCategory(),
+              'commandline'
             ]
           },
           {
@@ -23,32 +98,71 @@ export default {
             collapsible: true,
             collapsed: false,
             items: [
-                { type: 'ref', id: 'deployment/tasks_intro' },
-                { type: 'ref', id: 'script-hooks' },
+              { type: 'ref', id: 'deployment/tasks_intro' },
+              createDeploymentTaskGuidesCategory(),
+              { type: 'ref', id: 'script-hooks' },
               'guides/powershell-support',
-              'commandline',
-              'csv-import',
-                { type: 'ref', id: 'guides/import-export' },
+              { type: 'ref', id: 'guides/import-export' },
               {
-                  type: 'ref',
+                type: 'ref',
                 id: 'guides/apache-nginx',
                 label: 'Apache, nginx, and other web servers'
               },
-                { type: 'ref', id: 'guides/architecture/load-balancing' },
-                { type: 'ref', id: 'guides/auto-update' }
+              { type: 'ref', id: 'guides/architecture/load-balancing' },
+              { type: 'ref', id: 'guides/architecture/step-ca' },
+              { type: 'ref', id: 'features/data-stores' },
+              'csv-import'
             ]
           },
           {
             type: 'category',
-            label: 'Troubleshooting & Support',
+            label: 'Operations & Maintenance',
             collapsible: true,
             collapsed: false,
             items: [
-                { type: 'ref', id: 'guides/troubleshooting' },
-                { type: 'ref', id: 'guides/maintenance' },
-                { type: 'ref', id: 'faq' },
-                { type: 'ref', id: 'guides/licensing' },
-                { type: 'ref', id: 'support' }
+              { type: 'ref', id: 'backgroundservice' },
+              { type: 'ref', id: 'guides/maintenance' },
+              { type: 'ref', id: 'guides/auto-update' },
+              { type: 'ref', id: 'guides/security' },
+              { type: 'ref', id: 'guides/tools' }
+            ]
+          },
+          {
+            type: 'category',
+            label: 'Advanced Certificate Topics',
+            collapsible: true,
+            collapsed: false,
+            items: [
+              { type: 'ref', id: 'guides/csr' },
+              { type: 'ref', id: 'features/certificate-advanced' },
+              { type: 'ref', id: 'features/stir-shaken' }
+            ]
+          },
+          {
+            type: 'category',
+            label: 'Support & Appendix',
+            collapsible: true,
+            collapsed: false,
+            items: [
+              ...createCommonSupportItems()
+            ]
+          },
+          {
+            type: 'category',
+            label: 'Knowledge Base',
+            collapsible: true,
+            collapsed: false,
+            items: [
+              {
+                type: 'doc',
+                id: 'kb/kb-202601-letsencrypt',
+                label: 'Let\'s Encrypt YE/YR roots on Windows'
+              },
+              {
+                type: 'doc',
+                id: 'kb/kb-202109-letsencrypt',
+                label: 'Let\'s Encrypt DST Root CA X3 expiry'
+              }
             ]
           }
         ]
@@ -79,29 +193,26 @@ export default {
                 'hub/installation/service',
               ],
             },
-            'hub/guides/request-certificate'
           ]
         },
         {
           type: 'category',
-          label: 'Core Workflows',
+          label: 'Concepts & Core Workflows',
           collapsible: true,
           collapsed: false,
           items: [
-            {
-              type: 'category',
-              label: 'Architecture & Concepts',
-              collapsible: true,
-              collapsed: false,
-              items: [
-                'hub/concepts/architecture',
-                'hub/concepts/management-models'
-              ]
-            },
+            createHubTaskGuidesCategory(),
+            'hub/concepts/architecture',
+            'hub/concepts/management-models',
+            createCommonConceptsCategory(),
+            'hub/guides/request-certificate',
+            'hub/guides/managed-instances',
             'hub/guides/certificate-operations',
+            { type: 'ref', id: 'renewals' },
             'hub/guides/request-and-deploy-certificates',
             'hub/guides/certificate-subscriptions',
-            'hub/guides/certificate-authorities-and-credentials'
+            'hub/guides/certificate-authorities-and-credentials',
+            { type: 'ref', id: 'guides/csr' }
           ]
         },
         {
@@ -110,7 +221,13 @@ export default {
           collapsible: true,
           collapsed: false,
           items: [
-            {type:'ref',id:'deployment/tasks_intro'},
+            'hub/guides/managedchallenges',
+            'hub/guides/acme-server',
+            'hub/guides/ccm',
+            'hub/guides/agent',
+            { type: 'ref', id: 'guides/powershell-support' },
+            { type: 'ref', id: 'deployment/tasks_intro' },
+            createDeploymentTaskGuidesCategory(),
             { type: 'ref', id: 'script-hooks' },
             { type: 'ref', id: 'guides/import-export' },
             {
@@ -119,47 +236,43 @@ export default {
               label: 'Apache, nginx, and other web servers'
             },
             { type: 'ref', id: 'guides/architecture/load-balancing' },
-            { type: 'ref', id: 'guides/auto-update' }
+            { type: 'ref', id: 'guides/architecture/step-ca' },
+            { type: 'ref', id: 'guides/auto-update' },
+            { type: 'ref', id: 'features/data-stores' }
           ]
         },
         {
           type: 'category',
-          label: 'Administration & Security',
+          label: 'Operations & Maintenance',
           collapsible: true,
           collapsed: false,
           items: [
             'hub/guides/hub-settings-overview',
             'hub/guides/security-and-access',
-            'hub/guides/import-export-and-migration',
             'hub/guides/day-2-operations'
           ]
         },
         {
           type: 'category',
-          label: 'Integrations',
+          label: 'Advanced Integrations',
           collapsible: true,
           collapsed: false,
           items: [
-            'hub/guides/managedchallenges',
-            'hub/guides/acme-server',
-            'hub/guides/ccm',
-            'hub/guides/agent',
+            'hub/guides/import-export-and-migration',
             'hub/guides/oidc'
           ]
         },
         {
           type: 'category',
-          label: 'Resources & Support',
+          label: 'Support & Appendix',
           collapsible: true,
           collapsed: false,
           items: [
             'hub/hub-roadmap',
             'hub/known-issues',
-            { type: 'ref', id: 'guides/troubleshooting' },
             { type: 'ref', id: 'guides/maintenance' },
-            { type: 'ref', id: 'faq' },
-            { type: 'ref', id: 'guides/licensing' },
-            { type: 'ref', id: 'support' }
+            { type: 'ref', id: 'guides/tools' },
+            ...createCommonSupportItems()
           ]
         }
       ]
@@ -182,8 +295,8 @@ export default {
           collapsible: true,
           collapsed: false,
           items: [
-            'renewals',
-            'guides/troubleshooting'
+            { type: 'ref', id: 'renewals' },
+            { type: 'ref', id: 'guides/troubleshooting' }
           ]
         },
         {
@@ -192,52 +305,15 @@ export default {
           collapsible: true,
           collapsed: false,
           items: [
-            'guides/licensing',
-            'support'
+            { type: 'ref', id: 'guides/licensing' },
+            { type: 'ref', id: 'support' }
           ]
         }
       ]
     }
 
   ],
-  certifyDnsSidebar: [
-    {
-      type: 'category',
-      label: 'Certify DNS',
-      items: [
-        {
-          type: 'category',
-          label: 'Start Here',
-          items: [
-            'dns/providers/certifydns',
-            'dns/validation'
-          ]
-        },
-        {
-          type: 'category',
-          label: 'DNS Providers & Integration',
-          collapsible: true,
-          collapsed: false,
-          items: [
-            'dns/providers/acme-dns',
-            'dns/providers/scripting'
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Support',
-          collapsible: true,
-          collapsed: false,
-          items: [
-            'guides/troubleshooting',
-            'guides/licensing',
-            'support'
-          ]
-        }
-      ]
-    }
 
-  ],
   helpSupportSidebar: [
     {
       type: 'category',
@@ -247,9 +323,9 @@ export default {
           type: 'category',
           label: 'Quick Help',
           items: [
-            'faq',
-            'support',
-            'guides/licensing'
+            { type: 'ref', id: 'faq' },
+            { type: 'ref', id: 'support' },
+            { type: 'ref', id: 'guides/licensing' }
           ]
         },
         {
@@ -258,8 +334,8 @@ export default {
           collapsible: true,
           collapsed: false,
           items: [
-            'guides/troubleshooting',
-            'guides/maintenance'
+            { type: 'ref', id: 'guides/troubleshooting' },
+            { type: 'ref', id: 'guides/maintenance' }
           ]
         },
         {
@@ -269,12 +345,12 @@ export default {
           collapsed: false,
           items: [
             {
-              type: 'doc',
+              type: 'ref',
               id: 'kb/kb-202601-letsencrypt',
               label: 'Let\'s Encrypt YE/YR roots on Windows'
             },
             {
-              type: 'doc',
+              type: 'ref',
               id: 'kb/kb-202109-letsencrypt',
               label: 'Let\'s Encrypt DST Root CA X3 expiry'
             }
@@ -285,21 +361,11 @@ export default {
   ],
   commonDocsSidebar: [
     {
-      /* This (last place) sidebar is used for common documentation shared between Certify Certificate Manager and Certify Management Hub, this avoid the wrong product being displayed in breadcrumbs */
+      /* This sidebar is used for common documentation shared between Certify Certificate Manager and Certify Management Hub */
       type: 'category',
       label: 'Common Concepts',
       items: [
-        {
-          type: 'category',
-          label: 'Start Here',
-          items: [
-            'features/index',
-            'guides/certificates',
-            'guides/certificate-authorities',
-            'http-validation',
-            'dns/validation',
-          ]
-        },
+        createCommonConceptsCategory(),
         {
           type: 'category',
           label: 'Automation & Deployment',
@@ -322,6 +388,7 @@ export default {
               ]
             },
             'script-hooks',
+            'guides/powershell-support',
             {
               type: 'doc',
               id: 'guides/apache-nginx',
@@ -358,37 +425,8 @@ export default {
             'features/certificate-advanced',
             'features/stir-shaken'
           ]
-        },
-        {
-          type: 'category',
-          label: 'Product Help',
-          collapsible: true,
-          collapsed: false,
-          items: [
-            'faq',
-            'guides/licensing',
-            'support'
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Knowledge Base',
-          collapsible: true,
-          collapsed: false,
-          items: [
-            {
-              type: 'doc',
-              id: 'kb/kb-202601-letsencrypt',
-              label: 'Let\'s Encrypt YE/YR roots on Windows'
-            },
-            {
-              type: 'doc',
-              id: 'kb/kb-202109-letsencrypt',
-              label: 'Let\'s Encrypt DST Root CA X3 expiry'
-            }
-          ]
         }
       ]
-    }],
+    }
+  ],
 };
-

@@ -7,7 +7,7 @@ displayed_sidebar: helpSupportSidebar
 
 # Get Help and Support
 
-This page lists the main support paths for Certify The Web products, including self-service documentation, community discussion, partner help, and direct support.
+Support options for Certify The Web products include self-service documentation, community discussion, partner help, and direct support.
 
 ## Self-Service Resources
 
@@ -48,8 +48,8 @@ If you are evaluating the product and have pre-purchase questions about fit, dep
 
 ## Community and Public Issues
 
-- Community Edition users are encouraged to join the community forum: <a href="https://community.certifytheweb.com" target="_blank">community.certifytheweb.com</a>
-- Public bug reports and feature requests can be discussed on the community forum or raised on the <a href="https://github.com/webprofusion/certify/issues" target="_blank">GitHub project</a> when appropriate.
+- Community Edition users are encouraged to join the community forum: [community.certifytheweb.com](https://community.certifytheweb.com)
+- Public bug reports and feature requests can be discussed on the community forum or raised on the [GitHub project](https://github.com/webprofusion/certify/issues) when appropriate.
 - GitHub issues are not used for private support requests.
 
 ## Consultants and Solution Partners
@@ -59,4 +59,3 @@ We do not currently offer pre-sales calls or onsite consultancy directly, but we
 If you are looking for regional consultants who can advise on deployment or operations, see our list of [Solution Partners](partners.md).
 
 If you are a solution partner and need product-specific clarification, contact the helpdesk in the usual way.
-

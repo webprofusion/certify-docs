@@ -1,4 +1,7 @@
-const isProduction = process.env.NODE_ENV === 'production';
+const isBuildCommand = process.argv.includes('build');
+const enableGtag = process.env.DOCUSAURUS_ENABLE_GTAG
+  ? process.env.DOCUSAURUS_ENABLE_GTAG === 'true'
+  : isBuildCommand;
 
 module.exports = {
   title: 'Certify The Web Docs',
@@ -157,7 +160,7 @@ module.exports = {
         theme: {
           customCss: [require.resolve('./src/css/custom.css')],
         },
-        gtag: isProduction
+        gtag: enableGtag
           ? {
               trackingID: 'G-RLGYG5TYY5',
               anonymizeIP: true,

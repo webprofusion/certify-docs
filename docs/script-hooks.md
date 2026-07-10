@@ -66,7 +66,7 @@ $result.ManagedItem.CertificatePreviousThumbprintHash  # ex: "18c1060a1be5e6fc0b
 $result.Abort = $false
 ```
 
-The `$result.ManagedItem` object is an instance of the <a href="https://github.com/webprofusion/certify/blob/development/src/Certify.Models/Config/ManagedCertificate.cs" target="_blank">ManagedCertificate</a> class, so all of the properties it has will be available in your script:
+The `$result.ManagedItem` object is an instance of the [ManagedCertificate](https://github.com/webprofusion/certify/blob/development/src/Certify.Models/Config/ManagedCertificate.cs) class, so all of the properties it has will be available in your script:
 
 ## Pre-Request Tasks
 
@@ -366,4 +366,3 @@ param($result)
 $thumb = $result.ManagedItem.CertificateThumbprintHash
 C:\Windows\System32\inetsrv\appcmd.exe set config -section:system.applicationHost/sites /siteDefaults.ftpServer.security.ssl.serverCertHash:$thumb /commit:apphost
 ```
-

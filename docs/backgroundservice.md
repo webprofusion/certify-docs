@@ -7,6 +7,8 @@ In order to perform certificate requests and automatic renewals we install a bac
 
 This service is installed to run as Local System and requires that the Local System account has the necessary privileges to administer IIS (if required) and the computers certificate store, as well as writing to the C:\ProgramData\Certify folder for configuration information. For more information on security and required permissions see [security](guides/security.md).
 
+If you need to run the service under a different account (for example to support full impersonation scenarios), follow [Change the Background Service User (Windows)](guides/service-user-migration.md).
+
 To check the log for this service, review `C:\ProgramData\Certify\logs\service.exceptions.log`.
 
 ## Custom configuration and Troubleshooting "..service not started" error
