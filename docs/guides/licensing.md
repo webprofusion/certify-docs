@@ -43,7 +43,7 @@ From 1 November 2023, all license tiers moved to a 12 month renewal cycle with r
 
 From 30 June 2026, Power Pro covers up to 50 installs vs the previous 25. Enterprise covers up to 250 installs vs the previous 100. This has been applied retrospectively to existing recently created/renewed licenses.
 
-Each bundle purchase provides one license key that can be used up to the number of installs shown above. *Certify Management Hub* uses the same license key types as *Certify Certificate Manager* and requires a *Power Pro* (or higher) license key or *Cloud Managed licensing*. License tier names are simply labels for bundle sizes and are not tied to the size or type of your organization.
+Each bundle purchase provides one license key that can be used up to the number of installs shown above. *Certify Management Hub* uses the same license key types as *Certify Certificate Manager* and requires a *Power Pro* (or higher) license key or *Cloud Managed licensing* (subscriptions with 10 or more installs/seats). License tier names are simply labels for bundle sizes and are not tied to the size or type of your organization.
 
 License Bundle keys can be purchased with a credit card through Stripe or with PayPal. POs, pro forma invoices, and other manual invoicing options are not supported because they require manual processing. If you need centralized billing or delegated purchasing, Cloud Managed Licensing is usually the better fit, and you can also generate a payment link for someone else to complete on behalf of your account.
 
