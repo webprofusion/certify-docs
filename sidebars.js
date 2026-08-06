@@ -365,6 +365,7 @@ export default {
       type: 'category',
       label: 'Common Concepts',
       items: [
+        { type: 'ref', id: 'summary', label: 'Summary' },
         createCommonConceptsCategory(),
         {
           type: 'category',
