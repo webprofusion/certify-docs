@@ -24,7 +24,7 @@ Certificate files created during renewals are stored under `<certify data>\asset
 
 ## PFX Passwords
 
-The default PFX password is blank (`""`) unless you configure one under **Certificate > Advanced > Signing and Security**.
+The default PFX password is blank (`""`) unless you configure one under **Certificate > Advanced > Signing and Security**, the rebuild your certificate PFX using *Request Certificate*.
 
 If many certificates need the same password, manage it centrally through stored credentials rather than editing every managed certificate separately.
 
