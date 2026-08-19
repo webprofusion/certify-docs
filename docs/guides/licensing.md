@@ -10,7 +10,7 @@ This guide covers license bundles, cloud-managed subscriptions, transfers, renew
 ## About Licensing
 Certify The Web is a range of commercial products related to automated certificate management. This document covers licensing for Certify Certificate Manager, Certify Management Agent, and Certify Management Hub.
 
-Our apps are available for free download and evaluation. Commercial users and funded organizations are expected to purchase one or more license keys for continued use. All other installs operate under the Community Edition licensing.
+Our apps are available for free download and evaluation, with no feature restrictions and no time limit. Commercial users and funded organizations are expected to purchase one or more license keys for continued use. All other installs run in unlicensed evaluation mode.
 
 :::note
 
@@ -18,7 +18,7 @@ We have separate licensing for our [Certify DNS](../dns/providers/certifydns.md)
 
 :::
 
-Each license key can be activated on one or more machines depending on the license key type. You can buy multiple license keys if required, and each licensed instance can manage an unlimited number of certificates with your chosen Certificate Authority.
+Each license key can be activated on one or more machines depending on the license key type. You can buy multiple license keys if required, and each instance can manage an unlimited number of certificates with your chosen Certificate Authority.
 
 You can review and manage license keys and activated instances from the License Keys section of your certifytheweb.com profile.
 
@@ -116,7 +116,7 @@ Our services, licenses and products are subject to our [Terms and Conditions](..
 
 ### If I deactivate the license, will my certificate continue to work?
 
-Yes. The app reverts to the Community Edition feature set, and existing certificate renewals continue as normal. The only change is that adding new managed certificates on that install becomes subject to the Community Edition limits.
+Yes. The app reverts to unlicensed evaluation mode and existing certificate renewals continue as normal. There are no feature restrictions in evaluation mode, so the app continues to work as before.
 
 ### How do I transfer the license to another machine?
 

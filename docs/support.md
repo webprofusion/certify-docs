@@ -48,7 +48,7 @@ If you are evaluating the product and have pre-purchase questions about fit, dep
 
 ## Community and Public Issues
 
-- Community Edition users are encouraged to join the community forum: [community.certifytheweb.com](https://community.certifytheweb.com)
+- Unlicensed users are encouraged to join the community forum: [community.certifytheweb.com](https://community.certifytheweb.com)
 - Public bug reports and feature requests can be discussed on the community forum or raised on the [GitHub project](https://github.com/webprofusion/certify/issues) when appropriate.
 - GitHub issues are not used for private support requests.
 

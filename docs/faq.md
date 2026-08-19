@@ -24,7 +24,7 @@ Use this as a quick answer index. For deeper guidance, follow the linked pages f
 
 ### Is the product commercially supported?
 
-Yes. Full-time [email support](support.md) is available for licensed users and active evaluations. Community Edition users are encouraged to use the community forum and self-service documentation.
+Yes. Full-time [email support](support.md) is available for licensed users and active evaluations. Unlicensed users are encouraged to use the community forum and self-service documentation.
 
 ### Do I need to keep the app running?
 

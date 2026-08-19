@@ -35,7 +35,7 @@ The Windows setup executable is digitally signed as Publisher "Webprofusion Pty 
 
 The app requires elevated privileges to run. This is primarily in order to update the machine certificate store and update webserver bindings. It is also used to ensure only administrative users are controlling the certificate management features.
 
-The app runs in Community Edition mode by default, see [Licensing](licensing.md) for more information.
+By default the app you download runs in the unlicensed evaluation mode, which is free to evaluate with no feature restrictions and no time limit. See [Licensing](licensing.md) for more information.
 
 ## Upgrading
 

@@ -1,124 +1,196 @@
 ---
 title: Certify The Web for Certificate Management
-description: Explore how Certificate Management can work and choose the Certify The Web products that fit your organisation.
+description: An executive summary of Certify The Web certificate management products, covering the problems they solve, prerequisites, recommended architecture, licensing, and implementation best practices.
 displayed_sidebar: null
 ---
 
 # Certify The Web for Certificate Management
 
-If you are exploring our products and need a general overview of how they can be used to get things done, start here. This guide explains what certificates do, what needs to happen during their lifecycle, and how to choose the *Certify The Web* products that fit your environment.
+This document is a high level overview for customers planning their new certificate management solution. It summarizes the problems our products solve, what you need before you start, what a typical deployment looks like, how licensing works, and what we recommend when you roll it out.
 
-## What automated certificate management involves
+## The Problem
 
-An SSL/TLS certificate proves that a domain belongs to your organisation and enables encrypted connections to a service such as a website, API, mail server, or remote access service. A certificate is issued for a limited period, so keeping services secure involves more than requesting a certificate once.
+Every service that uses TLS (HTTPS etc) needs a certificate. That includes websites, APIs, mail servers, remote access gateways, and internal applications. Certificates prove that a domain is controlled by your organisation, and they make trusted encrypted connections possible.
 
-Certificate management usually includes:
+In the past, certificates could remain valid for years, nowadays they typically expire within weeks or at most months. Public certificate lifetimes are getting shorter, and certificates from [authorities](guides/certificate-authorities.md) such as Let's Encrypt already expire after 90 days, you can even opt for 7 day certificates. Renewing them by hand does not scale, and a missed renewal usually means an outage on a service that was working fine the day before.
 
-1. **Requesting** a certificate from a certificate authority (CA), such as Let's Encrypt or another ACME-compatible CA.
-2. **Validating** that your organisation controls the domain, usually through HTTP or DNS.
-3. **Deploying** the certificate and private key to the service that needs it.
-4. **Renewing** the certificate before it expires.
-5. **Monitoring** renewals and failures so that problems do not become outages.
+Automated (ACME) Certificate management involves five repeating steps:
 
-*Certify The Web* products automate these steps while keeping the certificate and deployment under your control.
+1. **[Request](certificate-process.md)** a certificate from a [certificate authority](guides/certificate-authorities.md) (CA).
+2. **Validate** that you control the domain, using [HTTP](http-validation.md) or [DNS](dns/validation.md).
+3. **[Deploy](deployment/tasks_intro.md)** the certificate and its private key to the service that needs it.
+4. **[Renew](renewals.md)** the certificate before it expires.
+5. **[Monitor](dashboard/index.md)** renewals so failures are noticed before they become outages.
 
-## Choose a starting point
+Most organisations can achieve this at a small scale using free command-line tools dilligently monitored by a system administrator. Where it gets complex is when you have dozens or hundreds of servers/services, often managed by different teams using different tools.
 
-The best starting product depends mainly on where your certificates need to be managed. 
+*Certify The Web* automates all five steps. Certificates and private keys stay under your control, on your own systems.
 
-Our main *Certify Management Hub* and *Certify Certificate Manager* products can be downloaded and installed for evaluation with **no time limit**. The Hub has no feature limits during evaluation, while CCM will manage a limited number of certificates in its unlicensed mode.
+## What We Provide
 
-We generally recommend you download and install the apps to evaluate them in a test environment.
+We offer several products. They work well together, and most customers use more than one.
 
-### You manage certificates on a few Windows servers
+| Product | What it is | Use it when |
+|---|---|---|
+| **[Certify Management Hub](hub/index.md)** | Self-hosted web UI and API for central management | You have multiple servers or teams, or you want one place to see everything |
+| **[Certify Certificate Manager](intro.md)** (CCM) | Windows desktop app and [background service](backgroundservice.md) | Certificates are needed on Windows or IIS servers |
+| **[Certify Management Agent](hub/guides/agent.md)** | Lightweight service for headless systems | Certificates are needed on Linux, macOS, or containers |
 
-Start with [Certify Certificate Manager](intro.md). It is a Windows desktop application and background service that can request and renew certificates, manage IIS bindings and the Windows Certificate Store, and deploy certificates to other services.
 
-This is usually the right first choice when:
+We offer **[Certify DNS](dns/providers/certifydns.md)**, an optional managed service for [DNS validation](dns/validation.md). It is useful when your DNS provider has no API, or when you do not want DNS credentials stored on every server. It is licensed separately.
 
-- Your services run on Windows or IIS.
-- You just need a certificate for your Windows-based service without any extra complexity.
-- One server, or a small number of independently managed servers, is the main scope.
-- The people managing certificates are happy to remote desktop to the server to perform administration.
-- You might want to upgrade the Hub later, but for now it seems more sophisticated than you really need.
+We also have **[Certify Dashboard](dashboard/index.md)** which is our hosted [renewal status reporting](renewals.md), generally used with CCM when you want simple renewal visibility without using the hub.
 
-Begin with [installing Certificate Manager](guides/installation.md), then [request your first certificate](certificate-process.md).
+For most new deployments we recommend starting with **Certify Management Hub**, then adding CCM or Agent installations on the servers that need certificates deployed locally.
 
-### You want central management across servers or teams
+## Prerequisites
 
-Start with [Certify Management Hub](hub/). The Hub provides a self-hosted web UI and API for central administration, access control, reporting, managed DNS challenges, and coordination of connected instances.
 
-This is usually the right first choice when:
+**Operating systems**
 
-- Certificates are spread across multiple servers, sites, or teams.
-- You need a shared view of certificate status and renewal failures.
-- You want a web interface or API instead of managing each server separately.
-- Your environment includes Windows, Linux, macOS, or containers.
-- Your requirements are likely to get more sophisticated over time.
+- **[Certificate Manager](guides/installation.md)** runs on any currently supported version of Windows or Windows Server. We do not officially support operating systems that Microsoft no longer supports.
+- **[Management Hub](hub/installation/index.md)** and **[Management Agent](hub/guides/agent.md)** run on [Windows](hub/installation/windows.md), [Linux](hub/installation/linux.md), macOS, or in [containers](hub/installation/containers.md), including Kubernetes and OpenShift.
+- Everything is self-contained. You do not need to install .NET separately.
 
-The Hub can manage certificates directly and can also coordinate [Certificate Manager](hub/guides/ccm.md) or [Management Agent](hub/guides/agent.md) instances. Start with the [Hub installation guide](hub/installation/index.md).
+**Permissions and access**
 
-Broadly, we would expect most customers to use *Certify Management Hub*, with some use of CCM and Agent installations. Before the Hub was available, customers tended to install many CCM instances with no centralized management. For current deployments, we would expect most customers to want to use the Hub. If you have existing CCM installations, you can install the Hub and join them to it.
+- Local administrator or root access to install the software.
+- Permission to update the certificate store and web server bindings on target servers.
+- If you use [DNS validation](dns/validation.md), credentials for your DNS provider, or a delegated setup using [Certify DNS](dns/providers/certifydns.md).
 
-### You manage certificates on Linux or macOS without a desktop UI
+**Validation path**
 
-Use [Certify Management Agent](hub/guides/agent.md) for headless Linux and macOS systems. An agent can manage certificates on the target system and report status to the Hub when central administration is needed.
+- For [HTTP validation](http-validation.md), the certificate authority must be able to reach the host over the public internet on port 80.
+- For DNS validation, wildcard certificates, or servers without public access, you need a way to update DNS records automatically.
 
-This is a good fit when certificates must be deployed locally on Unix-like systems, especially when there is no suitable desktop session or when the system is managed remotely.
+**Anti-virus and endpoint protection**
 
-Both CCM and the Agent can monitor the status of renewals for some third-party ACME clients, such as Certbot, acme.sh, Posh-ACME, and win-acme, by reading their local configuration and recent logs and reporting back to the Hub.
+- (Windows) Add the application, its [background service](backgroundservice.md), and the [`C:\ProgramData\certify` data folder](guides/maintenance.md) to your exclusion list. Endpoint protection products are a common cause of [unexplained renewal failures](guides/troubleshooting.md).
 
-### You need organisation-wide renewal visibility
+## Recommended Architecture
 
-Use [Certify Dashboard](dashboard/) for hosted monitoring of renewal activity, certificate status, and failures across your certificate estate.
+**Where should the renewal and deployment work actually run?**
 
-Dashboard is focused on visibility. It is a good fit when certificates are already managed by other tools (and monitored by our Agent) or when different teams need a central view without moving certificate deployment into a new system. See [getting started with Dashboard](dashboard/index.md).
+Most users adopt a hybrid approach depending on the requirements of the services they are targeting.
 
-### You need delegated DNS validation
+Certificates usually need to be installed on the machine that serves them, so the work often needs to happen close to that machine. The Hub gives you one place to administer everything, but the work itself can run wherever it makes most sense.
 
-Use [Certify DNS](dns/providers/certifydns.md) when DNS validation is the right way to prove domain control and your certificate manager should not have direct access to the authoritative DNS provider. Certify DNS can handle delegated DNS challenges for compatible certificate management workflows.
+### The common pattern
 
-## Products can work together
+For most organisations we recommend:
 
-These products are not mutually exclusive. Common arrangements include:
+- **[One Management Hub instance](hub/installation/index.md)** on an internal server, as the central console and API.
+- **[Certificate Manager](hub/guides/ccm.md)** on Windows servers that need certificates locally, [joined to the Hub](hub/guides/managed-instances.md).
+- **[Management Agent](hub/guides/agent.md)** on Linux, macOS, and container hosts, joined to the Hub.
+- **[Certify Dashboard](dashboard/index.md)** for organisation-wide monitoring, including certificates managed by other tools.
 
-- Certificate Manager on Windows servers, connected to the Hub for central administration.
-- Management Agent on Linux or macOS systems, reporting to the Hub.
-- The Hub managing some certificates directly while coordinating target instances for others.
-- Dashboard providing organisation-wide monitoring for certificates managed by different tools.
-- Certificate Manager or the Hub using Certify DNS for delegated DNS validation.
+The Hub can also [request and deploy certificates directly](hub/guides/request-and-deploy-certificates.md), which is useful for internal services and for early testing.
 
-Start with the product closest to the systems that need certificates, then add central management or monitoring when the number of systems, teams, or certificate authorities makes local administration difficult.
+### Other options
 
-## Things to Consider
+- **[Certificate subscriptions](hub/guides/certificate-subscriptions.md)**: renew a certificate once in the Hub, then let other machines collect and deploy the current copy using CCM/Agent. Good when you want to keep CA accounts and DNS credentials in one place.
+- **[Managed challenges](hub/guides/managedchallenges.md)**: the Hub answers DNS challenges on behalf of other systems, so DNS credentials do not need to be spread across servers.
+- **[Managed ACME service](hub/guides/acme-server.md)**: existing ACME clients such as Certbot or acme.sh point at the Hub, and the Hub handles the order with the real CA.
 
-You do not need to know every answer before choosing a product, but these questions will shape your setup:
+Most real environments end up using a mix of these.
 
-- Which services and domains need certificates?
-- Where do those services run: Windows, Linux, macOS, containers, or a hosted platform?
-- Who should request, deploy, and approve certificates?
-- Do you need one local administrator or a shared view across teams?
-- Can the certificate authority reach your services over HTTP, or will you use DNS validation?
-- Where must the certificate be installed or exported after renewal?
-- Do you want a centralized view of failed renewal attempts?
-- Do you want to automate all deployment, or do you just want to automate certificate *renewal* and leave deployment for some services as separate processes?
+### Hosting notes
 
-For a comparison of capabilities, see the [Product Feature Summary](features/index.md). For terminology and certificate formats, see [Certificates and file formats](guides/certificates.md).
+- If you need to [deploy certificates](deployment/tasks_intro.md) to Windows targets, such as services, shares, or IIS, [host the Hub on Windows](hub/installation/windows.md). Some Windows networking features are not available on Linux.
+- The Hub uses [SQLite by default](features/data-stores.md), which is fine for a single instance. For larger deployments you can use Microsoft SQL Server or PostgreSQL. You are responsible for running and backing up those database servers.
+- Do not expose the Hub to the public internet. Keep it on an internal network, behind a VPN, or restricted by firewall rules. See [security and access](hub/guides/security-and-access.md).
 
-## A practical first workflow
+See [Hub architecture](hub/concepts/architecture.md) and [choosing a management model](hub/concepts/management-models.md) for more detail.
 
-1. List the domains and services that need certificates, including the operating system on which each runs.
-2. Choose the product that runs closest to those services.
-3. Choose a certificate authority and a validation method.
-4. Request a few certificates in a non-critical or test environment.
-5. Confirm that deployment works and that the service presents the new certificate.
-6. Verify the renewal schedule and configure notifications.
-7. Expand to more services, instances, or teams once the first workflow is reliable.
+## Licensing Considerations
 
-Continue with the relevant product guide:
+[Licensing](guides/licensing.md) is based on the number of **installed instances**, not the number of certificates. Every instance can manage an unlimited number of certificates.
 
-- [Get started with Certify Certificate Manager](intro.md)
+**You can evaluate before you buy.** Download and install the products and try them for free, with no feature restrictions and no time limit. We do limit dashboard and notification services we host to primarily service licensed installs. Support is limited to licensed customers and new evaluations.
+
+**There are two ways to license:**
+
+- **License bundles** are fixed-term keys, normally renewed every 12 months, sold by the number of installs they cover. Tiers run from a single install up to 250 installs. Tier names are just bundle sizes and are not related to the size or type of your organisation.
+- **Cloud managed licensing** is a monthly subscription billed through the Microsoft Azure Marketplace. You increase or decrease the number of licensed installs whenever you need to. This suits organisations that want central billing or expect the count to change. You are billed for licensed installs, not for activated ones.
+
+### Support
+[Customer support](support.md) is provided by our support@certifytheweb.com email helpdesk. We do not currently offer telephone support or pre-sales/onboarding calls. We hope to offer that in the future as our organisation expands beyond the core software implementation & support.
+
+**Points worth knowing before you plan a purchase:**
+
+- *[Certify Management Hub](hub/index.md)* needs a **Power Pro** bundle or higher, or cloud managed licensing with 10 or more seats/installs.
+- *[Certify Dashboard](dashboard/index.md)* is included with any of these license keys.
+- *[Certify DNS](dns/providers/certifydns.md)* is licensed separately and is not included with other products.
+- Licenses can move between installs. Deactivate on the old server, then enter the key on the new one.
+- If you deactivate a license, existing renewals keep working. The install simply reverts to unlicensed evaluation mode.
+- We sell electronically by credit card, PayPal, or Azure subscription. We do not process purchase orders or manual invoices. If you need centralised or delegated purchasing, use cloud managed licensing, or buy through a reseller.
+- Managed service providers can use one key across all customers, or one key per customer, and can assign keys to customer accounts.
+
+Full detail, current pricing, and vendor information are in the [licensing guide](guides/licensing.md).
+
+## Evaluation and Implementation Best Practices
+
+A few things help adoption go smoothly:
+
+### Install
+
+Go ahead and use the software as an evaluation, you will find it fairly easy to find your way around and our docs can help with specific concepts and questions. Spend time trying out features to get a feel for what the software can and can't do. Ask us questions.
+
+### Start small
+
+Pick a non-critical service. Request one certificate. Confirm it deploys, confirm the service presents it, and confirm the renewal is scheduled. Then expand. Adding more instances is easy once the first path works.
+
+### Secure the Hub
+
+Change the default admin password immediately after installation. Configure HTTPS for the [Hub service](hub/installation/service.md). Keep it off the public internet. See [security and access](hub/guides/security-and-access.md) and [OIDC sign-in](hub/guides/oidc.md).
+
+### Prefer DNS validation where HTTP validation is tricky
+
+[DNS validation](dns/validation.md) works for wildcard certificates and for servers with no inbound access from the internet. Use [managed challenges](hub/guides/managedchallenges.md) or [Certify DNS](dns/providers/certifydns.md) so that DNS credentials do not have to live on every server.
+
+### Monitor
+
+Configure preferred notification email address and connect instances to the [Hub](hub/guides/managed-instances.md) or [Dashboard](dashboard/index.md). [Renewal failures](guides/troubleshooting.md) (firewall blocks, expired DNS credentials, CA issues etc) usually start weeks before the certificate expires.
+
+### Keep the software current
+
+Only the latest version is supported, and joined instances need compatible versions to keep talking to the Hub. Use typical industry deployment tools like Ansible.
+
+### Back up your configuration
+
+ Include [`C:\ProgramData\certify` on Windows, or `/usr/share/certify` on Linux](guides/maintenance.md), in your normal backup routine. Note that [stored credentials](guides/security.md) are encrypted to the machine that created them, so a backup alone does not move them to another server. See also [import and export](guides/import-export.md).
+
+### Test before major upgrades 
+
+This matters most if you have custom [PowerShell deployment scripts](guides/powershell-support.md), a [custom service account](guides/service-user-migration.md), or an [alternative database](features/data-stores.md).
+
+## Questions to Consider
+
+- Which services and domains need certificates, and which operating systems do they run on?
+- Who should be allowed to request, deploy, and approve certificates?
+- Can the certificate authority reach your services for validation over [HTTP](http-validation.md), or do you need [DNS validation](dns/validation.md)?
+- Where does each certificate need to be installed or [exported](guides/import-export.md) after renewal?
+- Do you want to automate [deployment](deployment/tasks_intro.md) as well, or only renewal?
+- Do you need one shared view of renewal failures across teams?
+
+## Suggested Evaluation Path
+
+1. List the domains and services that need certificates, with the operating system for each.
+2. [Install *Certify Management Hub*](hub/installation/index.md) in a test environment.
+3. Choose a [certificate authority](guides/certificate-authorities.md) and a validation method.
+4. Request one or two certificates for non-critical services.
+5. Confirm deployment works and that the service presents the new certificate.
+6. [Join one Certificate Manager or Agent instance](hub/guides/managed-instances.md) and repeat the test on a remote server.
+7. Configure notifications and check the [renewal schedule](renewals.md).
+8. Expand to production once the first workflow is well understood.
+
+## Where to Go Next
+
+- [Compare product features in detail](features/index.md)
 - [Get started with Certify Management Hub](hub/)
+- [Get started with Certify Certificate Manager](intro.md)
 - [Get started with Certify Dashboard](dashboard/)
+- [Licensing and subscription options](guides/licensing.md)
 - [Understand certificate requests and deployment](certificate-process.md)
 - [Choose HTTP or DNS validation](http-validation.md)
+- [Get help and support](support.md)

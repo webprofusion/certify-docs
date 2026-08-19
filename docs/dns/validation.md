@@ -174,6 +174,7 @@ Posh-ACME based DNS providers:
 | RFC2136 (nsupdate) | [RFC2136 plugin](https://poshac.me/docs/latest/Plugins/RFC2136/) |
 | Selectel | [Selectel plugin](https://poshac.me/docs/latest/Plugins/Selectel/) |
 | Simply.com | [SimplyCom plugin](https://poshac.me/docs/latest/Plugins/SimplyCom/) |
+| Spaceship | [Spaceship plugin](https://poshac.me/docs/latest/Plugins/Spaceship/) |
 | Technitium | [Technitium plugin](https://poshac.me/docs/latest/Plugins/Technitium/) |
 | Tencent DNS | [TencentDNS plugin](https://poshac.me/docs/latest/Plugins/TencentDNS/) |
 | TotalUptime Cloud | [TotalUptime plugin](https://poshac.me/docs/latest/Plugins/TotalUptime/) |
