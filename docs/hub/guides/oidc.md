@@ -42,7 +42,7 @@ Create an app registration in the Azure portal:
 - Select *Add OIDC Provider*
     - General > Set a name for the provider, users will see this on the Sign In page and use it to select the provider as an option.
     - Configuration :
-        - Authority URL which includes your tenant ID e.g. https://login.microsoftonline.com/abcd123-768f-4006-8891-0c85aecd9fd9
+        - Authority URL which includes your tenant ID e.g. https://login.microsoftonline.com/abcd123-768f-4006-8891-0c85aecd9fd9 (note: don't include the /oauth2/v2.0/... suffix from a typical API call).
         - Client ID (Application ID) and Client Secret, this is used to authenticate the confirmation code passed back by Entra after it has authenticated a user.
         - Redirect URI, which is the page on the hub to redirect to once Entra has completed its auth, the host/port of the URL varies depending on your hub configuration e.g. `https://hub.yourcompany.com:8443/authentication/login-callback`
         - Scopes: `openid profile email` - these determine what info is accessible about the user
