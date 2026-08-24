@@ -15,7 +15,7 @@ To use the AWS Route53 DNS API, you need to setup your API key and authenticatio
   - You can either allow all permissions:
     - Allow AmazonRoute53FullAccess for the group.
   - Or restrict permission to the following actions:
-    - route53:ListHostedZones, route53:GetHostedZone, route53:ListResourceRecordSets, route53:ChangeResourceRecordSets, route53:GetChange
+    - route53:ListHostedZones, route53:ListHostedZonesByName, route53:GetHostedZone, route53:ListResourceRecordSets, route53:ChangeResourceRecordSets, route53:GetChange
 
 Here is an example JSON policy:
 
@@ -24,16 +24,49 @@ Here is an example JSON policy:
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "VisualEditor0",
+      "Sid": "AllowListZonesAndGetZone",
       "Effect": "Allow",
       "Action": [
-        "route53:GetChange",
-        "route53:GetHostedZone",
         "route53:ListHostedZones",
-        "route53:ChangeResourceRecordSets",
-        "route53:ListResourceRecordSets"
+        "route53:ListHostedZonesByName",
+        "route53:GetHostedZone"
       ],
       "Resource": "*"
+    },
+    {
+      "Sid": "AllowListRecordSetsInAllZones",
+      "Effect": "Allow",
+      "Action": "route53:ListResourceRecordSets",
+      "Resource": "arn:aws:route53:::hostedzone/*"
+    },
+    {
+      "Sid": "AllowAcmeTxtChangesOnly",
+      "Effect": "Allow",
+      "Action": "route53:ChangeResourceRecordSets",
+      "Resource": "arn:aws:route53:::hostedzone/*",
+      "Condition": {
+        "ForAllValues:StringLike": {
+          "route53:ChangeResourceRecordSetsNormalizedRecordNames": [
+            "_acme-challenge*.*"
+          ]
+        },
+        "ForAllValues:StringEquals": {
+          "route53:ChangeResourceRecordSetsRecordTypes": [
+            "TXT"
+          ],
+          "route53:ChangeResourceRecordSetsActions": [
+            "CREATE",
+            "UPSERT",
+            "DELETE"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "AllowGetChangeStatus",
+      "Effect": "Allow",
+      "Action": "route53:GetChange",
+      "Resource": "arn:aws:route53:::change/*"
     }
   ]
 }
