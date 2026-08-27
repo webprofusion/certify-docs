@@ -237,8 +237,7 @@ export default {
             },
             { type: 'ref', id: 'guides/architecture/load-balancing' },
             { type: 'ref', id: 'guides/architecture/step-ca' },
-            { type: 'ref', id: 'guides/auto-update' },
-            { type: 'ref', id: 'features/data-stores' }
+            { type: 'ref', id: 'guides/auto-update' }
           ]
         },
         {
@@ -249,6 +248,7 @@ export default {
           items: [
             'hub/guides/hub-settings-overview',
             'hub/guides/security-and-access',
+            'hub/guides/data-stores',
             'hub/guides/operations'
           ]
         },

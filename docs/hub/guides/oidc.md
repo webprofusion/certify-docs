@@ -21,6 +21,25 @@ Required values:
 After a provider is configured, a user can sign in through that provider. The first sign-in creates a local account with no roles. An administrator then assigns Hub roles, and the user signs in again with the new permissions.
 
 
+## Disabling Username and Password Sign In
+
+Once OIDC sign in is working you can make it the only way in, so that built in username/password credentials cannot be used to bypass your identity provider.
+
+Edit `hubservice.json` (`C:\ProgramData\certify\hubservice.json` or `/usr/share/certify/hubservice.json`) and set `enablePasswordLogin` to `false`:
+
+```json
+  "AuthSettings": {
+    "enablePasswordLogin": false
+  }
+```
+
+With this set:
+
+- The Hub API rejects all requests to the username/password login endpoint.
+- The Hub UI sign in page detects this when it checks the configured providers, and shows only the single sign on buttons.
+
+The setting is applied exactly as configured and is not re-enabled automatically when no OIDC provider is available, so **configure and test at least one working OIDC provider before you disable password sign in**. If you do lock yourself out, set the value back to `true` (or remove the section) and restart the `Certify Management Hub` service.
+
 ## Azure Entra Example
 
 ### Azure Entra Application

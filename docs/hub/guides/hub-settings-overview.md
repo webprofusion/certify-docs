@@ -132,7 +132,9 @@ Use System for runtime and platform checks.
 This tab shows:
 
 - **Features**: what major Hub features are enabled
+- **Data Stores**: the database the selected instance stores its configuration in
 - **Status**: Hub API, service config, platform, plugin, and datastore health information
+- **Logs**: service logs for the selected instance
 
 Use this tab for checks such as:
 
@@ -140,6 +142,8 @@ Use this tab for checks such as:
 - what URLs are allocated
 - is the service in development mode
 - did plugins and datastore initialization complete correctly
+
+See [Data stores](data-stores.md) for configuring an external database, applying schema migrations, and migrating data between stores.
 
 ## Administration Map
 
@@ -154,6 +158,7 @@ Use this split when deciding where to make a change:
 ## Read Next
 
 - [Security and access](security-and-access.md)
+- [Data stores](data-stores.md)
 - [Import, export, and migration](import-export-and-migration.md)
 - [Hub operations](operations.md)
 

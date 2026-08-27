@@ -118,7 +118,7 @@ Current built-in DNS API providers include:
 | [ACME DNS](providers/acme-dns.md) | Built-in | Delegated validation model |
 | [Aliyun](https://poshac.me/docs/latest/Plugins/Aliyun/) | Built-in | Community-contributed |
 | [IONOS](https://poshac.me/docs/latest/Plugins/IONOS) | Built-in | Community-contributed |
-| Microsoft DNS | Built-in | Community-contributed |
+| Microsoft DNS | Built-in | Community-contributed. Uses WMI/CIM directly. See also the Posh-ACME based Microsoft DNS provider below, which uses the DnsServer PowerShell module instead. |
 | Simple DNS Plus | Built-in | Community-contributed |
 | TransIP | Built-in | Community-contributed |
 
@@ -137,6 +137,7 @@ Posh-ACME based DNS providers:
 | deSEC | [deSEC plugin](https://poshac.me/docs/latest/Plugins/DeSEC/) |
 | DigitalOcean | [DOcean plugin](https://poshac.me/docs/latest/Plugins/DOcean/) |
 | DNS Made Easy | [DMEasy plugin](https://poshac.me/docs/latest/Plugins/DMEasy/) |
+| DNSExit | [DNSExit plugin](https://poshac.me/docs/latest/Plugins/DNSExit/) |
 | DNSimple | [DNSimple plugin](https://poshac.me/docs/latest/Plugins/DNSimple/) |
 | DNSPod (v2) | [DNSPod plugin](https://poshac.me/docs/latest/Plugins/DNSPod/) |
 | DomainOffensive | [DomainOffensive plugin](https://poshac.me/docs/latest/Plugins/DomainOffensive/) |
@@ -146,16 +147,19 @@ Posh-ACME based DNS providers:
 | EasyDNS | [EasyDNS plugin](https://poshac.me/docs/latest/Plugins/EasyDNS/) |
 | Gandi | [Gandi plugin](https://poshac.me/docs/latest/Plugins/Gandi/) |
 | GoDaddy | [GoDaddy plugin](https://poshac.me/docs/latest/Plugins/GoDaddy/) |
+| GoDaddy (v3 API) | [GoDaddyV3 plugin](https://poshac.me/docs/latest/Plugins/GoDaddyV3/) |
 | Google Cloud | [GCloud plugin](https://poshac.me/docs/latest/Plugins/GCloud/) |
 | Google Domains | [GoogleDomains plugin](https://poshac.me/docs/latest/Plugins/GoogleDomains/) |
 | Hetzner | [Hetzner plugin](https://poshac.me/docs/latest/Plugins/Hetzner/) |
 | Hetzner Cloud | [HetznerCloud plugin](https://poshac.me/docs/latest/Plugins/HetznerCloud/) |
 | Hosting.de | [HostingDE plugin](https://poshac.me/docs/latest/Plugins/HostingDE/) |
+| Hosting.nl | [HostingNL plugin](https://poshac.me/docs/latest/Plugins/HostingNL/) |
 | HostUp | [HostUp plugin](https://poshac.me/docs/latest/Plugins/HostUp) |
 | Hurricane Electric | [HurricaneElectric plugin](https://poshac.me/docs/latest/Plugins/HurricaneElectric/) |
 | IBM Cloud/SoftLayer | [IBMSoftLayer plugin](https://poshac.me/docs/latest/Plugins/IBMSoftLayer/) |
 | Infoblox DDI | [Infoblox plugin](https://poshac.me/docs/latest/Plugins/Infoblox/) |
 | Infomaniak | [Infomaniak plugin](https://poshac.me/docs/latest/Plugins/Infomaniak) |
+| Infomaniak (v2 API) | [InfomaniakV2 plugin](https://poshac.me/docs/latest/Plugins/InfomaniakV2/) |
 | INWX | [INWX plugin](https://poshac.me/docs/latest/Plugins/INWX/) |
 | IONOS | [IONOS plugin](https://poshac.me/docs/latest/Plugins/IONOS) |
 | ISPConfig | [ISPConfig plugin](https://poshac.me/docs/latest/Plugins/ISPConfig/) |
@@ -163,6 +167,8 @@ Posh-ACME based DNS providers:
 | Linode | [Linode plugin](https://poshac.me/docs/latest/Plugins/Linode/) |
 | Loopia | [Loopia plugin](https://poshac.me/docs/latest/Plugins/Loopia/) |
 | LuaDns | [LuaDns plugin](https://poshac.me/docs/latest/Plugins/LuaDns/) |
+| Microsoft DNS (Windows Server) | [Windows plugin](https://poshac.me/docs/latest/Plugins/Windows/) |
+| mijn.host | [MijnHost plugin](https://poshac.me/docs/latest/Plugins/MijnHost/) |
 | name.com | [NameCom plugin](https://poshac.me/docs/latest/Plugins/NameCom/) |
 | Namecheap | [Namecheap plugin](https://poshac.me/docs/latest/Plugins/Namecheap/) |
 | NameSilo | [NameSilo plugin](https://poshac.me/docs/latest/Plugins/NameSilo/) |

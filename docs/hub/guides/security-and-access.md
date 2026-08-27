@@ -90,6 +90,39 @@ Typical pattern:
 
 This is the recommended way to expose only the intended certificates to a given subscriber.
 
+## Domain-Scoped Role Assignments
+
+Any assigned role can additionally be restricted to specific domains. Where tag scopes limit *which resources* a role can see, domain restrictions limit *which identifiers* it may act on.
+
+Typical pattern:
+
+1. Open **Users**, select the user or application, then edit their assigned roles.
+2. On the role you want to restrict, choose **Edit domain restrictions**.
+3. Add one or more domains, then Save.
+
+Each entry is a **Domain Match rule**, the same rule format used by challenge configurations and Managed Challenges:
+
+- `example.com` matches that domain exactly.
+- `*.example.com` matches `example.com` and its direct subdomains (`www.example.com`), but not deeper subdomains (`a.b.example.com`).
+- Rules are case insensitive, and a single entry may hold several rules separated by `;` or `,`.
+
+A wildcard identifier such as `*.example.com` can only be requested when a matching wildcard rule is present. Being scoped to `example.com` alone does not grant authority over all of its subdomains.
+
+A role assignment with no domain restrictions applies to all domains. Restrictions from every role authorizing an operation are pooled, so adding a restriction to one assignment restricts the principal for that operation.
+
+Domain restrictions are enforced for:
+
+- managed ACME orders, and again at order finalization against the identifiers in the CSR
+- managed DNS challenge requests
+- certificate downloads
+- the list of certificates a managed instance can subscribe to
+
+A certificate is only offered for subscription, and only downloadable, when **every** identifier on it is permitted. A certificate carrying one out-of-scope SAN is not accessible.
+
+An ACME client cannot widen its scope at finalization: the CSR must not request any identifier absent from the order, and the identifiers are re-checked against the account's restrictions at that point, so access narrowed after an order was placed still takes effect.
+
+**Preview Subscribable Items** shows the rules in force for a principal. Managed challenges are still listed in full there, since a challenge scoped to a wider rule (`*.example.com`) remains usable for the narrower set of identifiers the principal is allowed to request.
+
 ## Managed Challenge Consumers
 
 For managed DNS challenges, create a specific application or service principal and scope its API token to the managed challenge consumer role.

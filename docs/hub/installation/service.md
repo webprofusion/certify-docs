@@ -2,6 +2,18 @@
 title: Hub Service Config
 ---
 
+## Sign In Options
+
+The `AuthSettings` section controls which sign in methods the Hub API accepts:
+
+```json
+  "AuthSettings": {
+    "enablePasswordLogin": true
+  }
+```
+
+Set `enablePasswordLogin` to `false` to accept OpenID Connect sign in only. See [OpenID Connect (OIDC)](../guides/oidc.md) for details and the lockout warning.
+
 ## Port and TLS Certificate
 By default the Hub service starts on `http://localhost:8080`, which means it is usually limited to local access and does not have HTTPS enabled.
 
