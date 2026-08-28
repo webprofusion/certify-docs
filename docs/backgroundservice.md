@@ -159,24 +159,20 @@ Both files in `C:\ProgramData\Certify\` need to be edited by hand:
 
 ```json
 {
-  "UseHTTPS": false,
-  "Port": 9696,
-  "Host": "127.0.0.2",
+  ...
   "Transport": "namedpipe"
 }
 ```
 
-2. In `servers.json`, set `Mode` to `namedpipe` on the connection the app uses (the one with `"IsDefault": true`):
+2. In `servers.json`, set `Mode` to `namedpipe` on the connection the app uses (the one with `"IsDefault": true`, most users only have one connection configured):
 
 ```json
 [
   {
-    "Id": "452ac1b2-9baa-40f5-8ca7-7d2090976d0b",
-    "DisplayName": "(local)",
+  ...
     "Mode": "namedpipe",
-    "Authentication": "default",
-    "ServerMode": "v1",
     "IsDefault": true
+   ...
   }
 ]
 ```
