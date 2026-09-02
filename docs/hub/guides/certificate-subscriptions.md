@@ -56,6 +56,14 @@ The source system owns renewal of the actual certificate. The consuming instance
 
 Note: if a PFX password is applied to the source certificate the same PFX password will be required on the consumer to decrypt and use the PFX.
 
+## Failure Handling
+
+A subscription check which cannot reach or read the source, for example because the hub is unavailable or the instance no longer has permission, is recorded against the item and retried. The first few failures are retried on the next scheduled pass, after which attempts are spaced out progressively, up to a maximum of 48 hours. A check which reaches the source again clears the recorded failure.
+
+If the source certificate was retrieved but could not be deployed locally, for example because a deployment task failed, the certificate is not fetched again. Deployment and deployment tasks are re-attempted automatically by the renewal pass, with the same spacing between attempts, and a later check which finds no newer certificate at the source leaves that recorded failure in place until the deployment succeeds.
+
+For Push and Auto mode subscriptions, an update notification sent while the instance was disconnected from the hub is not lost. When the connection is re-established the instance asks the hub for the current version of each subscribed certificate and fetches any it does not already hold.
+
 ## Common Issues
 
 ### The Hub certificate is not available for selection

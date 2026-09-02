@@ -14,6 +14,14 @@ The renewal frequency defaults to 75% of the certificate lifetime. This is confi
 
 Renewal operations are performed by the relevant Certify background service/agent, so renewals continue even when no UI session is open. 
 
+## Renewal Retries and Automatic Recovery
+
+A renewal which fails is retried by the next scheduled renewal pass. The first few failures are retried without delay, so a brief problem such as a DNS provider outage or an unreachable web server recovers within minutes. After that, attempts are spaced out progressively, up to a maximum wait of 48 hours or 10% of the certificate lifetime, whichever is shorter, so a persistent problem does not use up certificate authority rate limits. Each attempt and its outcome is recorded in the managed certificate log, and the renewal plan shown for each item explains when the next attempt will take place and why.
+
+If a certificate was obtained successfully but could not be fully deployed, for example because the certificate store or website bindings could not be updated or a deployment task failed, the certificate itself is not requested again. Instead the deployment and deployment tasks are re-attempted automatically by the renewal pass, with the same spacing between attempts, and within the item's maintenance window if one applies.
+
+If the service cannot write to its data store it stops attempting renewals rather than repeating work it cannot record, reports the problem under **Settings > System > Status**, and reconnects automatically once the data store is available again.
+
 ## Monitoring Certificate Renewals
 
 ### Zero Config Status Reporting API
