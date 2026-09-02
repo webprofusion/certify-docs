@@ -38,6 +38,7 @@ You can use the `acmeaccount add` command to add/create a new ACME account regis
 - `certify renew` : renew certificates for all auto renewed managed certificates, if they are due or have not yet been requested.
 
 - `certify renew id=<first item id>,<next item id>` : target the specific comma separated list of IDs (no spaces), optionally with other renewal flags.
+  - A targeted item whose certificate was obtained but not fully deployed (the certificate store or binding deployment failed, or an automated deployment task did) has that certificate deployed again rather than a new one requested. Add `--force-renew-all` to request a new certificate regardless.
 
 - `certify renew --renew-all-due` : renew all certificates which are due or have not yet been requested even if auto-renew is not enabled.
 
