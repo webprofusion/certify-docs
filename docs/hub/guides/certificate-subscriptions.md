@@ -58,7 +58,7 @@ Note: if a PFX password is applied to the source certificate the same PFX passwo
 
 ## Failure Handling
 
-A subscription check which cannot reach or read the source, for example because the hub is unavailable or the instance no longer has permission, is recorded against the item and retried. The first few failures are retried on the next scheduled pass, after which attempts are spaced out progressively, up to a maximum of 48 hours. A check which reaches the source again clears the recorded failure.
+A subscription check which cannot reach or read the source, for example because the hub is unavailable or the instance no longer has permission, is recorded against the item and retried. The first few failures are retried on the next scheduled pass, after which attempts are spaced out progressively, up to a maximum of 48 hours or 10% of the certificate lifetime, whichever is shorter, in the same way as a renewal attempt. A check which reaches the source again clears the recorded failure. A new certificate version announced by the hub is fetched on the next pass even if earlier attempts were being spaced out, because it is new work rather than a repeat of what failed.
 
 If the source certificate was retrieved but could not be deployed locally, for example because a deployment task failed, the certificate is not fetched again. Deployment and deployment tasks are re-attempted automatically by the renewal pass, with the same spacing between attempts, and a later check which finds no newer certificate at the source leaves that recorded failure in place until the deployment succeeds.
 
