@@ -63,7 +63,9 @@ Use **Edit** on an API Access entry to change its title, description and scoped 
 
 The security principal a token belongs to cannot be changed. To move API access to a different principal, remove the token and assign a new one.
 
-A token is scoped to *role assignments*, not to roles. Removing a role from a principal and assigning it again creates a new role assignment, which leaves any token scoped to the old one granting no access. Where that has happened the API Access page shows **Missing role assignment** against the token, and requests using it are denied. Use **Edit** to scope the token to the current role assignment.
+A token is scoped to *role assignments*, not to roles. Removing a role from a principal and assigning it again creates a new role assignment, which leaves any token scoped to the old one granting no access.
+
+Removing a role warns you when API tokens are scoped to it, and the Assigned Roles editor lists the tokens scoped to each assignment. Where a scope has already been lost, the API Access page says so against the token, and requests using it are denied. Use **Edit** to scope the token to the current role assignment.
 
 ## Joining Keys
 
