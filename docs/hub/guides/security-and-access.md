@@ -188,6 +188,7 @@ Check that:
 - the principal exists
 - the token is active
 - the token includes the intended scoped role
+- the token's scoped roles do not show **Missing role assignment** on the API Access page, which means the role was re-assigned after the token was scoped to it. Use **Edit** to re-scope the token.
 - the client is using the correct Hub API URL
 
 ### A managed instance cannot see any subscribable Hub certificates
