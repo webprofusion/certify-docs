@@ -57,6 +57,14 @@ Recommended pattern:
 
 This makes review and revocation easier.
 
+### Changing the role scope of an existing token
+
+Use **Edit** on an API Access entry to change its title, description and scoped roles. The issued Client ID and Client Secret are not changed, so anything already using the token keeps working and does not need to be reconfigured.
+
+The security principal a token belongs to cannot be changed. To move API access to a different principal, remove the token and assign a new one.
+
+A token is scoped to *role assignments*, not to roles. Removing a role from a principal and assigning it again creates a new role assignment, which leaves any token scoped to the old one granting no access. Where that has happened the API Access page shows **Missing role assignment** against the token, and requests using it are denied. Use **Edit** to scope the token to the current role assignment.
+
 ## Joining Keys
 
 By default, the Hub creates a joining API key during installation.
