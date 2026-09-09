@@ -131,7 +131,7 @@ A certificate is only offered for subscription, and only downloadable, when **ev
 
 An ACME client cannot widen its scope at finalization: the CSR must not request any identifier absent from the order, and the identifiers are re-checked against the account's restrictions at that point, so access narrowed after an order was placed still takes effect.
 
-**Preview Subscribable Items** shows the rules in force for a principal. Managed challenges are still listed in full there, since a challenge scoped to a wider rule (`*.example.com`) remains usable for the narrower set of identifiers the principal is allowed to request.
+**Preview Access** shows the rules in force for any security principal - user, application, group or managed instance - and can evaluate them as the principal itself or as one of its assigned API tokens, which is narrower whenever a token is scoped to only some of the principal's role assignments. A managed instance is not shown the certificates from its own instance, since it already holds those. Managed challenges are still listed in full there, since a challenge scoped to a wider rule (`*.example.com`) remains usable for the narrower set of identifiers the principal is allowed to request.
 
 ## Managed Challenge Consumers
 
