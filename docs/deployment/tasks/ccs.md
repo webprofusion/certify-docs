@@ -40,11 +40,12 @@ An advantage with this approach is that the IIS binding configurations themselve
 4. **Certificate Conventions**
    - Certificates must be named using the FQDN (e.g., `www.example.com.pfx`). The Certify *Deploy to CCS* task will take care of naming the files correctly.
    - Private key password should be consistent across certificates. To set a certificate password in Certify use *Certificate > Advanced > Signing & Security > Password*. The password takes effect when you next renew the certificate and the certificate PFX file is rebuilt.
+   - Alternatively, set the *Optional New Password* on the *Deploy to CCS* task to a stored password credential matching the CCS private key password. The exported PFX files are then protected with that password (whatever the certificate's own PFX password is), and the change applies the next time the task runs.
 
 5. **Configure the Managed Certificate to export to the CCS store location**
   
    - On your existing managed certificate:
-     - Set a PFX password under Certificate > Advanced > Signing & Security > Password.
+     - Set a PFX password under Certificate > Advanced > Signing & Security > Password, or use the task's *Optional New Password* (see above).
      - Set *Deployment Mode* on the *Deployment* tab to *No Deployment* or *Store Only*. This is to avoid attempting to update the IIS bindings outside of CCS.
      - Under *Tasks > Deployment Tasks*, add a *Deploy to CCS task*, configure the output share path. The task will decide the output filename naming scheme depending on the domains etc.
      - Run your renewal to generate your new PFX and export it to your share path. If all credentials were correct you will find the PFX file has been exported to the share path ready for use.
