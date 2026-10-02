@@ -86,9 +86,11 @@ You can optionally specify environment variables to modify the default config:
 `CERTIFY_MANAGEMENT_HUB_AUTOJOIN` : Set to `"true"` to tell the instance to automatically attempt to join the specified hub
 
 
-`CERTIFY_ADMIN_DEFAULTUSERNAME` : Override the initial default `admin` username. Only has an effect on initial setup.
+`CERTIFY_ADMIN_DEFAULTUSERNAME` : Override the default `admin` username used when the default admin account is created on first run.
 
-`CERTIFY_ADMIN_DEFAULTPWD`: Override the initial default admin password of `changeme!`. Only has an effect on initial setup.
+`CERTIFY_ADMIN_DEFAULTPWD`: Override the default admin password of `changeme!` used when the default admin account is created on first run.
+
+In v7.2.0 and earlier these also apply if the default admin account has been deleted, as it is recreated with these values (or `admin` and `changeme!`) the next time the service starts. See [Installation](index.md) for managing the default admin.
 
 `CERTIFY_APP_DATA` : Specify an alternative path to store core service settings.
 
