@@ -5,8 +5,11 @@ title: Command Line (CLI)
 
 A set of command line tools are available using the tool _certify.exe_ which is found in the installation directory. The commands must be performed using an elevated administrators account.
 
+
 :::tip
 Most users do not need to use the command line options at all. By default all certificate renewals are taken care of automatically by the Certify background service.
+
+Note: Certify Management Hub does not currently have CLI support and admin automation can only be achieved using the Hub API
 :::
 
 Usage: `certify <command>`
