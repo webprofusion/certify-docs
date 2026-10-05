@@ -22,16 +22,23 @@ Use **Summary** for the overall operating view:
 - how many are healthy, warning, paused, or error state
 - whether any activity is in progress
 - whether joined instances are connected and reporting
+- how many certificates use each certificate authority (CA) and each key type
+
+Select a CA or key type to open **Browse All** filtered to those certificates.
 
 ## Browse All
 
-Use **Browse All** to locate and review specific certificates.
+Use **Browse All** to locate and review specific certificates. Along with each certificate's instance, identifiers, tags and dates, the list shows its CA, key type and issuer.
+
+To hide columns you don't need, choose the columns button next to **Refresh** and clear them. Your choice is remembered in your browser.
 
 Browse All includes filters for:
 
 - **Instance**
 - **Tags**
 - **Status**
+- **CA**
+- **Key Type**
 - **Keyword**
 
 Common uses:
@@ -39,7 +46,17 @@ Common uses:
 - find all certificates on one target instance
 - find certificates by application or environment tags
 - review only items in warning or error state
+- find the certificates issued by one CA, for example before moving them to another CA
+- find certificates using a key type you are phasing out, such as RSA 2048
 - search by title or identifier
+
+### CA, key type and issuer
+
+The CA shown is the CA last used for the certificate: the CA which issued its current certificate, or, if there is no certificate yet, the CA of its most recent attempt. Certificates from external certificate managers such as Certbot have no CA here. Custom CAs are shown by the title they have on their instance. The Hub reads these each time the instance reports its certificates, so for a short time after the Hub starts a custom CA may be shown by its id.
+
+The key type is read from the current certificate itself, so it is accurate even where the instance default key type applied. A joined instance records this once it is updated to a version which supports it, for its existing certificates when the service next starts. Until then the Hub shows the key type configured for the certificate, which is blank where the instance default applies. These certificates are counted as **Unknown**.
+
+The issuer is also read from the current certificate, and names the CA certificate which signed it, for example **R11 (Let's Encrypt)**. This differs from the CA: the CA is the service you ordered from, and the issuer is the intermediate certificate it signed with, which a CA changes from time to time. Like the key type, it is recorded once the instance is updated.
 
 ## In Progress
 
