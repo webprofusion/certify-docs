@@ -70,8 +70,9 @@ If a certificate needs multiple authorization configurations (for example, diffe
 
 Tips:
 
-- `*.example.com` matches first‑level subdomains only, not `something.subdomain.example.com`.
-- Use a semicolon‑separated list to match multiple patterns, e.g., `*.example.com;*.subdomain.example.com;www.something.example.com`.
+- `*.example.com` matches `example.com` and its first‑level subdomains only, not `something.subdomain.example.com`.
+- `**.example.com` matches `example.com` and its subdomains at any depth, including `something.subdomain.example.com`. Where several rules match a name, the most specific rule is used, so `*.example.com` is preferred over `**.example.com` for first‑level subdomains.
+- Use a semicolon‑separated list to match multiple patterns, e.g., `*.example.com;**.subdomain.example.com;www.something.example.com`.
 - Use the Preview tab to confirm which identifiers match which configurations. If an identifier is not matched, the app falls back to HTTP validation for that name.
 
 ## Other DNS validation methods

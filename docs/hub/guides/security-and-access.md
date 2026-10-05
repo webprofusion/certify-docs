@@ -104,9 +104,10 @@ Each entry is a **Domain Match rule**, the same rule format used by challenge co
 
 - `example.com` matches that domain exactly.
 - `*.example.com` matches `example.com` and its direct subdomains (`www.example.com`), but not deeper subdomains (`a.b.example.com`).
+- `**.example.com` matches `example.com` and its subdomains at any depth (`www.example.com`, `a.b.example.com`).
 - Rules are case insensitive, and a single entry may hold several rules separated by `;` or `,`.
 
-A wildcard identifier such as `*.example.com` can only be requested when a matching wildcard rule is present. Being scoped to `example.com` alone does not grant authority over all of its subdomains.
+A wildcard identifier such as `*.example.com` can only be requested when a matching wildcard rule, or an any depth rule covering it (`**.example.com`), is present. Being scoped to `example.com` alone does not grant authority over all of its subdomains.
 
 A role assignment with no domain restrictions applies to all domains. Restrictions from every role authorizing an operation are pooled, so adding a restriction to one assignment restricts the principal for that operation.
 

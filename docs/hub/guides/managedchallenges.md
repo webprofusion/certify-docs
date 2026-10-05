@@ -25,7 +25,7 @@ Under *Services > Managed Challenges*, select `+ Add`:
 - Select dns-01 as the challenge type
 - Select the DNS provider specific to your domains DNS service. 
 - Add or select existing stored credentials for updating DNS via the selected API.
-- Populate the *Domain Match Rule* to specify the domains this configuration can update DNS for, then Save.
+- Populate the *Domain Match Rule* to specify the domains this configuration can update DNS for, then Save. `*.example.com` covers `example.com` and its first-level subdomains, use `**.example.com` to cover subdomains at any depth (e.g. `a.b.example.com`). See [domain match rules](../../dns/validation.md#domain-match-rules).
 - Optionally tag the Managed Challenge so consumer access can be scoped by tag.
 
 
