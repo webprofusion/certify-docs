@@ -56,6 +56,14 @@ The source system owns renewal of the actual certificate. The consuming instance
 
 Note: if a PFX password is applied to the source certificate the same PFX password will be required on the consumer to decrypt and use the PFX.
 
+## Subscribing on the Hub to its Own Certificates
+
+An instance is normally not offered its own certificates as subscription sources, since it already holds them. The hub can be allowed to subscribe to the certificates it manages itself, so that one certificate can have several subscriptions on the hub, each with its own deployment tasks. This is useful for splitting a long list of deployment tasks into separate subscriptions that can be run, scheduled and diagnosed independently.
+
+To enable this, go to **Settings > Hub > General** and select **Allow the Hub to Subscribe to its Own Managed Certificates**. The hub's own managed instance still needs the **Cert Consumer** role (optionally tag scoped) for the certificates to be listed. Existing subscriptions on the hub to its own certificates stop updating if the setting is later turned off.
+
+The hub's own subscriptions are never offered as sources, so a subscription cannot use itself or another subscription to the same certificate as its source.
+
 ## Failure Handling
 
 A subscription check which cannot reach or read the source, for example because the hub is unavailable or the instance no longer has permission, is recorded against the item and retried. The first few failures are retried on the next scheduled pass, after which attempts are spaced out progressively, up to a maximum of 48 hours or 10% of the certificate lifetime, whichever is shorter, in the same way as a renewal attempt. A check which reaches the source again clears the recorded failure. A new certificate version announced by the hub is fetched on the next pass even if earlier attempts were being spaced out, because it is new work rather than a repeat of what failed.
@@ -75,6 +83,7 @@ Check:
 - that the instance has the **Cert Consumer** role
 - that the role is tag scoped correctly (if tag scoping is being used)
 - that the *source certificate tags* match the scope filter
+- when subscribing on the hub to one of the hub's own certificates, that **Allow the Hub to Subscribe to its Own Managed Certificates** is enabled under **Settings > Hub > General**
 
 ## Read Next
 

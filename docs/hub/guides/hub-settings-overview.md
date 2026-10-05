@@ -29,6 +29,7 @@ The Hub UI exposes these main settings tabs:
 - **Security**
 - **Licensing**
 - **Tags**
+- **Hub**
 - **System**
 
 ## Certificate Authorities
@@ -124,6 +125,16 @@ Use tags for:
 - application or service name
 - team ownership
 - customer or tenant grouping
+
+## Hub
+
+Use Hub for settings which apply to the hub as a whole. Its **General** tab covers:
+
+- whether tag-scoped principals may use untagged managed challenges
+- whether the hub may subscribe to its own managed certificates, so one certificate can have several subscriptions on the hub with deployment tasks split between them (see [Certificate subscriptions](certificate-subscriptions.md#subscribing-on-the-hub-to-its-own-certificates))
+- how long activity and request history is kept
+
+The **Managed ACME** tab manages the hub's Managed ACME accounts.
 
 ## System
 
