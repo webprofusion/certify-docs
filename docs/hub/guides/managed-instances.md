@@ -20,7 +20,11 @@ Each instance has an **Actions** menu with options to:
 - Remove From Hub: Remove (forget) the instance from the hub. 
 - Settings: Navigate to the target instance settings.
 
-Use **Remove From Hub** carefully, because it deletes that joined instance from hub management and related tags, role assignments etc. To permanenetly remove an instance remove the hub joining key from the target instance first so it cannot rejoin by itself.
+Use **Remove From Hub** carefully, because it deletes that joined instance from hub management and related tags, role assignments etc.
+
+When the instance is connected, the hub also tells it to forget its stored hub joining key and hub address, and the instance disconnects. It will not rejoin unless it is joined to the hub again. If the instance is not connected, or is running an older version which does not support this, the hub shows a warning: that instance still holds its joining key and will register with the hub again when it next connects, so remove the hub joining key from the instance itself.
+
+An instance which is joined to the hub using environment variables (`CERTIFY_MANAGEMENT_HUB`, `CERTIFY_MANAGEMENT_HUB_CLIENT_ID` and `CERTIFY_MANAGEMENT_HUB_CLIENT_SECRET`) will join again while those are set, so remove them from the instance's configuration as well.
 
 ## Read Next
 
