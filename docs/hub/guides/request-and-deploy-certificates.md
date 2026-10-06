@@ -109,6 +109,11 @@ Common cases:
 
 If there is no specific requirement, leave these settings near their defaults.
 
+**Actions** includes:
+
+- **Reset Status**: clears the item's last renewal status so it can be processed again.
+- **Revoke Certificate**: revokes the current certificate with its CA. This needs permission to delete managed certificates, and is not available for certificates from an external source (subscriptions, or certificates managed by another ACME client). Revoking is normally only necessary if the private key has been compromised. It does not reset CA rate limits, services still using the certificate will stop trusting it, and it cannot be undone.
+
 ## Deployment Tab
 
 The **Deployment** tab defines what happens after issuance.
