@@ -132,7 +132,16 @@ Use Hub for settings which apply to the hub as a whole. Its **General** tab cove
 
 - whether tag-scoped principals may use untagged managed challenges
 - whether the hub may subscribe to its own managed certificates, so one certificate can have several subscriptions on the hub with deployment tasks split between them (see [Certificate subscriptions](certificate-subscriptions.md#subscribing-on-the-hub-to-its-own-certificates))
+- whether joined instances must sign their joining checks (see [Enforce signed joining checks](#enforce-signed-joining-checks))
 - how long activity and request history is kept
+
+### Enforce signed joining checks
+
+Every instance joins the hub with the same joining credentials, and an instance's ID is not secret. From 7.3.0, each instance also signs its joining check with its own key, so the hub can confirm which instance is connecting.
+
+When **Enforce Signed Joining Checks** is enabled, the hub refuses a joining check from an instance that is not signed with its key. Instances before 7.3.0 do not sign it, so they cannot connect.
+
+The setting is enabled on new hub installs. On a hub upgraded from an earlier version it is off, so existing instances keep connecting. Upgrade all instances to 7.3.0 or later, then enable it.
 
 The **Managed ACME** tab manages the hub's Managed ACME accounts.
 
