@@ -49,7 +49,7 @@ Without an assigned Cert Consumer role, the instance cannot fetch source certifi
 3. In the Hub, assign **Cert Consumer** to the managed instance and scope role by tag where required.
 4. On the consuming instance, create or edit the certificate definition.
 5. Enable **Use Certificate Subscription**.
-6. Select the source certificate.
+6. Select the source certificate. Items which are subscriptions themselves are hidden by default; turn on **Show Subscriptions** in the picker to choose one.
 7. Save and validate the resulting deployment behavior on the consuming instance by selecting *Request Certificate*. *Test* will check pull access against the source.
 
 The source system owns renewal of the actual certificate. The consuming instance owns local use of the retrieved certificate, including deployment paths, tasks, and permissions.
@@ -62,7 +62,7 @@ An instance is normally not offered its own certificates as subscription sources
 
 To enable this, go to **Settings > Hub > General** and select **Allow the Hub to Subscribe to its Own Managed Certificates**. The hub's own managed instance still needs the **Cert Consumer** role (optionally tag scoped) for the certificates to be listed. Existing subscriptions on the hub to its own certificates stop updating if the setting is later turned off.
 
-The hub's own subscriptions are never offered as sources, so a subscription cannot use itself or another subscription to the same certificate as its source.
+A subscription cannot use itself as its source.
 
 ## Failure Handling
 
