@@ -57,6 +57,16 @@ Recommended pattern:
 
 This makes review and revocation easier.
 
+### Changing the role scope of an existing token
+
+Use **Edit** on an API Access entry to change its title, description and scoped roles. The issued Client ID and Client Secret are not changed, so anything already using the token keeps working and does not need to be reconfigured.
+
+The security principal a token belongs to cannot be changed. To move API access to a different principal, remove the token and assign a new one.
+
+A token is scoped to *role assignments*, not to roles. Removing a role from a principal and assigning it again creates a new role assignment, which leaves any token scoped to the old one granting no access.
+
+Removing a role warns you when API tokens are scoped to it, and the Assigned Roles editor lists the tokens scoped to each assignment. Where a scope has already been lost, the API Access page says so against the token, and requests using it are denied. Use **Edit** to scope the token to the current role assignment.
+
 ## Joining Keys
 
 By default, the Hub creates a joining API key during installation.
@@ -122,7 +132,7 @@ A certificate is only offered for subscription, and only downloadable, when **ev
 
 An ACME client cannot widen its scope at finalization: the CSR must not request any identifier absent from the order, and the identifiers are re-checked against the account's restrictions at that point, so access narrowed after an order was placed still takes effect.
 
-**Preview Subscribable Items** shows the rules in force for a principal. Managed challenges are still listed in full there, since a challenge scoped to a wider rule (`*.example.com`) remains usable for the narrower set of identifiers the principal is allowed to request.
+**Preview Access** shows the rules in force for any security principal - user, application, group or managed instance - and can evaluate them as the principal itself or as one of its assigned API tokens, which is narrower whenever a token is scoped to only some of the principal's role assignments. A managed instance is not shown the certificates from its own instance, since it already holds those. Managed challenges are still listed in full there, since a challenge scoped to a wider rule (`*.example.com`) remains usable for the narrower set of identifiers the principal is allowed to request.
 
 ## Managed Challenge Consumers
 
@@ -181,6 +191,7 @@ Check that:
 - the principal exists
 - the token is active
 - the token includes the intended scoped role
+- the token's scoped roles do not show **Missing role assignment** on the API Access page, which means the role was re-assigned after the token was scoped to it. Use **Edit** to re-scope the token.
 - the client is using the correct Hub API URL
 
 ### A managed instance cannot see any subscribable Hub certificates
