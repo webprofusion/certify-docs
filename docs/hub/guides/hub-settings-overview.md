@@ -119,6 +119,8 @@ Use Tags to define categories that help organize certificates, instances, and ot
 
 The tag system supports category definitions and dynamic values, which makes tags useful for filtering and reporting.
 
+Values in a category are created when an item is first tagged with them. To set up values in advance, expand the category and select **Add Value**, so the value can then be picked when tagging items.
+
 Use tags for:
 
 - environment
