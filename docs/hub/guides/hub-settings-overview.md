@@ -176,6 +176,7 @@ Use this split when deciding where to make a change:
 - migration and bootstrap: Import & Export
 - access control: Security
 - licensing and runtime state: Licensing, System
+- activity history retention: Hub
 
 ## Read Next
 
