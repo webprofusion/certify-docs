@@ -85,6 +85,7 @@ You can optionally specify environment variables to modify the default config:
 
 `CERTIFY_MANAGEMENT_HUB_AUTOJOIN` : Set to `"true"` to tell the instance to automatically attempt to join the specified hub
 
+`CERTIFY_MANAGEMENT_HUB_REQUIRE_TRUSTED` : Set to `"true"` to require the hub to present a TLS certificate the instance already trusts. By default the hub's certificate is not validated (for the hub connection, hub API and managed challenges), as hubs are commonly reached using a private CA or a self signed certificate.
 
 `CERTIFY_ADMIN_DEFAULTUSERNAME` : Override the default `admin` username used when the default admin account is created on first run.
 
