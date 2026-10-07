@@ -85,6 +85,17 @@ Export the certificate to local or remote locations (including SSH/SFTP) as PEM 
 
 For a general introduction to certificates and their file types see [Certificates](../guides/certificates.md).
 
+#### Optional New Password
+
+The *Export Certificate* task has an *Optional New Password*, selected from your stored Password credentials, to protect the exported private key. It is only shown when *Export As* is set to a type which includes the private key:
+
+- **PFX**: the exported PFX is protected with the new password instead of the certificate's own PFX password. PFX files use the same encryption as the *Enable Modern PFX Alg* setting: AES-256 when enabled (not supported by Windows Server 2016 and older), otherwise 3DES.
+- **PEM - Private Key** and **PEM - Full Certificate Chain (Including Key)**: the private key is exported as an encrypted PKCS#8 key (`-----BEGIN ENCRYPTED PRIVATE KEY-----`, AES-256). Your server will need the password to load the key, for instance using `ssl_password_file` in nginx or `SSLPassPhraseDialog` in Apache.
+
+If you change *Export As* to a type without the private key, the password selection is cleared when you save the task.
+
+The [Deploy to Tomcat](./tasks/tomcat.md) and [Deploy to CCS](./tasks/ccs.md) tasks have the same *Optional New Password* for the PFX files they deploy.
+
 :::note  SSH Private Keys
 
 We currently use the ssh.net library for .net to provide our SSH related features within Tasks. If using an ssh private key file for authentication please ensure the file is in PEM (text) format. Multiple key types are supported but only aes256-cbc key encryption is [supported by ssh.net](https://github.com/sshnet/SSH.NET/issues/742#issuecomment-1292945883). 

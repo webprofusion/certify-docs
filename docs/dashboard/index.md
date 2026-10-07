@@ -48,6 +48,23 @@ To report to the dashboard from third-party ACME clients, you can use *Certify M
 
 The agent is designed to run on Linux, macOS, or Windows.
 
+## Team Access
+You can give colleagues their own access to your dashboard, license keys and billing without sharing your sign in details. Your account stays the owner of its license keys, purchases and reporting instances.
+
+1. Sign in at [dash.certifytheweb.com](https://dash.certifytheweb.com) and open **Team**.
+2. Enter your colleague's email address, choose one or more roles, then select **Send Invitation**.
+3. Your colleague follows the link in the email and signs in, or creates an account, using that same email address. Invitations expire after 7 days.
+
+| Role | Access |
+| --- | --- |
+| Admin | Everything, including inviting and removing team members. |
+| Billing | Purchase, renew and cancel licenses, and view invoices. |
+| License Viewer | View license keys and their activated installs. |
+| Dashboard Admin | View the dashboard, and remove reporting instances and status reports. |
+| Dashboard Viewer | View the renewal status reported to the dashboard. |
+
+Team members keep their own account. After accepting an invitation they can move between their own account and your organisation using **Switch Account**. Admins can change a member's roles or remove them from **Team** at any time.
+
 ## Licensing
 *Certify Dashboard* is included with license key purchases for *Certify Certificate Manager*, *Certify Management Hub* and *Certify Management Agent*.
 

@@ -32,6 +32,8 @@ In your Managed Certificate, under Tasks, add a new `Deploy to Tomcat` deploymen
 
 When the deployment task is next executed the certificate will be exported as a PFX file to this location.
 
+To protect the exported PFX with a password, set the task's *Optional New Password* to a stored password credential, and set the same password as `certificateKeystorePassword` in your Tomcat connector configuration.
+
 ## Add a 'Stop, Start or Restart a Service..' Deployment Task
 
 Then, add a task to Restart the Apache Tomcat service.
