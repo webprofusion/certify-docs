@@ -53,7 +53,7 @@ To avoid updating your primary DNS zone directly, you can use CNAME delegation:
 1. In your primary zone, create an `_acme-challenge.<name>` CNAME for each domain/subdomain.
 2. Point each CNAME at a corresponding `_acme-challenge.<name>` TXT record in a different (delegated) zone that you can automate.
 
-In the Authorization configuration UI, set the `CNAME Delegation Rule` for each authorization configuration.
+In the Authorization configuration UI, set the `CNAME Delegation Rule` for each authorization configuration. When the DNS updates are performed by a Management Hub [managed challenge](../hub/guides/managedchallenges.md#cname-delegation), set the rule on the managed challenge instead.
 
 Rule format: `*.source.domain:*.destination.domain` (use `;` to separate multiple rules).
 
