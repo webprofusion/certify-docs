@@ -47,7 +47,7 @@ This includes:
 - joined Agents
 - managed challenge consumers
 - managed ACME consumers
-- scripts or automations using the API directly
+- scripts or automations using the API directly, including the [Hub CLI](hub-cli.md)
 
 Recommended pattern:
 
@@ -175,6 +175,10 @@ See [OIDC configuration](oidc.md) for the provider setup details.
 - Do not join a Hub you do not control or trust.
 
 ## Access Problems
+
+### Nobody can sign in as an administrator
+
+On the Hub machine, use the [Hub CLI](hub-cli.md#break-glass-administration) as a local administrator to reset a password, give a user the Administrator role, create a new administrator, or turn password sign in back on when single sign on is unavailable.
 
 ### A user can sign in but sees almost nothing
 

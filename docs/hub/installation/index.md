@@ -31,6 +31,8 @@ You can install the *Certify Management Hub* using docker, various Linux distrib
 
 Change the default admin's password rather than deleting the account, even if you add your own admin users. From v7.2.1 the default admin can't be deleted. In v7.2.0 and earlier a deleted default admin is recreated with the default username and password the next time the service starts. If you deleted it on one of those versions, upgrade and then change its password.
 
+If you lose access to every administrator account, an administrator on the Hub machine can recover access with the [Hub CLI](../guides/hub-cli.md#break-glass-administration).
+
 :::danger
 Due to the nature of the work the management hub performs we do not recommend hosting on a public facing web server with open access. If you must host on the public internet you must restrict access using methods such via firewall IP ranges or VPN access. Default admin credentials should be changed immediately after setup.
 :::

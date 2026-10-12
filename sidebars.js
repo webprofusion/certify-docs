@@ -248,6 +248,7 @@ export default {
           items: [
             'hub/guides/hub-settings-overview',
             'hub/guides/security-and-access',
+            'hub/guides/hub-cli',
             'hub/guides/data-stores',
             'hub/guides/operations'
           ]
