@@ -25,7 +25,7 @@ Configure a [Managed Challenge](./managedchallenges.md) for the target domain.
 ## EAB Credentials
 - Under Settings > Users, create an application security principal to represent your ACME client (e.g., *Example ACME Client on firewall-01*). Assign the role *Managed ACME Consumer*.
 - Under API Access, select Add API Token. Provide a descriptive title (e.g., *Example ACME EAB Credentials*), select the security principal you created, and scope the token to the *Managed ACME Consumer* role.
-- Select *View as EAB* against the credential, then copy the displayed values for use in your ACME client during initial ACME account creation.
+- Select *View as EAB* against the credential (this unlocks the token's secret), then copy the displayed values for use in your ACME client during initial ACME account creation.
 
 ## ACME Client Configuration
 

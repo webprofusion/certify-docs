@@ -73,4 +73,4 @@ Under *Settings > Security > API Access*, add an API token for that principal an
 5. Select **Managed Challenge Consumer** as the scoped role
     - **Important:** Click **Add/Remove Role Scope** to add it to the scope list
 7. Click **Add** to create the new API token
-8. Copy the **Client ID** and **Secret** values.
+8. Copy the **Client ID** and **Secret** values. The secret is hidden once you leave the page, select **Unlock** against the token to view it again.

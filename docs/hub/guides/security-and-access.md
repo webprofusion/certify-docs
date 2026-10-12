@@ -57,6 +57,10 @@ Recommended pattern:
 
 This makes review and revocation easier.
 
+### Viewing a token's secret
+
+A new token's Client Secret is shown when you add it. After that the API Access list shows only the Client ID, and the secret is not included when tokens are listed through the API. To see a secret again, select **Unlock** against the token. Unlocking requires the *View Access Token Secret* permission, which administrators have, and each unlock is recorded in the Hub log.
+
 ### Changing the role scope of an existing token
 
 Use **Edit** on an API Access entry to change its title, description and scoped roles. The issued Client ID and Client Secret are not changed, so anything already using the token keeps working and does not need to be reconfigured.
