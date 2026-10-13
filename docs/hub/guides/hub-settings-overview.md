@@ -133,6 +133,7 @@ Use tags for:
 Use Hub for settings which apply to the hub as a whole. Its **General** tab covers:
 
 - whether tag-scoped principals may use untagged managed challenges
+- whether managed challenges enforce strict CNAME delegation (see [Enforce strict CNAME delegation](#enforce-strict-cname-delegation))
 - whether the hub may subscribe to its own managed certificates, so one certificate can have several subscriptions on the hub with deployment tasks split between them (see [Certificate subscriptions](certificate-subscriptions.md#subscribing-on-the-hub-to-its-own-certificates))
 - whether joined instances must sign their joining checks (see [Enforce signed joining checks](#enforce-signed-joining-checks))
 - how long activity and request history is kept
@@ -144,6 +145,14 @@ Every instance joins the hub with the same joining credentials, and an instance'
 When **Enforce Signed Joining Checks** is enabled, the hub refuses a joining check from an instance that is not signed with its key. Instances before 7.3.0 do not sign it, so they cannot connect.
 
 The setting is enabled on new hub installs. On a hub upgraded from an earlier version it is off, so existing instances keep connecting. Upgrade all instances to 7.3.0 or later, then enable it.
+
+### Enforce strict CNAME delegation
+
+When **Enforce Strict CNAME Delegation** is enabled, a managed challenge only writes the `_acme-challenge` TXT record for the identifier being validated, or the record that the managed challenge's own *CNAME Delegation Rule* points it to. This stops an instance or API client authorized for one name from writing TXT records for other names, including other delegated records in a shared delegation zone. See [Managed Challenges: CNAME Delegation](managedchallenges.md#cname-delegation).
+
+Disable it to allow CNAME delegation rules configured on instances, as before 7.3.0. The hub then writes whatever TXT record name the client sends, so any authorized client can write any TXT record that the managed challenge's DNS credentials can reach.
+
+The setting is enabled by default, including on upgraded hubs.
 
 The **Managed ACME** tab manages the hub's Managed ACME accounts.
 

@@ -32,10 +32,12 @@ Under *Services > Managed Challenges*, select `+ Add`:
 
 If your `_acme-challenge` records are delegated by CNAME to another zone (see [CNAME delegation](../../dns/validation.md#cname-delegation)), set the *CNAME Delegation Rule* on the managed challenge itself, e.g. `*.ad.example.com:acme.example.org`. The Hub applies the rule when it writes the TXT record, using the managed challenge's DNS credentials for the delegated zone.
 
-Do not set the delegation rule on the certificate's own challenge configuration (the one using *Certify Managed Challenge API*). The Hub only writes the record for the identifier being validated, or the record its own delegation rule points that identifier to, so a client cannot write TXT records elsewhere in a shared delegation zone. A client sending a delegated record name that the managed challenge's rule does not produce is refused with *The challenge response record name must be `_acme-challenge.<identifier>`*.
+Do not set the delegation rule on the certificate's own challenge configuration (the one using *Certify Managed Challenge API*). By default the Hub only writes the record for the identifier being validated, or the record its own delegation rule points that identifier to, so a client cannot write TXT records elsewhere in a shared delegation zone. A client sending a delegated record name that the managed challenge's rule does not produce is refused with *The challenge response record name must be `_acme-challenge.<identifier>`*.
+
+To keep using delegation rules configured on instances, disable **Enforce Strict CNAME Delegation** in the Hub settings (see [Enforce strict CNAME delegation](hub-settings-overview.md#enforce-strict-cname-delegation)). The Hub then writes whatever record name the client sends, so only disable it when every client allowed to use your managed challenges is trusted with the DNS zones those challenges can update.
 
 :::note
-Hub 7.3.0 also refuses a delegated name that matches the managed challenge's own rule. If certificates fail with the error above after upgrading to 7.3.0, move the delegation rule from the certificate's challenge configuration to the managed challenge on the Hub.
+Hub 7.3.0 refuses every delegated name, including one that matches the managed challenge's own rule, and has no setting to change this. If certificates fail with the error above after upgrading to 7.3.0, move the delegation rule from the certificate's challenge configuration to the managed challenge on the Hub.
 :::
 
 
