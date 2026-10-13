@@ -35,7 +35,7 @@ certify-hub login --url https://hub.example.com:9696 --username admin
 certify-hub status
 ```
 
-`login` asks for the password and saves the session in a profile, so later commands only need the command itself. Use `--profile <name>` to keep sessions for more than one Hub, and `certify-hub logout` to forget one.
+`login` asks for the password and saves the session in a profile, so later commands only need the command itself. The password can also be given with `-p <password>`, or piped in with `--password-stdin`, which avoids leaving it in the shell history and process list. Use `--profile <name>` to keep sessions for more than one Hub, and `certify-hub logout` to forget one.
 
 The session renews itself while you use it, but ends when the Hub service restarts, after which you sign in again. Hubs configured for single sign on only (with password sign in turned off) do not accept `login`, use an API token instead.
 
