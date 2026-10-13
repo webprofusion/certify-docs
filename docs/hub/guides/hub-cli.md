@@ -88,6 +88,8 @@ certify-hub api get /api/v1/system/version
 - `--body` takes JSON as text, `@file` to read a file, or `-` to read stdin.
 - Where an operation id is used by more than one area of the API, `api list` shows it as `Area.OperationId`, which `api call` also accepts.
 - Responses are written to stdout exactly as the Hub returns them (JSON), so they can be piped to tools such as `jq`. Messages and errors go to stderr.
+- `--out <file>` (or `-O`) saves the response to a file instead, byte for byte, which is what binary responses such as certificate downloads need. On Linux and macOS files the CLI writes are readable by your account only.
+- In Git Bash on Windows, paths starting with `/` are rewritten into Windows paths before the CLI sees them. Set `MSYS_NO_PATHCONV=1`, or start the path with `//`.
 
 Operations under `/api/` (`api list --doc v1-public`) are intended for integrations. Operations under `/internal/` are what the Hub UI uses and may change between Hub versions, so check scripts which use them after upgrading.
 
@@ -96,10 +98,30 @@ Operations under `/api/` (`api list --doc v1-public`) are intended for integrati
 | Command | Does |
 | --- | --- |
 | `certify-hub cert list [--instance <id>] [--keyword <text>]` | List managed certificates across instances |
-| `certify-hub cert renew <instance id> <certificate id>` | Start a certificate request now. It runs on the instance, follow its progress in the Hub |
+| `certify-hub cert show <certificate>` | Show a certificate's status, domains, validity and most recent renewal attempt |
+| `certify-hub cert download <certificate> [--format <format>] [--out <file>]` | Download the current certificate |
+| `certify-hub cert renew <certificate> [--wait]` | Start a certificate request now. It runs on the certificate's instance |
 | `certify-hub instance list` | List managed instances and their connection status |
 
-These show a table by default, or the Hub's JSON with `-o json`.
+`list` and `show` print a table by default, or the Hub's JSON with `-o json`.
+
+`<certificate>` is the certificate's id, its title, or any of its domains. If the same name or domain is used on more than one instance, add `--instance <instance id or title>`, or use the id shown in the message.
+
+#### Downloading certificates
+
+```bash
+certify-hub cert download shop.example.com --format pem_fullchain --out /etc/ssl/shop/fullchain.pem
+certify-hub cert download shop.example.com --format pem_key --out /etc/ssl/shop/privkey.pem
+certify-hub cert download shop.example.com --out shop.pfx
+```
+
+`--format` is one of `pfx` (the default, certificate and private key), `pem_fullchain` (certificate and intermediates), `pem_key` (private key), `pem_fullchain_key`, `pem_fullchain_root` or `pem_fullchain_root_key`. Without `--out`, PEM formats are written to stdout. A PFX is binary, so it needs `--out` unless stdout is redirected.
+
+Finding a certificate by title or domain needs a role allowing certificates to be listed. An API token which may only download certificates (for example one using the **Certificate Consumer** role) can still download by giving the certificate id with `--instance <instance id>`.
+
+#### Renewing and waiting for the result
+
+`cert renew` starts the request on the certificate's instance and returns straight away. With `--wait` it waits for the request to finish and exits with 0 only if it succeeded, printing the failure reason otherwise, which suits deployment pipelines. A request which needs someone to complete a step, such as creating a manual DNS record, also exits with 1. `--timeout <seconds>` (default 900) limits the wait. If it runs out, the request may still be running, check it with `cert show`.
 
 ### Exit codes
 
