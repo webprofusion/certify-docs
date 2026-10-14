@@ -88,6 +88,7 @@ The General area groups settings such as:
 - preferred CA
 - ACME ARI behavior
 - status reporting and telemetry
+- whether the instance can be changed locally (see [Restricting local changes](ccm.md#restricting-local-changes))
 
 This tab controls default behavior for the selected instance.
 

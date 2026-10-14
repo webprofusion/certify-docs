@@ -63,6 +63,20 @@ Stored credentials, CA accounts, and similar items remain per-instance settings.
 
 The Hub does not currently push global ACME accounts or stored credentials to all managed instances.
 
+## Restricting Local Changes
+
+If an instance should only be administered through the Hub, you can stop it being changed on the instance itself. In the Hub, select the instance, open its settings and go to **Advanced > Local Changes**:
+
+- **No restriction** (default): the instance can be configured locally as well as through the Hub.
+- **Read only (hub only)**: the instance configuration is read only locally. This covers managed certificates, ACME accounts, certificate authorities, stored credentials, general settings, tags, data stores, imports and joining a hub.
+- **Managed certificates: deployment tasks only**: as read only, except that the deployment tasks of existing managed certificates can also be modified locally. Any other change made locally to a managed certificate is not saved.
+
+In both restricted modes, maintenance windows and the UI language can still be changed locally.
+
+The restriction applies to the desktop UI, the `certify` command line and the local service API. Changes made through the Hub are not affected. Local actions such as requesting, renewing, redeploying or revoking a certificate, testing configuration and exporting are still available.
+
+Only the Hub can change this setting. If the Hub removes the instance, the restriction is lifted so the instance can be administered locally again.
+
 ## Additional Joining Keys
  
 If you manage instances across different organizations or trust zones, create separate joining keys for each group.
