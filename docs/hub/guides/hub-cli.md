@@ -3,6 +3,10 @@ title: Hub CLI
 description: Use the certify-hub command line tool to call the Certify Management Hub API from scripts and tools, signed in or with an API token, and to recover access to a Hub on the Hub machine itself.
 ---
 
+:::info
+The Hub CLI feature is currently under development and information here relates to an unreleased/beta feature.
+:::
+
 # Hub CLI
 
 `certify-hub` is a command line tool for Certify Management Hub, available in Hub releases after v7.3.0. It has two uses:
