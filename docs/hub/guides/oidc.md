@@ -20,6 +20,8 @@ Required values:
 
 After a provider is configured, a user can sign in through that provider. The first sign-in creates a local account with no roles. An administrator then assigns Hub roles, and the user signs in again with the new permissions.
 
+The account's username is taken from the `email` claim. If the token has no email, or another account already uses it, the `preferred_username` or `upn` claim is used instead. If none of these are available, the username is the provider ID and the user's `sub` claim (`<provider id>:<sub>`). An account with that form of username is given a proper one the next time a token with an email or sign in name arrives.
+
 
 ## Disabling Username and Password Sign In
 
@@ -64,7 +66,7 @@ Create an app registration in the Azure portal:
         - Authority URL which includes your tenant ID e.g. https://login.microsoftonline.com/abcd123-768f-4006-8891-0c85aecd9fd9 (note: don't include the /oauth2/v2.0/... suffix from a typical API call).
         - Client ID (Application ID) and Client Secret, this is used to authenticate the confirmation code passed back by Entra after it has authenticated a user.
         - Redirect URI, which is the page on the hub to redirect to once Entra has completed its auth, the host/port of the URL varies depending on your hub configuration e.g. `https://hub.yourcompany.com:8443/authentication/login-callback`
-        - Scopes: `openid profile email` - these determine what info is accessible about the user
+        - Scopes: `openid profile email` - these determine what info is accessible about the user. Entra only includes the email claim for users with an email address (the `mail` attribute), so users without a mailbox, such as separate admin accounts, get their sign in name (UPN) as their username.
     - Advanced:
         - Response Type: *code* (default, so that a code will be passed back to the Redirect URI as part of the query string)
         - Response Mode: *form_post* (default).
