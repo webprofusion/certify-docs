@@ -57,6 +57,13 @@ For simplest setup you can fetch the combined Certify Management Hub image from:
 #### OpenShift
 Add Storage > persistent volume claim `certifydata` with mount path `/usr/share/certifydata`, see also `CERTIFY_APP_DATA` below.
 
+#### Running as another user or with a read-only file system
+On Linux the service also adds each certificate to the .NET certificate store of the user it runs as, which is kept under `$HOME/.dotnet`. The images set `HOME` to `/home/app`, which any user ID in the root group can write to. This covers the arbitrary user IDs OpenShift assigns by default.
+
+If the container runs as a user outside the root group, or with a read-only root file system (e.g. `readOnlyRootFilesystem: true` in Kubernetes), the certificate log shows a warning that the certificate could not be written to the X509 certificate store. The certificate is still saved, and your deployment tasks still run. To remove the warning, set the `HOME` environment variable to a writable path, or mount a writable volume (e.g. an `emptyDir`) at `/home/app`.
+
+In v7.3.0 and earlier this fails the deployment instead, with `Error storing certificate. The X509 certificate could not be added to the store.`, and later attempts report `Certificate file may not be valid`. The certificate file is fine; set `HOME` to a writable path (e.g. `HOME=/tmp`, with a writable volume at `/tmp` if the root file system is read-only). Once the container has restarted, the next automatic deployment attempt uses the certificate already issued.
+
 ## Certify Management Agent
 [Certify Management Agent](../guides/agent.md) is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
 
