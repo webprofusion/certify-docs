@@ -8,13 +8,19 @@ Add a provider under Settings > Security > OpenID Connect (OIDC).
 
 Required values:
 - **Provider Name** for display on the sign in screen
-- **Authority URL** e.g. `https://login.microsoftonline.com/<your tenant id>`
+- **Authority URL**, the provider's issuer URL, e.g. `https://login.microsoftonline.com/<your tenant id>/v2.0`
 - **Client ID**
-- **Client Secret**
+- **Client Secret**. Leave this empty only if your provider allows a public client using PKCE.
 - **Redirect URI**: `<your hub UI url>/authentication/login-callback`
 - **OpenID Scopes**, at a minimum `openid`
-- **Response Type**: `code`
-- **Response Mode**: `form_post`
+
+Optional values, under Advanced:
+- **Discovery Endpoint**, if the provider's metadata is not at `<authority>/.well-known/openid-configuration`
+- **Authorize Endpoint** and **Token Endpoint**, to override the endpoints published in the discovery document
+
+The Hub reads the provider's endpoints, issuer and signing keys from its discovery document, so most providers need only the authority URL. For an Entra authority without the `/v2.0` suffix, the Hub uses the v2.0 discovery document.
+
+Sign in uses the authorization code flow with PKCE (S256), and the provider returns the code to the redirect URI in the query string. The Hub checks the ID token's signature, issuer, audience, lifetime and nonce against the discovery document. Earlier versions had Response Type and Response Mode settings. These are no longer used.
 
 ## Sign-In Flow
 
@@ -63,13 +69,15 @@ Create an app registration in the Azure portal:
 - Select *Add OIDC Provider*
     - General > Set a name for the provider, users will see this on the Sign In page and use it to select the provider as an option.
     - Configuration :
-        - Authority URL which includes your tenant ID e.g. https://login.microsoftonline.com/abcd123-768f-4006-8891-0c85aecd9fd9 (note: don't include the /oauth2/v2.0/... suffix from a typical API call).
+        - Authority URL which includes your tenant ID e.g. https://login.microsoftonline.com/abcd123-768f-4006-8891-0c85aecd9fd9/v2.0 (note: don't include the /oauth2/v2.0/... suffix from a typical API call).
         - Client ID (Application ID) and Client Secret, this is used to authenticate the confirmation code passed back by Entra after it has authenticated a user.
         - Redirect URI, which is the page on the hub to redirect to once Entra has completed its auth, the host/port of the URL varies depending on your hub configuration e.g. `https://hub.yourcompany.com:8443/authentication/login-callback`
         - Scopes: `openid profile email` - these determine what info is accessible about the user. Entra only includes the email claim for users with an email address (the `mail` attribute), so users without a mailbox, such as separate admin accounts, get their sign in name (UPN) as their username.
-    - Advanced:
-        - Response Type: *code* (default, so that a code will be passed back to the Redirect URI as part of the query string)
-        - Response Mode: *form_post* (default).
+    - Advanced: leave the endpoints empty. They are read from the discovery document.
+
+### Multi-Tenant Authorities
+
+An authority of `https://login.microsoftonline.com/common/v2.0` or `https://login.microsoftonline.com/organizations/v2.0` accepts users from any Entra tenant your app registration allows. The Hub checks each token's issuer against the user's own tenant (the `tid` claim), but it does not restrict which tenants can sign in. To allow only your organization, use your tenant ID in the authority.
 
 ### First Sign-In
 - Reload the Hub UI and select the OIDC provider to sign in with, complete sign in as normal
