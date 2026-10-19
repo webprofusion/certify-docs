@@ -43,6 +43,8 @@ By default the app will check for updates when you open the UI. If you do not re
 
 To upgrade manually you can download the latest version and install it. You don't normally need to uninstall first etc.
 
+To update many servers at once, see [Update with Ansible](ansible-update.md).
+
 The latest release notes for the app can be found at https://certifytheweb.com/home/changelog
 
 ### Settings are preserved between installs/upgrades

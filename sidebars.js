@@ -123,6 +123,7 @@ export default {
               { type: 'ref', id: 'backgroundservice' },
               { type: 'ref', id: 'guides/maintenance' },
               { type: 'ref', id: 'guides/auto-update' },
+              { type: 'ref', id: 'guides/ansible-update' },
               { type: 'ref', id: 'guides/security' },
               { type: 'ref', id: 'guides/tools' }
             ]
@@ -237,7 +238,8 @@ export default {
             },
             { type: 'ref', id: 'guides/architecture/load-balancing' },
             { type: 'ref', id: 'guides/architecture/step-ca' },
-            { type: 'ref', id: 'guides/auto-update' }
+            { type: 'ref', id: 'guides/auto-update' },
+            { type: 'ref', id: 'guides/ansible-update' }
           ]
         },
         {
@@ -413,6 +415,7 @@ export default {
             'guides/maintenance',
             'guides/troubleshooting',
             'guides/auto-update',
+            'guides/ansible-update',
             'guides/security',
             'guides/tools'
           ]

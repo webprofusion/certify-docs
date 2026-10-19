@@ -10,6 +10,8 @@ title: Certify Management Agent (Linux, macOS)
 
 See the [install guide](../installation/linux#certify-management-agent).
 
+To update, run the install steps again with the latest download. To update many servers at once, see [Update with Ansible](../../guides/ansible-update.md).
+
 ## Hub Join
 
 Joining an Agent instance to the Hub allows centralized control of instance settings, renewals, and monitoring.
