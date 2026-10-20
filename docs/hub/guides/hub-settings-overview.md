@@ -87,6 +87,7 @@ The General area groups settings such as:
 - automatic CA failover
 - preferred CA
 - ACME ARI behavior
+- strict ACME order identifiers (see [Names in the CSR](../../guides/csr.md#names-in-the-csr))
 - status reporting and telemetry
 - whether the instance can be changed locally (see [Restricting local changes](ccm.md#restricting-local-changes))
 

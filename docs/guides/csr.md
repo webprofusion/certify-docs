@@ -9,6 +9,13 @@ When requesting a certificate from a [Certificate Authority (CA)](certificate-au
 
 In the case of ACME domain validated certificates this CSR mainly just includes the list of domains you want to include on the certificate (other fields such as Organization etc are discarded because ACME doesn't validate these). The CSR is signed using your Private Key, verifiable using the public key included in the CSR. This ensures that the same entity who completed certificate validation is also the same entity submitting the certificate signing request.
 
+## Names in the CSR
+The CSR always includes the domains and IP addresses you requested, even if the CA leaves some of them out of its order (for example a wildcard). The CA will then either issue the certificate or reject the CSR, and the request log notes the difference.
+
+Some CAs add names to the order that you did not request, most commonly the `www` variant of a domain. Certify still has to validate these names before the order is ready, and by default includes them in the CSR, so the certificate is issued with the names the CA has authorized. A warning in the request log lists the added names.
+
+To leave added names out of the CSR, enable *Strict ACME Order Identifiers* in the instance settings (*Settings > General* in Certify Certificate Manager, or the *Advanced* tab of the instance settings in the Management Hub). A CA that checks the CSR against its order will then reject the request rather than issue a certificate with names you did not request.
+
 ## OCSP Must-Staple
 In certificate request settings, enable *Require OCSP Must-Staple* to add the OCSP Must Staple extension to the CSR and resulting certificate.
 
