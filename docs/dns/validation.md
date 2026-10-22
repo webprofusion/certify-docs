@@ -21,7 +21,7 @@ To validate control of your domains, you create a specific TXT record in the dom
 
 Notes:
 
-- The TXT value is different for every order/renewal, so automation is strongly recommended.
+- The TXT value is different for every order/renewal, so automation is strongly recommended. If your CA supports it, [persistent DNS validation (dns-persist-01)](dns-persist.md) instead uses one TXT record which does not change, and [account specific DNS validation (dns-account-01)](dns-account.md) lets several ACME clients validate the same domain without sharing a record.
 - The app includes built‑in integrations for many popular DNS providers with APIs the app can use.
 
 If your DNS provider (or custom DNS setup) does not have a supported API, you can either:

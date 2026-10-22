@@ -24,7 +24,9 @@ const createCommonConceptsCategory = () => ({
     { type: 'ref', id: 'guides/certificates' },
     { type: 'ref', id: 'guides/certificate-authorities' },
     { type: 'ref', id: 'http-validation' },
-    { type: 'ref', id: 'dns/validation' }
+    { type: 'ref', id: 'dns/validation' },
+    { type: 'ref', id: 'dns/dns-account' },
+    { type: 'ref', id: 'dns/dns-persist' }
   ]
 });
 
