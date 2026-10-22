@@ -37,6 +37,12 @@ Stored credentials are reusable secrets such as DNS API keys, passwords, token p
 
 Reusing a stored credential makes sense when the same DNS zone or provider account is used by many certificates, when the same deployment integration needs the same secret repeatedly, or when you want one controlled credential instead of copying secrets into many certificate definitions. At the same time, avoid sharing credentials too broadly. If different teams or tenants should stay separate, if the credential has wider access than necessary, or if you need clear ownership and revocation paths, create separate credentials instead.
 
+## Sharing a Secret Between Credentials
+
+A secret field of a stored credential, such as a password or client secret, can take its value from an **API Key or Token** stored credential instead of holding its own copy. Click the **...** button next to the secret field and choose an API Key or Token credential. The field then shows the name of the linked credential. Click **X** to remove the link and type a value again. This lets one secret feed many credentials that differ in their other details. For example, one Azure client secret can be used by several Azure DNS credentials that each have their own subscription. When the secret is renewed, update the API Key or Token credential once and every credential using it picks up the new value.
+
+The linked credential must be on the same instance, and you can only link to credentials your role lets you see in the stored credentials list. An API Key or Token credential cannot be deleted while other stored credentials use it. Unlocking a credential that uses a shared secret returns the secret's value, so both credentials must allow unlocking. When you export only the credentials your certificates use, the API Key or Token credentials they take values from are exported with them.
+
 ## Recommendations
 
 Create CA accounts on the target instance that will perform the work, and keep staging and production clearly separate. Reuse stored credentials deliberately rather than automatically, and name both credentials and CA accounts so their purpose is still obvious later. If you plan to use failover, add it only after the primary certificate path is stable and well understood.
