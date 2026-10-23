@@ -31,6 +31,8 @@ Unlike almost all other ACME clients, if the renewal process fails repeatedly, *
 
 For best results, ensure your configured Certificate Authority account uses a real, monitored email address which your operations team can access. You can also configure a preferred notification email address under the app settings for each app instance.
 
+If the instance is connected to your [Dashboard](dashboard/index.md) account (or licensed under it), the notification email in your Dashboard notification preferences takes precedence. If no email is set in the app or in your preferences, notifications go to your Dashboard account email.
+
 In addition, as your certificate approaches expiration, the certificate authority *may* also email you. This can also happen if you have changed a certificate (for instance to add more domains to it) so you may get emails for expiring certificates you have since replaced.
 
 ### Certify Dashboard
