@@ -15,7 +15,9 @@ If you will be commonly running PowerShell etc and interacting with Windows Serv
 We recommend updating agents/ccm instances to the latest version corresponding to the hub when possible, although not strictly required for some minor updates.
 
 ### Hub HTTPS
-If you configure https for the hub service we currently recommend a monthly scheduled restart of the service to catch certificate renewals for the service. .NET has a built in cert rotation feature (on change) but we have found that to be unreliable in current versions. In the future we will likely implement our own cert selector strategy if the issue is not resolve in .NET itself.
+From version 7.0.20 the hub watches the certificate file configured for its https endpoint and reloads the certificate when the file changes, so a renewed certificate is picked up without a restart. Do not add a "Stop, Start or Restart a Service" task for the `Certify Management Hub` service to the hub's own certificate: the task runs inside the hub, so stopping the service would end the certificate request before it completes. The task skips this with a warning.
+
+On versions before 7.0.20, schedule a monthly restart of the service to pick up certificate renewals.
 
 ### User Interface
 

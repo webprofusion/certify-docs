@@ -49,7 +49,7 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | Deploy to RDP Listener Service| Provides a basic deployment for a local RDP Listener (Terminal Services). |
 | [Run a PowerShelll Script](../script-hooks.md) | Executes a given PowerShell script |
 | Run a Script | Execute an environment specific script (such as as a windows batch file or a linux bash script). |
-| Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to be applied. |
+| Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to be applied. The service running Certify itself is not stopped, because that would end the task before it completes: the task reports a warning instead. |
 | Set Certificate Key Permissions | Although not usually required, some services may need read permission granted for the certificate private key. This task adds read permission for the nominated account. |
 | Update Port Binding | Provides a standard way to perform netsh IP:port bindings without custom scripting. |
 
