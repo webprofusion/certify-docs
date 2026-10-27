@@ -18,7 +18,7 @@ Usage: `certify <command>`
 
 - `certify acmeaccount list`: list registered acme account details (JSON output)
 
-- `certify acmeaccount add <ACME CA ID> <your contact email> <optional EAB key id> <optional EAB Key>`: add a new ACME account
+- `certify acmeaccount add <ACME CA ID> <your contact email> <optional EAB key id> <optional EAB Key>`: add a new ACME account, use `--staging` to add it as a staging (test) account
 
 You can use the `acmeaccount add` command to add/create a new ACME account registration. Using this command implies your agreement with the chosen ACME CAs current terms and conditions :
 
@@ -29,6 +29,10 @@ You can use the `acmeaccount add` command to add/create a new ACME account regis
 #### Example - Add Zero SSL Account with your EAB key id and key:
 
 `certify acmeaccount add zerossl.com hosting@example.com "abcdkeyid" "_Example_Key_Value_"`
+
+#### Example - Create Let's Encrypt Staging Account:
+
+`certify acmeaccount add letsencrypt.org hosting@example.com --staging`
 
 ### Listing Managed Certificates
 
