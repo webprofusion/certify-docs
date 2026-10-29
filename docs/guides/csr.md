@@ -34,3 +34,14 @@ In most cases the CSR (and private key) is generated for you, but in some cases 
 2. In signing/security options, choose *Custom CSR*.
 3. Select your CSR file, then your private key file (required to build the final PFX).
 4. Request the certificate. Certify submits your CSR to the ACME CA, then downloads the signed certificate.
+
+When you use a custom CSR as-is, the domains and key come from the CSR, so you can't edit the certificate's identifiers until you remove the CSR.
+
+### Using only the subject fields of a custom CSR
+Some CAs use subject fields from the CSR such as Organization (O), Organizational Unit (OU), Locality (L), State (ST) or Country (C). To supply these without fixing the domains and key in a CSR, enable *Only use the subject fields from the custom CSR* before choosing your CSR file.
+
+Certify then copies the CSR's subject fields (but not its Common Name) into the CSR it generates for each request. That CSR uses the identifiers set for the certificate and its own private key, following your key type and key re-use settings. The domains and key in the custom CSR are ignored. The *Include CN* and *OCSP Must-Staple* options still apply.
+
+If you enable the option after choosing your CSR, the certificate's identifiers stay as read from the CSR, and you can then edit them.
+
+The *Certificate Request* step of the certificate's preview lists the subject fields that will be copied from your CSR. When a custom CSR is used as-is, it lists the CSR's subject fields and identifiers instead.
