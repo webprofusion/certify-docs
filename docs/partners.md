@@ -22,7 +22,7 @@ Feel free to invite relevant Managed Service Providers and technology consultanc
 ## Regional Solution Partners
 
 ### United States
-[Preferred Data Corporation](https://pdcsoftware.com) : Managed Service Provider. High Point, North Carolina  - contact support@pdcsoftware.com
+[Preferred Data Corporation](https://www.preferreddata.com/services/cybersecurity) : Managed Service Provider. High Point, North Carolina  - contact support@preferreddata.com
 
 
 
