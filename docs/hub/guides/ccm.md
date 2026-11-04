@@ -53,6 +53,8 @@ For automated joins, run the following command from `C:\Program Files\CertifyThe
 certify hub join <url of mgmt hub API> <client id> <client secret>
 ```
 
+See [Command Line (CLI)](../../commandline.md) for the other `certify` commands.
+
 ## Verification
 
 After joining, confirm that your instance appears in the Management Hub UI's **Instances** list.

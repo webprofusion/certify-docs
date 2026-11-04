@@ -9,10 +9,18 @@ A set of command line tools are available using the tool _certify.exe_ which is 
 :::tip
 Most users do not need to use the command line options at all. By default all certificate renewals are taken care of automatically by the Certify background service.
 
-Note: Certify Management Hub does not currently have CLI support and admin automation can only be achieved using the Hub API
+This page covers the `certify` command line for *Certify Certificate Manager*. Certify Management Hub has its own command line tool, see [Hub CLI](hub/guides/hub-cli.md).
 :::
 
 Usage: `certify <command>`
+
+Run `certify` with no arguments to list the available commands.
+
+### Connecting over a named pipe
+
+The command line tool talks to the local Certify background service. If the service has been [switched to the named pipe transport](backgroundservice.md#switching-the-service-transport-http-or-named-pipe), add `--pipe` anywhere in the command to connect over the named pipe instead of http, e.g. `certify list --pipe`. You can also set the environment variable `CERTIFY_CLIENT_MODE=namedpipe` to do the same for every command.
+
+The named pipe can only be opened from an elevated command prompt.
 
 ## Manage ACME Accounts
 
@@ -33,6 +41,16 @@ You can use the `acmeaccount add` command to add/create a new ACME account regis
 #### Example - Create Let's Encrypt Staging Account:
 
 `certify acmeaccount add letsencrypt.org hosting@example.com --staging`
+
+### Certificate Authorities
+
+- `certify ca list` : list the available certificate authorities and their details (JSON output). The `Id` of each item is the CA ID used by other commands.
+
+- `certify ca setpreferred <CA ID>` : set the preferred certificate authority for this instance, e.g. `certify ca setpreferred letsencrypt.org`. Use `certify ca setpreferred any` to clear the preference.
+
+### Instance Settings
+
+- `certify settings` : show the current instance settings (JSON output).
 
 ### Listing Managed Certificates
 
@@ -94,6 +112,16 @@ Below is an example command adding a stored credential for the Cloudflare DNS AP
 
 `./certify credential store "00213bb0-ec38-49db-bbec-f38f40e91809" "A test credential" DNS01.API.Cloudflare "{'apitoken':'anexampletokenvalue'}"`
 
+### Joining a Management Hub
+
+- `certify hub join <url of mgmt hub API> <client id> <client secret>` : join this instance to a [Certify Management Hub](hub/index.md) so it can be administered centrally. Prints `Joined Hub OK` on success, otherwise the reason the join failed.
+
+The Client ID and Client Secret come from a joining API key in the Hub, under *Settings > Security > API Access* (one is created automatically when the Hub is installed). This is useful for joining instances as part of an automated deployment. See [joining CCM to the Hub](hub/guides/ccm.md) for the full joining process and security considerations.
+
+:::warning
+The Hub has full control over the instance settings, including deployment tasks that may run local code. Do not join a Hub you don't control or trust.
+:::
+
 ### Diagnostics
 
 - `certify diag` : check existing ssl bindings and managed certificate integrity
@@ -106,8 +134,24 @@ With the example control key `stop` and config check key `configcheck` you can:
 
 The user agent returned should be `Certify/HttpChallengeServer`
 
+### Backup and Restore
+
+Backups use the same file format as *Settings > Import & Export* in the app, see [Import & Export](guides/import-export.md) for migration guidance.
+
+- `certify backup export <directory or full filename> <encryption secret>` : export the instance configuration, including managed certificates, stored credentials and certificate files, to a backup file encrypted using the given secret. If a directory is given the file is named `certifytheweb_export_<yyyyMMdd>.json`.
+
+- `certify backup import <full filename> <encryption secret>` : import a backup file, using the same secret it was exported with.
+
+- `certify backup import preview <full filename> <encryption secret>` : test a backup file and show what would be imported, without importing anything.
+
+Keep backup files and their secrets safe, as together they give access to your stored credentials and certificates.
+
 ### Managing license activation
 
-- `certify activate <email> <key>` : activate the license for this instance of *Certify Certificate Manager*. Useful for larger scale automated deployments.
+- `certify license activate <email> <key>` : activate the license for this instance of *Certify Certificate Manager*. Useful for larger scale automated deployments.
 
-- `certify deactivate <email>` : deactivates the license for this instance of *Certify Certificate Manager*.
+- `certify license deactivate <email>` : deactivates the license for this instance of *Certify Certificate Manager*.
+
+- `certify license check` : check the license status of this instance (JSON output). The `Status` is `licensed`, `unlicensed` or `invalid` (applied but expired or otherwise invalid). The command exits with code `0` if the instance has a valid license and `-1` otherwise, so it can be used in scripts.
+
+The older forms `certify activate <email> <key>` and `certify deactivate <email>` still work.
