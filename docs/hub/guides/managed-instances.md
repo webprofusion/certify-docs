@@ -11,6 +11,10 @@ From the main navigation select **Hub Management > Instances**.
 
 The quick filters make it easier to find specific instances when you are working with many items. You can show instances with errors or warnings, only connected or disconnected instances, and only licensed or unlicensed instances. Use **Tags** when you want to filter by environment, team, or any other tag convention you use.
 
+## Adding Instances
+
+Use **Add Joining Key** to create a joining key for the instances in one environment, such as a customer site, then use the Hub URL, Client ID and Client Secret it shows to join those instances. This option is off by default: enable **Show Add Joining Key** under **Settings > Hub > General > Instance Connections**. See [Joining Keys](security-and-access.md#joining-keys).
+
 ## Per-Instance Actions
 
 Each instance has an **Actions** menu with options to:
@@ -19,6 +23,8 @@ Each instance has an **Actions** menu with options to:
 - Add To Dashboard: Add the instance to the dash.certifytheweb.com dashboard
 - Remove From Hub: Remove (forget) the instance from the hub. 
 - Settings: Navigate to the target instance settings.
+
+The menu, **Rejoin Connected** and the bulk actions for selected instances only show what your roles allow. **Settings** requires the Administrator role. An instance's title links to its managed certificates if your roles allow you to list them.
 
 Use **Remove From Hub** carefully, because it deletes that joined instance from hub management and related tags, role assignments etc.
 

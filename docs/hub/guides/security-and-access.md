@@ -80,7 +80,24 @@ Use that key to join:
 - *Certify Certificate Manager* instances
 - *Certify Management Agent* instances
 
-If you manage different organizations, environments, or trust zones, use separate joining principals and tokens.
+If you manage different organizations, environments, or trust zones, use a separate joining key for each.
+
+### Adding a joining key for an environment
+
+**Add Joining Key** is off by default. To turn it on, enable **Show Add Joining Key** under **Settings > Hub > General > Instance Connections**. The setting controls whether the option is shown on the Instances page. Keys already added keep working if you turn it off.
+
+From **Hub Management > Instances**, select **Add Joining Key** and enter the name of the environment the key is for, such as a customer site. The Hub creates a security principal for that environment, which holds only the *Hub Managed Instance* role, and issues a key scoped to that role. The key can join the Hub and do nothing else.
+
+The Hub URL, Client ID and Client Secret are shown when you add the key. Use them to join each instance in that environment.
+
+Administrators can add joining keys. To let others add them without giving them administrator access, assign the **Instance Onboarding** role. That role can view managed instances and add joining keys. It cannot view, change or remove API access, so the secret is shown to them only when they add the key. An administrator can view it later under **API Access**.
+
+Keep these points in mind:
+
+- An instance keeps using its joining key to reconnect to the Hub, so a key cannot be used once and discarded, and should not be given an expiry shorter than the life of the instances using it.
+- To disconnect an environment, remove its key under **API Access**. Its instances lose their connection the next time they need to renew it. They do not move to another key.
+- **Rejoin Hub** sends an instance a new copy of the key it joined with. If that key has been removed, the rejoin is refused. An instance joined before this was recorded, and which has not connected since, is sent the Hub's default joining key.
+- A separate key makes each environment easy to review and revoke, but does not on its own stop one environment's key connecting as another environment's instance. Enable **Enforce Signed Joining Checks** in Hub settings for that, which requires instances on version 7.3.0 or later.
 
 ## Managed Instance Roles
 
