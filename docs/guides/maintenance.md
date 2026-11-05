@@ -13,6 +13,7 @@ The sections below cover the main data locations, upgrade behavior, script stora
 - General settings and service configuration are stored under `%ProgramData%\Certify` (Windows) or `/usr/share/certify` (Linux), referred to as `<certify data>` below.
 - Managed certificate logs are stored under `%ProgramData%\Certify\logs` or `/usr/share/certify/logs`.
 - Certificate assets are stored under `%ProgramData%\Certify\assets` or `/usr/share/certify/assets`.
+- On Linux, the key that encrypts your [stored credentials](security.md#stored-credentials) is stored under `/usr/share/certify/credentials`. If it is lost, stored credentials must be entered again.
 
 You should normally restrict access to these locations to administrators and Local System.
 

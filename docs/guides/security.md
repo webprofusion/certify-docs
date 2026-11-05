@@ -33,7 +33,17 @@ If using scripting, script files must be permissioned so that they can only be m
 
 The contents of `%ProgramData%\Certify` should generally be considered sensitive and especially `%ProgramData%\Certify\assets` which contains PFX files which could be used by an attacker to successfully impersonate a legitimate service (e.g. tricking a users machine to think they are accessing a genuine system in order to steal credentials).
 
-Some app feature use Stored Credentials. These are encrypted using the Windows Data Protection APIs and the private keys of the background service account. If you change (or reset) accounts these credentials may become unreadable. Anyone with the ability to use the same account as the background service will be theoretically able to decrypt stored credentials.
+### Stored Credentials
+
+Some app features use Stored Credentials. On Windows, these are encrypted using the Windows Data Protection APIs and the private keys of the background service account. If you change (or reset) accounts these credentials may become unreadable. Anyone with the ability to use the same account as the background service will be theoretically able to decrypt stored credentials.
+
+On Linux and macOS, these are encrypted with a key kept as a file in the `credentials` folder of the app data path (by default `/usr/share/certify/credentials` on Linux). The key is not itself encrypted, and it is not tied to the machine:
+
+- If the key is lost, the credentials cannot be recovered and must be entered again. Include this folder in your backups, and in the persistent storage of any container. This also applies when using an external database, because the key is not stored there.
+- Anyone who can read this folder, or a backup of it, along with your data store can decrypt your stored credentials. Protect your backups accordingly.
+- Multiple instances sharing a database each have their own key, so they cannot read each other's stored credentials.
+
+If stored credentials cannot be decrypted, the service reports this in **System Status** and names them in the service log. The check runs when the service starts and once a day.
 
 ## Risk Mitigation Strategies
 

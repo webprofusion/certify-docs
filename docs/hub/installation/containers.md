@@ -11,6 +11,8 @@ Using [docker](https://docker.com/) to quickly try out *Certify Management Hub* 
 
 A key thing to know about running apps in docker is that the container should be considered temporary (to be recreated later), so data should not be stored only within the container itself. To host the app in docker properly, you need to specify a persistent data volume to store configuration data (which by default is under `/usr/share/certify`).
 
+Persist the whole folder. The `credentials` folder inside it holds the key that encrypts your stored credentials, and if that key is lost those credentials cannot be recovered and must be entered again. This also applies if you use an external database as your data store, because the key is not stored in the database. See [Stored Credentials](../../guides/security.md#stored-credentials).
+
 #### Quick Start using Docker Compose (recommended)
 Save this file as `docker-compose.yaml`
 
@@ -41,7 +43,7 @@ Alternatively, to quickly try it out without using docker compose:
 
 `docker run --name certify-management-hub -d -v /local/path/to/data:/usr/share/certify -p HOST_PORT:8080 --restart unless-stopped docker.io/certifytheweb/management-hub:latest` 
 
-e.g. `docker run --name certify-management-hub -d -v C:\temp\certifydata -p 8080:8080 --restart unless-stopped docker.io/certifytheweb/management-hub:latest`
+e.g. `docker run --name certify-management-hub -d -v C:\temp\certifydata:/usr/share/certify -p 8080:8080 --restart unless-stopped docker.io/certifytheweb/management-hub:latest`
 
 ##### Upgrading
 
@@ -55,7 +57,7 @@ For simplest setup you can fetch the combined Certify Management Hub image from:
 - GitHub Packages: https://github.com/certifytheweb?tab=packages
 
 #### OpenShift
-Add Storage > persistent volume claim `certifydata` with mount path `/usr/share/certifydata`, see also `CERTIFY_APP_DATA` below.
+Add Storage > persistent volume claim `certifydata` with mount path `/usr/share/certifydata`, and set the environment variable `CERTIFY_APPDATA_PATH` to `/usr/share/certifydata` (see below).
 
 #### Running as another user or with a read-only file system
 On Linux the service also adds each certificate to the .NET certificate store of the user it runs as, which is kept under `$HOME/.dotnet`. The images set `HOME` to `/home/app`, which any user ID in the root group can write to. This covers the arbitrary user IDs OpenShift assigns by default.
@@ -75,7 +77,7 @@ In v7.3.0 and earlier this fails the deployment instead, with `Error storing cer
 To run an instance of the agent and point it to your management hub, with a preset joining secret:
 
 ```
-docker run docker.io/certifytheweb/certify-agent:latest -v <your data path>:/usr/share/certify -e CERTIFY_MANAGEMENT_HUB=https://<your hub API> -e CERTIFY_MANAGEMENT_HUB_CLIENT_ID= "managedinstance_sp_01" -e CERTIFY_MANAGEMENT_HUB_CLIENT_SECRET= "<your client secret>" -e CERTIFY_MANAGEMENT_HUB_AUTOJOIN= "true"
+docker run -v <your data path>:/usr/share/certify -e CERTIFY_MANAGEMENT_HUB=https://<your hub API> -e CERTIFY_MANAGEMENT_HUB_CLIENT_ID="managedinstance_sp_01" -e CERTIFY_MANAGEMENT_HUB_CLIENT_SECRET="<your client secret>" -e CERTIFY_MANAGEMENT_HUB_AUTOJOIN="true" docker.io/certifytheweb/certify-agent:latest
 ```
   
 Where `your data path` is a path on your host machine where you will store settings, e.g. `/Users/macos/certifydata` or `C:\CertifyData` - you can make these paths anything you like depending on your requirements. The key thing is that when you update the container you will run it with the same path in order to use the same settings again.
@@ -100,7 +102,9 @@ You can optionally specify environment variables to modify the default config:
 
 In v7.2.0 and earlier these also apply if the default admin account has been deleted, as it is recreated with these values (or `admin` and `changeme!`) the next time the service starts. See [Installation](index.md) for managing the default admin.
 
-`CERTIFY_APP_DATA` : Specify an alternative path to store core service settings.
+`CERTIFY_APPDATA_PATH` : Specify an alternative path to store core service settings. The container user must be able to write to this path.
+
+This page previously named this setting `CERTIFY_APP_DATA`, which has no effect. If you followed that, your data is still at `/usr/share/certify` inside the container, not on your volume. Copy it to your volume and set `CERTIFY_APPDATA_PATH` before you next recreate the container.
 
 `CERTIFY_SERVICE_HOST` : Specify the backend agent host when working with multiple containers.
 

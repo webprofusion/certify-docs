@@ -167,7 +167,7 @@ We only support the latest version, and joined instances need compatible version
 
 ### Back up your configuration
 
-Include [`C:\ProgramData\certify` on Windows, or `/usr/share/certify` on Linux](guides/maintenance.md), in your normal backup routine. [Stored credentials](guides/security.md) are encrypted to the machine that created them, so restoring a backup on another server does not bring them across. See also [import and export](guides/import-export.md).
+Include [`C:\ProgramData\certify` on Windows, or `/usr/share/certify` on Linux](guides/maintenance.md), in your normal backup routine. On Windows, [stored credentials](guides/security.md#stored-credentials) are encrypted to the account that created them, so restoring a backup on another server does not bring them across. On Linux, the key that encrypts them is kept in the `credentials` folder, so your backup must include that folder and should be protected accordingly. See also [import and export](guides/import-export.md).
 
 ### Test before major upgrades
 
