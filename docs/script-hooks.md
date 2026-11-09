@@ -87,6 +87,24 @@ By default these run if the request was successful but you can change the task t
 Legacy uses for scripting (v4.x and lower) may have previously included CCS Export, PEM file creation etc however these functions are provided by built-in Deployment Tasks which you should use instead unless the built-in functionality does not meet your requirements.
 
 
+## Reporting Warnings and Failures
+
+To make a script report a problem without failing the task, turn on *Report Script Warnings* in the task settings and use `Write-Warning` in your script. If the script finishes without errors, the task completes with a warning and the warning text is included in the task log. The certificate request itself is not marked as failed.
+
+This includes warnings from any commands or modules your script uses, not just your own `Write-Warning` calls. Set `$WarningPreference = 'SilentlyContinue'` or pass `-WarningAction SilentlyContinue` to suppress warnings you don't want reported.
+
+To fail the task, use `throw` or `Write-Error`. A failed post-request task marks the certificate request as failed.
+
+```PowerShell
+param($result)
+
+if (-not (Test-Path "D:\Backups\Certificates")) {
+    Write-Warning "Backup folder not found, certificate was not backed up."
+}
+```
+
+*Report Script Warnings* is available from the release after v7.4.1.
+
 ## Troubleshooting
 
 * In the Certify UI, you may test scripts by clicking the ▶ button. You should ideally test scripts after you have completed a successful certificate request so that you have real results and a certificate to work with.
