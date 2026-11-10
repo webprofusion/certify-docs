@@ -93,7 +93,7 @@ To make a script report a problem without failing the task, turn on *Report Scri
 
 This includes warnings from any commands or modules your script uses, not just your own `Write-Warning` calls. Set `$WarningPreference = 'SilentlyContinue'` or pass `-WarningAction SilentlyContinue` to suppress warnings you don't want reported.
 
-To fail the task, use `throw` or `Write-Error`. A failed post-request task marks the certificate request as failed.
+To fail the task, use `throw`, `Write-Error` or `exit` with a non-zero exit code (e.g. `exit 1`). Before the release after v7.4.1, a non-zero exit code was ignored when *Pass Result as First Arg* was enabled or arguments were set. A failed post-request task marks the certificate request as failed.
 
 ```PowerShell
 param($result)
