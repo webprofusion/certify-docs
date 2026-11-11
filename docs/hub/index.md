@@ -8,7 +8,7 @@ description: Install and secure Certify Management Hub, understand its operating
 
 *Certify Management Hub* is a self-hosted, cross-platform web UI and API for centralized certificate management, managed challenges, reporting, and multi-instance administration. 
 
-The Hub is licensed via in our [Power Pro license key bundle](../guides/licensing.md) or higher tiers, but you can install and use the hub for evaluation immediately with no purchase required and no evaluation time limits.
+The Hub is licensed via in our [Power Pro license key bundle](../guides/licensing.md) or higher tiers, but you can install and use the hub for evaluation immediately with no purchase required.
 
 ## Why Use Certify Management Hub
 

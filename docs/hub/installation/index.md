@@ -25,7 +25,7 @@ You can install the *Certify Management Hub* using docker, various Linux distrib
 - [Linux](linux)
 - macOS
 
-*Certify Management Hub* can be licensed using the same license key types as *Certify Certificate Manager* (Power Pro or higher bundles), see [Licensing](../../guides/licensing.md) for more information. You can install and evaluate it without a purchase and with no time limit.
+*Certify Management Hub* can be licensed using the same license key types as *Certify Certificate Manager* (Power Pro or higher bundles), see [Licensing](../../guides/licensing.md) for more information. You can install and evaluate it without a purchase.
 
 **The default admin login is `admin:changeme!` and you should change the password immediately before configuring any other parts of the system.** 
 

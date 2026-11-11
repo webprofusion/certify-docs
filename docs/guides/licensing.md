@@ -10,7 +10,7 @@ This guide covers license bundles, cloud-managed subscriptions, transfers, renew
 ## About Licensing
 Certify The Web is a range of commercial products related to automated certificate management. This document covers licensing for Certify Certificate Manager, Certify Management Agent, and Certify Management Hub.
 
-Our apps are available for free download and evaluation, with no feature restrictions and no time limit. Commercial users and funded organizations are expected to purchase one or more license keys for continued use. All other installs run in unlicensed evaluation mode.
+Our apps are available for free download and evaluation, with no feature restrictions. Commercial users and funded organizations are expected to purchase one or more license keys for continued use. All other installs run in unlicensed evaluation mode.
 
 :::note
 

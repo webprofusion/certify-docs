@@ -26,7 +26,7 @@ A system administrator can handle this for a few servers with free command line 
 
 *Certify The Web* automates all five steps, whether you are managing one certificate or 20,0000. Certificates and private keys stay on your own systems, under your control. 
 
-You can evaluate our core products today, with no signups, no time limits or feature limits. Just download, install and configure your first managed certificate.
+You can evaluate our core products today, with no signups and no feature limits. Just download, install and configure your first managed certificate.
 
 ## What We Provide
 
@@ -116,7 +116,7 @@ See [Hub architecture](hub/concepts/architecture.md) and [choosing a management 
 
 [Licensing](guides/licensing.md) is based on the number of installed instances, not the number of certificates. Each instance can manage an unlimited number of certificates.
 
-You can download and evaluate the products for free, with no feature restrictions and no time limit. Our hosted dashboard and notification services are mainly for licensed installs.
+You can download and evaluate the products for free, with no feature restrictions. Our hosted dashboard and notification services are mainly for licensed installs.
 
 There are two ways to license:
 
