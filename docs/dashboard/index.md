@@ -65,6 +65,17 @@ You can give colleagues their own access to your dashboard, license keys and bil
 
 Team members keep their own account. After accepting an invitation they can move between their own account and your organisation using **Switch Account**. Admins can change a member's roles or remove them from **Team** at any time.
 
+### Adding instances as a team member
+An instance added with **Add to Dashboard** belongs to the account whose email address was used to sign in, so by default an instance added by a team member reports to the member's own account and the rest of the team can't see it.
+
+Team members with the Admin or Dashboard Admin role can add instances to the organisation instead:
+
+1. Sign in to the dashboard and open **My Account** > **Dashboard Reporting**.
+2. Under **Add new instances to**, choose the organisation, then select **Save**.
+3. To move instances you added to your own account earlier, select them under **Instances in your own account**, then select **Move**. Their status reports move with them.
+
+Instances you add from then on report to the organisation and can be seen by everyone in it with a dashboard role. Running **Add to Dashboard** again on an instance already in your own account moves it to the organisation, keeping its reports. If you later lose the Dashboard Admin role, instances you add go to your own account again.
+
 ## Licensing
 *Certify Dashboard* is included with license key purchases for *Certify Certificate Manager*, *Certify Management Hub* and *Certify Management Agent*.
 
