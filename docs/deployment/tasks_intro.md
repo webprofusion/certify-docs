@@ -44,6 +44,7 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | [Deploy to Microsoft Exchange](./tasks/exchange.md)| Export the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
 | Deploy to Hashicorp Vault| Export the certificate to your Vault instance, with optional namespaces.  |
 | [Deploy to Kemp LoadMaster](./tasks/kemp-loadmaster.md) | Add or replace a named SSL certificate on a Progress Kemp LoadMaster. Virtual Services using it pick up the renewed certificate automatically. |
+| [Deploy to NetScaler ADC](./tasks/netscaler.md) | Add or update a named certificate-key pair on a NetScaler ADC (Citrix ADC), linking its intermediates. Virtual servers bound to it pick up the renewed certificate automatically. |
 | [Deploy to nginx](./tasks/nginx.md) | Export the certificate components in PEM file format for use with the nginx webserver. |
 | Deploy to RAS (Direct Access, VPN, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
 | Deploy to RDP Gateway Service| Provides a basic deployment for a local RDP Gateway. You may require your own script for more sophisticated deployments. |

@@ -11,6 +11,7 @@ const createDeploymentTaskGuidesCategory = () => ({
     { type: 'ref', id: 'deployment/tasks/tomcat' },
     { type: 'ref', id: 'deployment/tasks/exchange' },
     { type: 'ref', id: 'deployment/tasks/kemp-loadmaster' },
+    { type: 'ref', id: 'deployment/tasks/netscaler' },
     { type: 'ref', id: 'deployment/tasks/task-azure-app-service' }
   ]
 });
