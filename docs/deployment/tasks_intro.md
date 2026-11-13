@@ -42,6 +42,7 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | [Deploy to Centralized Certificate Store (CCS)](./tasks/ccs.md)| Copies to a chosen UNC share using the credentials you provide, automatically naming the files as required by IIS for each domain. You then configure the IIS CCS feature to pick up certs from the share. |
 | Deploy to Doppler| Deploys the chosen certificate components to the Doppler secrets storage service. |
 | [Deploy to Microsoft Exchange](./tasks/exchange.md)| Export the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
+| [Deploy to F5 BIG-IP](./tasks/f5-bigip.md) | Add or update a named SSL certificate, key and chain on an F5 BIG-IP in a single transaction. Client SSL profiles using them pick up the renewed certificate automatically. |
 | Deploy to Hashicorp Vault| Export the certificate to your Vault instance, with optional namespaces.  |
 | [Deploy to Kemp LoadMaster](./tasks/kemp-loadmaster.md) | Add or replace a named SSL certificate on a Progress Kemp LoadMaster. Virtual Services using it pick up the renewed certificate automatically. |
 | [Deploy to NetScaler ADC](./tasks/netscaler.md) | Add or update a named certificate-key pair on a NetScaler ADC (Citrix ADC), linking its intermediates. Virtual servers bound to it pick up the renewed certificate automatically. |
