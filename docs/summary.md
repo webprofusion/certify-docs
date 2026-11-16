@@ -47,11 +47,15 @@ For most new deployments we recommend starting with Certify Management Hub, then
 
 ### What Certify Management Hub does
 
-<video controls preload="metadata" playsInline width="100%" poster="/assets/videos/certify-management-hub-overview.jpg" title="Certify Management Hub overview">
-  <source src="/assets/videos/certify-management-hub-overview.mp4" type="video/mp4" />
-  <track kind="captions" src="/assets/videos/certify-management-hub-overview.en.vtt" srcLang="en" label="English" />
-  <a href="/assets/videos/certify-management-hub-overview.mp4">Watch the Certify Management Hub overview video</a>
-</video>
+<iframe
+  src="https://www.youtube.com/embed/UYHTmZ5Etxk"
+  title="Certify Management Hub overview"
+  style={{ width: '100%', aspectRatio: '16 / 9', border: 0 }}
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+  loading="lazy"
+></iframe>
 
 The Hub is where you run certificate management for the whole organization. From one web UI and API you can:
 
