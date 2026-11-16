@@ -13,6 +13,18 @@ In the managed certificate editor this appears as **Use Certificate Subscription
 
 Using certificate subscriptions is entirely optional and instances can manage their entire renewal via ACME in the usual way, if preferred.
 
+This short video shows a certificate being created on the hub, then a Windows server subscribing to it in Certify Certificate Manager:
+
+<iframe
+  src="https://www.youtube.com/embed/Ht4f5maox_A"
+  title="Certificate Subscriptions in 10 seconds"
+  style={{ width: '100%', aspectRatio: '16 / 9', border: 0 }}
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+  loading="lazy"
+></iframe>
+
 ## Subscription Model
 
 With a subscription:
