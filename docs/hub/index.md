@@ -10,6 +10,14 @@ description: Install and secure Certify Management Hub, understand its operating
 
 The Hub is licensed via in our [Power Pro license key bundle](../guides/licensing.md) or higher tiers, but you can install and use the hub for evaluation immediately with no purchase required.
 
+<video controls preload="metadata" playsInline width="100%" poster="/assets/videos/certify-management-hub-overview.jpg" title="Certify Management Hub overview">
+  <source src="/assets/videos/certify-management-hub-overview.mp4" type="video/mp4" />
+  <track kind="captions" src="/assets/videos/certify-management-hub-overview.en.vtt" srcLang="en" label="English" />
+  <a href="/assets/videos/certify-management-hub-overview.mp4">Watch the Certify Management Hub overview video</a>
+</video>
+
+*A one-minute tour: certificate health at a glance, adding a certificate from an IIS site, deployment tasks, and certificate subscriptions.*
+
 ## Why Use Certify Management Hub
 
 - You need centralized certificate management across multiple servers or teams

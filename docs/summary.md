@@ -47,6 +47,12 @@ For most new deployments we recommend starting with Certify Management Hub, then
 
 ### What Certify Management Hub does
 
+<video controls preload="metadata" playsInline width="100%" poster="/assets/videos/certify-management-hub-overview.jpg" title="Certify Management Hub overview">
+  <source src="/assets/videos/certify-management-hub-overview.mp4" type="video/mp4" />
+  <track kind="captions" src="/assets/videos/certify-management-hub-overview.en.vtt" srcLang="en" label="English" />
+  <a href="/assets/videos/certify-management-hub-overview.mp4">Watch the Certify Management Hub overview video</a>
+</video>
+
 The Hub is where you run certificate management for the whole organization. From one web UI and API you can:
 
 - See the health and renewal state of every certificate on every joined instance, filtered by tag, CA, or key type.

@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.338 --> 00:00:03.790
+Certify Management Hub gives you one place to automate,
+
+00:00:03.790 --> 00:00:07.869
+deploy and monitor your certificates, across all of your servers.
+
+00:00:08.733 --> 00:00:13.415
+The summary shows certificate health at a glance: what's healthy, what needs attention,
+
+00:00:13.415 --> 00:00:14.706
+and what's due to renew.
+
+00:00:15.975 --> 00:00:17.921
+Adding a certificate is quick.
+
+00:00:17.921 --> 00:00:23.759
+Pick one of your IIS sites, and its domains are filled in straight from the site bindings.
+
+00:00:23.759 --> 00:00:28.818
+Every renewal is then applied back to IIS automatically, with no manual steps.
+
+00:00:32.927 --> 00:00:34.768
+Deployment tasks go further.
+
+00:00:34.768 --> 00:00:39.502
+After each renewal, the hub can export to a file share, update Exchange,
+
+00:00:39.502 --> 00:00:43.447
+Azure Key Vault or a load balancer, or run your own scripts,
+
+00:00:43.447 --> 00:00:45.748
+with dozens of task types built in.
+
+00:00:51.519 --> 00:00:53.606
+And with certificate subscriptions,
+
+00:00:53.606 --> 00:00:57.123
+a server can subscribe to a certificate managed by the hub.
+
+00:00:57.123 --> 00:01:00.223
+It's renewed once, then shared wherever it's needed.
+
+00:01:01.074 --> 00:01:02.876
+Certify Management Hub.
+
+00:01:02.876 --> 00:01:04.443
+Get started at docs.
+
+00:01:04.443 --> 00:01:05.540
+certifytheweb.
+
+00:01:05.540 --> 00:01:05.853
+com.

@@ -3,6 +3,10 @@ id: fortigate
 title: Deployment Task - FortiGate
 ---
 
+:::info
+The *Deploy to FortiGate* task is currently under development and information here relates to an unreleased/beta feature.
+:::
+
 The *Deploy to FortiGate* task imports the certificate to a Fortinet FortiGate using the FortiOS REST API. It then moves everything that used the previous certificate over to the new one, such as the admin interface, SSL VPN, virtual IPs and SSL inspection profiles.
 
 FortiOS can't replace a certificate in place, so each deployment imports the certificate under a new name, `<name>_<date and time>` (for example `www_example_com_261113101500`). The settings that used the previous certificate are switched to the new one, then the previous certificate is deleted. You set up where the certificate is used once, and renewals keep those settings up to date.

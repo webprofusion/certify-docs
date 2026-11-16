@@ -3,6 +3,10 @@ id: kemp-loadmaster
 title: Deployment Task - Kemp LoadMaster
 ---
 
+:::info
+The *Deploy to Kemp LoadMaster* task is currently under development and information here relates to an unreleased/beta feature.
+:::
+
 The *Deploy to Kemp LoadMaster* task adds or replaces a named SSL certificate on a Progress Kemp LoadMaster using the LoadMaster API.
 
 The certificate is replaced in place under the same name, so any Virtual Services that use it pick up the renewed certificate automatically. You don't need to reassign it after each renewal.

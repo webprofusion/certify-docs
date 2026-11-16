@@ -3,6 +3,10 @@ id: netscaler
 title: Deployment Task - NetScaler ADC
 ---
 
+:::info
+The *Deploy to NetScaler ADC* task is currently under development and information here relates to an unreleased/beta feature.
+:::
+
 The *Deploy to NetScaler ADC* task adds or updates a named certificate-key pair on a NetScaler ADC (formerly Citrix ADC) using the NITRO API.
 
 An existing certificate-key pair is updated in place, so any virtual servers bound to it pick up the renewed certificate automatically. You don't need to rebind it after each renewal.
