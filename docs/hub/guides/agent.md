@@ -58,13 +58,17 @@ The Agent can monitor renewals managed by Certbot, acme.sh, win-acme/simple-acme
 
 Configure the paths under *Settings > General > External Certificate Managers* for the selected target instance. The system attempts discovery using default paths. Log paths are only needed where logs are stored separately, such as Certbot.
 
-| Cert Manager  | Default Config Path  | Default Log Path  |
+| Cert Manager | Config paths tried when none is configured, in order | Default Log Path |
 |---|---|---|
-| acme.sh  | ~/.acme.sh/ |  - |
-| certbot  | /etc/letsencrypt | /var/log/letsencrypt  |
-| posh-acme  | %APPDATA%\Local\Posh-ACME  | -  |
-| simple-acme  | %PROGRAMDATA%\simple-acme | -  |
-| win-acme  | %PROGRAMDATA%\simple-acme |  - |
+| acme.sh | `$LE_WORKING_DIR`, then `~/.acme.sh`. On Windows, `C:\acme.sh` or `%PROGRAMDATA%\acme.sh` | The config path |
+| certbot | `/etc/letsencrypt`. On Windows, `C:\Certbot` | `/var/log/letsencrypt`. On Windows, `C:\Certbot\log` |
+| posh-acme | `$POSHACME_HOME`, then `~/.config/Posh-ACME`. On Windows, `%LOCALAPPDATA%\Posh-ACME` | - |
+| simple-acme | On Windows, the `Client.ConfigurationPath` set in the `settings.json` beside `wacs.exe` (found through its scheduled task), then `%PROGRAMDATA%\simple-acme`. On Linux, `/usr/share/simple-acme`, then `~/.local/share/simple-acme` | The `Log` folder under the config path |
+| win-acme | As simple-acme, with `win-acme` in place of `simple-acme` | The `Log` folder under the config path |
+
+Paths starting with `~` are tried for the account the service runs as. For acme.sh, Posh-ACME and simple-acme, the same folder in other users' home folders is also tried, but only if exactly one user has it. If several users do, configure the path you want monitored.
+
+A win-acme or simple-acme renewal that is split by host, domain or site is listed as one item per certificate.
 
 The service account must have read access to the relevant paths.
 
