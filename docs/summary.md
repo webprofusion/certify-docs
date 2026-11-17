@@ -203,6 +203,22 @@ Testing matters most if you use custom [PowerShell deployment scripts](guides/po
 7. Configure notifications and check the [renewal schedule](renewals.md).
 8. Expand to production once the first workflow is well understood.
 
+## How We Compare
+
+Choosing the right software to commit to can be very difficult, often it's a choice between expensive incumbent/legacy "safe choices" and brand-new untested upstarts. 
+
+We've been developing and improving the Certify The Web product line since 2015. Certify Certificate Manager (on Windows) first became a commercial product in 2017. Our products are relatively inexpensive and they cater for a small technical niche, so our company is small because of that.
+
+Nowadays for cost and convenience most new software is coding using AI coding agents, and apps are prompted into existence, occasionally by subject matter experts and sometimes just by people with a business idea or just a problem they want to solve without buying software. There are also hundreds (or thousands) of free tools you can choose from to patch together your own working solutions. 
+
+Deciding to choose our product over others takes time and careful consideration while you evaluate our software, but we're pretty confident you are making a good choice, and we're happy to answer questions. We do appreciate if you check our docs or try out the actual software before contacting support, but we also appreciate there is a lot to take in.
+
+Our Certify The Web product range was first created 10 years before AI coding really took off, and our Certify Management Hub spent about 4 years in development before it's production release. 
+
+Like other software companies, we do now leverage coding agents to accelerate product development and perform code reviews, but unlike the newest generation of competing tools we have a very large existing customer base and a product reputation to protect. So we take a balanced approach to ensure we are improving at a steady considered pace. 
+
+We will continue to steadily improve our products and listen to customer feedback, as we always have done.
+
 ## Where to Go Next
 
 - [Compare product features in detail](features/index.md)
