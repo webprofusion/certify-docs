@@ -268,6 +268,7 @@ export default {
           collapsed: false,
           items: [
             'hub/guides/import-export-and-migration',
+            'hub/guides/migrate-from-win-acme',
             'hub/guides/oidc'
           ]
         },

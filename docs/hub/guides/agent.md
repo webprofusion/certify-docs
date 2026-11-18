@@ -68,7 +68,7 @@ Configure the paths under *Settings > General > External Certificate Managers* f
 
 Paths starting with `~` are tried for the account the service runs as. For acme.sh, Posh-ACME and simple-acme, the same folder in other users' home folders is also tried, but only if exactly one user has it. If several users do, configure the path you want monitored.
 
-A win-acme or simple-acme renewal that is split by host, domain or site is listed as one item per certificate.
+A win-acme or simple-acme renewal that is split by host, domain or site is listed as one item per certificate. These certificates can be moved into Certify, see [Migrate from win-acme and simple-acme](migrate-from-win-acme.md).
 
 The service account must have read access to the relevant paths.
 
