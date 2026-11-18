@@ -45,6 +45,8 @@ On Linux and macOS, these are encrypted with a key kept as a file in the `creden
 
 If stored credentials cannot be decrypted, the service reports this in **System Status** and names them in the service log. The check runs when the service starts and once a day.
 
+In the Management Hub, an ACME account which cannot be decrypted is still listed under the instance's ACME CA Accounts. It cannot be used for certificate requests, but it can be removed there and the account added again.
+
 ## Risk Mitigation Strategies
 
 For PowerShell scripting, scripts can be limited to those which have been signed using a code signing certificate (either a publicly trusted one issued by a public CA, or an internally trusted one using your own CA). If you then set your machine and user execution policy to AllSigned the script will not be able to run unless trusted. This is especially useful to stop script tampering, however it doesn't stop a script being replaced by another one which is also signed by a trusted authority.
