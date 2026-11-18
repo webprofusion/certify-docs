@@ -67,7 +67,7 @@ If the container runs as a user outside the root group, or with a read-only root
 In v7.3.0 and earlier this fails the deployment instead, with `Error storing certificate. The X509 certificate could not be added to the store.`, and later attempts report `Certificate file may not be valid`. The certificate file is fine; set `HOME` to a writable path (e.g. `HOME=/tmp`, with a writable volume at `/tmp` if the root file system is read-only). Once the container has restarted, the next automatic deployment attempt uses the certificate already issued.
 
 #### Trusting internal CA certificates
-If your network inspects TLS traffic (a "break and inspect" firewall or proxy), or your certificate authority or DNS provider API uses a certificate from a private CA, the container needs to trust your internal CA certificates. The images support the standard `SSL_CERT_FILE` environment variable for this, so you do not need to build your own image.
+If your container needs to trust your internal CA certificates the images support the standard `SSL_CERT_FILE` environment variable for this, so you do not need to build your own image.
 
 Save your internal root CA certificates (and any intermediates) in PEM format in a single file, one after another. Mount the file into the container and set `SSL_CERT_FILE` to its path:
 
