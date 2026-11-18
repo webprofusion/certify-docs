@@ -66,6 +66,44 @@ If the container runs as a user outside the root group, or with a read-only root
 
 In v7.3.0 and earlier this fails the deployment instead, with `Error storing certificate. The X509 certificate could not be added to the store.`, and later attempts report `Certificate file may not be valid`. The certificate file is fine; set `HOME` to a writable path (e.g. `HOME=/tmp`, with a writable volume at `/tmp` if the root file system is read-only). Once the container has restarted, the next automatic deployment attempt uses the certificate already issued.
 
+#### Trusting internal CA certificates
+If your network inspects TLS traffic (a "break and inspect" firewall or proxy), or your certificate authority or DNS provider API uses a certificate from a private CA, the container needs to trust your internal CA certificates. The images support the standard `SSL_CERT_FILE` environment variable for this, so you do not need to build your own image.
+
+Save your internal root CA certificates (and any intermediates) in PEM format in a single file, one after another. Mount the file into the container and set `SSL_CERT_FILE` to its path:
+
+```yaml
+name: certify-management-hub
+services:
+  certify-hubservice:
+    image: docker.io/certifytheweb/management-hub:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - SSL_CERT_FILE=/custom-ca/internal-ca.pem
+    volumes:
+      - certifydata:/usr/share/certify/
+      - ./internal-ca.pem:/custom-ca/internal-ca.pem:ro
+    restart: unless-stopped
+volumes:
+  certifydata:
+```
+
+Your CA certificates are trusted in addition to the public CAs already in the image. This applies to connections made by the service (such as certificate authorities and DNS provider APIs) and to `curl` in custom scripts. Restart the container after changing the file.
+
+On Kubernetes or OpenShift, keep the PEM file in a ConfigMap, mount it as a file and set the same environment variable. The Certify Management Agent image works the same way.
+
+Setting `SSL_CERT_DIR`, or mounting the file into `/etc/ssl/certs`, also works for the service but not for `curl`, so `SSL_CERT_FILE` is the better choice.
+
+If you would rather have the CA certificates in the system trust store of the image, build an image based on ours:
+
+```dockerfile
+FROM certifytheweb/management-hub:latest
+USER root
+COPY internal-ca.crt /usr/local/share/ca-certificates/internal-ca.crt
+RUN update-ca-certificates
+USER $APP_UID
+```
+
 ## Certify Management Agent
 [Certify Management Agent](../guides/agent.md) is a version of the *Certify Certificate Manager* service which can run "headless" (with no UI) on many different platforms.
 
@@ -105,6 +143,8 @@ In v7.2.0 and earlier these also apply if the default admin account has been del
 `CERTIFY_APPDATA_PATH` : Specify an alternative path to store core service settings. The container user must be able to write to this path.
 
 This page previously named this setting `CERTIFY_APP_DATA`, which has no effect. If you followed that, your data is still at `/usr/share/certify` inside the container, not on your volume. Copy it to your volume and set `CERTIFY_APPDATA_PATH` before you next recreate the container.
+
+`SSL_CERT_FILE` : Path to a PEM file of additional CA certificates to trust, e.g. your internal CAs. See [Trusting internal CA certificates](#trusting-internal-ca-certificates).
 
 `CERTIFY_SERVICE_HOST` : Specify the backend agent host when working with multiple containers.
 
