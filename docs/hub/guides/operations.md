@@ -79,7 +79,7 @@ The **System > Features** area shows which major Hub capabilities are enabled, i
 
 The General settings area supports monitoring for external certificate managers. Use this when the Hub should track renewals handled by tools such as Certbot, acme.sh, Posh-ACME, win-acme/simple-acme. After you configure discovery paths, verify that the paths are correct for the selected target instance, confirm that the service account can read them, and allow time for cached results to refresh.
 
-Certificates renewed by win-acme or simple-acme can then be moved into Certify. See [Migrate from win-acme and simple-acme](migrate-from-win-acme.md).
+Certificates renewed by win-acme, simple-acme, certbot, acme.sh or Posh-ACME can then be moved into Certify. See [Migrate from other ACME clients](migrate-from-win-acme.md).
 
 ## Tags and Filtering
 
