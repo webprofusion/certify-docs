@@ -7,6 +7,10 @@ title: Deployment Task - Kemp LoadMaster
 The *Deploy to Kemp LoadMaster* task is currently under development and information here relates to an unreleased/beta feature.
 :::
 
+:::note
+This task requires [Certify Management Hub](../../hub/index.md). It runs on the Hub itself, or on an instance [joined to the Hub](../../hub/guides/ccm.md#hub-join). On a standalone instance, the task editor shows a banner saying so, and the task fails if it runs.
+:::
+
 The *Deploy to Kemp LoadMaster* task adds or replaces a named SSL certificate on a Progress Kemp LoadMaster using the LoadMaster API.
 
 The certificate is replaced in place under the same name, so any Virtual Services that use it pick up the renewed certificate automatically. You don't need to reassign it after each renewal.

@@ -42,16 +42,17 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | [Deploy to Centralized Certificate Store (CCS)](./tasks/ccs.md)| Copies to a chosen UNC share using the credentials you provide, automatically naming the files as required by IIS for each domain. You then configure the IIS CCS feature to pick up certs from the share. |
 | Deploy to Doppler| Deploys the chosen certificate components to the Doppler secrets storage service. |
 | [Deploy to Microsoft Exchange](./tasks/exchange.md)| Export the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
-| [Deploy to F5 BIG-IP](./tasks/f5-bigip.md) | Add or update a named SSL certificate, key and chain on an F5 BIG-IP in a single transaction. Client SSL profiles using them pick up the renewed certificate automatically. |
-| [Deploy to FortiGate](./tasks/fortigate.md) | Import the certificate to a Fortinet FortiGate and move everything that used the previous certificate (admin interface, SSL VPN, virtual IPs, SSL inspection profiles etc) to it. |
+| [Deploy to F5 BIG-IP](./tasks/f5-bigip.md) | Add or update a named SSL certificate, key and chain on an F5 BIG-IP in a single transaction. Client SSL profiles using them pick up the renewed certificate automatically. Requires Certify Management Hub. |
+| [Deploy to FortiGate](./tasks/fortigate.md) | Import the certificate to a Fortinet FortiGate and move everything that used the previous certificate (admin interface, SSL VPN, virtual IPs, SSL inspection profiles etc) to it. Requires Certify Management Hub. |
 | Deploy to Hashicorp Vault| Export the certificate to your Vault instance, with optional namespaces.  |
-| [Deploy to Kemp LoadMaster](./tasks/kemp-loadmaster.md) | Add or replace a named SSL certificate on a Progress Kemp LoadMaster. Virtual Services using it pick up the renewed certificate automatically. |
-| [Deploy to NetScaler ADC](./tasks/netscaler.md) | Add or update a named certificate-key pair on a NetScaler ADC (Citrix ADC), linking its intermediates. Virtual servers bound to it pick up the renewed certificate automatically. |
+| [Deploy to Kemp LoadMaster](./tasks/kemp-loadmaster.md) | Add or replace a named SSL certificate on a Progress Kemp LoadMaster. Virtual Services using it pick up the renewed certificate automatically. Requires Certify Management Hub. |
+| [Deploy to NetScaler ADC](./tasks/netscaler.md) | Add or update a named certificate-key pair on a NetScaler ADC (Citrix ADC), linking its intermediates. Virtual servers bound to it pick up the renewed certificate automatically. Requires Certify Management Hub. |
 | [Deploy to nginx](./tasks/nginx.md) | Export the certificate components in PEM file format for use with the nginx webserver. |
-| [Deploy to Palo Alto Networks Firewall](./tasks/palo-alto.md) | Add or replace a named certificate on a Palo Alto Networks firewall (PAN-OS), then commit the change. SSL/TLS service profiles using it pick up the renewed certificate automatically. |
+| [Deploy to Palo Alto Networks Firewall](./tasks/palo-alto.md) | Add or replace a named certificate on a Palo Alto Networks firewall (PAN-OS), then commit the change. SSL/TLS service profiles using it pick up the renewed certificate automatically. Requires Certify Management Hub. |
 | Deploy to RAS (Direct Access, VPN, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
 | Deploy to RDP Gateway Service| Provides a basic deployment for a local RDP Gateway. You may require your own script for more sophisticated deployments. |
 | Deploy to RDP Listener Service| Provides a basic deployment for a local RDP Listener (Terminal Services). |
+| [Deploy to SonicWall](./tasks/sonicwall.md) | Import the certificate to a SonicWall firewall (SonicOS 7) and switch the HTTPS management and SSL VPN certificates that used the previous certificate to it. Requires Certify Management Hub. |
 | [Run a PowerShell Script](../script-hooks.md) | Executes a given PowerShell script |
 | Run a Script | Execute an environment specific script (such as as a windows batch file or a linux bash script). |
 | Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to be applied. The service running Certify itself is not stopped, because that would end the task before it completes: the task reports a warning instead. |

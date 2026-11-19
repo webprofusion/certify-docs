@@ -7,6 +7,10 @@ title: Deployment Task - NetScaler ADC
 The *Deploy to NetScaler ADC* task is currently under development and information here relates to an unreleased/beta feature.
 :::
 
+:::note
+This task requires [Certify Management Hub](../../hub/index.md). It runs on the Hub itself, or on an instance [joined to the Hub](../../hub/guides/ccm.md#hub-join). On a standalone instance, the task editor shows a banner saying so, and the task fails if it runs.
+:::
+
 The *Deploy to NetScaler ADC* task adds or updates a named certificate-key pair on a NetScaler ADC (formerly Citrix ADC) using the NITRO API.
 
 An existing certificate-key pair is updated in place, so any virtual servers bound to it pick up the renewed certificate automatically. You don't need to rebind it after each renewal.

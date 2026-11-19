@@ -3,6 +3,10 @@ id: palo-alto
 title: Deployment Task - Palo Alto Networks Firewall
 ---
 
+:::note
+This task requires [Certify Management Hub](../../hub/index.md). It runs on the Hub itself, or on an instance [joined to the Hub](../../hub/guides/ccm.md#hub-join). On a standalone instance, the task editor shows a banner saying so, and the task fails if it runs.
+:::
+
 The *Deploy to Palo Alto Networks Firewall* task imports the certificate and its private key to a Palo Alto Networks firewall (PAN-OS) using the XML API, then commits the change.
 
 The certificate keeps the same name each time it is renewed, so the settings that use it pick up the new certificate automatically. These include SSL/TLS service profiles (for the management interface, GlobalProtect and captive portal), decryption and authentication settings. You don't need to change them after each renewal.
