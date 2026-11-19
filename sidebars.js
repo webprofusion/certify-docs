@@ -14,6 +14,7 @@ const createDeploymentTaskGuidesCategory = () => ({
     { type: 'ref', id: 'deployment/tasks/fortigate' },
     { type: 'ref', id: 'deployment/tasks/kemp-loadmaster' },
     { type: 'ref', id: 'deployment/tasks/netscaler' },
+    { type: 'ref', id: 'deployment/tasks/palo-alto' },
     { type: 'ref', id: 'deployment/tasks/task-azure-app-service' }
   ]
 });
