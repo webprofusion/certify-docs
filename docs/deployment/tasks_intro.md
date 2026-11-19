@@ -37,6 +37,7 @@ Built-in deployment task types, each with UI to configure the task parameters et
 | Deploy Certificate to ADFS | Applies the certificate to a local Active Directory Federation Services installation |
 | [Deploy to Apache](./tasks/apache.md) | Export the certificate components in PEM file format for use with the Apache webserver. |
 | [Deploy to Apache Tomcat](./tasks/tomcat.md) | Export the certificate as a pkcs12 key store for use with Apache Tomcat application server. |
+| [Deploy to AWS Certificate Manager](./tasks/aws-certificate-manager.md) | Import the certificate to AWS Certificate Manager (ACM). Renewals re-import it under the same ARN, so load balancers, CloudFront distributions and other AWS resources using it pick up the renewed certificate automatically. Requires Certify Management Hub. |
 | [Deploy to Azure App Service](./tasks/azure-app-service.md) | Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment. |
 | Deploy to Azure Key Vault| Export the certificate to your choice of Azure Key Vault for use with other Azure services or sharing with other systems. Supports service variations such as Azure Cloud, Azure US Government, Azure China etc.  |
 | [Deploy to Centralized Certificate Store (CCS)](./tasks/ccs.md)| Copies to a chosen UNC share using the credentials you provide, automatically naming the files as required by IIS for each domain. You then configure the IIS CCS feature to pick up certs from the share. |

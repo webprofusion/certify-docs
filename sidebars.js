@@ -10,6 +10,7 @@ const createDeploymentTaskGuidesCategory = () => ({
     { type: 'ref', id: 'deployment/tasks/nginx' },
     { type: 'ref', id: 'deployment/tasks/tomcat' },
     { type: 'ref', id: 'deployment/tasks/exchange' },
+    { type: 'ref', id: 'deployment/tasks/aws-certificate-manager' },
     { type: 'ref', id: 'deployment/tasks/f5-bigip' },
     { type: 'ref', id: 'deployment/tasks/fortigate' },
     { type: 'ref', id: 'deployment/tasks/kemp-loadmaster' },
