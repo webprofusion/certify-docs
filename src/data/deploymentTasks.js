@@ -53,6 +53,7 @@ const deploymentTaskGroups = [
     label: 'Cloud services',
     tasks: [
       { id: 'deployment/tasks/aws-certificate-manager', name: 'AWS Certificate Manager', icon: 'aws-certificate-manager', description: 'Import to ACM for load balancers, CloudFront and API Gateway.', flags: ['hub', 'preview'] },
+      { id: 'deployment/tasks/kubernetes-secret', name: 'Kubernetes TLS Secret', icon: 'secret-key', description: 'Store the certificate as a TLS secret for ingress controllers and pods, and restart workloads.', flags: ['hub', 'preview'] },
       { id: 'deployment/tasks/task-azure-app-service', name: 'Azure App Service', icon: 'azure', description: 'Apply the certificate to an Azure web app or function app.', flags: ['deprecated'] }
     ]
   },
