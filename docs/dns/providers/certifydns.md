@@ -53,6 +53,28 @@ description: Use Certify DNS for delegated DNS challenge handling when direct DN
   `sudo certbot certonly --manual --manual-auth-hook /etc/letsencrypt/acme-dns-auth.py --preferred-challenges dns --debug-challenges -d www.example.com`
 - On first run you will be prompted to create a specific CNAME in your domains DNS after registration completes.
 
+### Example: lego (linux)
+
+[lego](https://go-acme.github.io/lego/) reads its acme-dns settings from environment variables:
+
+- `ACME_DNS_API_BASE`: your *Certify DNS* URL with credentials, e.g. `https://<your license key credentials>@certify-dns.certifytheweb.com`, from your certifytheweb.com License Keys tab.
+- `ACME_DNS_STORAGE_PATH`: a JSON file where lego saves the registration for each domain. Keep this file, renewals need it.
+
+`sudo` clears your environment by default, so pass the variables on the same command line:
+
+```bash
+sudo ACME_DNS_API_BASE='https://<your license key credentials>@certify-dns.certifytheweb.com' \
+     ACME_DNS_STORAGE_PATH=/etc/lego/acme-dns-accounts.json \
+     lego run --dns acme-dns -d www.example.com
+```
+
+On lego v4, put the options before the command instead: `lego --dns acme-dns -d www.example.com run`.
+
+If you see `some credentials information are missing: ACME_DNS_API_BASE`, the variable did not reach lego.
+
+- On first run lego registers the domain and stops with an error asking you to create a CNAME for `_acme-challenge.www.example.com` pointing to the *Certify DNS* service. Create the CNAME, then run the same command again.
+- Later renewals use the saved registration and need no further DNS changes.
+
 ## Troubleshooting
 
 If the error in the app is `NXDOMAIN for _acme-challenge...` , the Certificate Authority has been unable to find or follow the CNAME you have configured in your DNS. You should review your DNS records to ensure you have created the required CNAME record.
