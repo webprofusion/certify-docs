@@ -93,7 +93,7 @@ Run a single task with the ▶️ play button in the task list to test it with t
 
 ### Tasks that need Management Hub
 
-Tasks for network appliances, AWS and Kubernetes run only on [Certify Management Hub](../hub/index.md), or on an instance [joined to the Hub](../hub/guides/ccm.md#hub-join). They are marked **Management Hub** in the [task directory](#task-directory). Tasks marked **Preview** are not in a released version yet.
+Tasks for network appliances, AWS, Google Cloud and Kubernetes run only on [Certify Management Hub](../hub/index.md), or on an instance [joined to the Hub](../hub/guides/ccm.md#hub-join). They are marked **Management Hub** in the [task directory](#task-directory). Tasks marked **Preview** are not in a released version yet.
 
 ## Deploying to other servers
 

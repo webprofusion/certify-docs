@@ -44,6 +44,7 @@ const deploymentTaskGroups = [
     tasks: [
       { id: 'deployment/tasks/azure-key-vault', name: 'Azure Key Vault', icon: 'azure', description: 'Store the certificate in Azure Key Vault, including sovereign clouds.' },
       { id: 'deployment/tasks/aws-secrets-manager', name: 'AWS Secrets Manager', icon: 'secret-key', description: 'Store the certificate, key and chain as a JSON secret in AWS Secrets Manager.', flags: ['hub', 'preview'] },
+      { id: 'deployment/tasks/google-secret-manager', name: 'Google Cloud Secret Manager', icon: 'secret-key', description: 'Store the certificate, key and chain as a JSON secret in Google Cloud Secret Manager.', flags: ['hub', 'preview'] },
       { id: 'deployment/tasks/hashicorp-vault', name: 'HashiCorp Vault', icon: 'hashicorp-vault', description: 'Store the certificate and key as secrets in HashiCorp Vault.' },
       { id: 'deployment/tasks/doppler', name: 'Doppler', icon: 'secret-key', description: 'Store the certificate and key as secrets in a Doppler project.' }
     ]
@@ -53,6 +54,7 @@ const deploymentTaskGroups = [
     label: 'Cloud services',
     tasks: [
       { id: 'deployment/tasks/aws-certificate-manager', name: 'AWS Certificate Manager', icon: 'aws-certificate-manager', description: 'Import to ACM for load balancers, CloudFront and API Gateway.', flags: ['hub', 'preview'] },
+      { id: 'deployment/tasks/google-certificate-manager', name: 'Google Cloud Certificate Manager', icon: 'load-balancer', description: 'Update a self-managed certificate used by Google Cloud load balancers.', flags: ['hub', 'preview'] },
       { id: 'deployment/tasks/kubernetes-secret', name: 'Kubernetes TLS Secret', icon: 'secret-key', description: 'Store the certificate as a TLS secret for ingress controllers and pods, and restart workloads.', flags: ['hub', 'preview'] },
       { id: 'deployment/tasks/task-azure-app-service', name: 'Azure App Service', icon: 'azure', description: 'Apply the certificate to an Azure web app or function app.', flags: ['deprecated'] }
     ]
