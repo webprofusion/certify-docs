@@ -130,3 +130,47 @@ body{
 .task-icon--wait { --task-icon: url('/img/task-icons/wait.svg'); }
 .task-icon--webhook { --task-icon: url('/img/task-icons/webhook.svg'); }
 .task-icon--windows { --task-icon: url('/img/task-icons/windows.svg'); }
+
+/* Wider doc pages: raise the 1320px container cap and keep the table of contents at a fixed width */
+@media (min-width: 997px) {
+  .docs-wrapper main > .container {
+    max-width: 1500px;
+  }
+
+  .docs-wrapper main > .container > .row > .col--3 {
+    flex: 0 0 280px;
+    max-width: 280px;
+  }
+
+  /* the theme sets max-width: 75% !important on the content column */
+  .docs-wrapper main > .container > .row > .col:not(.col--3) {
+    max-width: none !important;
+  }
+}
+
+/* Intro text with a smaller screenshot in a right-hand column; stacks on narrow screens */
+.markdown .intro-columns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0 2rem;
+  margin-bottom: var(--ifm-leading);
+}
+
+.markdown .intro-columns > div:first-child {
+  flex: 1 1 360px;
+}
+
+.markdown .intro-columns > .intro-figure {
+  flex: 0 1 380px;
+  margin: 0.25rem 0 1rem;
+}
+
+.markdown .intro-figure img {
+  display: block;
+  width: 100%;
+}
+
+.markdown .intro-figure p {
+  margin: 0;
+}
