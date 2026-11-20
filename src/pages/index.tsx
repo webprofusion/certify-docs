@@ -61,6 +61,7 @@ const mainProducts: Product[] = [
         <Link to="/docs/deployment/tasks_intro">Deployment tasks</Link> and custom scripts for other services
       </>,
       "Let's Encrypt, Google Trust Services and other ACME CAs",
+      "Certify Management Agent also available for Linux."
     ],
     to: '/docs/intro',
     cta: 'Certificate Manager documentation',
