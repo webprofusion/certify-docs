@@ -43,6 +43,7 @@ const deploymentTaskGroups = [
     label: 'Secrets vaults',
     tasks: [
       { id: 'deployment/tasks/azure-key-vault', name: 'Azure Key Vault', icon: 'azure', description: 'Store the certificate in Azure Key Vault, including sovereign clouds.' },
+      { id: 'deployment/tasks/aws-secrets-manager', name: 'AWS Secrets Manager', icon: 'secret-key', description: 'Store the certificate, key and chain as a JSON secret in AWS Secrets Manager.', flags: ['hub', 'preview'] },
       { id: 'deployment/tasks/hashicorp-vault', name: 'HashiCorp Vault', icon: 'hashicorp-vault', description: 'Store the certificate and key as secrets in HashiCorp Vault.' },
       { id: 'deployment/tasks/doppler', name: 'Doppler', icon: 'secret-key', description: 'Store the certificate and key as secrets in a Doppler project.' }
     ]
