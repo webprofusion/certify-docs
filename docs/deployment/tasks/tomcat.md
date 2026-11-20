@@ -1,6 +1,8 @@
 ---
 id: tomcat
-title: Deployment Task - Apache Tomcat
+title: Deploy to Apache Tomcat
+sidebar_label: Apache Tomcat
+description: Export the certificate as a PKCS#12 key store for Apache Tomcat, locally or over SSH.
 ---
 
 Specific configuration of Apache Tomcat for individual requirements is outside of the scope of this documentation however the following is a suggested (working) configuration process for a default install of Tomcat 9.0:
@@ -34,8 +36,8 @@ When the deployment task is next executed the certificate will be exported as a 
 
 To protect the exported PFX with a password, set the task's *Optional New Password* to a stored password credential, and set the same password as `certificateKeystorePassword` in your Tomcat connector configuration.
 
-## Add a 'Stop, Start or Restart a Service..' Deployment Task
+## Restart Tomcat
 
-Then, add a task to Restart the Apache Tomcat service.
+Then, add a [Stop, Start or Restart a Service](./restart-service.md) task to restart the Apache Tomcat service.
 
 As certificate renewals happen as required (at any time), you may wish to set the Task Trigger to be Manual so that the service restart can happen either during a maintenance window or as a scheduled task.

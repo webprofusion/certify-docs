@@ -60,6 +60,8 @@ The default Auto deployment mode will (if applicable) match your certificate to 
 
 Note that for FTP site bindings you need to select "Single Site" instead.
 
+For a full description of each Deployment Mode and binding option, see [Deploy to IIS (Automatic Deployment)](deployment/tasks/iis.md).
+
 ##### Deployment Tasks and Advanced Usage
 In addition to the Auto Deployment options, you can also make use of a variety of pre-built [Deployment Tasks](deployment/tasks_intro.md) for local or remote deployment. You can also use scripting tasks to work with your certificate using your own custom scripting.
 

@@ -1,10 +1,12 @@
 ---
 id: f5-bigip
-title: Deployment Task - F5 BIG-IP
+title: Deploy to F5 BIG-IP
+sidebar_label: F5 BIG-IP
+description: Add or update a named SSL certificate, key and chain on an F5 BIG-IP.
 ---
 
-:::info
-The *Deploy to F5 BIG-IP* task is currently under development and information here relates to an unreleased/beta feature.
+:::info Preview
+This task is not in a released version of Certify yet.
 :::
 
 :::note

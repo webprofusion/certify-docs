@@ -1,6 +1,8 @@
 ---
 id: exchange
-title: Deployment Task - Deploy To Microsoft Exchange
+title: Deploy to Microsoft Exchange
+sidebar_label: Microsoft Exchange
+description: Apply the certificate to Microsoft Exchange 2013 or later services.
 ---
 
 ## Requesting a certificate for Microsoft Exchange

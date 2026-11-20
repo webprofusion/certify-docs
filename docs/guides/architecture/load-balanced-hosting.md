@@ -41,7 +41,7 @@ There is also a general guide to [using CCS with Certify Certificate Manager](..
 These recommendations assume you are simply load balancing your DNS name across multiple web servers (virtual machines etc). 
 
 ##  Azure 
-If you are using any specific Azure functionality (azure web apps, web application gateway etc) the app has a Task which enables you to Deploy to Azure Key Vault (if you do use this you need to set a password on the PFX) - from there you can reference this certificate from multiple azure services.
+If you are using any specific Azure functionality (azure web apps, web application gateway etc) the app has a [Deploy to Azure Key Vault](../../deployment/tasks/azure-key-vault.md) task. From there you can reference this certificate from multiple azure services.
 
 ## Apache (Windows or Linux)
 You can use the Deploy To Apache task to copy your certificate files to a remote machine using SSH/SFTP.

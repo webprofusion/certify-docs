@@ -1,4 +1,9 @@
-# Using Centralized Certificate Store (CCS) on Windows
+---
+id: ccs
+title: Deploy to Centralized Certificate Store (CCS)
+sidebar_label: IIS Centralized Certificate Store
+description: Copy certificates to a share for IIS Centralized Certificate Store, named as IIS expects for each domain.
+---
 
 IIS on Windows has a feature called *Centralized Certificate Store* (CCS) which lets IIS load the latest certificates it needs from a local path or network share. This is useful when you need to share certificates across multiple IIS web servers, or if you want to centralize renewals on one server and copy the certs to other servers.
 

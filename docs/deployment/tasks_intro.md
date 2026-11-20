@@ -1,136 +1,89 @@
 ---
 id: tasks_intro
 title: Deployment Tasks
+description: Run built-in or custom tasks before and after each certificate request, and browse every built-in task by type.
 displayed_sidebar: commonDocsSidebar
 ---
 
-**Deployment Tasks are a powerful new feature introduced in *Certify Certificate Manager* v5.x and above.**
-Once you have a certificate issued by a certificate authority you can go ahead and use that certificate for its intended purpose. This is generally anything that might require a valid verified domain (such as a webserver, mail server, ftp service, remote access etc).
+import { DeploymentTaskGroup } from '@site/src/components/DeploymentTaskDirectory';
 
-![Startup UI](/assets/screens/DeploymentTasks.png)
+Once a certificate is issued, you need to put it to use: on a web server, mail server, firewall, load balancer, secrets vault or anywhere else that needs a trusted certificate for your domain. *Deployment Tasks* do this for you each time the certificate is renewed.
 
-By default the app supports Auto deployment to the local machine certificate store and will auto configure/update https bindings in IIS on the local server.
+By default, Certify stores each certificate in the local machine certificate store and updates matching IIS https bindings on the local server. This [automatic IIS deployment](./tasks/iis.md) needs no task, and is controlled by the certificate's *Deployment Mode*. Add Deployment Tasks when the certificate is needed elsewhere, or when you need extra steps, such as restarting a service after renewal.
 
-If you need to perform more custom steps using the certificate, or if you just want to perform certain workflows after the certificate has been renewed (such as a restarting a local or remote service), you can use _Deployment Tasks_.
+![Deployment Tasks in Certify Certificate Manager](/assets/screens/DeploymentTasks.png)
 
-## Pre-Request Tasks
+## How tasks run
 
-You may wish to run a custom task before you renew your certificate. For instance, you may wish to make automated firewall changes or call a custom Web Hook/API. These are called 'Pre-Request Tasks'.
+- **Deployment Tasks** (post-request tasks) run after the certificate has been issued and, if enabled, automatically deployed. A certificate can have any number of them, and they run in the order listed. Typical uses are exporting files for other servers (Apache, nginx), copying to remote servers, updating a vault or appliance, and running scripts.
+- **Pre-Request Tasks** run before the certificate is requested, for example to open a firewall port for HTTP validation or to call your own webhook. Only some tasks can be used here, such as the [PowerShell](./tasks/powershell.md), [Webhook](./tasks/webhook.md), [Restart a Service](./tasks/restart-service.md) and [Wait](./tasks/wait.md) tasks.
 
-## Deployment Tasks
+### Task triggers
 
-You may want to run any number of tasks after you have renewed your certificate or after it has been automatically deployed. For instance, running scripts, exporting for different server types (Apache, nginx), copying to remote servers etc. These are called 'Deployment Tasks' or Post-Request Tasks.
+Each task has a trigger. It can run:
 
-### Task Triggers
+- when the certificate request succeeds,
+- when the request fails (useful for notifications), or
+- only when you run it manually.
 
-You can configure a task to run either when a certificate request was successful or on error, or you can opt to run the task manually.
+Manual tasks are useful for steps you only want to run at a chosen time, for example restarting a service during a maintenance window. You can run them from the app, or from the [command line](../commandline.md), a script or a scheduled task. The task editor shows the command line arguments to use.
 
-Manually running a task is useful when you want to avoid restarting a service outside of maintenance hours, or if you wish to run the tasks from the command line, a script or a scheduled task. Example command line arguments are shown in the UI to help with scripting.
+### Previewing and testing
 
-### Built-in Task Types
+Run a single task with the ▶️ play button in the task list to test it with the current certificate. Many tasks also check their settings and connection when you preview the certificate request, without changing anything, so problems show up before a renewal depends on them.
 
-Built-in deployment task types, each with UI to configure the task parameters etc, include:
+### Tasks that need Management Hub
 
+Tasks for network appliances and AWS run only on [Certify Management Hub](../hub/index.md), or on an instance [joined to the Hub](../hub/guides/ccm.md#hub-join). They are marked **Management Hub** below. Tasks marked **Preview** are not in a released version yet.
 
-| Name | Description |
-|---|---|
-| Deploy Certificate to ADFS | Applies the certificate to a local Active Directory Federation Services installation |
-| [Deploy to Apache](./tasks/apache.md) | Export the certificate components in PEM file format for use with the Apache webserver. |
-| [Deploy to Apache Tomcat](./tasks/tomcat.md) | Export the certificate as a pkcs12 key store for use with Apache Tomcat application server. |
-| [Deploy to AWS Certificate Manager](./tasks/aws-certificate-manager.md) | Import the certificate to AWS Certificate Manager (ACM). Renewals re-import it under the same ARN, so load balancers, CloudFront distributions and other AWS resources using it pick up the renewed certificate automatically. Requires Certify Management Hub. |
-| [Deploy to Azure App Service](./tasks/azure-app-service.md) | Note that setting a PFX password (Certificate> Advanced > Signing & Security) is required for this deployment. |
-| Deploy to Azure Key Vault| Export the certificate to your choice of Azure Key Vault for use with other Azure services or sharing with other systems. Supports service variations such as Azure Cloud, Azure US Government, Azure China etc.  |
-| [Deploy to Centralized Certificate Store (CCS)](./tasks/ccs.md)| Copies to a chosen UNC share using the credentials you provide, automatically naming the files as required by IIS for each domain. You then configure the IIS CCS feature to pick up certs from the share. |
-| [Deploy to Cisco Secure Firewall (FMC)](./tasks/cisco-fmc.md) | Replace the certificate of a PKCS12 certificate enrollment on Cisco Secure Firewall Management Center (7.7 or later) and install it again on the threat defense devices that use it. Remote access VPN and other settings using it pick up the renewed certificate automatically. Requires Certify Management Hub. |
-| Deploy to Doppler| Deploys the chosen certificate components to the Doppler secrets storage service. |
-| [Deploy to Microsoft Exchange](./tasks/exchange.md)| Export the certificate to a local MS Exchange services and apply it to an optional list of services (IMAP, SMTP, IIS, POP etc). |
-| [Deploy to F5 BIG-IP](./tasks/f5-bigip.md) | Add or update a named SSL certificate, key and chain on an F5 BIG-IP in a single transaction. Client SSL profiles using them pick up the renewed certificate automatically. Requires Certify Management Hub. |
-| [Deploy to FortiGate](./tasks/fortigate.md) | Import the certificate to a Fortinet FortiGate and move everything that used the previous certificate (admin interface, SSL VPN, virtual IPs, SSL inspection profiles etc) to it. Requires Certify Management Hub. |
-| Deploy to Hashicorp Vault| Export the certificate to your Vault instance, with optional namespaces.  |
-| [Deploy to Kemp LoadMaster](./tasks/kemp-loadmaster.md) | Add or replace a named SSL certificate on a Progress Kemp LoadMaster. Virtual Services using it pick up the renewed certificate automatically. Requires Certify Management Hub. |
-| [Deploy to NetScaler ADC](./tasks/netscaler.md) | Add or update a named certificate-key pair on a NetScaler ADC (Citrix ADC), linking its intermediates. Virtual servers bound to it pick up the renewed certificate automatically. Requires Certify Management Hub. |
-| [Deploy to nginx](./tasks/nginx.md) | Export the certificate components in PEM file format for use with the nginx webserver. |
-| [Deploy to Palo Alto Networks Firewall](./tasks/palo-alto.md) | Add or replace a named certificate on a Palo Alto Networks firewall (PAN-OS), then commit the change. SSL/TLS service profiles using it pick up the renewed certificate automatically. Requires Certify Management Hub. |
-| Deploy to RAS (Direct Access, VPN, SSTP VPN etc)| Provides a basic deployment for RAS. You may require your own script for more sophisticated deployments. |
-| Deploy to RDP Gateway Service| Provides a basic deployment for a local RDP Gateway. You may require your own script for more sophisticated deployments. |
-| Deploy to RDP Listener Service| Provides a basic deployment for a local RDP Listener (Terminal Services). |
-| [Deploy to SonicWall](./tasks/sonicwall.md) | Import the certificate to a SonicWall firewall (SonicOS 7) and switch the HTTPS management and SSL VPN certificates that used the previous certificate to it. Requires Certify Management Hub. |
-| [Run a PowerShell Script](../script-hooks.md) | Executes a given PowerShell script |
-| Run a Script | Execute an environment specific script (such as as a windows batch file or a linux bash script). |
-| Stop, Start or Restart a Service | Select a local service to restart. Usually used in conjunction with another deployment task to cause the new certificate to be applied. The service running Certify itself is not stopped, because that would end the task before it completes: the task reports a warning instead. |
-| Set Certificate Key Permissions | Although not usually required, some services may need read permission granted for the certificate private key. This task adds read permission for the nominated account. |
-| Update Port Binding | Provides a standard way to perform netsh IP:port bindings without custom scripting. |
+## Task directory
 
-### Run a Powershell script
+The built-in tasks, grouped by what they deploy to. Each links to its setup guide.
 
-Execute a custom [PowerShell script](../script-hooks.md).
+### Web and application servers
 
-For execution-mode selection, PowerShell version behavior, and impersonation considerations see [PowerShell Support and Execution Modes](../guides/powershell-support.md).
+IIS is updated automatically, without a task. For other servers, export the certificate in the format they need, on the local machine, a network share or over SSH. See also [Apache, nginx, and other web servers](../guides/apache-nginx.md).
 
-Some example scripts (e.g. for `Web Management Service`) are provided under `C:\Program Files\CertifyTheWeb\Scripts\Common`. If you use any of these you should copy the script to your own choice of folder outside of Program Files as any app updates will overwrite the files in this Program Files location and any edits you make will be lost.
+<DeploymentTaskGroup group="web-servers" />
 
-#### Passing custom arguments
+### Microsoft Windows services
 
-Note if passing additional arguments to your script these should be in the format arg=value;arg2=value and `;` characters required as parameter values need to be escaped with `\`, like `key=abc\;123h;othervalue=test`. The `\` character can be escaped as `\\` e.g. to pass an couple of arguments and the first is `path` with value `c:\temp\folder` you could use `path=c:\temp\folder\\;other=test`
+Apply the certificate to services on the Windows server running Certify. Most of these use PowerShell or built-in Windows tools.
 
-### Call a custom Webhook
+<DeploymentTaskGroup group="windows" />
 
-The *Webhook* task can call a webhook with details of the latest certificate request status. Your custom Body template can use variables, e.g.:
+### Secrets vaults
 
-```
-{
-  "Success": "$Success",
-  "PrimaryDomain": "$PrimaryDomain",
-  "SANs": "$SubjectAlternativeNames"
-}
-```
+Store the certificate and private key in a vault, so other systems and services can fetch the latest version from there.
 
-For advanced webhook scenarios, a custom script is recommended (see *Run a Powershell Script* above).
+<DeploymentTaskGroup group="vaults" />
 
-### Deploy to Apache, nginx, Generic Server, Certificate Export
+### Cloud services
 
-Export the certificate to local or remote locations (including SSH/SFTP) as PEM format with Key file and optional chain file.
+<DeploymentTaskGroup group="cloud" />
 
-For a general introduction to certificates and their file types see [Certificates](../guides/certificates.md).
+### Load balancers and application delivery
 
-#### Optional New Password
+These tasks keep the certificate's name on the appliance the same on each renewal, so the profiles and virtual servers that use it pick up the renewed certificate.
 
-The *Export Certificate* task has an *Optional New Password*, selected from your stored Password credentials, to protect the exported private key. It is only shown when *Export As* is set to a type which includes the private key:
+<DeploymentTaskGroup group="load-balancers" />
 
-- **PFX**: the exported PFX is protected with the new password instead of the certificate's own PFX password. PFX files use the same encryption as the *Enable Modern PFX Alg* setting: AES-256 when enabled (not supported by Windows Server 2016 and older), otherwise 3DES.
-- **PEM - Private Key** and **PEM - Full Certificate Chain (Including Key)**: the private key is exported as an encrypted PKCS#8 key (`-----BEGIN ENCRYPTED PRIVATE KEY-----`, AES-256). Your server will need the password to load the key, for instance using `ssl_password_file` in nginx or `SSLPassPhraseDialog` in Apache.
+### Firewalls and VPN gateways
 
-If you change *Export As* to a type without the private key, the password selection is cleared when you save the task.
+<DeploymentTaskGroup group="firewalls" />
 
-The [Deploy to Tomcat](./tasks/tomcat.md) and [Deploy to CCS](./tasks/ccs.md) tasks have the same *Optional New Password* for the PFX files they deploy.
+### Certificate files
 
-:::note  SSH Private Keys
+Write the certificate files you choose to any local, network or SSH location, for software without its own task. For an introduction to certificate file types see [Certificates](../guides/certificates.md).
 
-We currently use the ssh.net library for .net to provide our SSH related features within Tasks. If using an ssh private key file for authentication please ensure the file is in PEM (text) format. Multiple key types are supported but only aes256-cbc key encryption is [supported by ssh.net](https://github.com/sshnet/SSH.NET/issues/742#issuecomment-1292945883). 
+<DeploymentTaskGroup group="files" />
 
-:::
+### Scripts, webhooks and services
 
-### Deploy to Certificate Store (Local)
+Run your own steps, call other systems, or control services. For more on scripting see [Scripting](../script-hooks.md).
 
-This task is deprecated and is not generally required. This imports the certificate into the local certificate store with your choice of store type (Personal, Web Hosting) and choice of Friendly Name. Note that the default auto deployment system in Certify will already store certificates in the My/Personal certificate store.
+<DeploymentTaskGroup group="automation" />
 
+## Deploying to other servers
 
-## Strategies for Remote Deployment
-The easiest way to renew a certificate on a server is usually to install Certify Certificate Manager and run it locally, however sometimes a remote deployment is desirable depending on what you want to achieve:
-
-### Linux
-- Use a *Deploy to Generic Server* task (or other more specific tasks) to export the files you need via SSH/SFTP.
-- Then use the Script task to then run the commands you need to reload services etc.
-
-### Windows
-#### PowerShell with network use impersonation
-Some PowerShell scripts can work remotely via impersonation using credentials that have the necessary permissions, with logon type set to Network (For instance). However not all scripts succeed in adequate levels of impersonation, depending on how the script works and whether it launches new processes etc.
-
-#### Export to Remote share, use a Windows Scheduled Task for deployment
-Where necessary you can instead export the PFX file to where you need it, then use a script to pick up the file, use it, then delete it once deployment has completed.
-
-- In the app, Add an *Export Certificate* task to copy the PFX to a temporary location e.g. a UNC share on the target server.
-- Create a script to look for the PFX file and if present run your scripted deployment steps using that file, it should then delete the temporary PFX file so that the next run will skip the deployment steps.
-  - If an error occurs during your deployment step, report that using a log or notification script.
-- On your target server, schedule your Windows Task to run your script regularly (e.g. hourly or daily, or within a maintenance schedule) as the required user. 
-  - As you are looking for the file in your script before doing anything it will only ever run the deployment when the certificate file exists (e.g. it has recently been exported by the renewal process).
+To deploy from one Certify instance to other machines, see [Strategies for Remote Deployment](./remote-deployment.md).

@@ -91,3 +91,42 @@ body{
 .navbar{
   margin-bottom: 1rem;
 }
+/* Deployment task icons in the sidebar (class set in sidebars.js from src/data/deploymentTasks.js) */
+.task-icon > .menu__link::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-right: 0.5rem;
+  border-radius: 3px;
+  background: #fff var(--task-icon) center / 0.85rem no-repeat;
+}
+.task-icon > .menu__link {
+  justify-content: flex-start;
+}
+[data-theme='dark'] .task-icon > .menu__link::before {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+.task-icon--apache { --task-icon: url('/img/task-icons/apache.svg'); }
+.task-icon--aws-certificate-manager { --task-icon: url('/img/task-icons/aws-certificate-manager.svg'); }
+.task-icon--azure { --task-icon: url('/img/task-icons/azure.svg'); }
+.task-icon--cisco { --task-icon: url('/img/task-icons/cisco.svg'); }
+.task-icon--exchange { --task-icon: url('/img/task-icons/exchange.svg'); }
+.task-icon--f5 { --task-icon: url('/img/task-icons/f5.svg'); }
+.task-icon--file-export { --task-icon: url('/img/task-icons/file-export.svg'); }
+.task-icon--fortinet { --task-icon: url('/img/task-icons/fortinet.svg'); }
+.task-icon--hashicorp-vault { --task-icon: url('/img/task-icons/hashicorp-vault.svg'); }
+.task-icon--load-balancer { --task-icon: url('/img/task-icons/load-balancer.svg'); }
+.task-icon--nginx { --task-icon: url('/img/task-icons/nginx.svg'); }
+.task-icon--palo-alto { --task-icon: url('/img/task-icons/palo-alto.svg'); }
+.task-icon--powershell { --task-icon: url('/img/task-icons/powershell.svg'); }
+.task-icon--progress { --task-icon: url('/img/task-icons/progress.svg'); }
+.task-icon--secret-key { --task-icon: url('/img/task-icons/secret-key.svg'); }
+.task-icon--server { --task-icon: url('/img/task-icons/server.svg'); }
+.task-icon--service-restart { --task-icon: url('/img/task-icons/service-restart.svg'); }
+.task-icon--firewall { --task-icon: url('/img/task-icons/firewall.svg'); }
+.task-icon--terminal { --task-icon: url('/img/task-icons/terminal.svg'); }
+.task-icon--tomcat { --task-icon: url('/img/task-icons/tomcat.svg'); }
+.task-icon--wait { --task-icon: url('/img/task-icons/wait.svg'); }
+.task-icon--webhook { --task-icon: url('/img/task-icons/webhook.svg'); }
+.task-icon--windows { --task-icon: url('/img/task-icons/windows.svg'); }

@@ -1,7 +1,13 @@
 ---
 id: aws-certificate-manager
-title: Deployment Task - AWS Certificate Manager
+title: Deploy to AWS Certificate Manager
+sidebar_label: AWS Certificate Manager
+description: Import the certificate to AWS Certificate Manager (ACM), keeping the same ARN on each renewal.
 ---
+
+:::info Preview
+This task is not in a released version of Certify yet.
+:::
 
 :::note
 This task requires [Certify Management Hub](../../hub/index.md). It runs on the Hub itself, or on an instance [joined to the Hub](../../hub/guides/ccm.md#hub-join). On a standalone instance, the task editor shows a banner saying so, and the task fails if it runs.

@@ -1,10 +1,12 @@
 ---
 id: fortigate
-title: Deployment Task - FortiGate
+title: Deploy to FortiGate
+sidebar_label: FortiGate
+description: Import the certificate to a Fortinet FortiGate and move the settings that used the previous certificate to it.
 ---
 
-:::info
-The *Deploy to FortiGate* task is currently under development and information here relates to an unreleased/beta feature.
+:::info Preview
+This task is not in a released version of Certify yet.
 :::
 
 :::note

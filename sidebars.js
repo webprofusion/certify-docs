@@ -1,25 +1,25 @@
 
-const createDeploymentTaskGuidesCategory = () => ({
+import deploymentTaskGroups from './src/data/deploymentTasks.js';
+
+// Deployment task pages, grouped as on the Deployment Tasks page (see src/data/deploymentTasks.js).
+// commonDocsSidebar owns the pages ('doc'); the product sidebars link to them ('ref').
+const createDeploymentTaskGuidesCategory = (itemType = 'ref') => ({
   type: 'category',
   label: 'Deployment Task Guides',
   collapsible: true,
   collapsed: false,
-  items: [
-    { type: 'ref', id: 'deployment/tasks/ccs' },
-    { type: 'ref', id: 'deployment/tasks/apache' },
-    { type: 'ref', id: 'deployment/tasks/nginx' },
-    { type: 'ref', id: 'deployment/tasks/tomcat' },
-    { type: 'ref', id: 'deployment/tasks/exchange' },
-    { type: 'ref', id: 'deployment/tasks/aws-certificate-manager' },
-    { type: 'ref', id: 'deployment/tasks/cisco-fmc' },
-    { type: 'ref', id: 'deployment/tasks/f5-bigip' },
-    { type: 'ref', id: 'deployment/tasks/fortigate' },
-    { type: 'ref', id: 'deployment/tasks/kemp-loadmaster' },
-    { type: 'ref', id: 'deployment/tasks/netscaler' },
-    { type: 'ref', id: 'deployment/tasks/palo-alto' },
-    { type: 'ref', id: 'deployment/tasks/sonicwall' },
-    { type: 'ref', id: 'deployment/tasks/task-azure-app-service' }
-  ]
+  items: deploymentTaskGroups.map((group) => ({
+    type: 'category',
+    label: group.label,
+    collapsible: true,
+    collapsed: true,
+    items: group.tasks.map((task) => ({
+      type: itemType,
+      id: task.id,
+      label: task.name,
+      className: `task-icon task-icon--${task.icon}`
+    }))
+  }))
 });
 
 const createCommonConceptsCategory = () => ({
@@ -109,6 +109,7 @@ export default {
             collapsed: false,
             items: [
               { type: 'ref', id: 'deployment/tasks_intro' },
+              { type: 'ref', id: 'deployment/remote-deployment' },
               createDeploymentTaskGuidesCategory(),
               { type: 'ref', id: 'script-hooks' },
               'guides/powershell-support',
@@ -238,6 +239,7 @@ export default {
             'hub/guides/agent',
             { type: 'ref', id: 'guides/powershell-support' },
             { type: 'ref', id: 'deployment/tasks_intro' },
+            { type: 'ref', id: 'deployment/remote-deployment' },
             createDeploymentTaskGuidesCategory(),
             { type: 'ref', id: 'script-hooks' },
             { type: 'ref', id: 'guides/import-export' },
@@ -388,20 +390,8 @@ export default {
           collapsed: false,
           items: [
             'deployment/tasks_intro',
-            {
-              type: 'category',
-              label: 'Deployment Task Guides',
-              collapsible: true,
-              collapsed: false,
-              items: [
-                'deployment/tasks/ccs',
-                'deployment/tasks/apache',
-                'deployment/tasks/nginx',
-                'deployment/tasks/tomcat',
-                'deployment/tasks/exchange',
-                'deployment/tasks/task-azure-app-service'
-              ]
-            },
+            'deployment/remote-deployment',
+            createDeploymentTaskGuidesCategory('doc'),
             'script-hooks',
             'guides/powershell-support',
             {

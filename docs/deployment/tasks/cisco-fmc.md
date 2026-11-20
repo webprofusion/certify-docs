@@ -1,7 +1,13 @@
 ---
 id: cisco-fmc
-title: Deployment Task - Cisco Secure Firewall (FMC)
+title: Deploy to Cisco Secure Firewall (FMC)
+sidebar_label: Cisco Secure Firewall
+description: Replace a PKCS12 certificate enrollment on Cisco Secure Firewall Management Center and reinstall it on threat defense devices.
 ---
+
+:::info Preview
+This task is not in a released version of Certify yet.
+:::
 
 :::note
 This task requires [Certify Management Hub](../../hub/index.md). It runs on the Hub itself, or on an instance [joined to the Hub](../../hub/guides/ccm.md#hub-join). On a standalone instance, the task editor shows a banner saying so, and the task fails if it runs.

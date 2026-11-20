@@ -1,7 +1,13 @@
 ---
 id: palo-alto
-title: Deployment Task - Palo Alto Networks Firewall
+title: Deploy to Palo Alto Networks Firewall
+sidebar_label: Palo Alto Networks
+description: Replace a named certificate on a Palo Alto Networks firewall (PAN-OS) and commit the change.
 ---
+
+:::info Preview
+This task is not in a released version of Certify yet.
+:::
 
 :::note
 This task requires [Certify Management Hub](../../hub/index.md). It runs on the Hub itself, or on an instance [joined to the Hub](../../hub/guides/ccm.md#hub-join). On a standalone instance, the task editor shows a banner saying so, and the task fails if it runs.

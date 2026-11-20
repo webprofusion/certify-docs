@@ -1,10 +1,12 @@
 ---
 id: kemp-loadmaster
-title: Deployment Task - Kemp LoadMaster
+title: Deploy to Kemp LoadMaster
+sidebar_label: Kemp LoadMaster
+description: Add or replace a named SSL certificate on a Progress Kemp LoadMaster.
 ---
 
-:::info
-The *Deploy to Kemp LoadMaster* task is currently under development and information here relates to an unreleased/beta feature.
+:::info Preview
+This task is not in a released version of Certify yet.
 :::
 
 :::note

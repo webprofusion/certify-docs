@@ -1,10 +1,12 @@
 ---
 id: netscaler
-title: Deployment Task - NetScaler ADC
+title: Deploy to NetScaler ADC
+sidebar_label: NetScaler ADC
+description: Add or update a named certificate-key pair on a NetScaler ADC (Citrix ADC).
 ---
 
-:::info
-The *Deploy to NetScaler ADC* task is currently under development and information here relates to an unreleased/beta feature.
+:::info Preview
+This task is not in a released version of Certify yet.
 :::
 
 :::note
