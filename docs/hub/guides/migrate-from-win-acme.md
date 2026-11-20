@@ -45,7 +45,7 @@ In the Hub certificate list, select the **Migrate** button in the toolbar. It li
 
 A win-acme renewal split by host, domain or site appears as one item per certificate. Each is previewed and imported separately, but because they share one renewal file they are cut over, rolled back and removed together. Import and test all of them before cutting over.
 
-## What Migrates
+## Settings Migrated
 
 | Source setting | In Certify |
 | --- | --- |
@@ -119,7 +119,7 @@ An AWS IAM role, Azure managed identity or other ambient sign in cannot move. Wh
 
 Generated wrapper scripts are written under `scripts\migrated` in the instance's data folder.
 
-## How Each Client is Disabled
+## How Migration Is Staged
 
 | Client | Cut over | Monitoring after cut over |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Generated wrapper scripts are written under `scripts\migrated` in the instance's
 
 win-acme, simple-acme, certbot and acme.sh must not be running while their files change. If one is, cut over, roll back or removal fails and can be retried once it has finished.
 
-## What Removal Deletes and Keeps
+## Settings Kept Post-Migration
 
 Removal deletes only the migrated certificate's own files:
 
