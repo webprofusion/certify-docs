@@ -228,8 +228,9 @@ export default function Home(): ReactNode {
         <header className={styles.hero}>
           <h1>Certify The Web documentation</h1>
           <p>
-            Automated SSL/TLS certificate management for Windows, Linux, macOS and cloud environments. Choose a
-            product to get started.
+            Automated SSL/TLS certificate management for Windows, Linux, macOS and cloud environments. New to
+            Certify? Start with our <Link to="/docs/summary">high-level summary</Link> of the products and how they fit
+            together, or choose a product below to get started.
           </p>
         </header>
 
@@ -256,8 +257,7 @@ export default function Home(): ReactNode {
             ))}
           </div>
           <p className={styles.footnote}>
-            Browse everything from the <Link to="/docs/">documentation overview</Link>, or visit{' '}
-            <Link to="https://certifytheweb.com">certifytheweb.com</Link> for feature summaries and pricing.
+            Visit <Link to="https://certifytheweb.com">certifytheweb.com</Link> for feature summaries and pricing.
           </p>
         </section>
       </main>
